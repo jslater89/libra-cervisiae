@@ -1,13 +1,13 @@
 
 // Note to self: M rows, N columns; row-major is array[m][n]
 
-// Takes an array of tilts (y), an array of observed gravities (x), and an
+// Takes an array of tilts (x), an array of observed gravities (y), and an
 // array with room for 3 coefficients.
 int regressGravities(float gravities[], float tilts[], float coefficients[3]) {
   return regress(gravities, tilts, coefficients);
 }
 
-// Takes an array of temperatures(y), an array of differences from predicted gravities(x),
+// Takes an array of temperatures (x), an array of differences from predicted gravities (y),
 // and an array with room for 3 coefficients.
 int regressTemps(float gravityOffsets[], float temps[], float coefficients[3]) {
   return regress(gravityOffsets, temps, coefficients);

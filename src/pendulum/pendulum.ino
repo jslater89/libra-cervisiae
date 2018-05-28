@@ -14,6 +14,7 @@
 #include <ESP8266WebServer.h>
 #include <FS.h>
 #include <MatrixMath.h>
+#include <ArduinoJson.h>
 
 /**
  * PENDULUM is a tilting hydrometer for homebrewing use.

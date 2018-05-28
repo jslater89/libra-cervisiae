@@ -6,14 +6,17 @@ void hydrometerLoop() {
   ESP.deepSleep(delaySeconds * 1000 * 1000);
 }
 
+// Get the compensated gravity readings.
 double getGravity(double acX, double acY, double acZ, double temp) {
   return compensateTemperature(calculateGravity(calculateTilt(acX, acY, acZ)), temp);
 }
 
+// Calculate tilt from raw accelerometer readings.
 double calculateTilt(double acX, double acY, double acZ) {
   return atan(-1 * acX / sqrt(pow(acY, 2) + pow(acZ, 2))) * 180 / PI;
 }
 
+// Calculate gravity from tilt, using the calibrated polynomial.
 double calculateGravity(double tilt) {
   double c1, c2, c3;
   c1 = gravityCoefficients[0];
@@ -22,6 +25,7 @@ double calculateGravity(double tilt) {
   return c1 * tilt * tilt + c2 * tilt + c3;
 }
 
+// Compensate for temperature, using the calibrated polynomial.
 double compensateTemperature(double gravity, double temp) {
   double c1, c2, c3;
   c1 = temperatureCoefficients[0];
