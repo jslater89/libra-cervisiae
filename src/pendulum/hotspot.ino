@@ -14,7 +14,9 @@ void hotspotSetup() {
   hydrometerName.toCharArray(nameArray, 0, hydrometerName.length());
   WiFi.softAP(nameArray, "pendulum");
 
-  server.on("/", HTTP_GET, handleRoot);
+  // main.html has scripts/styles embedded.
+  server.serveStatic("/", SPIFFS, "/main.html");
+  
   server.on("/live", HTTP_GET, handleLiveUpdate);
   server.on("/calibration", HTTP_POST, updateCalibration);
   server.on("/config", HTTP_GET, getConfig);
@@ -25,12 +27,6 @@ void hotspotSetup() {
 
 // Hotspot loop
 void hotspotLoop() {
-  
-}
-
-// The root page returns an HTML file containing
-// embedded styles and scripts 
-void handleRoot() {
   
 }
 

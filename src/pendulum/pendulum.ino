@@ -24,6 +24,8 @@
 boolean hotspotMode = false;
 
 void setup() {
+  SPIFFS.begin();
+  
   // if double-reset
   // hotspotMode = true
 

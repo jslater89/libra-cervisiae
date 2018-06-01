@@ -36,7 +36,7 @@
     <!-- !PAGE CONTENT! -->
     <div class="w3-main" style="margin-left:340px;margin-right:40px">
         
-        <!-- Header -->
+        <!-- Live Data -->
         <div class="w3-container" style="margin-top:80px" id="showcase">
             <h1 class="w3-xxxlarge vuejs-text-blue"><b>Live Data</b></h1>
             <hr style="width:50px;border:5px solid #35495e" class="w3-round">
@@ -379,7 +379,6 @@
             
             xmlhttp.onreadystatechange = function() {
                 if (this.readyState == 4) {
-                    console.log(this);
                     if(this.status < 400 && this.status >= 200) {
                         let config = this.response;
                         
@@ -412,7 +411,6 @@
             
             xmlhttp.onreadystatechange = function() {
                 if (this.readyState == 4) {
-                    console.log(this);
                     if(this.status < 400 && this.status >= 200) {
                         let update = this.response;
                         
