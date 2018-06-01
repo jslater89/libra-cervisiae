@@ -15,12 +15,9 @@ void hotspotSetup() {
   WiFi.softAP(nameArray, "pendulum");
 
   server.on("/", HTTP_GET, handleRoot);
-  server.on("/live", HTTP_GET, handleLive);
-  server.on("/live/update", HTTP_GET, handleLiveUpdate);
-  server.on("/calibrate", HTTP_POST, handleCalibrate);
-  //server.on("/calibrate/temperature", HTTP_POST, handleTempCalibrate);
-  server.on("/config", HTTP_GET, handleConfig);
-  server.on("/config/current", HTTP_GET, getConfig);
+  server.on("/live", HTTP_GET, handleLiveUpdate);
+  server.on("/calibration", HTTP_POST, updateCalibration);
+  server.on("/config", HTTP_GET, getConfig);
   server.on("/config", HTTP_POST, updateConfig);
 
   server.begin();
@@ -31,42 +28,30 @@ void hotspotLoop() {
   
 }
 
-// The root page is a menu which allows the selection
-// of live mode or config mode.
+// The root page returns an HTML file containing
+// embedded styles and scripts 
 void handleRoot() {
   
 }
 
-// The live page is a page which refreshes the current
-// tilt, caluculated gravity, and temperature every
-// few seconds. It also has inputs for calibration
-// data points.
-void handleLive() {
-  
-}
-
 // The live update endpoint returns a JSON object containing
-// the current temperature, accelerometer readings, tilt,
-// and gravity.
+// the current temperature, tilt, gravity, and battery.
+//
+// JSON tags: temperature, tilt, gravity, battery
 void handleLiveUpdate() {
   
 }
 
 // The calibrate endpoint accepts a JSON array of calibration
 // points (measured tilts and gravity readings), and returns
-// an object containing either an array of calibration
-// coefficients or an error.
-void handleCalibrate() {
+// a status code corresponding to the result.
+void updateCalibration() {
   
 }
 
-// The config page presents configuration options.
-void handleConfig() {
-  
-}
 
 // The get config endpoint returns a JSON object containing
-// the current configuration.
+// the current configuration, in config-saving format.
 void getConfig() {
   
 }

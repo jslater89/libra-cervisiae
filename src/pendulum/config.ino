@@ -6,7 +6,7 @@
   "wifiNetwork": "01234567890123456789012345678901234567890123456789",
   "wifiPassword": "01234567890123456789012345678901234567890123456789",
   "gravityCoefficients": [1.000000000001, 1.000000000001, 1.000000000001],
-  "temperatureCoefficients": [1.000000000001, 1.000000000001, 1.000000000001]
+  "apiKey": "01234567890123456789012345678901234567890123456789"
 }
  */
 
@@ -27,11 +27,19 @@ String wifiNetwork;
 // What password should it use?
 String wifiPassword;
 
-// What are the coefficients for the tilt->gravity and
-// temperature->gravity offset polynomials?
-double gravityCoefficients[3];
-double temperatureCoefficients[3];
+// API key for Graviton
+String apiKey;
 
+// What are the coefficients for the tilt->gravity
+// polynomial?
+double gravityCoefficients[3];
+
+// What are the coefficients for correcting for temperature?
+// 
+const double temperatureCoefficients[3] = {0.00000154854, -0.000102756, -0.000167605}
+
+// returns -1 for hydrometer name too long, -2 for wifi network name too long,
+// -3 for wifi password too long, -4 for delay out of range.
 int saveConfig() {
   if(hydrometerName.length() > 50) {
     return -1;
@@ -55,10 +63,10 @@ int loadConfig() {
 }
 
 /* decoding
-const size_t bufferSize = 2*JSON_ARRAY_SIZE(3) + JSON_OBJECT_SIZE(7) + 600;
+const size_t bufferSize = 2*JSON_ARRAY_SIZE(3) + JSON_OBJECT_SIZE(7) + 650;
 DynamicJsonBuffer jsonBuffer(bufferSize);
 
-const char* json = "{\"delaySeconds\":100,\"hydrometerName\":\"01234567890123456789012345678901234567890123456789\",\"fullVoltage\":4.20000000000001,\"wifiNetwork\":\"01234567890123456789012345678901234567890123456789\",\"wifiPassword\":\"01234567890123456789012345678901234567890123456789\",\"gravityCoefficient\":[1.000000000001,1.000000000001,1.000000000001],\"temperatureCoefficient\":[1.000000000001,1.000000000001,1.000000000001]}";
+const char* json = "{\"delaySeconds\":100,\"hydrometerName\":\"01234567890123456789012345678901234567890123456789\",\"fullVoltage\":4.20000000000001,\"wifiNetwork\":\"01234567890123456789012345678901234567890123456789\",\"wifiPassword\":\"01234567890123456789012345678901234567890123456789\",\"gravityCoefficient\":[1.000000000001,1.000000000001,1.000000000001]}";
 
 JsonObject& root = jsonBuffer.parseObject(json);
 
@@ -73,14 +81,11 @@ float gravityCoefficient0 = gravityCoefficient[0]; // 1.000000000001
 float gravityCoefficient1 = gravityCoefficient[1]; // 1.000000000001
 float gravityCoefficient2 = gravityCoefficient[2]; // 1.000000000001
 
-JsonArray& temperatureCoefficient = root["temperatureCoefficient"];
-float temperatureCoefficient0 = temperatureCoefficient[0]; // 1.000000000001
-float temperatureCoefficient1 = temperatureCoefficient[1]; // 1.000000000001
-float temperatureCoefficient2 = temperatureCoefficient[2]; // 1.000000000001
+const char* apiKey = root["apiKey"]; // "01234567890123456789012345678901234567890123456789"
 */
 
 /* encoding
-const size_t bufferSize = 2*JSON_ARRAY_SIZE(3) + JSON_OBJECT_SIZE(7);
+const size_t bufferSize = 2*JSON_ARRAY_SIZE(2) + JSON_OBJECT_SIZE(8);
 DynamicJsonBuffer jsonBuffer(bufferSize);
 
 JsonObject& root = jsonBuffer.createObject();
@@ -95,10 +100,7 @@ gravityCoefficient.add(1.000000000001);
 gravityCoefficient.add(1.000000000001);
 gravityCoefficient.add(1.000000000001);
 
-JsonArray& temperatureCoefficient = root.createNestedArray("temperatureCoefficient");
-temperatureCoefficient.add(1.000000000001);
-temperatureCoefficient.add(1.000000000001);
-temperatureCoefficient.add(1.000000000001);
+root["apiKey"] = "01234567890123456789012345678901234567890123456789";
 
 root.printTo(Serial);
  */
