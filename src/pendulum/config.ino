@@ -27,13 +27,16 @@ String wifiNetwork;
 // What password should it use?
 String wifiPassword;
 
+// API key for Graviton
+String apiKey;
+
 // What are the coefficients for the tilt->gravity
 // polynomial?
 double gravityCoefficients[3];
 
 // What are the coefficients for correcting for temperature?
 // 
-const double temperatureCoefficients[3] = {0.00000154854, -0.000102756, -0.000167605}
+const double temperatureCoefficients[3] = {0.00000154854, -0.000102756, -0.000167605};
 
 // returns -1 for hydrometer name too long, -2 for wifi network name too long,
 // -3 for wifi password too long, -4 for delay out of range.
