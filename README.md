@@ -8,10 +8,10 @@ There are several tilt hydrometer projects already, including the well-supported
 Pendulum operates in two modes: hotspot mode, in which live data can be viewed and the configuration changed, and hydrometer mode, in which pendulum spends most of its time in deep sleep, waking at intervals to send data to a web backend. (Currently, [graviton](https://github.com/jslater89/graviton) is supported.)
 
 ## Calibration
-Like all tilting hydrometers, pendulum requires calibration to correlate tilt angles to specific gravities. Calibration is carried out using the Live Data page when pendulum is in hotspot mode, by measuring specific gravity (_not corrected for temperature_) with a float hydrometer and recording the associated tilts. Pendulum does internal quadratic regression on the calibration data.
+Like all tilting hydrometers, pendulum requires calibration to correlate tilt angles to specific gravities. Calibration is carried out using the Live Data page when pendulum is in hotspot mode, by measuring specific gravity (_not corrected for temperature_) with a float hydrometer and recording the associated tilts. Pendulum does quadratic regression on the data entered, calculating coefficients without the need for user interaction.
 
 # Repository Structure
-Arduino source is in src/pendulum. Source for the web page delivered by hotspot mode is in src/pendulum/data.
+Arduino source is in src/pendulum. Source for the web pages delivered by hotspot mode is in src/pendulum/data.
 
 # Shopping List
 * [Enclosure](https://www.amazon.com/dp/B0782S6V81/?coliid=I1TOIBPRD6VTA4&colid=13ZBKZWZ204CF&psc=0&ref_=lv_ov_lig_dp_it) (or other 27mm OD plastic cylinder)
