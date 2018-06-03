@@ -3,9 +3,8 @@
 <title>Pendulum</title>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins">
 <style>
-    body,h1,h2,h3,h4,h5 {font-family: "Poppins", sans-serif}
+    body,h1,h2,h3,h4,h5 {font-family: "Tahoma", sans-serif}
     body {font-size:16px;}
     .w3-half img{margin-bottom:-6px;margin-top:16px;opacity:0.8;cursor:pointer}
     .w3-half img:hover{opacity:1}
@@ -293,12 +292,12 @@
         // validate and submit configuration
         function submitConfiguration(f) {
             const configObject = {
-                "hydrometerName": f.hydrometerName,
-                "wifiNetwork": f.wifiNetwork,
-                "wifiPassword": f.wifiPassword,
-                "apiKey": f.apiKey,
-                "delaySeconds": f.delaySeconds,
-                "fullVoltage": f.fullVoltage
+                "hydrometerName": f.hydrometerName.value,
+                "wifiNetwork": f.wifiNetwork.value,
+                "wifiPassword": f.wifiPassword.value,
+                "apiKey": f.apiKey.value,
+                "delaySeconds": f.delaySeconds.value,
+                "fullVoltage": f.fullVoltage.value
             }
             sendConfigRequest(configObject);
             
@@ -333,7 +332,7 @@
                 return;
             }
             
-            sendCalibrationRequest("calibration");
+            sendCalibrationRequest(calibrationObject);
             
         }
         
@@ -352,7 +351,7 @@
                 }
             };
             xmlhttp.open("POST", url, true);
-            xmlhttp.send(configObject);
+            xmlhttp.send(JSON.stringify(configObject));
         }
         
         function sendCalibrationRequest(calibrationObject) {
@@ -370,7 +369,7 @@
                 }
             };
             xmlhttp.open("POST", url, true);
-            xmlhttp.send(calibrationObject);
+            xmlhttp.send(JSON.stringify(calibrationObject));
         }
         
         function updateConfig() {
@@ -429,10 +428,15 @@
             xmlhttp.open("GET", url, true);
             xmlhttp.send();
         }
+
+        function liveRepeat() {
+            updateLive();
+            setTimeout(liveRepeat, 10000);
+        }
         
         window.onload = function() {
             updateConfig();
-            updateLive();
+            liveRepeat();
         }
     </script>
     
