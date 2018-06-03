@@ -12,26 +12,51 @@
 #include <ESP8266WiFiSTA.h>
 #include <ESP8266WebServerSecure.h>
 #include <ESP8266WebServer.h>
+#include <ESP8266mDNS.h>
 #include <FS.h>
 #include <MatrixMath.h>
 #include <ArduinoJson.h>
+#include <Wire.h>
+#include <DoubleResetDetector.h>
 
 /**
  * PENDULUM is a tilting hydrometer for homebrewing use.
  * 
  */
 
+DoubleResetDetector drd(2 /* timeout */, 1 /* address */);
+
 boolean hotspotMode = false;
 
 void setup() {
-  SPIFFS.begin();
-  
-  // if double-reset
-  // hotspotMode = true
+  Serial.begin(115200);
 
-  if(hotspotMode) hotspotSetup();
+  Serial.println();
+  Serial.println("Pendulum powered on");
 
-  // read in configuration
+  hotspotMode = drd.detectDoubleReset();
+
+  // start filesystem
+  boolean result = SPIFFS.begin();
+  if(!result) {
+    Serial.println("Unable to start SPIFFS");
+  }
+
+  // read in config
+  result = loadConfig();
+  if(!result) {
+    Serial.println("Unable to load configuration");
+  }
+  printConfig();
+
+  if(hotspotMode) {
+    Serial.println("Hotspot mode selected");
+    hotspotSetup();
+  }
+  else {
+    hydrometerSetup();
+    Serial.println("Hydrometer mode selected");
+  }
 }
 
 void loop() {
