@@ -25,6 +25,15 @@ void sensorShutdown() {
   digitalWrite(14, LOW);
 }
 
+double readVoltage() {
+  pinMode(A0, INPUT);
+  int raw = analogRead(A0);
+  double voltage = raw/1023.0;
+  voltage = voltage*4.2;
+
+  return voltage;
+}
+
 void averageAccel(int* x, int* y, int* z, int count, int delayTime) {
   int totalX, totalY, totalZ;
   totalX = totalY = totalZ = 0;

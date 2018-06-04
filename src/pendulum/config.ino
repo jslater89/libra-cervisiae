@@ -102,9 +102,6 @@ boolean loadConfig() {
 
   String contents = f.readString();
   f.close();
-  
-  Serial.println("Config JSON: ");
-  Serial.println(contents);
   boolean result = decodeJSON(contents, true);
 
   if(!result) {

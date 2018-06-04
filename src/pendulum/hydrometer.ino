@@ -11,7 +11,7 @@ void hydrometerSetup() {
     delay(500);
     Serial.print(".");
 
-    if(i > 20) {
+    if(i++ > 20) {
       Serial.println();
       Serial.print("Connection timed out; going back to sleep");
       sleep();
@@ -33,11 +33,13 @@ void hydrometerSetup() {
   double tilt = calculateTilt(x, y, z);
   double gravity = calculateGravity(tilt);
   double compensatedGravity = compensateTemperature(gravity, temp);
+  double voltage = readVoltage();
 
   Serial.print("Temp: "); Serial.println(temp, 2);
   Serial.print("Tilt: "); Serial.println(tilt, 2);
   Serial.print("RawG: "); Serial.println(gravity, 3);
   Serial.print("CorG: "); Serial.println(compensatedGravity, 3);
+  Serial.print("BatV: "); Serial.println(voltage, 3);
 
   sleep();
 }

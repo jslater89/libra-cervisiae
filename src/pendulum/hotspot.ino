@@ -58,6 +58,8 @@ void handleLiveUpdate() {
   double gravity = calculateGravity(tilt);
   double compensated = compensateTemperature(gravity, temp);
 
+  double voltage = readVoltage();
+
   const size_t bufferSize = JSON_OBJECT_SIZE(4);
   DynamicJsonBuffer jsonBuffer(bufferSize);
   
@@ -65,7 +67,7 @@ void handleLiveUpdate() {
   root["temperature"] = temp;
   root["tilt"] = tilt;
   root["gravity"] = compensated;
-  root["battery"] = 0.000;
+  root["battery"] = voltage;
   
   char prettyJSON[root.measurePrettyLength() + 2];
   root.prettyPrintTo((char*) prettyJSON, root.measurePrettyLength() + 1);
