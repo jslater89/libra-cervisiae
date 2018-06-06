@@ -4,6 +4,8 @@
 	"fullVoltage": 4.2,
 	"wifiNetwork": "your_ssid",
 	"wifiPassword": "your_password",
+	"apiRoot": "path_to_graviton",
+	"apiPort": 80,
 	"apiKey": "your_graviton_apikey",
 	"gravityCoefficients":
 		[

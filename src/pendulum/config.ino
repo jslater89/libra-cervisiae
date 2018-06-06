@@ -1,4 +1,7 @@
 /**
+ * Config holds functions related to configuration JSON, saving to SPIFFS, and
+ * reading from SPIFFS.
+ * 
 {
   "delaySeconds": 100,
   "hydrometerName": "01234567890123456789012345678901234567890123456789",
@@ -6,7 +9,8 @@
   "wifiNetwork": "01234567890123456789012345678901234567890123456789",
   "wifiPassword": "01234567890123456789012345678901234567890123456789",
   "gravityCoefficients": [1.000000000001, 1.000000000001, 1.000000000001],
-  "apiKey": "01234567890123456789012345678901234567890123456789"
+  "apiKey": "01234567890123456789012345678901234567890123456789",
+  "apiRoot": "012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789"
 }
  */
 
@@ -29,6 +33,11 @@ char wifiNetwork[51] = "";
 // What password should it use?
 char wifiPassword[51] = "";
 
+// API root
+char apiRoot[151] = "";
+
+int apiPort = 80;
+
 // API key for Graviton
 char apiKey[51] = "";
 
@@ -46,6 +55,8 @@ void printConfig() {
   Serial.print("Full voltage: "); Serial.println(fullVoltage);
   Serial.print("Wifi network: "); Serial.println(wifiNetwork);
   Serial.print("Wifi password: "); Serial.println(wifiPassword);
+  Serial.print("API root: "); Serial.println(apiRoot);
+  Serial.print("API port: "); Serial.println(apiPort);
   Serial.print("API key: "); Serial.println(apiKey);
   Serial.print("a: "); Serial.println(gravityCoefficients[0], 10);
   Serial.print("b: "); Serial.println(gravityCoefficients[1], 10);
@@ -53,7 +64,7 @@ void printConfig() {
 }
 
 void getConfigJSON(char* buf, int lim) {
-  const size_t bufferSize = 2*JSON_ARRAY_SIZE(2) + JSON_OBJECT_SIZE(8);
+  const size_t bufferSize = 2*JSON_ARRAY_SIZE(2) + JSON_OBJECT_SIZE(10);
   DynamicJsonBuffer jsonBuffer(bufferSize);
   
   JsonObject& root = jsonBuffer.createObject();
@@ -67,8 +78,10 @@ void getConfigJSON(char* buf, int lim) {
   c.add(gravityCoefficients[0]);
   c.add(gravityCoefficients[1]);
   c.add(gravityCoefficients[2]);
-  
+
+  root["apiRoot"] = apiRoot;
   root["apiKey"] = apiKey;
+  root["apiPort"] = apiPort;
   root.prettyPrintTo(buf, lim);
 }
 
@@ -92,7 +105,7 @@ boolean saveConfig() {
 boolean loadConfig() {
   // ensure null-termination; the 51st element is always 0 in arrays where only
   // 50 elements are copied.
-  hydrometerName[50] = wifiNetwork[50] = wifiPassword[50] = apiKey[50] = 0;
+  hydrometerName[50] = wifiNetwork[50] = wifiPassword[50] = apiKey[50] = apiRoot[150] = 0;
   
   File f = SPIFFS.open("/config.json", "r");
   if(!f) {
@@ -114,7 +127,7 @@ boolean loadConfig() {
 }
 
 boolean decodeJSON(String json, boolean decodeCoefficients) {
-  const size_t bufferSize = 2*JSON_ARRAY_SIZE(3) + JSON_OBJECT_SIZE(7) + 650;
+  const size_t bufferSize = 2*JSON_ARRAY_SIZE(3) + JSON_OBJECT_SIZE(10) + 650;
   DynamicJsonBuffer jsonBuffer(bufferSize);  
   JsonObject& root = jsonBuffer.parseObject(json);
 
@@ -122,6 +135,7 @@ boolean decodeJSON(String json, boolean decodeCoefficients) {
   if(strlen(root["wifiNetwork"]) > 50) return false;
   if(strlen(root["wifiPassword"]) > 50) return false;
   if(strlen(root["apiKey"]) > 50) return false;
+  if(strlen(root["apiRoot"]) > 150) return false;
 
   if(root["delaySeconds"] > 4200 || root["delaySeconds"] < 0) return false;
   if(root["fullVoltage"] < 3.2) return false;
@@ -131,6 +145,8 @@ boolean decodeJSON(String json, boolean decodeCoefficients) {
   strncpy(wifiNetwork, root["wifiNetwork"], 50);
   strncpy(wifiPassword, root["wifiPassword"], 50);
   strncpy(apiKey, root["apiKey"], 50);
+  strncpy(apiRoot, root["apiRoot"], 150);
+  apiPort = root["apiPort"];
 
   fullVoltage = root["fullVoltage"];
 

@@ -1,4 +1,7 @@
 
+/**
+ * Hydrometer mode
+ */
 
 void hydrometerSetup() {
   WiFi.begin(wifiNetwork, wifiPassword);
@@ -13,7 +16,7 @@ void hydrometerSetup() {
 
     if(i++ > 20) {
       Serial.println();
-      Serial.print("Connection timed out; going back to sleep");
+      Serial.println("Connection timed out; going back to sleep");
       sleep();
       return;
     }
@@ -40,6 +43,8 @@ void hydrometerSetup() {
   Serial.print("RawG: "); Serial.println(gravity, 3);
   Serial.print("CorG: "); Serial.println(compensatedGravity, 3);
   Serial.print("BatV: "); Serial.println(voltage, 3);
+
+  sendToGraviton(compensatedGravity, temp, voltage);
 
   sleep();
 }

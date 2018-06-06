@@ -24,9 +24,8 @@
  * 
  */
 
-DoubleResetDetector drd(2 /* timeout */, 1 /* address */);
-
-boolean hotspotMode = false;
+DoubleResetDetector drd(5 /* timeout */, 10 /* address */);
+boolean hotspotMode;
 
 void setup() {
   Serial.begin(115200);
@@ -34,7 +33,8 @@ void setup() {
   Serial.println();
   Serial.println("Pendulum powered on");
 
-  hotspotMode = drd.detectDoubleReset();
+  WiFi.disconnect(); // disconnect to avoid stomping on other operations
+  WiFi.persistent(false); // don't write to flash
 
   // start filesystem
   boolean result = SPIFFS.begin();
@@ -49,13 +49,15 @@ void setup() {
   }
   printConfig();
 
+  hotspotMode = drd.detectDoubleReset();
+
   if(hotspotMode) {
     Serial.println("Hotspot mode selected");
     hotspotSetup();
   }
   else {
-    hydrometerSetup();
     Serial.println("Hydrometer mode selected");
+    hydrometerSetup();
   }
 }
 

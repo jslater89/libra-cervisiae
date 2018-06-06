@@ -10,7 +10,7 @@
 ESP8266WebServer server(80);
 
 void hotspotSetup() {
-  Serial.print("Starting hotspot with name "); Serial.print(hydrometerName);
+  Serial.print("Starting hotspot with name "); Serial.println(hydrometerName);
   Serial.println(" and password pendulum");
   WiFi.softAP(hydrometerName, "pendulum");
 
@@ -33,7 +33,7 @@ void hotspotSetup() {
 }
 
 // Hotspot loop
-void hotspotLoop() {
+void hotspotLoop() {  
   server.handleClient();
   drd.loop();
 }

@@ -114,6 +114,14 @@
                     <input id="wifiPassword" class="w3-input w3-border" type="text" maxlength="50" name="wifiPassword" required>
                 </div>
                 <div class="w3-section">
+                    <label>API Root</label>
+                    <input id="apiRoot" class="w3-input w3-border" type="text" maxlength="150" name="apiRoot" required>
+                </div>
+                <div class="w3-section">
+                    <label>API Port</label>
+                    <input id="apiPort" class="w3-input w3-border" type="number" min="0" max="16384" name="apiPort" required>
+                </div>
+                <div class="w3-section">
                     <label>API Key</label>
                     <input id="apiKey" class="w3-input w3-border" type="text" maxlength="50" name="apiKey" required>
                 </div>
@@ -295,6 +303,8 @@
                 "hydrometerName": f.hydrometerName.value,
                 "wifiNetwork": f.wifiNetwork.value,
                 "wifiPassword": f.wifiPassword.value,
+                "apiRoot": f.apiRoot.value,
+                "apiPort": f.apiPort.value,
                 "apiKey": f.apiKey.value,
                 "delaySeconds": f.delaySeconds.value,
                 "fullVoltage": f.fullVoltage.value
@@ -385,6 +395,8 @@
                         document.getElementById("hydrometerName").value = config.hydrometerName;
                         document.getElementById("wifiNetwork").value = config.wifiNetwork;
                         document.getElementById("wifiPassword").value = config.wifiPassword;
+                        document.getElementById("apiRoot").value = config.apiRoot;
+                        document.getElementById("apiPort").value = config.apiPort;
                         document.getElementById("apiKey").value = config.apiKey;
                         document.getElementById("delaySeconds").value = config.delaySeconds;
                         document.getElementById("fullVoltage").value = config.fullVoltage;
