@@ -1,6 +1,8 @@
 # pendulum
 Pendulum is a wireless hydrometer powered by the ESP-8266 which fits through the ~30mm neck on a glass carboy. Still in planning.
 
+Development updates can be found at the project's [github pages site](https://jslater89.github.io/pendulum).
+
 ## Motivation
 There are several tilt hydrometer projects already, including the well-supported iSpindel, but none of them are set up out of the box to fit into a glass carboy. The neck on our current primary fermenter, a typical 5-gallon glass model, is 29.75mm wide at the narrowest point of the opening, and for ease of use, we decided on a 27mm-diameter plastic enclosure.
 
