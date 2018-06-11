@@ -8,6 +8,9 @@ name: Pendulum
 # Short bio or description (displayed in the header)
 description: Jay Slater
 
+## Jekyll theme
+theme: jekyll-theme-slate
+
 #
 # Flags below are optional
 #
