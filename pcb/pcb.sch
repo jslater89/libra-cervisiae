@@ -43,8 +43,8 @@ $Descr A4 11693 8268
 encoding utf-8
 Sheet 1 1
 Title "Pendulum PCB"
-Date "2018-06-13"
-Rev "0.0.1"
+Date "2018-06-14"
+Rev "0.0.2"
 Comp ""
 Comment1 ""
 Comment2 ""
@@ -52,14 +52,14 @@ Comment3 ""
 Comment4 ""
 $EndDescr
 $Comp
-L R R2
+L R R3
 U 1 1 5B215E85
-P 2550 5700
-F 0 "R2" V 2630 5700 50  0000 C CNN
-F 1 "100k" V 2550 5700 50  0000 C CNN
-F 2 "Resistors_SMD:R_1206_HandSoldering" V 2480 5700 50  0001 C CNN
-F 3 "" H 2550 5700 50  0001 C CNN
-	1    2550 5700
+P 2400 5550
+F 0 "R3" V 2480 5550 50  0000 C CNN
+F 1 "390k" V 2400 5550 50  0000 C CNN
+F 2 "Resistors_SMD:R_1206_HandSoldering" V 2330 5550 50  0001 C CNN
+F 3 "" H 2400 5550 50  0001 C CNN
+	1    2400 5550
 	0    -1   -1   0   
 $EndComp
 $Comp
@@ -173,10 +173,10 @@ F 3 "" H 2150 5400 50  0001 C CNN
 	0    -1   -1   0   
 $EndComp
 $Comp
-L R R4
+L R R5
 U 1 1 5B21A80E
 P 4650 6100
-F 0 "R4" V 4730 6100 50  0000 C CNN
+F 0 "R5" V 4730 6100 50  0000 C CNN
 F 1 "10k" V 4650 6100 50  0000 C CNN
 F 2 "Resistors_SMD:R_1206_HandSoldering" V 4580 6100 50  0001 C CNN
 F 3 "" H 4650 6100 50  0001 C CNN
@@ -184,10 +184,10 @@ F 3 "" H 4650 6100 50  0001 C CNN
 	0    1    1    0   
 $EndComp
 $Comp
-L R R3
+L R R4
 U 1 1 5B21AA4B
 P 2550 5800
-F 0 "R3" V 2630 5800 50  0000 C CNN
+F 0 "R4" V 2630 5800 50  0000 C CNN
 F 1 "10k" V 2550 5800 50  0000 C CNN
 F 2 "Resistors_SMD:R_1206_HandSoldering" V 2480 5800 50  0001 C CNN
 F 3 "" H 2550 5800 50  0001 C CNN
@@ -195,10 +195,10 @@ F 3 "" H 2550 5800 50  0001 C CNN
 	0    1    1    0   
 $EndComp
 $Comp
-L R R6
+L R R7
 U 1 1 5B21AAD4
 P 5450 6000
-F 0 "R6" V 5530 6000 50  0000 C CNN
+F 0 "R7" V 5530 6000 50  0000 C CNN
 F 1 "10k" V 5450 6000 50  0000 C CNN
 F 2 "Resistors_SMD:R_1206_HandSoldering" V 5380 6000 50  0001 C CNN
 F 3 "" H 5450 6000 50  0001 C CNN
@@ -229,7 +229,7 @@ Text Label 5950 2250 1    60   ~ 0
 BAT+
 Text Label 3950 1750 0    60   ~ 0
 USB-
-Text Label 2000 5700 0    60   ~ 0
+Text Label 1800 5550 0    60   ~ 0
 BAT+
 Text Label 4750 5800 0    60   ~ 0
 SCL
@@ -269,10 +269,10 @@ GND
 Text Label 2000 6000 0    60   ~ 0
 GY+
 $Comp
-L R R5
+L R R6
 U 1 1 5B228DC8
 P 4900 6200
-F 0 "R5" V 4980 6200 50  0000 C CNN
+F 0 "R6" V 4980 6200 50  0000 C CNN
 F 1 "10k" V 4900 6200 50  0000 C CNN
 F 2 "Resistors_SMD:R_1206_HandSoldering" V 4830 6200 50  0001 C CNN
 F 3 "" H 4900 6200 50  0001 C CNN
@@ -368,7 +368,6 @@ Wire Wire Line
 	3000 1650 4200 1650
 Wire Wire Line
 	3000 1650 3000 1800
-Connection ~ 3000 1650
 Connection ~ 3800 1650
 Wire Wire Line
 	8000 2500 7800 2500
@@ -392,8 +391,6 @@ Wire Wire Line
 	9750 2250 10000 2250
 Wire Wire Line
 	5950 2350 6500 2350
-Wire Wire Line
-	2000 5700 2400 5700
 Wire Wire Line
 	4500 5600 4900 5600
 Wire Wire Line
@@ -515,4 +512,26 @@ Wire Wire Line
 Connection ~ 6200 2650
 Text Notes 9250 2000 0    60   ~ 0
 MCP1700
+$Comp
+L R R2
+U 1 1 5B228874
+P 2200 5700
+F 0 "R2" V 2280 5700 50  0000 C CNN
+F 1 "120k" V 2200 5700 50  0000 C CNN
+F 2 "Resistors_SMD:R_1206_HandSoldering" V 2130 5700 50  0001 C CNN
+F 3 "" H 2200 5700 50  0001 C CNN
+	1    2200 5700
+	0    -1   -1   0   
+$EndComp
+Wire Wire Line
+	1800 5550 2250 5550
+Wire Wire Line
+	2550 5550 2550 5700
+Wire Wire Line
+	2350 5700 2700 5700
+Connection ~ 2550 5700
+Wire Wire Line
+	2050 5700 1800 5700
+Text Label 1800 5700 0    60   ~ 0
+GND
 $EndSCHEMATC
