@@ -1,4 +1,4 @@
-update=Wed 13 Jun 2018 11:01:04 PM EDT
+update=Thu 14 Jun 2018 09:04:11 AM EDT
 version=1
 last_client=kicad
 [pcbnew]
@@ -37,7 +37,7 @@ LabSize=60
 version=1
 [eeschema]
 version=1
-LibDir=/home/jay/development/kicad/libraries
+LibDir=libraries
 [eeschema/libraries]
 LibName1=power
 LibName2=device

@@ -1,0 +1,6 @@
+(fp_lib_table
+  (lib (name Extra_Pads)(type KiCad)(uri "$(KIPRJMOD)/libraries/pads.pretty")(options "")(descr ""))
+  (lib (name GY521)(type KiCad)(uri "$(KIPRJMOD)/libraries/gy521/gy521.pretty")(options "")(descr ""))
+  (lib (name TP4056)(type KiCad)(uri "$(KIPRJMOD)/libraries/tp4056/tp4056.pretty")(options "")(descr ""))
+  (lib (name BOB13263)(type KiCad)(uri "$(KIPRJMOD)/libraries/bob-13263/bob-13263.pretty")(options "")(descr ""))
+)
