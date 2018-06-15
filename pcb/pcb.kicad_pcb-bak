@@ -5,7 +5,7 @@
     (no_connects 0)
     (area 142.674999 69.674999 163.825001 139.825001)
     (thickness 1.6)
-    (drawings 8)
+    (drawings 9)
     (tracks 239)
     (zones 0)
     (modules 18)
@@ -880,6 +880,9 @@
     )
   )
 
+  (gr_text + (at 144.272 110.363) (layer F.SilkS)
+    (effects (font (size 0.75 0.75) (thickness 0.075)))
+  )
   (dimension 21.3 (width 0.3) (layer Dwgs.User)
     (gr_text "21.300 mm" (at 153.35 65.05) (layer Dwgs.User)
       (effects (font (size 1.5 1.5) (thickness 0.3)))

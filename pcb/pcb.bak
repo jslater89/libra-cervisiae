@@ -501,7 +501,7 @@ U 1 1 5B22789F
 P 6100 1750
 F 0 "J3" H 6100 1850 50  0000 C CNN
 F 1 "Molex" H 6100 1550 50  0000 C CNN
-F 2 "Connectors_Molex:Molex_PicoBlade_53047-0210_02x1.25mm_Straight" H 6100 1750 50  0001 C CNN
+F 2 "Connectors_Molex:Molex_PicoBlade_53048-0210_02x1.25mm_Angled" H 6100 1750 50  0001 C CNN
 F 3 "" H 6100 1750 50  0001 C CNN
 	1    6100 1750
 	0    -1   -1   0   
