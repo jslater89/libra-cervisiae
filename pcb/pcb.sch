@@ -219,11 +219,11 @@ Text Label 5700 3050 0    60   ~ 0
 GND
 Text Label 6100 1950 0    60   ~ 0
 CHG+
-Text Label 8150 2250 0    60   ~ 0
+Text Label 8000 2250 0    60   ~ 0
 CHG+
 Text Label 9850 2250 0    60   ~ 0
 3.3+
-Text Label 9250 2700 0    60   ~ 0
+Text Label 8850 3000 1    60   ~ 0
 GND
 Text Label 5400 2150 1    60   ~ 0
 BAT+
@@ -283,26 +283,15 @@ NoConn ~ 3200 5800
 NoConn ~ 3200 6000
 NoConn ~ 3200 6100
 $Comp
-L C C1
+L C C3
 U 1 1 5B2296F3
-P 9550 2250
-F 0 "C1" H 9575 2350 50  0000 L CNN
-F 1 "1uF" H 9575 2150 50  0000 L CNN
-F 2 "Capacitors_SMD:C_1206_HandSoldering" H 9588 2100 50  0001 C CNN
-F 3 "" H 9550 2250 50  0001 C CNN
-	1    9550 2250
-	0    1    1    0   
-$EndComp
-$Comp
-L PWR_FLAG #FLG03
-U 1 1 5B22C3B3
-P 9800 2100
-F 0 "#FLG03" H 9800 2175 50  0001 C CNN
-F 1 "PWR_FLAG" H 9800 2250 50  0000 C CNN
-F 2 "" H 9800 2100 50  0001 C CNN
-F 3 "" H 9800 2100 50  0001 C CNN
-	1    9800 2100
-	1    0    0    -1  
+P 9550 2400
+F 0 "C3" H 9575 2500 50  0000 L CNN
+F 1 "1uF" H 9575 2300 50  0000 L CNN
+F 2 "Capacitors_SMD:C_1206_HandSoldering" H 9588 2250 50  0001 C CNN
+F 3 "" H 9550 2400 50  0001 C CNN
+	1    9550 2400
+	-1   0    0    1   
 $EndComp
 $Comp
 L ESP-12F U2
@@ -316,10 +305,10 @@ F 3 "" H 4100 5800 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L PWR_FLAG #FLG04
+L PWR_FLAG #FLG03
 U 1 1 5B22D046
 P 2850 5950
-F 0 "#FLG04" H 2850 6025 50  0001 C CNN
+F 0 "#FLG03" H 2850 6025 50  0001 C CNN
 F 1 "PWR_FLAG" H 2850 6100 50  0000 C CNN
 F 2 "" H 2850 5950 50  0001 C CNN
 F 3 "" H 2850 5950 50  0001 C CNN
@@ -354,14 +343,53 @@ NoConn ~ 2400 2550
 NoConn ~ 2400 2450
 NoConn ~ 2400 2350
 $Comp
-L PWR_FLAG #FLG05
+L PWR_FLAG #FLG04
 U 1 1 5B2225EE
 P 5700 3100
-F 0 "#FLG05" H 5700 3175 50  0001 C CNN
+F 0 "#FLG04" H 5700 3175 50  0001 C CNN
 F 1 "PWR_FLAG" H 5700 3250 50  0000 C CNN
 F 2 "" H 5700 3100 50  0001 C CNN
 F 3 "" H 5700 3100 50  0001 C CNN
 	1    5700 3100
+	-1   0    0    1   
+$EndComp
+Text Notes 4900 2400 0    60   ~ 0
+Pad
+$Comp
+L Conn_01x02 J3
+U 1 1 5B22789F
+P 5550 1650
+F 0 "J3" H 5550 1750 50  0000 C CNN
+F 1 "Molex" H 5550 1450 50  0000 C CNN
+F 2 "Connectors_Molex:Molex_PicoBlade_53048-0210_02x1.25mm_Angled" H 5550 1650 50  0001 C CNN
+F 3 "" H 5550 1650 50  0001 C CNN
+	1    5550 1650
+	0    -1   -1   0   
+$EndComp
+Text Notes 8650 2000 0    60   ~ 0
+MCP1700
+$Comp
+L R R2
+U 1 1 5B228874
+P 2700 5600
+F 0 "R2" V 2780 5600 50  0000 C CNN
+F 1 "120k" V 2700 5600 50  0000 C CNN
+F 2 "Resistors_SMD:R_1206_HandSoldering" V 2630 5600 50  0001 C CNN
+F 3 "" H 2700 5600 50  0001 C CNN
+	1    2700 5600
+	0    -1   -1   0   
+$EndComp
+Text Label 2300 5600 0    60   ~ 0
+GND
+$Comp
+L C C2
+U 1 1 5B241212
+P 8300 2400
+F 0 "C2" H 8325 2500 50  0000 L CNN
+F 1 "1uF" H 8325 2300 50  0000 L CNN
+F 2 "Capacitors_SMD:C_1206_HandSoldering" H 8338 2250 50  0001 C CNN
+F 3 "" H 8300 2400 50  0001 C CNN
+	1    8300 2400
 	-1   0    0    1   
 $EndComp
 Wire Wire Line
@@ -382,13 +410,11 @@ Wire Wire Line
 Wire Wire Line
 	5950 1950 6350 1950
 Wire Wire Line
-	8150 2250 8550 2250
+	8000 2250 8550 2250
 Wire Wire Line
-	8850 2550 8850 2700
+	8850 2550 8850 3000
 Wire Wire Line
-	8850 2700 9400 2700
-Wire Wire Line
-	9150 2250 9400 2250
+	9150 2250 10050 2250
 Wire Wire Line
 	5400 2250 5950 2250
 Wire Wire Line
@@ -452,15 +478,7 @@ Wire Wire Line
 Wire Wire Line
 	5550 6100 5700 6100
 Wire Wire Line
-	5700 6100 5700 6200
-Connection ~ 5700 6200
-Wire Wire Line
 	3150 5500 3200 5500
-Wire Wire Line
-	9700 2250 10050 2250
-Wire Wire Line
-	9800 2100 9800 2250
-Connection ~ 9800 2250
 Wire Wire Line
 	2850 5950 2850 5900
 Connection ~ 2850 5900
@@ -493,35 +511,9 @@ Wire Wire Line
 Wire Wire Line
 	5550 1850 5550 2250
 Connection ~ 5550 2250
-Text Notes 4900 2400 0    60   ~ 0
-Pad
-$Comp
-L Conn_01x02 J3
-U 1 1 5B22789F
-P 5550 1650
-F 0 "J3" H 5550 1750 50  0000 C CNN
-F 1 "Molex" H 5550 1450 50  0000 C CNN
-F 2 "Connectors_Molex:Molex_PicoBlade_53048-0210_02x1.25mm_Angled" H 5550 1650 50  0001 C CNN
-F 3 "" H 5550 1650 50  0001 C CNN
-	1    5550 1650
-	0    -1   -1   0   
-$EndComp
 Wire Wire Line
 	5650 1850 5650 2550
 Connection ~ 5650 2550
-Text Notes 8650 2000 0    60   ~ 0
-MCP1700
-$Comp
-L R R2
-U 1 1 5B228874
-P 2700 5600
-F 0 "R2" V 2780 5600 50  0000 C CNN
-F 1 "120k" V 2700 5600 50  0000 C CNN
-F 2 "Resistors_SMD:R_1206_HandSoldering" V 2630 5600 50  0001 C CNN
-F 3 "" H 2700 5600 50  0001 C CNN
-	1    2700 5600
-	0    -1   -1   0   
-$EndComp
 Wire Wire Line
 	2300 5450 2750 5450
 Wire Wire Line
@@ -531,6 +523,37 @@ Wire Wire Line
 Connection ~ 3050 5600
 Wire Wire Line
 	2550 5600 2300 5600
-Text Label 2300 5600 0    60   ~ 0
-GND
+Wire Wire Line
+	3100 6200 3100 7000
+Wire Wire Line
+	3100 7000 3950 7000
+Connection ~ 3100 6200
+Wire Wire Line
+	5250 7000 4250 7000
+Wire Wire Line
+	9550 2700 9550 2550
+Wire Wire Line
+	8300 2700 9550 2700
+Connection ~ 9550 2250
+Connection ~ 8300 2250
+Wire Wire Line
+	8300 2550 8300 2700
+Wire Wire Line
+	5250 7000 5250 6200
+Connection ~ 5250 6200
+Wire Wire Line
+	5700 6100 5700 6200
+Connection ~ 5700 6200
+Connection ~ 8850 2700
+$Comp
+L C C1
+U 1 1 5B2439F8
+P 4100 7000
+F 0 "C1" H 4125 7100 50  0000 L CNN
+F 1 "47uF" H 4125 6900 50  0000 L CNN
+F 2 "Capacitors_SMD:C_1206_HandSoldering" H 4138 6850 50  0001 C CNN
+F 3 "" H 4100 7000 50  0001 C CNN
+	1    4100 7000
+	0    -1   -1   0   
+$EndComp
 $EndSCHEMATC
