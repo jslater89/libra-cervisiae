@@ -1,4 +1,4 @@
-update=Thu 14 Jun 2018 10:10:23 AM EDT
+update=Sat 16 Jun 2018 05:21:52 PM EDT
 version=1
 last_client=kicad
 [pcbnew]
@@ -25,6 +25,16 @@ version=1
 NetIExt=net
 [general]
 version=1
+[schematic_editor]
+version=1
+PageLayoutDescrFile=
+PlotDirectoryName=../../../tmp/
+SubpartIdSeparator=0
+SubpartFirstId=65
+NetFmtName=
+SpiceForceRefPrefix=0
+SpiceUseNetNumbers=0
+LabSize=60
 [eeschema]
 version=1
 LibDir=libraries
@@ -66,13 +76,4 @@ LibName34=kicad-ESP8266/ESP8266
 LibName35=gy521/gy-521
 LibName36=tp4056/tp4056
 LibName37=bob-13263/bob-13263
-[schematic_editor]
-version=1
-PageLayoutDescrFile=
-PlotDirectoryName=../../../tmp/
-SubpartIdSeparator=0
-SubpartFirstId=65
-NetFmtName=
-SpiceForceRefPrefix=0
-SpiceUseNetNumbers=0
-LabSize=60
+LibName38=libraries/cp2102-breakout/cp2102-breakout
