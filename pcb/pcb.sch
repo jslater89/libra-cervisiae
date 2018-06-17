@@ -45,7 +45,7 @@ encoding utf-8
 Sheet 1 1
 Title "Pendulum PCB"
 Date "2018-06-14"
-Rev "0.0.2"
+Rev "0.0.3"
 Comp ""
 Comment1 ""
 Comment2 ""
@@ -241,7 +241,7 @@ NoConn ~ 4250 6700
 NoConn ~ 4350 6700
 Text Label 6100 5800 1    60   ~ 0
 3.3+
-Text Label 2250 5300 0    60   ~ 0
+Text Label 1900 5300 0    60   ~ 0
 3.3+
 Text Label 4400 4350 3    60   ~ 0
 GND
@@ -417,7 +417,7 @@ Wire Wire Line
 Wire Wire Line
 	2800 5300 3150 5300
 Wire Wire Line
-	2200 5300 2500 5300
+	1900 5300 2500 5300
 Wire Wire Line
 	3150 4750 3150 4600
 Connection ~ 3150 5300
