@@ -19,6 +19,9 @@
 #include <Wire.h>
 #include <DoubleResetDetector.h>
 
+// Uncomment for builds for the Pendulum PCB
+//#define PCB
+
 /**
  * PENDULUM is a tilting hydrometer for homebrewing use.
  * 
