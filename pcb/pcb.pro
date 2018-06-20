@@ -1,4 +1,4 @@
-update=Sat 16 Jun 2018 05:21:52 PM EDT
+update=Tue 19 Jun 2018 12:08:03 PM EDT
 version=1
 last_client=kicad
 [pcbnew]
@@ -77,3 +77,5 @@ LibName35=gy521/gy-521
 LibName36=tp4056/tp4056
 LibName37=bob-13263/bob-13263
 LibName38=libraries/cp2102-breakout/cp2102-breakout
+LibName39=libraries/hx711-breakout/hx711_breakout
+LibName40=libraries/tmp36/tmp36
