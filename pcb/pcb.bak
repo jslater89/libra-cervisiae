@@ -47,7 +47,7 @@ encoding utf-8
 Sheet 1 1
 Title "Pendulum PCB"
 Date "2018-06-14"
-Rev "1.0.0-rc.1"
+Rev "1.0.0-rc.2"
 Comp ""
 Comment1 ""
 Comment2 ""
@@ -375,8 +375,6 @@ Text Label 1850 5050 0    60   ~ 0
 SENS1
 Text Notes 1000 4100 0    60   ~ 0
 Battery Monitor
-Text Notes 850  5250 0    60   ~ 0
-n.b. 100mV drop here
 $Comp
 L D D2
 U 1 1 5B298970
@@ -738,12 +736,12 @@ F 3 "" H 9700 5550 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L R R?
+L R R8
 U 1 1 5B2971BE
 P 1700 5050
-F 0 "R?" V 1780 5050 50  0000 C CNN
-F 1 "5k" V 1700 5050 50  0000 C CNN
-F 2 "" V 1630 5050 50  0001 C CNN
+F 0 "R8" V 1780 5050 50  0000 C CNN
+F 1 "10k" V 1700 5050 50  0000 C CNN
+F 2 "Resistors_SMD:R_0805" V 1630 5050 50  0001 C CNN
 F 3 "" H 1700 5050 50  0001 C CNN
 	1    1700 5050
 	0    1    1    0   
