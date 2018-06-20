@@ -199,7 +199,7 @@ Text Label 5400 2150 1    60   ~ 0
 BAT+
 Text Label 3800 2500 0    60   ~ 0
 USB-
-Text Label 1550 4250 0    60   ~ 0
+Text Label 1950 4250 0    60   ~ 0
 BAT+
 Text Label 6000 5200 0    60   ~ 0
 CLK
@@ -296,7 +296,7 @@ F 3 "" H 1000 4750 50  0001 C CNN
 	1    1000 4750
 	0    -1   -1   0   
 $EndComp
-Text Label 1600 4750 0    60   ~ 0
+Text Label 1950 4750 0    60   ~ 0
 GND
 $Comp
 L C C2
@@ -354,7 +354,7 @@ F 3 "" H 1000 4500 50  0001 C CNN
 	1    1000 4500
 	-1   0    0    1   
 $EndComp
-Text Label 1600 4500 0    60   ~ 0
+Text Label 1950 4500 0    60   ~ 0
 ADC
 Text Label 3600 5500 0    60   ~ 0
 SENS1
@@ -371,7 +371,7 @@ F 3 "" H 1400 4850 50  0001 L CNN
 	1    1400 4850
 	0    -1   -1   0   
 $EndComp
-Text Label 1850 5050 0    60   ~ 0
+Text Label 1900 5050 0    60   ~ 0
 SENS1
 Text Notes 1000 4100 0    60   ~ 0
 Battery Monitor
@@ -390,7 +390,7 @@ Text Label 1950 6000 0    60   ~ 0
 ADC
 Text Label 1850 5900 0    60   ~ 0
 SENS2
-Text Label 1950 6100 0    60   ~ 0
+Text Label 2100 6100 2    60   ~ 0
 GND
 $Comp
 L PWR_FLAG #FLG02
@@ -650,20 +650,20 @@ Connection ~ 7550 5700
 Wire Wire Line
 	3950 5100 3250 5100
 Wire Wire Line
-	1150 4500 1750 4500
+	1150 4500 2150 4500
 Wire Wire Line
 	3600 5500 3950 5500
 Wire Wire Line
 	3200 5600 3950 5600
 Wire Wire Line
-	1150 4250 1750 4250
+	1150 4250 2150 4250
 Wire Wire Line
 	850  4250 850  4750
 Connection ~ 850  4500
 Wire Wire Line
 	1150 4750 1200 4750
 Wire Wire Line
-	1600 4750 1750 4750
+	1600 4750 2150 4750
 Wire Wire Line
 	1150 5900 2100 5900
 Wire Wire Line
@@ -749,5 +749,20 @@ $EndComp
 Wire Wire Line
 	1400 5050 1550 5050
 Wire Wire Line
-	1850 5050 2100 5050
+	1850 5050 2150 5050
+$Comp
+L C C4
+U 1 1 5B2A9325
+P 1900 6250
+F 0 "C4" H 1950 6150 50  0000 L CNN
+F 1 "10nF" H 2000 6250 50  0000 L CNN
+F 2 "Capacitors_SMD:C_0805" H 1938 6100 50  0001 C CNN
+F 3 "" H 1900 6250 50  0001 C CNN
+	1    1900 6250
+	1    0    0    -1  
+$EndComp
+Connection ~ 1900 6100
+Wire Wire Line
+	1450 6400 1900 6400
+Connection ~ 1450 6400
 $EndSCHEMATC
