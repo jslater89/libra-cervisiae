@@ -234,7 +234,6 @@ F 3 "" H 6150 5600 50  0001 C CNN
 	1    6150 5600
 	0    1    1    0   
 $EndComp
-NoConn ~ 3950 5300
 $Comp
 L C C3
 U 1 1 5B2296F3
@@ -586,7 +585,7 @@ Wire Wire Line
 Wire Wire Line
 	6300 5600 6450 5600
 Wire Wire Line
-	3900 5000 3950 5000
+	3650 5000 3950 5000
 Wire Wire Line
 	5400 2250 5400 1950
 Connection ~ 5400 2250
@@ -765,4 +764,9 @@ Connection ~ 1900 6100
 Wire Wire Line
 	1450 6400 1900 6400
 Connection ~ 1450 6400
+Wire Wire Line
+	3950 5300 3650 5300
+Wire Wire Line
+	3650 5300 3650 5000
+Connection ~ 3900 5000
 $EndSCHEMATC
