@@ -359,20 +359,9 @@ Text Label 3600 5500 0    60   ~ 0
 SENS1
 Text Label 3600 5400 0    60   ~ 0
 SENS2
-$Comp
-L BC847 Q1
-U 1 1 5B296BA7
-P 1400 4850
-F 0 "Q1" V 1600 4800 50  0000 L CNN
-F 1 "BC847" V 1150 4700 50  0000 L CNN
-F 2 "TO_SOT_Packages_SMD:SOT-23" H 1600 4775 50  0001 L CIN
-F 3 "" H 1400 4850 50  0001 L CNN
-	1    1400 4850
-	0    -1   -1   0   
-$EndComp
 Text Label 1900 5050 0    60   ~ 0
 SENS1
-Text Notes 1000 4100 0    60   ~ 0
+Text Notes 1150 3850 0    60   ~ 0
 Battery Monitor
 $Comp
 L D D2
@@ -655,14 +644,10 @@ Wire Wire Line
 Wire Wire Line
 	3200 5600 3950 5600
 Wire Wire Line
-	1150 4250 2150 4250
-Wire Wire Line
 	850  4250 850  4750
 Connection ~ 850  4500
 Wire Wire Line
-	1150 4750 1200 4750
-Wire Wire Line
-	1600 4750 2150 4750
+	1150 4750 2150 4750
 Wire Wire Line
 	1150 5900 2100 5900
 Wire Wire Line
@@ -746,8 +731,6 @@ F 3 "" H 1700 5050 50  0001 C CNN
 	0    1    1    0   
 $EndComp
 Wire Wire Line
-	1400 5050 1550 5050
-Wire Wire Line
 	1850 5050 2150 5050
 $Comp
 L C C4
@@ -769,4 +752,23 @@ Wire Wire Line
 Wire Wire Line
 	3650 5300 3650 5000
 Connection ~ 3900 5000
+$Comp
+L BSS84 Q1
+U 1 1 5B2BFF6A
+P 1500 4350
+F 0 "Q1" V 1650 4150 50  0000 L CNN
+F 1 "BSS84" V 1500 4000 50  0000 L CNN
+F 2 "TO_SOT_Packages_SMD:SOT-23" H 1700 4275 50  0001 L CIN
+F 3 "" H 1500 4350 50  0001 L CNN
+	1    1500 4350
+	0    -1   -1   0   
+$EndComp
+Wire Wire Line
+	1150 4250 1300 4250
+Wire Wire Line
+	1700 4250 2150 4250
+Wire Wire Line
+	1500 4550 1500 5050
+Wire Wire Line
+	1500 5050 1550 5050
 $EndSCHEMATC
