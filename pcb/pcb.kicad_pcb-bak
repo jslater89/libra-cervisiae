@@ -3,7 +3,7 @@
   (general
     (links 66)
     (no_connects 0)
-    (area 106.162999 65.462999 170.113001 108.813001)
+    (area 99.863999 58.638 182.188 114.438001)
     (thickness 1.6)
     (drawings 21)
     (tracks 382)
@@ -16,7 +16,7 @@
   (title_block
     (title "Pendulum PCB")
     (date 2018-06-24)
-    (rev 1.0.0-rc.2)
+    (rev 1.0.0-rc.3)
   )
 
   (layers
@@ -43,7 +43,7 @@
   )
 
   (setup
-    (last_trace_width 0.4)
+    (last_trace_width 0.25)
     (user_trace_width 0.4)
     (trace_clearance 0.2)
     (zone_clearance 0.508)
