@@ -90,23 +90,23 @@ $EndComp
 $Comp
 L Conn_01x01 J1
 U 1 1 5B217852
-P 5200 2250
-F 0 "J1" H 5200 2350 50  0000 C CNN
-F 1 "BAT+" H 5200 2150 50  0000 C CNN
-F 2 "Extra_Pads:SolderWirePad_single_SMD_5x3mm" H 5200 2250 50  0001 C CNN
-F 3 "" H 5200 2250 50  0001 C CNN
-	1    5200 2250
+P 4850 2250
+F 0 "J1" H 4850 2350 50  0000 C CNN
+F 1 "BAT+" H 4850 2150 50  0000 C CNN
+F 2 "Extra_Pads:SolderWirePad_single_SMD_5x3mm" H 4850 2250 50  0001 C CNN
+F 3 "" H 4850 2250 50  0001 C CNN
+	1    4850 2250
 	-1   0    0    1   
 $EndComp
 $Comp
 L Conn_01x01 J2
 U 1 1 5B2178B3
-P 5200 2550
-F 0 "J2" H 5200 2650 50  0000 C CNN
-F 1 "BAT-" H 5200 2450 50  0000 C CNN
-F 2 "Extra_Pads:SolderWirePad_single_SMD_5x3mm" H 5200 2550 50  0001 C CNN
-F 3 "" H 5200 2550 50  0001 C CNN
-	1    5200 2550
+P 4850 2550
+F 0 "J2" H 4850 2650 50  0000 C CNN
+F 1 "BAT-" H 4850 2450 50  0000 C CNN
+F 2 "Extra_Pads:SolderWirePad_single_SMD_5x3mm" H 4850 2550 50  0001 C CNN
+F 3 "" H 4850 2550 50  0001 C CNN
+	1    4850 2550
 	-1   0    0    1   
 $EndComp
 $Comp
@@ -191,7 +191,7 @@ Text Label 9850 2250 0    60   ~ 0
 3.3+
 Text Label 8850 3000 1    60   ~ 0
 GND
-Text Label 5400 2150 1    60   ~ 0
+Text Label 5050 2150 1    60   ~ 0
 BAT+
 Text Label 3800 2850 0    60   ~ 0
 USB-
@@ -254,17 +254,17 @@ F 3 "" H 4850 5300 50  0001 C CNN
 $EndComp
 NoConn ~ 3600 2450
 NoConn ~ 3600 2550
-Text Notes 5100 2650 1    60   ~ 0
+Text Notes 4750 2650 1    60   ~ 0
 Battery Pads\n\n
 $Comp
 L Conn_01x02 J3
 U 1 1 5B22789F
-P 5550 1650
-F 0 "J3" H 5550 1750 50  0000 C CNN
-F 1 "Battery" H 5550 1450 50  0000 C CNN
-F 2 "Connectors_Molex:Molex_PicoBlade_53048-0210_02x1.25mm_Angled" H 5550 1650 50  0001 C CNN
-F 3 "" H 5550 1650 50  0001 C CNN
-	1    5550 1650
+P 5200 1650
+F 0 "J3" H 5200 1750 50  0000 C CNN
+F 1 "Battery" H 5200 1450 50  0000 C CNN
+F 2 "Connectors_Molex:Molex_PicoBlade_53048-0210_02x1.25mm_Angled" H 5200 1650 50  0001 C CNN
+F 3 "" H 5200 1650 50  0001 C CNN
+	1    5200 1650
 	0    -1   -1   0   
 $EndComp
 Text Notes 8650 2000 0    60   ~ 0
@@ -479,7 +479,7 @@ Wire Wire Line
 Wire Wire Line
 	9150 2250 10050 2250
 Wire Wire Line
-	5400 2250 5950 2250
+	5050 2250 5950 2250
 Wire Wire Line
 	5750 5000 6150 5000
 Wire Wire Line
@@ -531,16 +531,16 @@ Wire Wire Line
 Wire Wire Line
 	3650 5000 3950 5000
 Wire Wire Line
-	5400 2250 5400 1950
-Connection ~ 5400 2250
+	5050 2250 5050 1950
+Connection ~ 5050 2250
 Wire Wire Line
-	5400 2550 5650 2550
+	5050 2550 5300 2550
 Wire Wire Line
-	5550 1850 5550 2250
-Connection ~ 5550 2250
+	5200 1850 5200 2250
+Connection ~ 5200 2250
 Wire Wire Line
-	5650 1850 5650 2750
-Connection ~ 5650 2550
+	5300 1850 5300 2750
+Connection ~ 5300 2550
 Wire Wire Line
 	3850 5700 3850 6500
 Wire Wire Line
@@ -688,20 +688,20 @@ Connection ~ 1200 6400
 $Comp
 L PWR_FLAG #FLG03
 U 1 1 5B2F14F2
-P 5650 2850
-F 0 "#FLG03" H 5650 2925 50  0001 C CNN
-F 1 "PWR_FLAG" H 5650 3000 50  0000 C CNN
-F 2 "" H 5650 2850 50  0001 C CNN
-F 3 "" H 5650 2850 50  0001 C CNN
-	1    5650 2850
+P 5300 2850
+F 0 "#FLG03" H 5300 2925 50  0001 C CNN
+F 1 "PWR_FLAG" H 5300 3000 50  0000 C CNN
+F 2 "" H 5300 2850 50  0001 C CNN
+F 3 "" H 5300 2850 50  0001 C CNN
+	1    5300 2850
 	-1   0    0    1   
 $EndComp
-Connection ~ 5650 2850
+Connection ~ 5300 2850
 Connection ~ 8300 2250
 Wire Wire Line
 	3600 2850 4050 2850
 Wire Wire Line
-	5450 2850 5950 2850
+	5100 2850 5950 2850
 $Comp
 L C C5
 U 1 1 5B301162
@@ -714,19 +714,36 @@ F 3 "" H 5800 2500 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 Wire Wire Line
-	5650 2750 5950 2750
+	5300 2750 5950 2750
 Wire Wire Line
-	5950 2150 5800 2150
+	5550 2150 5950 2150
 Wire Wire Line
 	5800 2150 5800 2350
 Wire Wire Line
-	5800 2650 5800 2850
+	5800 2850 5800 2650
 Connection ~ 5800 2850
 Connection ~ 5950 2150
 Wire Wire Line
 	7950 2250 8550 2250
 Text Label 7950 2250 0    60   ~ 0
 CHG+
-Text Label 5450 2850 0    60   ~ 0
+Text Label 5100 2850 0    60   ~ 0
 GND
+$Comp
+L C C6
+U 1 1 5B3032B2
+P 5550 2500
+F 0 "C6" H 5575 2600 50  0000 L CNN
+F 1 "47uF" H 5575 2400 50  0000 L CNN
+F 2 "Capacitors_SMD:C_0805" H 5588 2350 50  0001 C CNN
+F 3 "" H 5550 2500 50  0001 C CNN
+	1    5550 2500
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	5550 2150 5550 2350
+Connection ~ 5800 2150
+Wire Wire Line
+	5550 2650 5550 2850
+Connection ~ 5550 2850
 $EndSCHEMATC
