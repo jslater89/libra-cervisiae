@@ -2,14 +2,14 @@
 <export version="D">
   <design>
     <source>/home/jay/development/pendulum/pcb/pcb.sch</source>
-    <date>Sun 24 Jun 2018 06:50:36 PM EDT</date>
+    <date>Sun 24 Jun 2018 11:06:04 PM EDT</date>
     <tool>Eeschema 4.0.7-e2-6376~58~ubuntu16.04.1</tool>
     <sheet number="1" name="/" tstamps="/">
       <title_block>
         <title>Pendulum PCB</title>
         <company/>
-        <rev>1.0.0-rc.2</rev>
-        <date>2018-06-20</date>
+        <rev>1.0.0-rc.3</rev>
+        <date>2018-06-24</date>
         <source>pcb.sch</source>
         <comment number="1" value=""/>
         <comment number="2" value=""/>
@@ -231,7 +231,7 @@
     </comp>
     <comp ref="D1">
       <value>D_Schottky</value>
-      <footprint>Diodes_SMD:D_0805</footprint>
+      <footprint>Diodes_SMD:D_SMA</footprint>
       <libsource lib="device" part="D_Schottky"/>
       <sheetpath names="/" tstamps="/"/>
       <tstamp>5B303989</tstamp>
@@ -534,11 +534,23 @@
     </libpart>
   </libparts>
   <libraries>
-    <library logical="conn">
-      <uri>/usr/share/kicad/library/conn.lib</uri>
+    <library logical="cp2102-breakout">
+      <uri>/home/jay/development/pendulum/pcb/libraries/cp2102-breakout/cp2102-breakout.lib</uri>
+    </library>
+    <library logical="hx711_breakout">
+      <uri>/home/jay/development/pendulum/pcb/libraries/hx711-breakout/hx711_breakout.lib</uri>
+    </library>
+    <library logical="ESP8266">
+      <uri>/home/jay/development/pendulum/pcb/libraries/kicad-ESP8266/ESP8266.lib</uri>
     </library>
     <library logical="regul">
       <uri>/usr/share/kicad/library/regul.lib</uri>
+    </library>
+    <library logical="tp4056">
+      <uri>/home/jay/development/pendulum/pcb/libraries/tp4056/tp4056.lib</uri>
+    </library>
+    <library logical="conn">
+      <uri>/usr/share/kicad/library/conn.lib</uri>
     </library>
     <library logical="transistors">
       <uri>/usr/share/kicad/library/transistors.lib</uri>
@@ -548,18 +560,6 @@
     </library>
     <library logical="device">
       <uri>/usr/share/kicad/library/device.lib</uri>
-    </library>
-    <library logical="tp4056">
-      <uri>/home/jay/development/pendulum/pcb/libraries/tp4056/tp4056.lib</uri>
-    </library>
-    <library logical="cp2102-breakout">
-      <uri>/home/jay/development/pendulum/pcb/libraries/cp2102-breakout/cp2102-breakout.lib</uri>
-    </library>
-    <library logical="hx711_breakout">
-      <uri>/home/jay/development/pendulum/pcb/libraries/hx711-breakout/hx711_breakout.lib</uri>
-    </library>
-    <library logical="ESP8266">
-      <uri>/home/jay/development/pendulum/pcb/libraries/kicad-ESP8266/ESP8266.lib</uri>
     </library>
   </libraries>
   <nets>

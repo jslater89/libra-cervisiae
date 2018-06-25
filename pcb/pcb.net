@@ -1,7 +1,7 @@
 (export (version D)
   (design
     (source /home/jay/development/pendulum/pcb/pcb.sch)
-    (date "Sun 24 Jun 2018 10:43:44 PM EDT")
+    (date "Sun 24 Jun 2018 10:58:09 PM EDT")
     (tool "Eeschema 4.0.7-e2-6376~58~ubuntu16.04.1")
     (sheet (number 1) (name /) (tstamps /)
       (title_block
@@ -197,7 +197,7 @@
       (tstamp 5B2A9325))
     (comp (ref D1)
       (value D_Schottky)
-      (footprint Diodes_SMD:D_1206)
+      (footprint Diodes_SMD:D_SMA)
       (libsource (lib device) (part D_Schottky))
       (sheetpath (names /) (tstamps /))
       (tstamp 5B303989))
@@ -439,6 +439,8 @@
         (pin (num 5) (name BAT-) (type BiDi))
         (pin (num 6) (name OUT-) (type power_in)))))
   (libraries
+    (library (logical regul)
+      (uri /usr/share/kicad/library/regul.lib))
     (library (logical device)
       (uri /usr/share/kicad/library/device.lib))
     (library (logical switches)
@@ -447,8 +449,6 @@
       (uri /usr/share/kicad/library/transistors.lib))
     (library (logical conn)
       (uri /usr/share/kicad/library/conn.lib))
-    (library (logical regul)
-      (uri /usr/share/kicad/library/regul.lib))
     (library (logical ESP8266)
       (uri /home/jay/development/pendulum/pcb/libraries/kicad-ESP8266/ESP8266.lib))
     (library (logical tp4056)
