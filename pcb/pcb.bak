@@ -46,8 +46,8 @@ $Descr A 11000 8500
 encoding utf-8
 Sheet 1 1
 Title "Pendulum PCB"
-Date "2018-06-20"
-Rev "1.0.0-rc.2"
+Date "2018-06-24"
+Rev "1.0.0-rc.3"
 Comp ""
 Comment1 ""
 Comment2 ""
