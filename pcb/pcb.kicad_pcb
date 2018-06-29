@@ -26,7 +26,7 @@
     (33 F.Adhes user)
     (34 B.Paste user)
     (35 F.Paste user)
-    (36 B.SilkS user)
+    (36 B.SilkS user hide)
     (37 F.SilkS user)
     (38 B.Mask user)
     (39 F.Mask user)
@@ -43,7 +43,7 @@
   )
 
   (setup
-    (last_trace_width 0.4)
+    (last_trace_width 0.25)
     (user_trace_width 0.4)
     (trace_clearance 0.2)
     (zone_clearance 0.508)
@@ -3076,13 +3076,13 @@
     (pad 1 np_thru_hole circle (at 0 0) (size 2.2 2.2) (drill 2.2) (layers *.Cu *.Mask))
   )
 
-  (module OSHW:pendulum_logo_10mm (layer B.Cu) (tedit 0) (tstamp 5B3631E2)
+  (module OSHW:pendulum_logo_10mm (layer B.Cu) (tedit 5B366837) (tstamp 5B3631E2)
     (at 152.938 91.938 90)
     (fp_text reference G*** (at 0 0 90) (layer B.SilkS) hide
-      (effects (font (thickness 0.3)) (justify mirror))
+      (effects (font (size 0.25 0.25) (thickness 0.025)) (justify mirror))
     )
     (fp_text value LOGO (at 0.75 0 90) (layer B.SilkS) hide
-      (effects (font (thickness 0.3)) (justify mirror))
+      (effects (font (size 0.25 0.25) (thickness 0.025)) (justify mirror))
     )
     (fp_poly (pts (xy 0.836833 3.94427) (xy 1.665718 3.938298) (xy 1.837996 3.891363) (xy 2.079826 3.807756)
       (xy 2.304762 3.694295) (xy 2.510515 3.553092) (xy 2.694797 3.386255) (xy 2.85532 3.195894)
