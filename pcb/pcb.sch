@@ -47,7 +47,7 @@ encoding utf-8
 Sheet 1 1
 Title "Pendulum PCB"
 Date "2018-06-28"
-Rev "1.0.0-rc.6"
+Rev "1.0.0-rc.7"
 Comp ""
 Comment1 ""
 Comment2 ""
