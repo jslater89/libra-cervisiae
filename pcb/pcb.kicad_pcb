@@ -1,4 +1,4 @@
-(kicad_pcb (version 20171130) (host pcbnew 5.0.0-rc3-unknown-3df2743~65~ubuntu16.04.1)
+(kicad_pcb (version 20171130) (host pcbnew 5.0.0-rc3-unknown-101b68b~65~ubuntu16.04.1)
 
   (general
     (thickness 1.6)
@@ -1592,6 +1592,16 @@
       (net 14 /WHT))
     (pad 2 thru_hole circle (at 21.74 11.84) (size 1.524 1.524) (drill 0.762) (layers *.Cu *.Mask)
       (net 15 /BLK))
+    (model ${KISYS3DMOD}/Connector_PinHeader_2.54mm.3dshapes/PinHeader_1x04_P2.54mm_Vertical.step
+      (offset (xyz 2 -4.5 2.5))
+      (scale (xyz 1 1 1))
+      (rotate (xyz 0 -180 0))
+    )
+    (model ${KISYS3DMOD}/Connector_PinHeader_2.54mm.3dshapes/PinHeader_1x04_P2.54mm_Vertical.step
+      (offset (xyz 22 -6.5 2.5))
+      (scale (xyz 1 1 1))
+      (rotate (xyz 0 -180 0))
+    )
   )
 
   (module Extra_Pads:SolderWirePad_single_SMD_5x3mm (layer F.Cu) (tedit 5B36C828) (tstamp 5B4805A9)
@@ -1686,6 +1696,11 @@
       (net 9 /GND))
     (pad 6 thru_hole circle (at 19.05 13.97 180) (size 1.524 1.524) (drill 0.762) (layers *.Cu *.Mask)
       (net 10 /USB+))
+    (model ${KISYS3DMOD}/Connector_PinHeader_2.54mm.3dshapes/PinHeader_1x06_P2.54mm_Vertical.step
+      (offset (xyz 19 -1.5 2.5))
+      (scale (xyz 1 1 1))
+      (rotate (xyz 0 -180 0))
+    )
   )
 
   (module Extra_Pads:SolderWirePad_single_SMD_5x3mm (layer F.Cu) (tedit 5B36C7FC) (tstamp 5B2939DE)
@@ -1879,6 +1894,26 @@
       (net 9 /GND))
     (pad 1 thru_hole circle (at 15.5 1.5 270) (size 1.75 1.75) (drill 1) (layers *.Cu *.Mask)
       (net 10 /USB+))
+    (model ${KISYS3DMOD}/Connector_PinHeader_2.54mm.3dshapes/PinHeader_1x02_P2.54mm_Vertical.step
+      (offset (xyz 2 -24.5 2.5))
+      (scale (xyz 1 1 1))
+      (rotate (xyz 0 -180 -90))
+    )
+    (model ${KISYS3DMOD}/Connector_PinHeader_2.54mm.3dshapes/PinHeader_1x02_P2.54mm_Vertical.step
+      (offset (xyz 12.5 -24.5 2.5))
+      (scale (xyz 1 1 1))
+      (rotate (xyz 0 -180 -90))
+    )
+    (model ${KISYS3DMOD}/Connector_PinHeader_2.54mm.3dshapes/PinHeader_1x01_P2.54mm_Vertical.step
+      (offset (xyz 1.5 -1.5 2.5))
+      (scale (xyz 1 1 1))
+      (rotate (xyz 0 -180 0))
+    )
+    (model ${KISYS3DMOD}/Connector_PinHeader_2.54mm.3dshapes/PinHeader_1x01_P2.54mm_Vertical.step
+      (offset (xyz 15.5 -1.5 2.5))
+      (scale (xyz 1 1 1))
+      (rotate (xyz 0 -180 0))
+    )
   )
 
   (module 4x3_SWITCH:4x3_Switch (layer F.Cu) (tedit 5B2EBD06) (tstamp 5B2D1BD2)
@@ -1910,6 +1945,11 @@
       (net 9 /GND))
     (pad 1 smd rect (at 1.6 0.35) (size 1.35 0.7) (layers F.Cu F.Paste F.Mask)
       (net 4 "Net-(R1-Pad2)"))
+    (model ${KISYS3DMOD}/Button_Switch_SMD.3dshapes/SW_SPST_B3U_1000P_B.wrl
+      (offset (xyz 1.5 -2.5 0))
+      (scale (xyz 1.2 1.2 1.2))
+      (rotate (xyz 0 0 -90))
+    )
   )
 
   (module 4x3_SWITCH:4x3_Switch (layer F.Cu) (tedit 5B2EBCF3) (tstamp 5B2D1BE7)
@@ -1941,6 +1981,11 @@
       (net 9 /GND))
     (pad 1 smd rect (at 1.6 0.35 180) (size 1.35 0.7) (layers F.Cu F.Paste F.Mask)
       (net 12 "Net-(R7-Pad2)"))
+    (model ${KISYS3DMOD}/Button_Switch_SMD.3dshapes/SW_SPST_B3U_1000P_B.wrl
+      (offset (xyz 1.5 -2.5 0))
+      (scale (xyz 1.2 1.2 1.2))
+      (rotate (xyz 0 0 -90))
+    )
   )
 
   (module Symbols:OSHW-Logo2_7.3x6mm_SilkScreen (layer B.Cu) (tedit 5B318D8B) (tstamp 5B318D10)
@@ -2680,6 +2725,11 @@
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
     )
+    (model ${KISYS3DMOD}/Connector_PinSocket_1.27mm.3dshapes/PinSocket_1x02_P1.27mm_Vertical.step
+      (at (xyz 0 0 0))
+      (scale (xyz 1 1 1))
+      (rotate (xyz 0 0 -90))
+    )
   )
 
   (module Connector_Molex:Molex_PicoBlade_53048-0610_1x03_P1.25mm_Horizontal (layer F.Cu) (tedit 5B3BE26F) (tstamp 5B47FA04)
@@ -2740,6 +2790,11 @@
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
+    )
+    (model ${KISYS3DMOD}/Connector_PinSocket_1.27mm.3dshapes/PinSocket_1x03_P1.27mm_Vertical.step
+      (at (xyz 0 0 0))
+      (scale (xyz 1 1 1))
+      (rotate (xyz 0 0 -90))
     )
   )
 
@@ -2803,6 +2858,11 @@
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
+    )
+    (model ${KISYS3DMOD}/Connector_PinSocket_1.27mm.3dshapes/PinSocket_1x04_P1.27mm_Vertical.step
+      (at (xyz 0 0 0))
+      (scale (xyz 1 1 1))
+      (rotate (xyz 0 0 -90))
     )
   )
 
