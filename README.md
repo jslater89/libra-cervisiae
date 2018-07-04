@@ -1,4 +1,6 @@
 # Pendulum
+![pcb](https://jslater89.github.io/pendulum/images/pcb.png)
+
 Pendulum is a wireless hydrometer powered by the ESP-8266.
 
 Development updates can be found at the project's [github pages site](https://jslater89.github.io/pendulum).
