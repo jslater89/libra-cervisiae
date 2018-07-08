@@ -39,23 +39,21 @@ void hotspotLoop() {
 }
 
 // The live update endpoint returns a JSON object containing
-// the current temperature, tilt, gravity, and battery.
+// the current temperature, weight, gravity, and battery.
 //
-// JSON tags: temperature, tilt, gravity, battery
+// JSON tags: temperature, weight, gravity, battery
 void handleLiveUpdate() {
-  // Start up and shut down the MPU for each read so that chip
-  // temperature doesn't diverge from ambient too much
+  // Start up and shut down the sensors for each read
   sensorSetup();
   
-  int x, y, z;
-  averageAccel(&x, &y, &z, 5, 10);
   double temp;
-  averageTemp(&temp, 5, 10);
+  readTemp(&temp);
+  int weight;
+  averageWeight(&weight, 25, 40);
 
   sensorShutdown();
 
-  double tilt = calculateTilt(x, y, z);
-  double gravity = calculateGravity(tilt);
+  double gravity = calculateGravity(weight);
   double compensated = compensateTemperature(gravity, temp);
 
   double voltage = readVoltage();
@@ -65,7 +63,7 @@ void handleLiveUpdate() {
   
   JsonObject& root = jsonBuffer.createObject();
   root["temperature"] = temp;
-  root["tilt"] = tilt;
+  root["weight"] = weight;
   root["gravity"] = compensated;
   root["battery"] = voltage;
   
@@ -77,7 +75,7 @@ void handleLiveUpdate() {
 }
 
 // The calibrate endpoint accepts a JSON array of calibration
-// points (measured tilts and gravity readings), and returns
+// points (measured weights and gravity readings), and returns
 // a status code corresponding to the result.
 void updateCalibration() {
   if(!server.hasArg("plain")) {
@@ -89,36 +87,36 @@ void updateCalibration() {
   DynamicJsonBuffer jsonBuffer(bufferSize);
 
   JsonObject& root = jsonBuffer.parseObject(server.arg("plain"));
-  JsonArray& jsonTilts = root["tilts"];
+  JsonArray& jsonWeights = root["weights"];
   JsonArray& jsonGravities = root["gravities"];
 
-  int tiltElements = jsonTilts.size();
+  int weightElements = jsonWeights.size();
   int gravityElements = jsonGravities.size();
 
-  if(tiltElements != gravityElements) {
+  if(weightElements != gravityElements) {
     server.send(400, "text/plain", "mismatched data");
     return;
   }
   
-  int elements = tiltElements;
+  int elements = weightElements;
 
   if(elements < 4) {
     server.send(400, "text/plain", "4 or more data points required");
     return;
   }
   
-  float tilts[elements];
+  float weights[elements];
   float gravities[elements];
   float coefficients[3];
 
   for(int i = 0; i < elements; i++) {
     if(i < 3) coefficients[i] = 0;
 
-    tilts[i] = jsonTilts[i];
+    weights[i] = jsonWeights[i];
     gravities[i] = jsonGravities[i];
   }
 
-  int error = regressGravities(gravities, tilts, elements, coefficients);
+  int error = regressGravities(gravities, weights, elements, coefficients);
   if(error != 0) {
     server.send(400, "text/plain", "regression failed");
   }

@@ -9,8 +9,8 @@
 	"apiKey": "your_graviton_apikey",
 	"gravityCoefficients":
 		[
-			0.00005,
-			-0.001,
-			1.01375
+			0,
+			-0.000002,
+			0.8
 		]
 }

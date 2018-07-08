@@ -45,12 +45,12 @@
             <div class="w3-row-padding w3-grayscale">
                 <div class="w3-col m4 w3-margin-bottom">
                     <div class="w3-section">
-                        <label>Tilt (degrees)</label>
+                        <label>Weight (no unit)</label>
                     </div>
                 </div>
                 <div class="w3-col m4 w3-margin-bottom">
                     <div class="w3-section">
-                        <input class="w3-input w3-border" id="measuredTilt" type="text" disabled/>
+                        <input class="w3-input w3-border" id="measuredWeight" type="text" disabled/>
                     </div>
                 </div>
             </div>
@@ -119,7 +119,7 @@
                 </div>
                 <div class="w3-section">
                     <label>API Port</label>
-                    <input id="apiPort" class="w3-input w3-border" type="number" min="0" max="16384" name="apiPort" required>
+                    <input id="apiPort" class="w3-input w3-border" type="number" min="0" max="65535" name="apiPort" required>
                 </div>
                 <div class="w3-section">
                     <label>API Key</label>
@@ -176,7 +176,7 @@
                 </div>
                 <div class="w3-row-padding w3-grayscale">
                     <div class="w3-col m4 w3-margin-bottom">
-                        Tilt
+                        Weight
                     </div>
                     <div class="w3-col m4 w3-margin-bottom">
                         Gravity
@@ -185,7 +185,7 @@
                 <div class="w3-row-padding w3-grayscale">
                     <div class="w3-col m4 w3-margin-bottom">
                         <div class="w3-section">
-                            <input class="w3-input w3-border" type="number" step="0.1" max="90" min="0" name="tilt0" required>
+                            <input class="w3-input w3-border" type="number" step="1" name="weight0" required>
                         </div>
                     </div>
                     <div class="w3-col m4 w3-margin-bottom">
@@ -197,7 +197,7 @@
                 <div class="w3-row-padding w3-grayscale">
                     <div class="w3-col m4 w3-margin-bottom">
                         <div class="w3-section">
-                            <input class="w3-input w3-border" type="number" step="0.1" max="90" min="0" name="tilt1" required>
+                            <input class="w3-input w3-border" type="number" step="1" name="weight1" required>
                         </div>
                     </div>
                     <div class="w3-col m4 w3-margin-bottom">
@@ -209,7 +209,7 @@
                 <div class="w3-row-padding w3-grayscale">
                     <div class="w3-col m4 w3-margin-bottom">
                         <div class="w3-section">
-                            <input class="w3-input w3-border" type="number" step="0.1" max="90" min="0" name="tilt2" required>
+                            <input class="w3-input w3-border" type="number" step="1" name="weight2" required>
                         </div>
                     </div>
                     <div class="w3-col m4 w3-margin-bottom">
@@ -221,7 +221,7 @@
                 <div class="w3-row-padding w3-grayscale">
                     <div class="w3-col m4 w3-margin-bottom">
                         <div class="w3-section">
-                            <input class="w3-input w3-border" type="number" step="0.1" max="90" min="0" max="90" min="0" name="tilt3" required>
+                            <input class="w3-input w3-border" type="number" step="1" name="weight3" required>
                         </div>
                     </div>
                     <div class="w3-col m4 w3-margin-bottom">
@@ -233,7 +233,7 @@
                 <div class="w3-row-padding w3-grayscale">
                     <div class="w3-col m4 w3-margin-bottom">
                         <div class="w3-section">
-                            <input class="w3-input w3-border" type="number" step="0.1" max="90" min="0" name="tilt4">
+                            <input class="w3-input w3-border" type="number" step="1" name="weight4">
                         </div>
                     </div>
                     <div class="w3-col m4 w3-margin-bottom">
@@ -245,7 +245,7 @@
                 <div class="w3-row-padding w3-grayscale">
                     <div class="w3-col m4 w3-margin-bottom">
                         <div class="w3-section">
-                            <input class="w3-input w3-border" type="number" step="0.1" max="90" min="0" name="tilt5">
+                            <input class="w3-input w3-border" type="number" step="1" name="weight5">
                         </div>
                     </div>
                     <div class="w3-col m4 w3-margin-bottom">
@@ -257,7 +257,7 @@
                 <div class="w3-row-padding w3-grayscale">
                     <div class="w3-col m4 w3-margin-bottom">
                         <div class="w3-section">
-                            <input class="w3-input w3-border" type="number" step="0.1" max="90" min="0" name="tilt6">
+                            <input class="w3-input w3-border" type="number" step="1" name="weight6">
                         </div>
                     </div>
                     <div class="w3-col m4 w3-margin-bottom">
@@ -269,7 +269,7 @@
                 <div class="w3-row-padding w3-grayscale">
                     <div class="w3-col m4 w3-margin-bottom">
                         <div class="w3-section">
-                            <input class="w3-input w3-border" type="number" step="0.1" max="90" min="0" name="tilt7">
+                            <input class="w3-input w3-border" type="number" step="1" name="weight7">
                         </div>
                     </div>
                     <div class="w3-col m4 w3-margin-bottom">
@@ -316,28 +316,28 @@
         // validate and submit calibration
         function submitCalibration(f) {            
             // assemble arrays
-            let tilts = [];
+            let weights = [];
             let gravities = [];
             
             for(let i = 0; i < 8; i++) {
-                let tilt = parseFloat(f["tilt" + i].value);
+                let weight = parseFloat(f["weight" + i].value);
                 let gravity = parseFloat(f["gravity" + i].value);
                 
-                if(typeof(tilt) === 'number' && typeof(gravity) === 'number' && tilt > 0 && gravity > 0) {
-                    tilts.push(tilt);
+                if(typeof(weight) === 'number' && typeof(gravity) === 'number' && weight > 0 && gravity > 0) {
+                    weights.push(weight);
                     gravities.push(gravity);
                 }
             }
             
             const calibrationObject = {
-                "tilts": tilts,
+                "weights": weights,
                 "gravities": gravities
             }
             
-            if(calibrationObject.gravities.length < 4 || calibrationObject.tilts.length < 4) {
+            if(calibrationObject.gravities.length < 4 || calibrationObject.weights.length < 4) {
                 alert("Too few datapoints!");
                 return;
-            } else if(calibrationObject.gravities.length != calibrationObject.tilts.length) {
+            } else if(calibrationObject.gravities.length != calibrationObject.weights.length) {
                 alert("Mismatched data lengths!");
                 return;
             }
@@ -425,7 +425,7 @@
                     if(this.status < 400 && this.status >= 200) {
                         let update = this.response;
                         
-                        document.getElementById("measuredTilt").value = update.tilt;
+                        document.getElementById("measuredWeight").value = update.weight;
                         document.getElementById("measuredGravity").value = update.gravity;
                         document.getElementById("measuredTemperature").value = update.temperature;
                         document.getElementById("measuredBattery").value = update.battery;

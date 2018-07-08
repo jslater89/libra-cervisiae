@@ -14,37 +14,6 @@
 }
  */
 
-const int MPU_ADDRESS = 0x68;
-
-// How long between readings in hydrometer mode?
-int delaySeconds = 1800; // half an hour
-
-// What is the name of this hydrometer? Also used
-// as the SSID for hotspot mode.
-char hydrometerName[51] = "pendulum";
-
-// What is fully-charged battery voltage for this hydrometer?
-float fullVoltage = 4.2;
-
-// What wifi network should this hydrometer connect
-// to in hydrometer mode?
-char wifiNetwork[51] = "";
-
-// What password should it use?
-char wifiPassword[51] = "";
-
-// API root
-char apiRoot[151] = "";
-
-int apiPort = 80;
-
-// API key for Graviton
-char apiKey[51] = "";
-
-// What are the coefficients for the tilt->gravity
-// polynomial?
-double gravityCoefficients[3] = {0, 0, 0};
-
 // What are the coefficients for correcting for temperature?
 // Taken from a hydrometer correction chart
 const double temperatureCoefficients[3] = {0.00000154854, -0.000102756, -0.000167605};

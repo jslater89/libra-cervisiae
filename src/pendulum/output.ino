@@ -25,28 +25,32 @@ void sendToGraviton(double gravity, double temperature, double voltage) {
     client.println();
     client.println(gravitonJSON);
 
-    long timeout = 2000;
+    long timeout = 5000;
     unsigned long currentMillis = millis(), previousMillis = millis();
 
     while(!client.available()){
     
       if((currentMillis - previousMillis) > timeout){
- 
         Serial.println("Timeout sending request");
+        break;
       }
       delay(50);
       currentMillis = millis();
     }
 
     while(client.available()) {
+      client.setTimeout(1000);
       String line = client.readStringUntil('\n');
       Serial.println(line);
+
+      yield();
     }
   }
   else {
     Serial.println("Failed to connect");
   }
 
+  Serial.println("Finished upload");
   client.stop();
 }
 
@@ -61,7 +65,7 @@ int getGravitonJSON(char* dest, int n, double g, double t, double v) {
   root["battery"] = v;
   root["temperature"] = t;
   
-  root.printTo(dest, n);
+  int written = root.printTo(dest, n);
   return root.measureLength();
 }
 

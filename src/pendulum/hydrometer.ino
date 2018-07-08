@@ -27,25 +27,33 @@ void hydrometerSetup() {
 
   sensorSetup();
 
-  double temp;
-  averageTemp(&temp, 25, 20);
-  
-  int x, y, z;
-  averageAccel(&x, &y, &z, 25, 20);
+  yield();
 
-  double tilt = calculateTilt(x, y, z);
-  double gravity = calculateGravity(tilt);
+  double temp;
+  readTemp(&temp);
+
+  yield();
+  
+  int weight;
+  averageWeight(&weight, 50, 40);
+
+  yield();
+
+  double gravity = calculateGravity(weight);
   double compensatedGravity = compensateTemperature(gravity, temp);
   double voltage = readVoltage();
 
   Serial.print("Temp: "); Serial.println(temp, 2);
-  Serial.print("Tilt: "); Serial.println(tilt, 2);
+  Serial.print("Wght: "); Serial.println(weight);
   Serial.print("RawG: "); Serial.println(gravity, 3);
   Serial.print("CorG: "); Serial.println(compensatedGravity, 3);
   Serial.print("BatV: "); Serial.println(voltage, 3);
 
+  yield();
+
   sendToGraviton(compensatedGravity, temp, voltage);
 
+  Serial.println("Finished waking");
   sleep();
 }
 
@@ -53,7 +61,6 @@ void sleep() {
   drd.stop();
   sensorShutdown();
   Serial.print("Going to sleep for "); Serial.print(delaySeconds); Serial.println(" seconds");
-  // Sleep as configured
   ESP.deepSleep(delaySeconds * 1000 * 1000);
 }
 
@@ -63,30 +70,17 @@ void hydrometerLoop() {
 }
 
 // Get the compensated gravity readings.
-double getGravity(double acX, double acY, double acZ, double temp) {
-  return compensateTemperature(calculateGravity(calculateTilt(acX, acY, acZ)), temp);
+double getGravity(int weight, double temp) {
+  return compensateTemperature(calculateGravity(weight), temp);
 }
 
-// Calculate tilt from raw accelerometer readings.
-double calculateTilt(int x, int y, int z) {
-  double pitch = (atan2(y, sqrt(x * x + z * z))) * 180.0 / PI;
-  double roll = (atan2(x, sqrt(y * y + z * z))) * 180.0 / PI;
-
-  // 0 tilt is a vertical hydrometer, which means the GPS Z-axis
-  // is pointing due sideways. 90 tilt is a horizontal hydrometer,
-  // which means the GPS Z-axis is pointing due up.
-  double tilt =  90 - sqrt(pitch * pitch + roll * roll);
-
-  return tilt;
-}
-
-// Calculate gravity from tilt, using the calibrated polynomial.
-double calculateGravity(double tilt) {
+// Calculate gravity from weight, using the calibrated polynomial.
+double calculateGravity(int weight) {
   double c1, c2, c3;
   c1 = gravityCoefficients[0];
   c2 = gravityCoefficients[1];
   c3 = gravityCoefficients[2];
-  return c1 * tilt * tilt + c2 * tilt + c3;
+  return c1 * weight * weight + c2 * weight + c3;
 }
 
 // Compensate for temperature, using the calibrated polynomial.

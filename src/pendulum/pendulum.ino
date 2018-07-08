@@ -16,13 +16,53 @@
 #include <FS.h>
 #include <MatrixMath.h>
 #include <ArduinoJson.h>
-#include <Wire.h>
 #include <DoubleResetDetector.h>
+#include <HX711.h>
+#include <DallasTemperature.h>
+#include <OneWire.h>
 
 /**
- * PENDULUM is a tilting hydrometer for homebrewing use.
+ * PENDULUM is a hydrometer for homebrewing use.
  * 
  */
+
+// Build types
+
+#define WEMOS
+//#define PCB
+//#define NODEMCU
+
+/****** Configuration options *******/
+// How long between readings in hydrometer mode?
+int delaySeconds = 1800; // half an hour
+
+// What is the name of this hydrometer? Also used
+// as the SSID for hotspot mode.
+char hydrometerName[51] = "pendulum";
+
+// What is fully-charged battery voltage for this hydrometer?
+float fullVoltage = 4.2;
+
+// What wifi network should this hydrometer connect
+// to in hydrometer mode?
+char wifiNetwork[51] = "";
+
+// What password should it use?
+char wifiPassword[51] = "";
+
+// API root
+char apiRoot[151] = "";
+
+int apiPort = 80;
+
+// API key for Graviton
+char apiKey[51] = "";
+
+// What are the coefficients for the weight->gravity
+// polynomial?
+double gravityCoefficients[3] = {0, 0, 0};
+
+/****** End configuration *******/
 
 DoubleResetDetector drd(5 /* timeout */, 10 /* address */);
 boolean hotspotMode;
@@ -51,7 +91,8 @@ void setup() {
 
   hotspotMode = drd.detectDoubleReset();
 
-  if(hotspotMode) {
+  // enter hotspot mode if there's no network configured
+  if(hotspotMode || strcmp(wifiNetwork, "your_ssid") == 0) {
     Serial.println("Hotspot mode selected");
     hotspotSetup();
   }
