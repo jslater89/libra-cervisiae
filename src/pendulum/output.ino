@@ -25,7 +25,7 @@ void sendToGraviton(double gravity, double temperature, double voltage) {
     client.println();
     client.println(gravitonJSON);
 
-    long timeout = 5000;
+    long timeout = 10000;
     unsigned long currentMillis = millis(), previousMillis = millis();
 
     while(!client.available()){

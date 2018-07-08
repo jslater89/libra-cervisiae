@@ -24,24 +24,35 @@ void hydrometerSetup() {
 
   Serial.println();
   Serial.println("Connected!");
+  
+  if(DEBUG_TIMINGS) Serial.print("Wifi finished: "); Serial.println(millis() - bootMillis);
 
   sensorSetup();
 
+  if(DEBUG_TIMINGS) Serial.print("Sensors finished: "); Serial.println(millis() - bootMillis);
+
   yield();
+  drd.stop();
 
   double temp;
   readTemp(&temp);
 
+  if(DEBUG_TIMINGS) Serial.print("Temperature read: "); Serial.println(millis() - bootMillis);
+
   yield();
   
   int weight;
-  averageWeight(&weight, 50, 40);
+  averageWeight(&weight, 50);
+
+  if(DEBUG_TIMINGS) Serial.print("Weight read: "); Serial.println(millis() - bootMillis);
 
   yield();
 
-  double gravity = calculateGravity(weight);
+  double gravity = calculateGravity(weight / 1000.0);
   double compensatedGravity = compensateTemperature(gravity, temp);
   double voltage = readVoltage();
+
+  if(DEBUG_TIMINGS) Serial.print("Calculations finished: "); Serial.println(millis() - bootMillis);
 
   Serial.print("Temp: "); Serial.println(temp, 2);
   Serial.print("Wght: "); Serial.println(weight);
@@ -52,6 +63,8 @@ void hydrometerSetup() {
   yield();
 
   sendToGraviton(compensatedGravity, temp, voltage);
+
+  if(DEBUG_TIMINGS) Serial.print("Output finished: "); Serial.println(millis() - bootMillis);
 
   Serial.println("Finished waking");
   sleep();
@@ -70,12 +83,12 @@ void hydrometerLoop() {
 }
 
 // Get the compensated gravity readings.
-double getGravity(int weight, double temp) {
+double getGravity(double weight, double temp) {
   return compensateTemperature(calculateGravity(weight), temp);
 }
 
 // Calculate gravity from weight, using the calibrated polynomial.
-double calculateGravity(int weight) {
+double calculateGravity(double weight) {
   double c1, c2, c3;
   c1 = gravityCoefficients[0];
   c2 = gravityCoefficients[1];

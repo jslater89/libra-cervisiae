@@ -8,6 +8,13 @@
  */
 
 ESP8266WebServer server(80);
+#define READ_INTERVAL 10000
+
+int lastSensorReading = 0;
+double hotspotTemp;
+double hotspotGravity;
+int hotspotWeight;
+double hotspotVoltage;
 
 void hotspotSetup() {
   Serial.print("Starting hotspot with name "); Serial.println(hydrometerName);
@@ -33,9 +40,26 @@ void hotspotSetup() {
 }
 
 // Hotspot loop
-void hotspotLoop() {  
+void hotspotLoop() {
   server.handleClient();
   drd.loop();
+
+  if(millis() - lastSensorReading > READ_INTERVAL) {
+     // Start up and shut down the sensors for each read
+    sensorSetup();
+    
+    readTemp(&hotspotTemp);
+    averageWeight(&hotspotWeight, 25);
+  
+    sensorShutdown();
+  
+    double gravity = calculateGravity(hotspotWeight / 1000.0);
+    hotspotGravity = compensateTemperature(gravity, hotspotTemp);
+  
+    hotspotVoltage = readVoltage();
+
+    lastSensorReading = millis();
+  }
 }
 
 // The live update endpoint returns a JSON object containing
@@ -43,29 +67,14 @@ void hotspotLoop() {
 //
 // JSON tags: temperature, weight, gravity, battery
 void handleLiveUpdate() {
-  // Start up and shut down the sensors for each read
-  sensorSetup();
-  
-  double temp;
-  readTemp(&temp);
-  int weight;
-  averageWeight(&weight, 25, 40);
-
-  sensorShutdown();
-
-  double gravity = calculateGravity(weight);
-  double compensated = compensateTemperature(gravity, temp);
-
-  double voltage = readVoltage();
-
   const size_t bufferSize = JSON_OBJECT_SIZE(4);
   DynamicJsonBuffer jsonBuffer(bufferSize);
   
   JsonObject& root = jsonBuffer.createObject();
-  root["temperature"] = temp;
-  root["weight"] = weight;
-  root["gravity"] = compensated;
-  root["battery"] = voltage;
+  root["temperature"] = hotspotTemp;
+  root["weight"] = hotspotWeight;
+  root["gravity"] = hotspotGravity;
+  root["battery"] = hotspotVoltage;
   
   char prettyJSON[root.measurePrettyLength() + 2];
   root.prettyPrintTo((char*) prettyJSON, root.measurePrettyLength() + 1);
@@ -112,8 +121,15 @@ void updateCalibration() {
   for(int i = 0; i < elements; i++) {
     if(i < 3) coefficients[i] = 0;
 
-    weights[i] = jsonWeights[i];
+    double adjustedWeight = jsonWeights[i];
+    adjustedWeight /= 1000.0;
+    weights[i] = adjustedWeight;
     gravities[i] = jsonGravities[i];
+
+    Serial.print("Weight: ");
+    Serial.print(weights[i]);
+    Serial.print(" Gravity: ");
+    Serial.println(gravities[i]);
   }
 
   int error = regressGravities(gravities, weights, elements, coefficients);
@@ -123,6 +139,9 @@ void updateCalibration() {
 
   yield();
 
+  Serial.println(coefficients[0]);
+  Serial.println(coefficients[1]);
+  Serial.println(coefficients[2]);
   gravityCoefficients[0] = coefficients[0];
   gravityCoefficients[1] = coefficients[1];
   gravityCoefficients[2] = coefficients[2];

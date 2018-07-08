@@ -60,13 +60,14 @@ double readVoltage() {
   return voltage;
 }
 
-void averageWeight(int* total, int count, int delayTime) {
+void averageWeight(int* total, int count) {
   int t = 0;
   for(int i = 0; i < count; i++) {
     readWeight(total);
     t += *total;
 
-    delay(delayTime);
+    // 80Hz == 12.5ms
+    delay(15);
   }
 
   *total = (t / count);

@@ -69,8 +69,11 @@ double gravityCoefficients[3] = {0, 0, 0};
 
 DoubleResetDetector drd(5 /* timeout */, 10 /* address */);
 boolean hotspotMode;
+#define DEBUG_TIMINGS true
+long bootMillis;
 
 void setup() {
+  bootMillis = millis();
   Serial.begin(115200);
 
   Serial.println();
@@ -93,6 +96,8 @@ void setup() {
   printConfig();
 
   hotspotMode = drd.detectDoubleReset();
+
+  if(DEBUG_TIMINGS) Serial.print("Startup finished: "); Serial.println(millis() - bootMillis);
 
   // enter hotspot mode if there's no network configured
   if(hotspotMode || strcmp(wifiNetwork, "your_ssid") == 0) {
