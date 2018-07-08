@@ -16,10 +16,29 @@ double hotspotGravity;
 int hotspotWeight;
 double hotspotVoltage;
 
-void hotspotSetup() {
-  Serial.print("Starting hotspot with name "); Serial.println(hydrometerName);
-  Serial.println(" and password pendulum");
-  WiFi.softAP(hydrometerName, "pendulum");
+bool connectedToWifi;
+int lastSensorUpload = 0;
+
+void hotspotSetup() {  
+  connectedToWifi = false;
+  if(strcmp(wifiNetwork, "your_ssid") != 0 || strlen(wifiNetwork) > 0) {
+    Serial.print("Wifi network settings found; trying to connect to network "); Serial.println(wifiNetwork);
+
+    boolean connectionResult = tryConnect();
+    if(!connectionResult) {
+      Serial.println("Unable to connect to existing wifi network");
+    }
+    else {
+      Serial.println("Connected to existing network.");
+      connectedToWifi = true;
+      lastSensorUpload = millis();
+    }
+  }
+
+  if(!connectedToWifi) {
+    Serial.print("Starting hotspot with name "); Serial.print(hydrometerName); Serial.println(" and password pendulum");
+    WiFi.softAP(hydrometerName, "pendulum");
+  }
 
   // main.html has scripts/styles embedded.
   server.serveStatic("/", SPIFFS, "/main.html");
@@ -29,7 +48,8 @@ void hotspotSetup() {
   server.on("/config", HTTP_GET, getConfig);
   server.on("/config", HTTP_POST, updateConfig);
 
-  boolean result = MDNS.begin("pendulum");
+  Serial.print("Starting mDNS at "); Serial.print(hydrometerName); Serial.println(".local");
+  boolean result = MDNS.begin(hydrometerName);
 
   if(!result) {
     Serial.println("Failed to start mDNS responder");
@@ -59,6 +79,11 @@ void hotspotLoop() {
     hotspotVoltage = readVoltage();
 
     lastSensorReading = millis();
+  }
+
+  if(connectedToWifi && millis() - lastSensorUpload > delaySeconds * 1000) {
+    sendToGraviton(hotspotGravity, hotspotTemp, hotspotVoltage);
+    lastSensorUpload = millis();
   }
 }
 

@@ -4,26 +4,13 @@
  */
 
 void hydrometerSetup() {
-  WiFi.begin(wifiNetwork, wifiPassword);
+  bool result = tryConnect();
 
-  Serial.print("Connecting to ");
-  Serial.print(wifiNetwork); Serial.print(" ");
-
-  int i = 0;
-  while (WiFi.status() != WL_CONNECTED) { // Wait for the Wi-Fi to connect
-    delay(500);
-    Serial.print(".");
-
-    if(i++ > 20) {
-      Serial.println();
-      Serial.println("Connection timed out; going back to sleep");
-      sleep();
-      return;
-    }
+  if(!result) {
+    Serial.println("Going back to sleep");
+    sleep();
+    return;
   }
-
-  Serial.println();
-  Serial.println("Connected!");
   
   if(DEBUG_TIMINGS) Serial.print("Wifi finished: "); Serial.println(millis() - bootMillis);
 

@@ -120,3 +120,27 @@ void loop() {
     hydrometerLoop();
   }
 }
+
+bool tryConnect() {
+  WiFi.begin(wifiNetwork, wifiPassword);
+
+  Serial.print("Connecting to ");
+  Serial.print(wifiNetwork); Serial.print(" ");
+
+  int i = 0;
+  while (WiFi.status() != WL_CONNECTED) { // Wait for the Wi-Fi to connect
+    delay(500);
+    Serial.print(".");
+
+    if(i++ > 20) {
+      Serial.println();
+      Serial.println("Connection timed out");
+      return false;
+    }
+  }
+
+  Serial.println();
+  Serial.println("Connected!");
+  return true;
+}
+
