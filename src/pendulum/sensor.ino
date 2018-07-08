@@ -1,3 +1,8 @@
+#ifdef PCB
+#define VOLTAGE_MOD 1.012
+#else
+#define VOLTAGE_MOD 1.0
+#endif
 
 #ifdef WEMOS
 #define HX711_POWER_PIN 14
@@ -49,7 +54,7 @@ void sensorShutdown() {
 double readVoltage() {
   pinMode(A0, INPUT);
   int raw = analogRead(A0);
-  double voltage = raw/1023.0;
+  double voltage = raw / 1023.0 * VOLTAGE_MOD;
   voltage = voltage*4.2;
 
   return voltage;

@@ -21,6 +21,9 @@
 #include <DallasTemperature.h>
 #include <OneWire.h>
 
+// Uncomment for builds for the Pendulum PCB
+//#define PCB
+
 /**
  * PENDULUM is a hydrometer for homebrewing use.
  * 
