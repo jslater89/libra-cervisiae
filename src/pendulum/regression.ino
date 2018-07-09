@@ -4,13 +4,13 @@
 
 // Takes an array of weights (y), an array of observed gravities (x), and an
 // array with room for 3 coefficients.
-int regressGravities(float gravities[], float weights[], int elements, float coefficients[3]) {
+int regressGravities(double gravities[], double weights[], int elements, double coefficients[3]) {
   return regress(gravities, weights, elements, coefficients);
 }
 
 // Takes an array of temperatures(y), an array of differences from predicted gravities(x),
 // and an array with room for 3 coefficients.
-int regressTemps(float gravityOffsets[], float temps[], int elements, float coefficients[3]) {
+int regressTemps(double gravityOffsets[], double temps[], int elements, double coefficients[3]) {
   return regress(gravityOffsets, temps, elements, coefficients);
 }
 
@@ -22,7 +22,7 @@ int regressTemps(float gravityOffsets[], float temps[], int elements, float coef
 // 0: success
 // -1: matrix not invertible
 // -2: mismatch in x, y observations
-int regress(float y[], float x[], int elements, float coefficients[3]) {  
+int regress(double y[], double x[], int elements, double coefficients[3]) {  
   coefficients[0] = 0;
   coefficients[1] = 0;
   coefficients[2] = -1;
@@ -30,12 +30,12 @@ int regress(float y[], float x[], int elements, float coefficients[3]) {
   int s = elements;
   //Serial.println("S: " + s);
 
-  float* pX = (float*) malloc(sizeof(float) * s * 3); // independent variable (s rows, 3 cols)
-  float* pXT = (float*) malloc(sizeof(float) * 3 * s); // transposed X (3 rows, s cols)
-  float* pY = (float*) malloc(sizeof(float) * s * 1); // dependent variable (s rows, 1 col)
-  float* pXProd = (float*) malloc(sizeof(float) * 3 * 3); // (XT * X)^-1 (3 rows, cols)
-  float* pXYProd = (float*) malloc(sizeof(float) * 3 * 1); // XT * Y (3 rows, 1 col)
-  float* pFR = (float*) malloc(sizeof(float) * 3 * 1); // Result (3 rows, 1 col)
+  double* pX = (double*) malloc(sizeof(double) * s * 3); // independent variable (s rows, 3 cols)
+  double* pXT = (double*) malloc(sizeof(double) * 3 * s); // transposed X (3 rows, s cols)
+  double* pY = (double*) malloc(sizeof(double) * s * 1); // dependent variable (s rows, 1 col)
+  double* pXProd = (double*) malloc(sizeof(double) * 3 * 3); // (XT * X)^-1 (3 rows, cols)
+  double* pXYProd = (double*) malloc(sizeof(double) * 3 * 1); // XT * Y (3 rows, 1 col)
+  double* pFR = (double*) malloc(sizeof(double) * 3 * 1); // Result (3 rows, 1 col)
 
   for(int i = 0; i < s; i++) {
     int xrow = i * 3;

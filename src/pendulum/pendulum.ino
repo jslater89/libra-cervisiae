@@ -14,15 +14,12 @@
 #include <ESP8266WebServer.h>
 #include <ESP8266mDNS.h>
 #include <FS.h>
-#include <MatrixMath.h>
+#include <DoubleMatrixMath.h>
 #include <ArduinoJson.h>
 #include <DoubleResetDetector.h>
 #include <HX711.h>
 #include <DallasTemperature.h>
 #include <OneWire.h>
-
-// Uncomment for builds for the Pendulum PCB
-//#define PCB
 
 /**
  * PENDULUM is a hydrometer for homebrewing use.
@@ -30,7 +27,6 @@
  */
 
 // Build types
-
 #define WEMOS
 //#define PCB
 //#define NODEMCU

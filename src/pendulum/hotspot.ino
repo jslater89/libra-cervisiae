@@ -139,9 +139,9 @@ void updateCalibration() {
     return;
   }
   
-  float weights[elements];
-  float gravities[elements];
-  float coefficients[3];
+  double weights[elements];
+  double gravities[elements];
+  double coefficients[3];
 
   for(int i = 0; i < elements; i++) {
     if(i < 3) coefficients[i] = 0;
