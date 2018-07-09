@@ -275,15 +275,15 @@ F 3 "" H 950 1800 60  0001 C CNN
 	1    950  1800
 	1    0    0    -1  
 $EndComp
-Text Label 7300 5700 0    60   ~ 0
+Text Label 7600 5700 0    60   ~ 0
 HX+
-Text Label 7300 5550 0    60   ~ 0
+Text Label 7600 5550 0    60   ~ 0
 DAT
-Text Label 7300 5450 0    60   ~ 0
+Text Label 7600 5450 0    60   ~ 0
 CLK
-Text Label 7300 5350 0    60   ~ 0
+Text Label 7600 5350 0    60   ~ 0
 GND
-Text Notes 9200 4850 2    60   ~ 0
+Text Notes 9500 4850 2    60   ~ 0
 Load Cell
 Text Label 3250 5100 0    60   ~ 0
 ADC
@@ -374,56 +374,56 @@ $EndComp
 $Comp
 L conn:Conn_01x01 J11
 U 1 1 5B29EF57
+P 9600 6200
+F 0 "J11" H 9600 6300 50  0000 C CNN
+F 1 "RED" H 9600 6100 50  0000 C CNN
+F 2 "Extra_Pads:SolderWirePad_single_SMD_5x3mm" H 9600 6200 50  0001 C CNN
+F 3 "" H 9600 6200 50  0001 C CNN
+	1    9600 6200
+	0    1    1    0   
+$EndComp
+$Comp
+L conn:Conn_01x01 J10
+U 1 1 5B29EFD3
+P 9450 4950
+F 0 "J10" H 9450 5050 50  0000 C CNN
+F 1 "GRN" H 9450 4850 50  0000 C CNN
+F 2 "Extra_Pads:SolderWirePad_single_SMD_5x3mm" H 9450 4950 50  0001 C CNN
+F 3 "" H 9450 4950 50  0001 C CNN
+	1    9450 4950
+	0    -1   -1   0   
+$EndComp
+$Comp
+L conn:Conn_01x01 J9
+U 1 1 5B29F2C4
 P 9300 6200
-F 0 "J11" H 9300 6300 50  0000 C CNN
-F 1 "RED" H 9300 6100 50  0000 C CNN
+F 0 "J9" H 9300 6300 50  0000 C CNN
+F 1 "BLK" H 9300 6100 50  0000 C CNN
 F 2 "Extra_Pads:SolderWirePad_single_SMD_5x3mm" H 9300 6200 50  0001 C CNN
 F 3 "" H 9300 6200 50  0001 C CNN
 	1    9300 6200
 	0    1    1    0   
 $EndComp
 $Comp
-L conn:Conn_01x01 J10
-U 1 1 5B29EFD3
+L conn:Conn_01x01 J8
+U 1 1 5B29F33C
 P 9150 4950
-F 0 "J10" H 9150 5050 50  0000 C CNN
-F 1 "GRN" H 9150 4850 50  0000 C CNN
+F 0 "J8" H 9150 5050 50  0000 C CNN
+F 1 "WHT" H 9150 4850 50  0000 C CNN
 F 2 "Extra_Pads:SolderWirePad_single_SMD_5x3mm" H 9150 4950 50  0001 C CNN
 F 3 "" H 9150 4950 50  0001 C CNN
 	1    9150 4950
 	0    -1   -1   0   
 $EndComp
 $Comp
-L conn:Conn_01x01 J9
-U 1 1 5B29F2C4
-P 9000 6200
-F 0 "J9" H 9000 6300 50  0000 C CNN
-F 1 "BLK" H 9000 6100 50  0000 C CNN
-F 2 "Extra_Pads:SolderWirePad_single_SMD_5x3mm" H 9000 6200 50  0001 C CNN
-F 3 "" H 9000 6200 50  0001 C CNN
-	1    9000 6200
-	0    1    1    0   
-$EndComp
-$Comp
-L conn:Conn_01x01 J8
-U 1 1 5B29F33C
-P 8850 4950
-F 0 "J8" H 8850 5050 50  0000 C CNN
-F 1 "WHT" H 8850 4850 50  0000 C CNN
-F 2 "Extra_Pads:SolderWirePad_single_SMD_5x3mm" H 8850 4950 50  0001 C CNN
-F 3 "" H 8850 4950 50  0001 C CNN
-	1    8850 4950
-	0    -1   -1   0   
-$EndComp
-$Comp
 L hx711_breakout:HX711_BREAKOUT CN3
 U 1 1 5B293345
-P 8650 5850
-F 0 "CN3" H 9150 5250 60  0000 C CNN
-F 1 "HX711_BREAKOUT" H 9150 5900 60  0000 C CNN
-F 2 "HX711:HX711-MINI" H 8650 5850 60  0001 C CNN
-F 3 "" H 8650 5850 60  0001 C CNN
-	1    8650 5850
+P 8950 5850
+F 0 "CN3" H 9450 5250 60  0000 C CNN
+F 1 "HX711_BREAKOUT" H 9450 5900 60  0000 C CNN
+F 2 "HX711:HX711-MINI" H 8950 5850 60  0001 C CNN
+F 3 "" H 8950 5850 60  0001 C CNN
+	1    8950 5850
 	-1   0    0    1   
 $EndComp
 Wire Wire Line
@@ -525,20 +525,16 @@ Wire Wire Line
 Wire Wire Line
 	1600 2050 2050 2050
 Wire Wire Line
-	7650 5450 7300 5450
+	7950 5450 7600 5450
 Wire Wire Line
-	7650 5550 7300 5550
+	7950 5550 7600 5550
 Wire Wire Line
-	7650 5350 7300 5350
+	7950 5650 7850 5650
 Wire Wire Line
-	7650 5650 7550 5650
+	7850 5650 7850 5700
 Wire Wire Line
-	7550 5650 7550 5700
-Wire Wire Line
-	7550 5750 7650 5750
-Wire Wire Line
-	7550 5700 7300 5700
-Connection ~ 7550 5700
+	7850 5750 7950 5750
+Connection ~ 7850 5700
 Wire Wire Line
 	3950 5100 3250 5100
 Wire Wire Line
@@ -572,32 +568,32 @@ Wire Wire Line
 Wire Wire Line
 	1700 7000 1150 7000
 Wire Wire Line
-	8650 5450 9150 5450
+	8950 5450 9450 5450
 Wire Wire Line
-	8650 5550 8850 5550
+	8950 5550 9150 5550
 Wire Wire Line
-	8650 5650 9000 5650
+	8950 5650 9300 5650
 Wire Wire Line
-	8650 5750 9300 5750
+	8950 5750 9600 5750
 Wire Wire Line
-	9150 5150 9150 5450
-Connection ~ 9150 5450
+	9450 5150 9450 5450
+Connection ~ 9450 5450
 Wire Wire Line
-	8850 5150 8850 5550
-Connection ~ 8850 5550
+	9150 5150 9150 5550
+Connection ~ 9150 5550
 Wire Wire Line
-	9000 6000 9000 5650
-Connection ~ 9000 5650
+	9300 6000 9300 5650
+Connection ~ 9300 5650
 Wire Wire Line
-	9300 6000 9300 5750
-Connection ~ 9300 5750
-Text Label 8650 5450 0    60   ~ 0
+	9600 6000 9600 5750
+Connection ~ 9600 5750
+Text Label 8950 5450 0    60   ~ 0
 GRN
-Text Label 8650 5550 0    60   ~ 0
+Text Label 8950 5550 0    60   ~ 0
 WHT
-Text Label 8650 5650 0    60   ~ 0
+Text Label 8950 5650 0    60   ~ 0
 BLK
-Text Label 8650 5750 0    60   ~ 0
+Text Label 8950 5750 0    60   ~ 0
 RED
 Text Label 1200 6350 1    60   ~ 0
 TMP+
@@ -607,16 +603,16 @@ Text Label 1700 6350 1    60   ~ 0
 TMP-
 Wire Wire Line
 	3950 5400 3200 5400
-NoConn ~ 8650 5350
+NoConn ~ 8950 5350
 $Comp
 L conn:Conn_01x04 J12
 U 1 1 5B2A5EFA
-P 9700 5550
-F 0 "J12" H 9700 5750 50  0000 C CNN
-F 1 "Load Cell" H 9700 5250 50  0000 C CNN
-F 2 "Connector_Molex:Molex_PicoBlade_53048-0810_1x04_P1.25mm_Horizontal" H 9700 5550 50  0001 C CNN
-F 3 "" H 9700 5550 50  0001 C CNN
-	1    9700 5550
+P 10000 5550
+F 0 "J12" H 10000 5750 50  0000 C CNN
+F 1 "Load Cell" H 10000 5250 50  0000 C CNN
+F 2 "Connector_Molex:Molex_PicoBlade_53048-0810_1x04_P1.25mm_Horizontal" H 10000 5550 50  0001 C CNN
+F 3 "" H 10000 5550 50  0001 C CNN
+	1    10000 5550
 	1    0    0    -1  
 $EndComp
 $Comp
@@ -820,7 +816,7 @@ Wire Wire Line
 Wire Wire Line
 	9050 2850 9750 2850
 Wire Wire Line
-	7550 5700 7550 5750
+	7850 5700 7850 5750
 Wire Wire Line
 	850  4500 850  4750
 Wire Wire Line
@@ -830,13 +826,13 @@ Wire Wire Line
 Wire Wire Line
 	1700 6100 1900 6100
 Wire Wire Line
-	9150 5450 9500 5450
+	9450 5450 9800 5450
 Wire Wire Line
-	8850 5550 9500 5550
+	9150 5550 9800 5550
 Wire Wire Line
-	9000 5650 9500 5650
+	9300 5650 9800 5650
 Wire Wire Line
-	9300 5750 9500 5750
+	9600 5750 9800 5750
 Wire Wire Line
 	1900 6100 2100 6100
 Wire Wire Line
@@ -888,4 +884,27 @@ Wire Wire Line
 Connection ~ 1550 5900
 Wire Wire Line
 	1550 5900 2100 5900
+Wire Wire Line
+	7400 5350 7450 5350
+Wire Wire Line
+	7400 5700 7450 5700
+$Comp
+L device:C C8
+U 1 1 5B44D323
+P 7450 5500
+F 0 "C8" H 7450 5400 50  0000 L CNN
+F 1 "1uF" H 7300 5400 50  0000 L CNN
+F 2 "Capacitor_SMD:C_0805_2012Metric" H 7488 5350 50  0001 C CNN
+F 3 "" H 7450 5500 50  0001 C CNN
+	1    7450 5500
+	1    0    0    -1  
+$EndComp
+Connection ~ 7450 5350
+Wire Wire Line
+	7450 5350 7950 5350
+Wire Wire Line
+	7450 5650 7450 5700
+Connection ~ 7450 5700
+Wire Wire Line
+	7450 5700 7850 5700
 $EndSCHEMATC
