@@ -4,13 +4,16 @@
 	"fullVoltage": 4.2,
 	"wifiNetwork": "your_ssid",
 	"wifiPassword": "your_password",
-	"apiRoot": "path_to_graviton",
+	"apiRoot": "server_name",
+	"apiPath": "server_api_path",
 	"apiPort": 80,
-	"apiKey": "your_graviton_apikey",
+	"apiKey": "server_api_key",
 	"gravityCoefficients":
 		[
 			0,
-			-0.000002,
-			0.8
-		]
+			-0.004167,
+			0.1
+		],
+	"outputMode": 1,
+	"bootToHotspot": false
 }

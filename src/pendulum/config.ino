@@ -3,14 +3,18 @@
  * reading from SPIFFS.
  * 
 {
-  "delaySeconds": 100,
+  "delaySeconds": 3600,
   "hydrometerName": "01234567890123456789012345678901234567890123456789",
   "fullVoltage": 4.20000000000001,
   "wifiNetwork": "01234567890123456789012345678901234567890123456789",
   "wifiPassword": "01234567890123456789012345678901234567890123456789",
   "gravityCoefficients": [1.000000000001, 1.000000000001, 1.000000000001],
   "apiKey": "01234567890123456789012345678901234567890123456789",
-  "apiRoot": "012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789"
+  "apiRoot": "012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789",
+  "apiPath": "012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789",
+
+  "bootToHotspot": false,
+  "outputMode" 1,
 }
  */
 
@@ -25,6 +29,7 @@ void printConfig() {
   Serial.print("Wifi network: "); Serial.println(wifiNetwork);
   Serial.print("Wifi password: "); Serial.println(wifiPassword);
   Serial.print("API root: "); Serial.println(apiRoot);
+  Serial.print("API path: "); Serial.println(apiPath);
   Serial.print("API port: "); Serial.println(apiPort);
   Serial.print("API key: "); Serial.println(apiKey);
   Serial.print("a: "); Serial.println(gravityCoefficients[0], 10);
@@ -33,7 +38,7 @@ void printConfig() {
 }
 
 void getConfigJSON(char* buf, int lim) {
-  const size_t bufferSize = 2*JSON_ARRAY_SIZE(2) + JSON_OBJECT_SIZE(10);
+  const size_t bufferSize = JSON_ARRAY_SIZE(3) + JSON_OBJECT_SIZE(11) + 800;
   DynamicJsonBuffer jsonBuffer(bufferSize);
   
   JsonObject& root = jsonBuffer.createObject();
@@ -42,12 +47,16 @@ void getConfigJSON(char* buf, int lim) {
   root["fullVoltage"] = fullVoltage;
   root["wifiNetwork"] = wifiNetwork;
   root["wifiPassword"] = wifiPassword;
+
+  root["bootToHotspot"] = bootToHotspot;
+  root["outputMode"] = outputMode;
   
   JsonArray& c = root.createNestedArray("gravityCoefficients");
   c.add(gravityCoefficients[0]);
   c.add(gravityCoefficients[1]);
   c.add(gravityCoefficients[2]);
 
+  root["apiPath"] = apiPath;
   root["apiRoot"] = apiRoot;
   root["apiKey"] = apiKey;
   root["apiPort"] = apiPort;
@@ -62,8 +71,8 @@ boolean saveConfig() {
     return false;
   }
 
-  char configJSON[1024];
-  getConfigJSON(configJSON, 1024);
+  char configJSON[1536];
+  getConfigJSON(configJSON, 1536);
   f.print(configJSON);
   f.close();
 
@@ -74,7 +83,7 @@ boolean saveConfig() {
 boolean loadConfig() {
   // ensure null-termination; the 51st element is always 0 in arrays where only
   // 50 elements are copied.
-  hydrometerName[50] = wifiNetwork[50] = wifiPassword[50] = apiKey[50] = apiRoot[150] = 0;
+  hydrometerName[50] = wifiNetwork[50] = wifiPassword[50] = apiKey[50] = apiRoot[150] = apiPath[150] = 0;
   
   File f = SPIFFS.open("/config.json", "r");
   if(!f) {
@@ -96,7 +105,7 @@ boolean loadConfig() {
 }
 
 boolean decodeJSON(String json, boolean decodeCoefficients) {
-  const size_t bufferSize = 2*JSON_ARRAY_SIZE(3) + JSON_OBJECT_SIZE(10) + 650;
+  const size_t bufferSize = JSON_ARRAY_SIZE(3) + JSON_OBJECT_SIZE(11) + 800;
   DynamicJsonBuffer jsonBuffer(bufferSize);  
   JsonObject& root = jsonBuffer.parseObject(json);
 
@@ -105,6 +114,7 @@ boolean decodeJSON(String json, boolean decodeCoefficients) {
   if(strlen(root["wifiPassword"]) > 50) return false;
   if(strlen(root["apiKey"]) > 50) return false;
   if(strlen(root["apiRoot"]) > 150) return false;
+  if(strlen(root["apiPath"]) > 150) return false;
 
   if(root["delaySeconds"] > 4200 || root["delaySeconds"] < 0) return false;
   if(root["fullVoltage"] < 3.2) return false;
@@ -115,8 +125,11 @@ boolean decodeJSON(String json, boolean decodeCoefficients) {
   strncpy(wifiPassword, root["wifiPassword"], 50);
   strncpy(apiKey, root["apiKey"], 50);
   strncpy(apiRoot, root["apiRoot"], 150);
+  strncpy(apiPath, root["apiPath"], 150);
   apiPort = root["apiPort"];
 
+  bootToHotspot = root["bootToHotspot"];
+  outputMode = root["outputMode"];
   fullVoltage = root["fullVoltage"];
 
   if(decodeCoefficients) {

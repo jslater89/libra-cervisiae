@@ -1,4 +1,13 @@
 
+void handleOutput(double gravity, double temperature, double voltage) {
+  if(outputMode == 0) {
+    return;
+  }
+  else if(outputMode == 1) {
+    sendToGraviton(gravity, temperature, voltage);
+  }
+}
+
 /** 
  *  Outputs
  */

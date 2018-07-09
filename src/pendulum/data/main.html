@@ -118,6 +118,10 @@
                     <input id="apiRoot" class="w3-input w3-border" type="text" maxlength="150" name="apiRoot" required>
                 </div>
                 <div class="w3-section">
+                    <label>API Path</label>
+                    <input id="apiPath" class="w3-input w3-border" type="text" maxlength="150" name="apiPath">
+                </div>
+                <div class="w3-section">
                     <label>API Port</label>
                     <input id="apiPort" class="w3-input w3-border" type="number" min="0" max="65535" name="apiPort" required>
                 </div>
@@ -132,6 +136,14 @@
                 <div class="w3-section">
                     <label>Full Battery Voltage</label>
                     <input id="fullVoltage" class="w3-input w3-border" type="number" step="0.01" min="0" name="fullVoltage" required>
+                </div>
+                <div class="w3-section">
+                    <label>Output Mode</label>
+                    <input id="outputMode" class="w3-input w3-border" type="number" step="1" min="0" max="1" name="outputMode" required>
+                </div>
+                <div class="w3-section">
+                    <label>Boot to Hotspot Mode</label>
+                    <input id="bootToHotspot" class="w3-check w3-border" type="checkbox" step="0.01" min="0" name="bootToHotspot">
                 </div>
                 <button type="submit" class="w3-button w3-block w3-padding-large vuejs-blue w3-margin-bottom">Set Configuration</button>
             </form>  
@@ -304,10 +316,13 @@
                 "wifiNetwork": f.wifiNetwork.value,
                 "wifiPassword": f.wifiPassword.value,
                 "apiRoot": f.apiRoot.value,
+                "apiPath": f.apiPath.value,
                 "apiPort": f.apiPort.value,
                 "apiKey": f.apiKey.value,
                 "delaySeconds": f.delaySeconds.value,
-                "fullVoltage": f.fullVoltage.value
+                "fullVoltage": f.fullVoltage.value,
+                "bootToHotspot": f.bootToHotspot.value,
+                "outputMode": f.outputMode.value
             }
             sendConfigRequest(configObject);
             
@@ -396,10 +411,14 @@
                         document.getElementById("wifiNetwork").value = config.wifiNetwork;
                         document.getElementById("wifiPassword").value = config.wifiPassword;
                         document.getElementById("apiRoot").value = config.apiRoot;
+                        document.getElementById("apiPath").value = config.apiPath;
                         document.getElementById("apiPort").value = config.apiPort;
                         document.getElementById("apiKey").value = config.apiKey;
                         document.getElementById("delaySeconds").value = config.delaySeconds;
                         document.getElementById("fullVoltage").value = config.fullVoltage;
+                        document.getElementById("bootToHotspot").value = config.bootToHotspot;
+                        document.getElementById("outputMode").value = config.outputMode;
+
                         
                         document.getElementById("gravityA").value = config.gravityCoefficients[0];
                         document.getElementById("gravityB").value = config.gravityCoefficients[1];
