@@ -45,6 +45,8 @@ void sensorSetup() {
   scale.begin(HX711_DATA_PIN, HX711_CLOCK_PIN);   
   sensor.begin();
 
+  sensor.setResolution(11);
+
   delay(500);
 }
 
@@ -68,8 +70,8 @@ void averageWeight(int* total, int count) {
     readWeight(total);
     t += *total;
 
-    // 80Hz == 12.5ms
-    delay(15);
+    // 10Hz
+    delay(100);
   }
 
   *total = (t / count);
@@ -83,6 +85,10 @@ void readWeight(int* weight) {
 // returns Fahrenheit temperature
 void readTemp(double* t) {
   sensor.requestTemperatures();
+
+  // 12-bit temperature takes 750ms. Delay so the ESP can do its thing
+  // while we sleep.
+  delay(750);
   *t = sensor.getTempFByIndex(0);
 }
 

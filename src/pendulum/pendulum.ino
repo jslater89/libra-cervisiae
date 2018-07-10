@@ -49,9 +49,9 @@ char wifiNetwork[51] = "";
 // What password should it use?
 char wifiPassword[51] = "";
 
-// API root
+// API root, path, port
 char apiRoot[151] = "";
-
+char apiPath[151] = "";
 int apiPort = 80;
 
 // API key for Graviton
@@ -60,6 +60,14 @@ char apiKey[51] = "";
 // What are the coefficients for the weight->gravity
 // polynomial?
 double gravityCoefficients[3] = {0, 0, 0};
+
+// Should this hydrometer boot into hotspot mode?
+bool bootToHotspot = false;
+
+// How should this hydrometer do output?
+// 0: no output
+// 1: Graviton output
+int outputMode = 0;
 
 /****** End configuration *******/
 
@@ -91,7 +99,7 @@ void setup() {
   }
   printConfig();
 
-  hotspotMode = drd.detectDoubleReset();
+  hotspotMode = bootToHotspot || drd.detectDoubleReset();
 
   if(DEBUG_TIMINGS) Serial.print("Startup finished: "); Serial.println(millis() - bootMillis);
 

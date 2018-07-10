@@ -29,7 +29,7 @@ void hydrometerSetup() {
   yield();
   
   int weight;
-  averageWeight(&weight, 50);
+  averageWeight(&weight, 25);
 
   if(DEBUG_TIMINGS) Serial.print("Weight read: "); Serial.println(millis() - bootMillis);
 
@@ -49,7 +49,7 @@ void hydrometerSetup() {
 
   yield();
 
-  sendToGraviton(compensatedGravity, temp, voltage);
+  handleOutput(compensatedGravity, temp, voltage);
 
   if(DEBUG_TIMINGS) Serial.print("Output finished: "); Serial.println(millis() - bootMillis);
 

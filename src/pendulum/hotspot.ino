@@ -10,18 +10,18 @@
 ESP8266WebServer server(80);
 #define READ_INTERVAL 10000
 
-int lastSensorReading = 0;
+long lastSensorReading = 0;
 double hotspotTemp;
 double hotspotGravity;
 int hotspotWeight;
 double hotspotVoltage;
 
 bool connectedToWifi;
-int lastSensorUpload = 0;
+long lastSensorUpload = 0;
 
 void hotspotSetup() {  
   connectedToWifi = false;
-  if(strcmp(wifiNetwork, "your_ssid") != 0 || strlen(wifiNetwork) > 0) {
+  if(strcmp(wifiNetwork, "your_ssid") != 0 || strlen(wifiNetwork) == 0) {
     Serial.print("Wifi network settings found; trying to connect to network "); Serial.println(wifiNetwork);
 
     boolean connectionResult = tryConnect();
@@ -64,12 +64,19 @@ void hotspotLoop() {
   server.handleClient();
   drd.loop();
 
+  // If lastSensorReading is larger than millis(), millis()
+  // has overflowed.
+  if(lastSensorReading > millis()) {
+    lastSensorReading = 0;
+    lastSensorUpload = 0;
+  }
+
   if(millis() - lastSensorReading > READ_INTERVAL) {
      // Start up and shut down the sensors for each read
     sensorSetup();
     
     readTemp(&hotspotTemp);
-    averageWeight(&hotspotWeight, 25);
+    averageWeight(&hotspotWeight, 10);
   
     sensorShutdown();
   
@@ -82,7 +89,7 @@ void hotspotLoop() {
   }
 
   if(connectedToWifi && millis() - lastSensorUpload > delaySeconds * 1000) {
-    sendToGraviton(hotspotGravity, hotspotTemp, hotspotVoltage);
+    handleOutput(hotspotGravity, hotspotTemp, hotspotVoltage);
     lastSensorUpload = millis();
   }
 }
@@ -164,9 +171,6 @@ void updateCalibration() {
 
   yield();
 
-  Serial.println(coefficients[0]);
-  Serial.println(coefficients[1]);
-  Serial.println(coefficients[2]);
   gravityCoefficients[0] = coefficients[0];
   gravityCoefficients[1] = coefficients[1];
   gravityCoefficients[2] = coefficients[2];
