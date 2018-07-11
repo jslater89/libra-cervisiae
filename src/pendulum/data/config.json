@@ -15,5 +15,7 @@
 			0.1
 		],
 	"outputMode": 1,
-	"bootToHotspot": false
+	"bootToHotspot": false,
+	"tempCompensationBase": 68,
+	"tempCompensationFactor": 0.000935
 }

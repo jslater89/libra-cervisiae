@@ -138,12 +138,20 @@
                     <input id="fullVoltage" class="w3-input w3-border" type="number" step="0.01" min="0" name="fullVoltage" required>
                 </div>
                 <div class="w3-section">
+                    <label>Temperature Compensation Base</label>
+                    <input id="tempCompensationBase" class="w3-input w3-border" type="number" step="0.1" min="32" max="100" name="tempCompensationBase" required>
+                </div>
+                <div class="w3-section">
+                    <label>Temperature Compensation Factor</label>
+                    <input id="tempCompensationFactor" class="w3-input w3-border" type="number" step="0.000001" min="-2" max="2" name="tempCompensationFactor" required>
+                </div>
+                <div class="w3-section">
                     <label>Output Mode</label>
                     <input id="outputMode" class="w3-input w3-border" type="number" step="1" min="0" max="1" name="outputMode" required>
                 </div>
                 <div class="w3-section">
                     <label>Boot to Hotspot Mode</label>
-                    <input id="bootToHotspot" class="w3-check w3-border" type="checkbox" step="0.01" min="0" name="bootToHotspot">
+                    <input id="bootToHotspot" class="w3-check w3-border" type="checkbox" name="bootToHotspot">
                 </div>
                 <button type="submit" class="w3-button w3-block w3-padding-large vuejs-blue w3-margin-bottom">Set Configuration</button>
             </form>  
@@ -321,7 +329,9 @@
                 "apiKey": f.apiKey.value,
                 "delaySeconds": f.delaySeconds.value,
                 "fullVoltage": f.fullVoltage.value,
-                "bootToHotspot": f.bootToHotspot.value,
+                "tempCompensationBase": f.tempCompensationBase.value,
+                "tempCompensationFactor": f.tempCompensationFactor.value,
+                "bootToHotspot": f.bootToHotspot.checked,
                 "outputMode": f.outputMode.value
             }
             sendConfigRequest(configObject);
@@ -329,7 +339,7 @@
         }
         
         // validate and submit calibration
-        function submitCalibration(f) {            
+        function submitCalibration(f) {     
             // assemble arrays
             let weights = [];
             let gravities = [];
@@ -362,6 +372,8 @@
         }
         
         function sendConfigRequest(configObject) {
+            console.log(configObject);
+
             let xmlhttp = new XMLHttpRequest();
             let url = "/config";
             
@@ -416,7 +428,9 @@
                         document.getElementById("apiKey").value = config.apiKey;
                         document.getElementById("delaySeconds").value = config.delaySeconds;
                         document.getElementById("fullVoltage").value = config.fullVoltage;
-                        document.getElementById("bootToHotspot").value = config.bootToHotspot;
+                        document.getElementById("tempCompensationBase").value = config.tempCompensationBase;
+                        document.getElementById("tempCompensationFactor").value = config.tempCompensationFactor;
+                        document.getElementById("bootToHotspot").checked = config.bootToHotspot;
                         document.getElementById("outputMode").value = config.outputMode;
 
                         

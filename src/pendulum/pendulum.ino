@@ -62,7 +62,7 @@ char apiKey[51] = "";
 double gravityCoefficients[3] = {0, 0, 0};
 
 // Should this hydrometer boot into hotspot mode?
-bool bootToHotspot = false;
+boolean bootToHotspot = false;
 
 // How should this hydrometer do output?
 // 0: no output
@@ -125,7 +125,7 @@ void loop() {
   }
 }
 
-bool tryConnect() {
+boolean tryConnect() {
   WiFi.begin(wifiNetwork, wifiPassword);
 
   Serial.print("Connecting to ");

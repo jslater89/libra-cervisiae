@@ -89,6 +89,12 @@ double compensateTemperature(double gravity, double temp) {
   c1 = temperatureCoefficients[0];
   c2 = temperatureCoefficients[1];
   c3 = temperatureCoefficients[2];
-  return gravity + c1 * temp * temp + c2 * temp + c3;
+  gravity = gravity + c1 * temp * temp + c2 * temp + c3;
+
+  // Load cell temperature effects
+  double loadCellAdjustment = (tempCompensationBase - temp) * tempCompensationFactor;
+  //Serial.print("Temp "); Serial.print(temp); Serial.print(" Adj. "); Serial.println(loadCellAdjustment, 6);
+  gravity = gravity + loadCellAdjustment;
+  return gravity;
 }
 

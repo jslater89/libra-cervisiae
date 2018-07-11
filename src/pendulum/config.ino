@@ -6,6 +6,8 @@
   "delaySeconds": 3600,
   "hydrometerName": "01234567890123456789012345678901234567890123456789",
   "fullVoltage": 4.20000000000001,
+  "tempCompensationBase": 68.5,
+  "tempCompensationFactor": 0.000935,
   "wifiNetwork": "01234567890123456789012345678901234567890123456789",
   "wifiPassword": "01234567890123456789012345678901234567890123456789",
   "gravityCoefficients": [1.000000000001, 1.000000000001, 1.000000000001],
@@ -22,6 +24,11 @@
 // Taken from a hydrometer correction chart
 const double temperatureCoefficients[3] = {0.00000154854, -0.000102756, -0.000167605};
 
+// How should we adjust for the load cell's temperature response?
+// These default values are acceptable for a 500g cell.
+double tempCompensationBase = 68; // F
+double tempCompensationFactor = 0.000935;
+
 void printConfig() {
   Serial.print("Hydrometer name: "); Serial.println(hydrometerName);
   Serial.print("Delay seconds: "); Serial.println(delaySeconds);
@@ -32,6 +39,10 @@ void printConfig() {
   Serial.print("API path: "); Serial.println(apiPath);
   Serial.print("API port: "); Serial.println(apiPort);
   Serial.print("API key: "); Serial.println(apiKey);
+  Serial.print("Hotspot boot: "); Serial.println(bootToHotspot);
+  Serial.print("Output mode: "); Serial.println(outputMode);
+  Serial.print("Temp compensation base: "); Serial.println(tempCompensationBase);
+  Serial.print("Temp compensation factor: "); Serial.println(tempCompensationFactor, 6);
   Serial.print("a: "); Serial.println(gravityCoefficients[0], 10);
   Serial.print("b: "); Serial.println(gravityCoefficients[1], 10);
   Serial.print("c: "); Serial.println(gravityCoefficients[2], 10);
@@ -55,6 +66,9 @@ void getConfigJSON(char* buf, int lim) {
   c.add(gravityCoefficients[0]);
   c.add(gravityCoefficients[1]);
   c.add(gravityCoefficients[2]);
+
+  root["tempCompensationBase"] = tempCompensationBase;
+  root["tempCompensationFactor"] = tempCompensationFactor;
 
   root["apiPath"] = apiPath;
   root["apiRoot"] = apiRoot;
@@ -131,6 +145,8 @@ boolean decodeJSON(String json, boolean decodeCoefficients) {
   bootToHotspot = root["bootToHotspot"];
   outputMode = root["outputMode"];
   fullVoltage = root["fullVoltage"];
+  tempCompensationBase = root["tempCompensationBase"];
+  tempCompensationFactor = root["tempCompensationFactor"];
 
   if(decodeCoefficients) {
     JsonArray& loadedCoefficients = root["gravityCoefficients"];
