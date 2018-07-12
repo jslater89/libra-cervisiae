@@ -25,6 +25,6 @@ Second, the stopper assembly. Most of Pendulum's delicate electronics stay outsi
 Since we just switched to a nearly new design, there's some breadboard prototyping and Arduino re-coding to be done before it makes sense to order the PCBs and set up for final assembly.
 
 ## BrewPerfect Patent Compliance
-I believe Pendulum does not infringe on BrewPerfect's patent (outdated application [here](https://patents.google.com/patent/US20160252440A1/en?oq=US20160252440A1) based on amendments made after the linked application was rejected.
+I believe Pendulum does not infringe on BrewPerfect's patent (outdated application [here](https://patents.google.com/patent/US20160252440A1/en?oq=US20160252440A1)), based on amendments made after the linked application was rejected.
 
 The updated patent application substitutes claim 4 (wherein said sensor measures the deflection of the deflecting load beam by measuring the capacitance between the sensor and said deflecting load beam) for the generic sensor called for in claim 1, which limits BrewPerfect to enforcing their patent, once it's granted, against others using capacitive sensing. Pendulum uses strain gauge-type load cells, which are purely resistive sensors which do not measure capacitance in any way.
