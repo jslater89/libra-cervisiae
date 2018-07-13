@@ -69,6 +69,23 @@ boolean bootToHotspot = false;
 // 1: Graviton output
 int outputMode = 0;
 
+// What are the coefficients for correcting for temperature, ignoring
+// Pendulum-specific effects and accounting only for thermal expansion?
+// Taken from a hydrometer correction chart.
+const double temperatureCoefficients[3] = {0.00000154854, -0.000102756, -0.000167605};
+
+// How should we adjust for the load cell's temperature response?
+// gravity += (base - observedTemp) * factor
+// These default values are acceptable for a 500g cell.
+// Note base temperature is calibration temperature.
+double tempCompensationBase = 68; // F
+double tempCompensationFactor = 0.000935;
+
+// The scale factor is the ratio of hydrometer/refractometer OG to
+// Pendulum OG, to account for changes in tilt.
+double scaleFactor = 1.000;
+
+
 /****** End configuration *******/
 
 DoubleResetDetector drd(5 /* timeout */, 10 /* address */);

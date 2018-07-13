@@ -20,15 +20,6 @@
 }
  */
 
-// What are the coefficients for correcting for temperature?
-// Taken from a hydrometer correction chart
-const double temperatureCoefficients[3] = {0.00000154854, -0.000102756, -0.000167605};
-
-// How should we adjust for the load cell's temperature response?
-// These default values are acceptable for a 500g cell.
-double tempCompensationBase = 68; // F
-double tempCompensationFactor = 0.000935;
-
 void printConfig() {
   Serial.print("Hydrometer name: "); Serial.println(hydrometerName);
   Serial.print("Delay seconds: "); Serial.println(delaySeconds);
@@ -43,6 +34,7 @@ void printConfig() {
   Serial.print("Output mode: "); Serial.println(outputMode);
   Serial.print("Temp compensation base: "); Serial.println(tempCompensationBase);
   Serial.print("Temp compensation factor: "); Serial.println(tempCompensationFactor, 6);
+  Serial.print("Scale factor: "); Serial.println(scaleFactor, 4);
   Serial.print("a: "); Serial.println(gravityCoefficients[0], 10);
   Serial.print("b: "); Serial.println(gravityCoefficients[1], 10);
   Serial.print("c: "); Serial.println(gravityCoefficients[2], 10);

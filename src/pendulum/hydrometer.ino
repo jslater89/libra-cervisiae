@@ -80,21 +80,29 @@ double calculateGravity(double weight) {
   c1 = gravityCoefficients[0];
   c2 = gravityCoefficients[1];
   c3 = gravityCoefficients[2];
-  return c1 * weight * weight + c2 * weight + c3;
+  double intermediateGravity = c1 * weight * weight + c2 * weight + c3;
+
+  // After getting the gravity uncorrected for sensor tilt, correct
+  // for tilt to get a gravity reading in terms of the standard
+  // sensor tilt.
+  return intermediateGravity * scaleFactor;
 }
 
 // Compensate for temperature, using the calibrated polynomial.
 double compensateTemperature(double gravity, double temp) {
+  // Adjust for load cell temperature effects by applying tempCompensationFactor
+  // times the difference from calibration temperature.
+  double loadCellAdjustment = (tempCompensationBase - temp) * tempCompensationFactor;
+  gravity = gravity + loadCellAdjustment;
+  
+  //Serial.print("Temp "); Serial.print(temp); Serial.print(" Adj. "); Serial.println(loadCellAdjustment, 6);
+
   double c1, c2, c3;
   c1 = temperatureCoefficients[0];
   c2 = temperatureCoefficients[1];
   c3 = temperatureCoefficients[2];
   gravity = gravity + c1 * temp * temp + c2 * temp + c3;
-
-  // Load cell temperature effects
-  double loadCellAdjustment = (tempCompensationBase - temp) * tempCompensationFactor;
-  //Serial.print("Temp "); Serial.print(temp); Serial.print(" Adj. "); Serial.println(loadCellAdjustment, 6);
-  gravity = gravity + loadCellAdjustment;
+  
   return gravity;
 }
 
