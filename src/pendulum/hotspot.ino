@@ -42,6 +42,8 @@ void hotspotSetup() {
 
   // main.html has scripts/styles embedded.
   server.serveStatic("/", SPIFFS, "/main.html");
+  server.serveStatic("/app.js", SPIFFS, "/app.js");
+  server.serveStatic("/style.css", SPIFFS, "/style.css");
   
   server.on("/live", HTTP_GET, handleLiveUpdate);
   server.on("/calibration", HTTP_POST, updateCalibration);

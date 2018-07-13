@@ -61,6 +61,7 @@ void getConfigJSON(char* buf, int lim) {
 
   root["tempCompensationBase"] = tempCompensationBase;
   root["tempCompensationFactor"] = tempCompensationFactor;
+  root["scaleFactor"] = scaleFactor;
 
   root["apiPath"] = apiPath;
   root["apiRoot"] = apiRoot;
@@ -139,6 +140,7 @@ boolean decodeJSON(String json, boolean decodeCoefficients) {
   fullVoltage = root["fullVoltage"];
   tempCompensationBase = root["tempCompensationBase"];
   tempCompensationFactor = root["tempCompensationFactor"];
+  scaleFactor = root["scaleFactor"];
 
   if(decodeCoefficients) {
     JsonArray& loadedCoefficients = root["gravityCoefficients"];
