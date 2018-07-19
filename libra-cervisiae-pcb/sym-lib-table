@@ -1,0 +1,9 @@
+(sym_lib_table
+  (lib (name ESP8266)(type Legacy)(uri ${KIPRJMOD}/libraries/kicad-ESP8266/ESP8266.lib)(options "")(descr ""))
+  (lib (name gy-521)(type Legacy)(uri ${KIPRJMOD}/libraries/gy521/gy-521.lib)(options "")(descr ""))
+  (lib (name tp4056)(type Legacy)(uri ${KIPRJMOD}/libraries/tp4056/tp4056.lib)(options "")(descr ""))
+  (lib (name bob-13263)(type Legacy)(uri ${KIPRJMOD}/libraries/bob-13263/bob-13263.lib)(options "")(descr ""))
+  (lib (name cp2102-breakout)(type Legacy)(uri ${KIPRJMOD}/libraries/cp2102-breakout/cp2102-breakout.lib)(options "")(descr ""))
+  (lib (name hx711_breakout)(type Legacy)(uri ${KIPRJMOD}/libraries/hx711-breakout/hx711_breakout.lib)(options "")(descr ""))
+  (lib (name tmp36)(type Legacy)(uri ${KIPRJMOD}/libraries/tmp36/tmp36.lib)(options "")(descr ""))
+)
