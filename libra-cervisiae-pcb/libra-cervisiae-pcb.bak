@@ -5,9 +5,9 @@ EELAYER END
 $Descr A 11000 8500
 encoding utf-8
 Sheet 1 1
-Title "Pendulum PCB"
-Date "2018-06-28"
-Rev "1.0.0-rc.7"
+Title "Libra Cervisiae PCB"
+Date "2018-07-19"
+Rev "1.0.0-rc.1"
 Comp ""
 Comment1 ""
 Comment2 ""
@@ -275,7 +275,7 @@ Text Label 1950 6000 0    60   ~ 0
 DSD
 Text Label 1950 5900 0    60   ~ 0
 DS+
-Text Label 2100 6100 2    60   ~ 0
+Text Label 1950 6100 0    60   ~ 0
 GND
 $Comp
 L power:PWR_FLAG #FLG02
@@ -293,7 +293,7 @@ L conn:Conn_01x03 J4
 U 1 1 5B29B426
 P 950 6000
 F 0 "J4" H 950 6200 50  0000 C CNN
-F 1 "DS18B20" H 950 5800 50  0000 C CNN
+F 1 "Wort Temp" H 950 5800 50  0000 C CNN
 F 2 "Connector_Molex:Molex_PicoBlade_53048-0610_1x03_P1.25mm_Horizontal" H 950 6000 50  0001 C CNN
 F 3 "" H 950 6000 50  0001 C CNN
 	1    950  6000
@@ -446,12 +446,12 @@ $EndComp
 $Comp
 L device:C C4
 U 1 1 5B2A9325
-P 1350 6200
-F 0 "C4" V 1400 6050 50  0000 L CNN
-F 1 "1uF" V 1500 6150 50  0000 L CNN
-F 2 "Capacitor_SMD:C_0805_2012Metric" H 1388 6050 50  0001 C CNN
-F 3 "" H 1350 6200 50  0001 C CNN
-	1    1350 6200
+P 1350 6450
+F 0 "C4" V 1400 6300 50  0000 L CNN
+F 1 "1uF" V 1500 6400 50  0000 L CNN
+F 2 "Capacitor_SMD:C_0805_2012Metric" H 1388 6300 50  0001 C CNN
+F 3 "" H 1350 6450 50  0001 C CNN
+	1    1350 6450
 	0    1    1    0   
 $EndComp
 Wire Wire Line
@@ -670,12 +670,12 @@ Wire Wire Line
 $Comp
 L device:R R9
 U 1 1 5B4177F1
-P 1750 6200
-F 0 "R9" V 1830 6200 50  0000 C CNN
-F 1 "10k" V 1750 6200 50  0000 C CNN
-F 2 "Resistor_SMD:R_0805_2012Metric" V 1680 6200 50  0001 C CNN
-F 3 "" H 1750 6200 50  0001 C CNN
-	1    1750 6200
+P 1750 6450
+F 0 "R9" V 1830 6450 50  0000 C CNN
+F 1 "10k" V 1750 6450 50  0000 C CNN
+F 2 "Resistor_SMD:R_0805_2012Metric" V 1680 6450 50  0001 C CNN
+F 3 "" H 1750 6450 50  0001 C CNN
+	1    1750 6450
 	0    1    1    0   
 $EndComp
 Wire Wire Line
@@ -826,24 +826,16 @@ Wire Wire Line
 Wire Wire Line
 	1150 5900 1200 5900
 Wire Wire Line
-	1200 5900 1200 6200
-Wire Wire Line
 	1150 6100 1500 6100
 Connection ~ 1200 5900
 Wire Wire Line
 	1200 5900 1600 5900
-Wire Wire Line
-	1500 6200 1500 6100
 Connection ~ 1500 6100
 Wire Wire Line
 	1500 6100 2100 6100
-Wire Wire Line
-	1600 5900 1600 6200
 Connection ~ 1600 5900
 Wire Wire Line
 	1600 5900 2100 5900
-Wire Wire Line
-	1900 6200 1900 6000
 Connection ~ 1900 6000
 Wire Wire Line
 	1900 6000 2100 6000
@@ -851,4 +843,59 @@ Wire Wire Line
 	3450 1750 3450 2650
 Text Label 3450 2050 1    60   ~ 0
 BAT-
+$Comp
+L conn:Conn_01x03 J1
+U 1 1 5B523E0B
+P 950 6950
+F 0 "J1" H 950 7150 50  0000 C CNN
+F 1 "Board Temp" H 950 6750 50  0000 C CNN
+F 2 "Package_TO_SOT_THT:TO-92" H 950 6950 50  0001 C CNN
+F 3 "" H 950 6950 50  0001 C CNN
+	1    950  6950
+	-1   0    0    1   
+$EndComp
+Wire Wire Line
+	1200 5900 1200 6450
+Wire Wire Line
+	1500 6100 1500 6450
+Wire Wire Line
+	1150 6850 1200 6850
+Wire Wire Line
+	1150 7050 1500 7050
+Text Label 1950 6850 0    60   ~ 0
+DS+
+Text Label 1950 6950 0    60   ~ 0
+DSD
+Text Label 1950 7050 0    60   ~ 0
+GND
+Wire Wire Line
+	1200 6450 1200 6850
+Connection ~ 1200 6450
+Connection ~ 1200 6850
+Wire Wire Line
+	1500 6450 1500 7050
+Connection ~ 1500 6450
+Connection ~ 1500 7050
+Wire Wire Line
+	1500 7050 2100 7050
+Wire Wire Line
+	1150 6950 1900 6950
+Wire Wire Line
+	1200 6850 1600 6850
+Wire Wire Line
+	1600 5900 1600 6450
+Wire Wire Line
+	1600 6450 1600 6850
+Connection ~ 1600 6450
+Connection ~ 1600 6850
+Wire Wire Line
+	1600 6850 2100 6850
+Wire Wire Line
+	1900 6000 1900 6450
+Wire Wire Line
+	1900 6450 1900 6950
+Connection ~ 1900 6450
+Connection ~ 1900 6950
+Wire Wire Line
+	1900 6950 2100 6950
 $EndSCHEMATC
