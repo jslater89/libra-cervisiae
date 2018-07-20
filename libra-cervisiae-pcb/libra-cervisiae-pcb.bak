@@ -259,8 +259,8 @@ Text Label 7600 5450 0    60   ~ 0
 CLK
 Text Label 7600 5350 0    60   ~ 0
 GND
-Text Notes 8400 6250 2    60   ~ 0
-Load Cell
+Text Notes 9400 5100 2    60   ~ 0
+Load Cells
 Text Label 3250 5100 0    60   ~ 0
 ADC
 Text Label 1950 4500 0    60   ~ 0
@@ -422,13 +422,13 @@ Connection ~ 850  4500
 Wire Wire Line
 	1150 4750 1450 4750
 Text Label 8950 5450 0    60   ~ 0
-GRN
+S+
 Text Label 8950 5550 0    60   ~ 0
-WHT
+S-
 Text Label 8950 5650 0    60   ~ 0
-BLK
+E-
 Text Label 8950 5750 0    60   ~ 0
-RED
+E+
 Wire Wire Line
 	3950 5400 3200 5400
 NoConn ~ 8950 5350
@@ -743,13 +743,13 @@ Wire Wire Line
 Wire Wire Line
 	10100 5750 9950 5750
 Text Label 9950 5450 0    60   ~ 0
-GRN
+S+
 Text Label 9950 5550 0    60   ~ 0
-WHT
+S-
 Text Label 9950 5650 0    60   ~ 0
-BLK
+E-
 Text Label 9950 5750 0    60   ~ 0
-RED
+E+
 Wire Wire Line
 	8950 5450 9150 5450
 Wire Wire Line
@@ -783,29 +783,29 @@ Wire Wire Line
 Wire Wire Line
 	10100 6350 9950 6350
 Text Label 9950 6050 0    60   ~ 0
-GRN
+S+
 Text Label 9350 5450 0    60   ~ 0
-GRN
+S+
 Text Label 9350 6050 0    60   ~ 0
-GRN
+S+
 Text Label 9350 5550 0    60   ~ 0
-WHT
+S-
 Text Label 9350 6150 0    60   ~ 0
-WHT
+S-
 Text Label 9950 6150 0    60   ~ 0
-WHT
+S-
 Text Label 9350 5650 0    60   ~ 0
-BLK
+E-
 Text Label 9350 6250 0    60   ~ 0
-BLK
+E-
 Text Label 9950 6250 0    60   ~ 0
-BLK
+E-
 Text Label 9350 5750 0    60   ~ 0
-RED
+E+
 Text Label 9350 6350 0    60   ~ 0
-RED
+E+
 Text Label 9950 6350 0    60   ~ 0
-RED
+E+
 Wire Wire Line
 	3200 5600 3950 5600
 $Comp
