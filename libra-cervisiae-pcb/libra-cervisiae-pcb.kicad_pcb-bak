@@ -1102,7 +1102,7 @@
   )
 
   (module LOGOS:libra_cervisiae_logo_10mm (layer F.Cu) (tedit 0) (tstamp 5B3631E2)
-    (at 127.254 70.485)
+    (at 126.873 71.247)
     (fp_text reference G*** (at 0 0) (layer F.SilkS) hide
       (effects (font (size 1.524 1.524) (thickness 0.3)))
     )
@@ -2522,7 +2522,7 @@
   )
 
   (module Symbols:OSHW-Logo2_7.3x6mm_SilkScreen (layer F.Cu) (tedit 5B318D8B) (tstamp 5B543A40)
-    (at 127.254 78.359)
+    (at 126.873 79.121)
     (descr "Open Source Hardware Symbol")
     (tags "Logo Symbol OSHW")
     (attr virtual)
@@ -3484,7 +3484,7 @@
     (arrow2a (pts (xy 100.138 111.738) (xy 101.264504 112.324421)))
     (arrow2b (pts (xy 100.138 111.738) (xy 101.264504 111.151579)))
   )
-  (gr_text 1.0.0 (at 127.254 82.169) (layer F.SilkS) (tstamp 5B54295D)
+  (gr_text 1.0.0 (at 126.873 82.931) (layer F.SilkS) (tstamp 5B54295D)
     (effects (font (size 1 1) (thickness 0.15)))
   )
   (gr_line (start 138.434 105.821) (end 138.434 106.456) (angle 90) (layer F.SilkS) (width 0.2))
