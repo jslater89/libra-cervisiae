@@ -656,4 +656,8 @@ NoConn ~ 4150 2850
 Wire Wire Line
 	3850 2250 3850 2550
 NoConn ~ 4150 2350
+Text Label 3850 2250 0    60   ~ 0
+RST
+Text Label 6100 2650 0    60   ~ 0
+FLASH
 $EndSCHEMATC
