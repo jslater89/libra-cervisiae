@@ -40,7 +40,7 @@
   )
 
   (setup
-    (last_trace_width 0.4)
+    (last_trace_width 0.25)
     (user_trace_width 0.4)
     (trace_clearance 0.2)
     (zone_clearance 0.508)
@@ -145,7 +145,7 @@
   )
 
   (module Connector_Molex:Molex_PicoBlade_53048-0810_1x04_P1.25mm_Horizontal (layer F.Cu) (tedit 5A174D76) (tstamp 5B58B10D)
-    (at 159.044 70.104 180)
+    (at 159.0675 70.485 180)
     (descr "Molex PicoBlade Connector System, 53048-0810, 4 Pins per row (http://www.molex.com/pdm_docs/sd/532530770_sd.pdf), generated with kicad-footprint-generator")
     (tags "connector Molex PicoBlade top entry")
     (path /5B504507)
@@ -1034,7 +1034,7 @@
   )
 
   (module Connector_Molex:Molex_PicoBlade_53048-0810_1x04_P1.25mm_Horizontal (layer F.Cu) (tedit 5B52B12E) (tstamp 5B47FA2D)
-    (at 142.494 70.104 180)
+    (at 142.494 70.485 180)
     (descr "Molex PicoBlade Connector System, 53048-0810, 4 Pins per row (http://www.molex.com/pdm_docs/sd/532530770_sd.pdf), generated with kicad-footprint-generator")
     (tags "connector Molex PicoBlade top entry")
     (path /5B2A5EFA)
@@ -3267,7 +3267,7 @@
   )
 
   (module Connector_Molex:Molex_PicoBlade_53048-0810_1x04_P1.25mm_Horizontal (layer F.Cu) (tedit 5A174D76) (tstamp 5B58B18B)
-    (at 150.749 70.104 180)
+    (at 150.749 70.485 180)
     (descr "Molex PicoBlade Connector System, 53048-0810, 4 Pins per row (http://www.molex.com/pdm_docs/sd/532530770_sd.pdf), generated with kicad-footprint-generator")
     (tags "connector Molex PicoBlade top entry")
     (path /5B5043D4)
@@ -3335,7 +3335,7 @@
   )
 
   (module Connector_Molex:Molex_PicoBlade_53048-0810_1x04_P1.25mm_Horizontal (layer F.Cu) (tedit 5A174D76) (tstamp 5B58B209)
-    (at 167.386 70.104 180)
+    (at 167.386 70.485 180)
     (descr "Molex PicoBlade Connector System, 53048-0810, 4 Pins per row (http://www.molex.com/pdm_docs/sd/532530770_sd.pdf), generated with kicad-footprint-generator")
     (tags "connector Molex PicoBlade top entry")
     (path /5B504290)
