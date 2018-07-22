@@ -1,30 +1,16 @@
-# Pendulum
+# Libra Cervisiae
 ![pcb](https://jslater89.github.io/pendulum/images/pcb.png)
 
-Pendulum is a wireless hydrometer powered by the ESP-8266.
+Libra Cervisiae is an ESP8266-powered microcontroller for reading output from a high-precision scale, used to weigh beer to measure the progress of its fermentation.
 
-Development updates can be found at the project's [github pages site](https://jslater89.github.io/pendulum).
+Development updates can be found at the project's [github pages site](https://jslater89.github.io/libra-cervisiae).
 
-## Pendulum Reborn
-The original Pendulum concept was a tilting hydrometer, but the patent for that idea is owned is owned by the makers of the Tilt hydrometer.
+## History
+Libra Cervisiae used to be Pendulum, which was itself once a tilting hydrometer (abandoned for patent reasons) and once a weigh-a-sinker hydrometer (abandoned for DIY difficulty reasons).
 
-So, what _is_ a hydrometer, actually? It's a device which measures buoyancy. How high does a manual hydrometer float? How far does a tilting hydrometer tilt? Both questions ask about the strength of the buoyant force. The higher the float or the steeper the tilt, the stronger the buoyant force is. Given that neither flavor of hydrometer changes volume, a stronger buoyant force means that the liquid displaced weighs more. If one liquid weighs more than another for a given, fixed volume, it's denser than the other.
-
-That's the ticket, then. The trouble is, measuring the height at which an object is floating is not trivial for computers. There are cheap-ish float sensors which run $20 or so, but they're bulky, heavy, and hard to clean. There are expensive solid-state sensors, but those cost $50, and at that price, you might as well just buy a Tilt.
-
-Measuring buoyant force, however, doesn't require a floating object. If you hang a mass from a scale and put it underwater, it weighs less than it does in the air. Measuring this difference is hard for humans, which is why manual hydrometers float. (We can see liquid levels on a cylinder way easier than we can determine that this object weighs 10% more.) It's easy for computers, though.
+Libra Cervisiae has its root in experiments done in the 1990s on measuring fermentation progress by CO2 production, and more recent experiments done by forumgoers at [Homebrewtalk](https://www.homebrewtalk.com/forum/threads/estimating-alcohol-by-total-weight-during-fermentation.265716/#post-6913352) and [Hobbybrouwen.nl](https://www.hobbybrouwen.nl/forum/index.php/topic,35958.0.html).
 
 ## Design
-Pendulum has two components.
+Libra Cervisiae is a microcontroller and PCB project. The project is designed with easy DIY in mind, and as such, the PCB uses large, easy-to-solder surface mount components, as well as breakout boards for the major, non-ESP8266 integrated circuits.
 
-First, the microcontroller. This goes in a box outside the fermentation vessel. It'll be able to run in a low-power mode on battery for several weeks at least, which sends updates to a remote [Graviton](https://github.com/jslater89/graviton) server or Google Sheets on a half-hourly schedule. It'll also be able to run in a high-power mode, either as a standalone hotspot or connected to your wifi, sending updates to a remote destination while also listening for requests for current status over the network.
-
-Second, the stopper assembly. Most of Pendulum's delicate electronics stay outside the fermentation vessel. Attached to the stopper is a load cell to measure the force exerted by a sinker, which measures specific gravity. The sinker is entirely inert, and the load cell sits above the surface of the wort. Also attached to the stopper by insulated wire is a temperature sensor float, which sits on or just below the surface of the wort to monitor fermentation temperature.
-
-## Current Status
-Since we just switched to a nearly new design, there's some breadboard prototyping and Arduino re-coding to be done before it makes sense to order the PCBs and set up for final assembly.
-
-## BrewPerfect Patent Compliance
-I believe Pendulum does not infringe on BrewPerfect's patent (outdated application [here](https://patents.google.com/patent/US20160252440A1/en?oq=US20160252440A1)), based on amendments made after the linked application was rejected.
-
-The updated patent application substitutes claim 4 (wherein said sensor measures the deflection of the deflecting load beam by measuring the capacitance between the sensor and said deflecting load beam) for the generic sensor called for in claim 1, which limits BrewPerfect to enforcing their patent, once it's granted, against others using capacitive sensing. Pendulum uses strain gauge-type load cells, which are purely resistive sensors which do not measure capacitance in any way.
+The project as specified here includes building a scale of your own, but the microcontroller's design ought to allow for hacking existing scales of the correct capacity, too.
