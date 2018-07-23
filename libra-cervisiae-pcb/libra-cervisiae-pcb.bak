@@ -356,13 +356,13 @@ NoConn ~ 7550 4900
 $Comp
 L conn:Conn_01x04 J12
 U 1 1 5B2A5EFA
-P 8900 5100
-F 0 "J12" H 8900 5300 50  0000 C CNN
-F 1 "Load Cell" H 8900 4800 50  0000 C CNN
-F 2 "Connector_Molex:Molex_PicoBlade_53048-0810_1x04_P1.25mm_Horizontal" H 8900 5100 50  0001 C CNN
-F 3 "" H 8900 5100 50  0001 C CNN
-	1    8900 5100
-	1    0    0    -1  
+P 8900 5200
+F 0 "J12" H 8900 5400 50  0000 C CNN
+F 1 "Load Cell" H 8900 4900 50  0000 C CNN
+F 2 "Connector_Molex:Molex_PicoBlade_53048-0810_1x04_P1.25mm_Horizontal" H 8900 5200 50  0001 C CNN
+F 3 "" H 8900 5200 50  0001 C CNN
+	1    8900 5200
+	1    0    0    1   
 $EndComp
 $Comp
 L device:C C4
@@ -477,35 +477,35 @@ Wire Wire Line
 $Comp
 L conn:Conn_01x04 J10
 U 1 1 5B504290
-P 8900 5700
-F 0 "J10" H 8900 5900 50  0000 C CNN
-F 1 "Load Cell" H 8900 5400 50  0000 C CNN
-F 2 "Connector_Molex:Molex_PicoBlade_53048-0810_1x04_P1.25mm_Horizontal" H 8900 5700 50  0001 C CNN
-F 3 "" H 8900 5700 50  0001 C CNN
-	1    8900 5700
-	1    0    0    -1  
+P 8900 5800
+F 0 "J10" H 8900 6000 50  0000 C CNN
+F 1 "Load Cell" H 8900 5500 50  0000 C CNN
+F 2 "Connector_Molex:Molex_PicoBlade_53048-0810_1x04_P1.25mm_Horizontal" H 8900 5800 50  0001 C CNN
+F 3 "" H 8900 5800 50  0001 C CNN
+	1    8900 5800
+	1    0    0    1   
 $EndComp
 $Comp
 L conn:Conn_01x04 J9
 U 1 1 5B5043D4
-P 8300 5700
-F 0 "J9" H 8300 5900 50  0000 C CNN
-F 1 "Load Cell" H 8300 5400 50  0000 C CNN
-F 2 "Connector_Molex:Molex_PicoBlade_53048-0810_1x04_P1.25mm_Horizontal" H 8300 5700 50  0001 C CNN
-F 3 "" H 8300 5700 50  0001 C CNN
-	1    8300 5700
-	1    0    0    -1  
+P 8300 5800
+F 0 "J9" H 8300 6000 50  0000 C CNN
+F 1 "Load Cell" H 8300 5500 50  0000 C CNN
+F 2 "Connector_Molex:Molex_PicoBlade_53048-0810_1x04_P1.25mm_Horizontal" H 8300 5800 50  0001 C CNN
+F 3 "" H 8300 5800 50  0001 C CNN
+	1    8300 5800
+	1    0    0    1   
 $EndComp
 $Comp
 L conn:Conn_01x04 J8
 U 1 1 5B504507
-P 8300 5100
-F 0 "J8" H 8300 5300 50  0000 C CNN
-F 1 "Load Cell" H 8300 4800 50  0000 C CNN
-F 2 "Connector_Molex:Molex_PicoBlade_53048-0810_1x04_P1.25mm_Horizontal" H 8300 5100 50  0001 C CNN
-F 3 "" H 8300 5100 50  0001 C CNN
-	1    8300 5100
-	1    0    0    -1  
+P 8300 5200
+F 0 "J8" H 8300 5400 50  0000 C CNN
+F 1 "Load Cell" H 8300 4900 50  0000 C CNN
+F 2 "Connector_Molex:Molex_PicoBlade_53048-0810_1x04_P1.25mm_Horizontal" H 8300 5200 50  0001 C CNN
+F 3 "" H 8300 5200 50  0001 C CNN
+	1    8300 5200
+	1    0    0    1   
 $EndComp
 Wire Wire Line
 	8700 5000 8550 5000
