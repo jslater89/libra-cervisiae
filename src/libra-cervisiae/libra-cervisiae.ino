@@ -85,6 +85,17 @@ double tempCompensationFactor = 0.000935;
 // Pendulum OG, to account for changes in tilt.
 double scaleFactor = 1.000;
 
+// The list of DS18B20s connected.
+uint8_t tempSensors[2];
+
+// The DS18B20 address to use for load cell
+// temperature compensation.
+uint8_t boardTempAddr = -1;
+
+// The DS18B20 address to use for wort temperature
+// reporting.
+uint8_t wortTempAddr = -1;
+
 
 /****** End configuration *******/
 

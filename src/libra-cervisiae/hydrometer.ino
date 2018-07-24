@@ -21,8 +21,9 @@ void hydrometerSetup() {
   yield();
   drd.stop();
 
-  double temp;
-  readTemp(&temp);
+  double boardTemp, wortTemp;
+  readBoardTemp(&boardTemp);
+  readWortTemp(&wortTemp);
 
   if(DEBUG_TIMINGS) Serial.print("Temperature read: "); Serial.println(millis() - bootMillis);
 
@@ -36,12 +37,13 @@ void hydrometerSetup() {
   yield();
 
   double gravity = calculateGravity(weight / 1000.0);
-  double compensatedGravity = compensateTemperature(gravity, temp);
+  double compensatedGravity = compensateTemperature(gravity, boardTemp);
   double voltage = readVoltage();
 
   if(DEBUG_TIMINGS) Serial.print("Calculations finished: "); Serial.println(millis() - bootMillis);
 
-  Serial.print("Temp: "); Serial.println(temp, 2);
+  Serial.print("BTmp: "); Serial.println(boardTemp, 2);
+  Serial.print("WTmp: "); Serial.println(wortTemp, 2);
   Serial.print("Wght: "); Serial.println(weight);
   Serial.print("RawG: "); Serial.println(gravity, 3);
   Serial.print("CorG: "); Serial.println(compensatedGravity, 3);
@@ -49,7 +51,7 @@ void hydrometerSetup() {
 
   yield();
 
-  handleOutput(compensatedGravity, temp, voltage);
+  handleOutput(compensatedGravity, wortTemp, voltage);
 
   if(DEBUG_TIMINGS) Serial.print("Output finished: "); Serial.println(millis() - bootMillis);
 

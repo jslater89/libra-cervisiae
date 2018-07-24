@@ -11,7 +11,8 @@ ESP8266WebServer server(80);
 #define READ_INTERVAL 10000
 
 long lastSensorReading = 0;
-double hotspotTemp;
+double hotspotBoardTemp;
+double hotspotWortTemp;
 double hotspotGravity;
 int hotspotWeight;
 double hotspotVoltage;
@@ -75,13 +76,14 @@ void hotspotLoop() {
      // Start up and shut down the sensors for each read
     sensorSetup();
     
-    readTemp(&hotspotTemp);
+    readWortTemp(&hotspotWortTemp);
+    readBoardTemp(&hotspotBoardTemp);
     averageWeight(&hotspotWeight, 10);
   
     sensorShutdown();
   
     double gravity = calculateGravity(hotspotWeight / 1000.0);
-    hotspotGravity = compensateTemperature(gravity, hotspotTemp);
+    hotspotGravity = compensateTemperature(gravity, hotspotBoardTemp);
   
     hotspotVoltage = readVoltage();
 
@@ -89,7 +91,7 @@ void hotspotLoop() {
   }
 
   if(connectedToWifi && millis() - lastSensorUpload > delaySeconds * 1000) {
-    handleOutput(hotspotGravity, hotspotTemp, hotspotVoltage);
+    handleOutput(hotspotGravity, hotspotWortTemp, hotspotVoltage);
     lastSensorUpload = millis();
   }
 }
@@ -103,7 +105,7 @@ void handleLiveUpdate() {
   DynamicJsonBuffer jsonBuffer(bufferSize);
   
   JsonObject& root = jsonBuffer.createObject();
-  root["temperature"] = hotspotTemp;
+  root["temperature"] = hotspotWortTemp;
   root["weight"] = hotspotWeight;
   root["gravity"] = hotspotGravity;
   root["battery"] = hotspotVoltage;

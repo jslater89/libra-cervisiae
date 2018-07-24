@@ -31,7 +31,7 @@
 
 HX711 scale;
 OneWire oneWire(DS18B20_DATA_PIN);
-DallasTemperature sensor(&oneWire);
+DallasTemperature sensors(&oneWire);
 
 void sensorSetup() {
   //HX711
@@ -43,9 +43,9 @@ void sensorSetup() {
   digitalWrite(DS18B20_POWER_PIN, HIGH);
   
   scale.begin(HX711_DATA_PIN, HX711_CLOCK_PIN);   
-  sensor.begin();
+  sensors.begin();
 
-  sensor.setResolution(11);
+  sensors.setResolution(12);
 
   delay(500);
 }
@@ -82,13 +82,25 @@ void readWeight(int* weight) {
   *weight = scale.read();
 }
 
+// Get temperature from wort sensor
 // returns Fahrenheit temperature
-void readTemp(double* t) {
-  sensor.requestTemperatures();
+void readWortTemp(double* t) {
+  sensors.requestTemperaturesByAddress(&wortTempAddr);
 
   // 12-bit temperature takes 750ms. Delay so the ESP can do its thing
-  // while we sleep.
+  // while we wait.
   delay(750);
-  *t = sensor.getTempFByIndex(0);
+  *t = sensors.getTempF(&wortTempAddr);
+}
+
+// Get temperature from board sensor
+// returns Fahrenheit temperature
+void readBoardTemp(double* t) {
+  sensors.requestTemperaturesByAddress(&boardTempAddr);
+
+  // 12-bit temperature takes 750ms. Delay so the ESP can do its thing
+  // while we wait.
+  delay(750);
+  *t = sensors.getTempF(&boardTempAddr);
 }
 
