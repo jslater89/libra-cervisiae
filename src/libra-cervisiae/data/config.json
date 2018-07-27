@@ -1,0 +1,22 @@
+{
+	"delaySeconds": 1800,
+	"hydrometerName": "pendulum",
+	"fullVoltage": 4.2,
+	"wifiNetwork": "your_ssid",
+	"wifiPassword": "your_password",
+	"apiRoot": "server_name",
+	"apiPath": "server_api_path",
+	"apiPort": 80,
+	"apiKey": "server_api_key",
+	"gravityCoefficients":
+		[
+			0,
+			-0.004167,
+			0.1
+		],
+	"outputMode": 1,
+	"bootToHotspot": false,
+	"tempCompensationBase": 68,
+	"tempCompensationFactor": 0.000935,
+	"scaleFactor": 1.000
+}
