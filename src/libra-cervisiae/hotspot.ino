@@ -48,6 +48,7 @@ void hotspotSetup() {
   
   server.on("/live", HTTP_GET, handleLiveUpdate);
   server.on("/calibration", HTTP_POST, updateCalibration);
+  server.on("/tare", HTTP_POST, updateTare);
   server.on("/config", HTTP_GET, getConfig);
   server.on("/config", HTTP_POST, updateConfig);
 
@@ -127,71 +128,39 @@ void handleLiveUpdate() {
   server.send(200, "application/json", prettyJSON);
 }
 
-// The calibrate endpoint accepts a JSON array of calibration
-// points (measured weights and gravity readings), and returns
-// a status code corresponding to the result.
+
+void updateTare() {
+  if(!server.hasArg("plain")) {
+    server.send(400, "text/plain", "no body");
+    return;
+  }
+
+  const size_t bufferSize = JSON_OBJECT_SIZE(2) + 120;
+  DynamicJsonBuffer jsonBuffer(bufferSize);
+
+  JsonObject& root = jsonBuffer.parseObject(server.arg("plain"));
+  double time = root["time"];
+
+  tareScale(time * 1000);
+
+  server.send(200, "text/plain", "tare in progress");
+}
+
+// The calibrate endpoint accepts a known weight in grams, and calibrates
+// the scale to read that value.
 void updateCalibration() {
   if(!server.hasArg("plain")) {
     server.send(400, "text/plain", "no body");
     return;
   }
 
-  const size_t bufferSize = 2*JSON_ARRAY_SIZE(8) + JSON_OBJECT_SIZE(2) + 120;
+  const size_t bufferSize = JSON_OBJECT_SIZE(2) + 120;
   DynamicJsonBuffer jsonBuffer(bufferSize);
 
   JsonObject& root = jsonBuffer.parseObject(server.arg("plain"));
-  JsonArray& jsonWeights = root["weights"];
-  JsonArray& jsonGravities = root["gravities"];
+  double weight = root["weight"];
 
-  int weightElements = jsonWeights.size();
-  int gravityElements = jsonGravities.size();
-
-  if(weightElements != gravityElements) {
-    server.send(400, "text/plain", "mismatched data");
-    return;
-  }
-  
-  int elements = weightElements;
-
-  if(elements < 4) {
-    server.send(400, "text/plain", "4 or more data points required");
-    return;
-  }
-  
-  double weights[elements];
-  double gravities[elements];
-  double coefficients[3];
-
-  for(int i = 0; i < elements; i++) {
-    if(i < 3) coefficients[i] = 0;
-
-    double adjustedWeight = jsonWeights[i];
-    adjustedWeight /= 1000.0;
-    weights[i] = adjustedWeight;
-    gravities[i] = jsonGravities[i];
-
-    Serial.print("Weight: ");
-    Serial.print(weights[i]);
-    Serial.print(" Gravity: ");
-    Serial.println(gravities[i]);
-  }
-
-  int error = regressGravities(gravities, weights, elements, coefficients);
-  if(error != 0) {
-    server.send(400, "text/plain", "regression failed");
-  }
-
-  yield();
-
-  gravityCoefficients[0] = coefficients[0];
-  gravityCoefficients[1] = coefficients[1];
-  gravityCoefficients[2] = coefficients[2];
-
-  boolean result = saveConfig();
-  if(!result) {
-    server.send(500, "text/plain", "error saving config");
-    return;
-  }
+  calibrateScale(weight);
 
   server.send(200, "text/plain", "calibration updated");
 }

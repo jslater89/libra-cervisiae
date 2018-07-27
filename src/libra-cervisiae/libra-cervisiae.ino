@@ -76,9 +76,13 @@ int outputMode = 0;
 double tempCompensationBase = 68; // F
 double tempCompensationFactor = 0.000935;
 
-// The scale factor is the ratio of hydrometer/refractometer OG to
-// Pendulum OG, to account for changes in tilt.
-double scaleFactor = 1.000;
+// The tare offset is the difference between the HX711 ADC
+// output and 0.
+double tareOffset = 6000;
+
+// The scale factor is the divisor to apply to the HX711 ADC
+// output to get the weight in grams.
+double scaleFactor = 215.23;
 
 // The list of DS18B20s connected.
 uint8_t tempSensors[2];

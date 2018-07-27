@@ -19,7 +19,6 @@ HX711 scale;
 long tareStart = 0;
 long tareLength = 0;
 
-double tareValue = 0;
 int tareSteps = 0;
 
 void scaleSetup() {
@@ -71,7 +70,7 @@ void readCalibratedWeight(double* weight) {
   *weight = scale.get_units();
 }
 
-void tare(int tareMillis) {
+void tareScale(int tareMillis) {
   Serial.println("Starting tare");
   scaleSetup();
   tempSetup();
@@ -82,7 +81,7 @@ void tare(int tareMillis) {
   if(DEBUG_TIMINGS) Serial.print("Tare length: "); Serial.println(tareLength);
 
   tareSteps = 0;
-  tareValue = 0;
+  tareOffset = 0;
   
   tareInProgress = true;
 }
@@ -91,20 +90,19 @@ void tareLoop() {
   int weight = 0;
   readWeight(&weight);
 
-  double runningTotal = tareValue * tareSteps;
+  double runningTotal = tareOffset * tareSteps;
   runningTotal += weight;
   tareSteps++;
-  tareValue = runningTotal / tareSteps;
+  tareOffset = runningTotal / tareSteps;
 
   if(millis() > (tareStart + tareLength)) {
     Serial.print("Calculated tare value: "); Serial.println(tareValue);
     
-    scale.set_offset((long) tareValue);
-
-    // TODO:remove, debugging
-    scale.set_scale(215.23);
-    
+    scale.set_offset((long) tareOffset);
     tareInProgress = false;
+
+    // TODO
+    // saveConfig();
     return;
   }
   else {
@@ -112,5 +110,15 @@ void tareLoop() {
   }
 
   delay(100);
+}
+
+void calibrateScale(double knownGrams) {
+  int weight;
+  averageWeight(weight, 10);
+
+  double dWeight = weight;
+  scaleFactor = dWeight / knownGrams;
+
+  scale.set_scale(scaleFactor);
 }
 
