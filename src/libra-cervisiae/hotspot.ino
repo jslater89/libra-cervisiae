@@ -14,7 +14,7 @@ long lastSensorReading = 0;
 double hotspotBoardTemp;
 double hotspotWortTemp;
 double hotspotGravity;
-int hotspotWeight;
+double hotspotWeight;
 double hotspotVoltage;
 
 bool connectedToWifi;
@@ -60,6 +60,9 @@ void hotspotSetup() {
 
   server.begin();
   Serial.println("Started hotspot mode");
+
+  // TODO: remove,debugging
+  tare(10000);
 }
 
 // Hotspot loop
@@ -69,7 +72,7 @@ void hotspotLoop() {
 
   if(tareInProgress) {
     tareLoop();
-    continue;
+    return;
   }
 
   // If lastSensorReading is larger than millis(), millis()
@@ -81,19 +84,19 @@ void hotspotLoop() {
 
   if(millis() - lastSensorReading > READ_INTERVAL) {
      // Start up and shut down the sensors for each read
-    sensorSetup();
+    tempSetup();
+    scaleSetup();
     
     readWortTemp(&hotspotWortTemp);
     readBoardTemp(&hotspotBoardTemp);
-    averageWeight(&hotspotWeight, 10);
+    averageCalibratedWeight(&hotspotWeight, 10);
   
-    sensorShutdown();
+    scaleShutdown();
+    tempShutdown();
   
     double gravity = calculateGravity(hotspotWeight / 1000.0);
     hotspotGravity = compensateTemperature(gravity, hotspotBoardTemp);
   
-    hotspotVoltage = readVoltage();
-
     lastSensorReading = millis();
   }
 

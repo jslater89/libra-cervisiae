@@ -26,6 +26,9 @@ void scaleSetup() {
   //HX711
   scale.begin(HX711_DATA_PIN, HX711_CLOCK_PIN);   
   scale.power_up();
+
+  // time to stabilize
+  delay(500);
 }
 
 void scaleShutdown() {
@@ -46,14 +49,37 @@ void averageWeight(int* total, int count) {
   *total = (t / count);
 }
 
-// returns raw accelerometer values
+// returns uncalibrated value
 void readWeight(int* weight) {
   *weight = scale.read();
 }
 
+void averageCalibratedWeight(double* total, int count) {
+  int t = 0;
+  for(int i = 0; i < count; i++) {
+    readCalibratedWeight(total);
+    t += *total;
+
+    // 10Hz
+    delay(100);
+  }
+
+  *total = (t / count);
+}
+
+void readCalibratedWeight(double* weight) {
+  *weight = scale.get_units();
+}
+
 void tare(int tareMillis) {
-  long tareStart = millis();
-  long tareLength = tareMillis();
+  Serial.println("Starting tare");
+  scaleSetup();
+  tempSetup();
+  tareStart = millis();
+  tareLength = tareMillis;
+
+  if(DEBUG_TIMINGS) Serial.print("Tare start: "); Serial.println(tareStart);
+  if(DEBUG_TIMINGS) Serial.print("Tare length: "); Serial.println(tareLength);
 
   tareSteps = 0;
   tareValue = 0;
@@ -63,7 +89,7 @@ void tare(int tareMillis) {
 
 void tareLoop() {
   int weight = 0;
-  readWeight(weight);
+  readWeight(&weight);
 
   double runningTotal = tareValue * tareSteps;
   runningTotal += weight;
@@ -74,8 +100,15 @@ void tareLoop() {
     Serial.print("Calculated tare value: "); Serial.println(tareValue);
     
     scale.set_offset((long) tareValue);
+
+    // TODO:remove, debugging
+    scale.set_scale(215.23);
+    
     tareInProgress = false;
     return;
+  }
+  else {
+    //Serial.print("Tare step "); Serial.println(tareSteps);
   }
 
   delay(100);

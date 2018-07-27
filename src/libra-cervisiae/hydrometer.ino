@@ -14,7 +14,8 @@ void hydrometerSetup() {
   
   if(DEBUG_TIMINGS) Serial.print("Wifi finished: "); Serial.println(millis() - bootMillis);
 
-  sensorSetup();
+  tempSetup();
+  scaleSetup();
 
   if(DEBUG_TIMINGS) Serial.print("Sensors finished: "); Serial.println(millis() - bootMillis);
 
@@ -38,7 +39,6 @@ void hydrometerSetup() {
 
   double gravity = calculateGravity(weight / 1000.0);
   double compensatedGravity = compensateTemperature(gravity, boardTemp);
-  double voltage = readVoltage();
 
   if(DEBUG_TIMINGS) Serial.print("Calculations finished: "); Serial.println(millis() - bootMillis);
 
@@ -47,11 +47,10 @@ void hydrometerSetup() {
   Serial.print("Wght: "); Serial.println(weight);
   Serial.print("RawG: "); Serial.println(gravity, 3);
   Serial.print("CorG: "); Serial.println(compensatedGravity, 3);
-  Serial.print("BatV: "); Serial.println(voltage, 3);
 
   yield();
 
-  handleOutput(compensatedGravity, wortTemp, voltage);
+  handleOutput(compensatedGravity, wortTemp, 0);
 
   if(DEBUG_TIMINGS) Serial.print("Output finished: "); Serial.println(millis() - bootMillis);
 
@@ -61,7 +60,8 @@ void hydrometerSetup() {
 
 void sleep() {
   drd.stop();
-  sensorShutdown();
+  scaleShutdown();
+  tempShutdown();
   Serial.print("Going to sleep for "); Serial.print(delaySeconds); Serial.println(" seconds");
   ESP.deepSleep(delaySeconds * 1000 * 1000);
 }
@@ -96,15 +96,7 @@ double compensateTemperature(double gravity, double temp) {
   // times the difference from calibration temperature.
   double loadCellAdjustment = (tempCompensationBase - temp) * tempCompensationFactor;
   gravity = gravity + loadCellAdjustment;
-  
-  //Serial.print("Temp "); Serial.print(temp); Serial.print(" Adj. "); Serial.println(loadCellAdjustment, 6);
 
-  double c1, c2, c3;
-  c1 = temperatureCoefficients[0];
-  c2 = temperatureCoefficients[1];
-  c3 = temperatureCoefficients[2];
-  gravity = gravity + c1 * temp * temp + c2 * temp + c3;
-  
   return gravity;
 }
 

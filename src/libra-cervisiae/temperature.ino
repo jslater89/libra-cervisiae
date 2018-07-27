@@ -23,8 +23,6 @@ void tempSetup() {
   
   sensors.begin();
   sensors.setResolution(12);
-
-  delay(500);
 }
 
 void tempShutdown() {
