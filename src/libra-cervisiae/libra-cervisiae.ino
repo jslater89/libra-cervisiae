@@ -69,11 +69,6 @@ boolean bootToHotspot = false;
 // 1: Graviton output
 int outputMode = 0;
 
-// What are the coefficients for correcting for temperature, ignoring
-// Pendulum-specific effects and accounting only for thermal expansion?
-// Taken from a hydrometer correction chart.
-const double temperatureCoefficients[3] = {0.00000154854, -0.000102756, -0.000167605};
-
 // How should we adjust for the load cell's temperature response?
 // gravity += (base - observedTemp) * factor
 // These default values are acceptable for a 500g cell.
@@ -95,9 +90,10 @@ uint8_t boardTempAddr = -1;
 // The DS18B20 address to use for wort temperature
 // reporting.
 uint8_t wortTempAddr = -1;
-
-
 /****** End configuration *******/
+
+// Tare in progress
+boolean tareInProgress = false;
 
 DoubleResetDetector drd(5 /* timeout */, 10 /* address */);
 boolean hotspotMode;

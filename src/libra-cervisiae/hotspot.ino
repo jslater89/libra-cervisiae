@@ -65,6 +65,11 @@ void hotspotLoop() {
   server.handleClient();
   drd.loop();
 
+  if(tareInProgress) {
+    tareLoop();
+    continue;
+  }
+
   // If lastSensorReading is larger than millis(), millis()
   // has overflowed.
   if(lastSensorReading > millis()) {
