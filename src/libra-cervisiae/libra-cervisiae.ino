@@ -84,6 +84,17 @@ double tareOffset = 6000;
 // output to get the weight in grams.
 double scaleFactor = 215.23;
 
+// The weight of the non-wort equipment going on the scale,
+// in grams.
+double equipmentWeight = 5000;
+
+// The starting mass for the batch, not including equipment weight,
+// in grams.
+double startingWortMass = 20000;
+
+// The starting gravity of the batch, in SG@68F.
+double startingWortGravity = 1.060;
+
 // The list of DS18B20s connected.
 uint8_t tempSensors[2];
 
