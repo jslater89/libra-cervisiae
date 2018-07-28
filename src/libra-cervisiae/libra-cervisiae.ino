@@ -138,6 +138,8 @@ void setup() {
 
   if(DEBUG_TIMINGS) Serial.print("Startup finished: "); Serial.println(millis() - bootMillis);
 
+  initScale();
+
   // enter hotspot mode if there's no network configured
   if(hotspotMode || strcmp(wifiNetwork, "your_ssid") == 0) {
     Serial.println("Hotspot mode selected");

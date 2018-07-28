@@ -142,6 +142,9 @@ function updateConfigScale() {
             if(xmlhttp.status < 400 && xmlhttp.status >= 200) {
                 let config = xmlhttp.response;
                 document.getElementById("hydrometerNameHeading").innerText = config.hydrometerName;
+                document.getElementById("tareOffset").value = config.tareOffset;
+                document.getElementById("scaleFactor").value = config.scaleFactor;
+                document.getElementById("equipmentWeight").value = config.equipmentWeight;
             }
             else {
                 console.log("error: " + this.status + " " + this.statusText);
@@ -191,4 +194,32 @@ function updateLive() {
 function liveRepeat() {
     updateLive();
     setTimeout(liveRepeat, 10000);
+}
+
+function updateLive() {
+    let xmlhttp = new XMLHttpRequest();
+    let url = API_ROOT + "/live";
+    
+    xmlhttp.onreadystatechange = function() {
+        if (this.readyState == 4) {
+            if(this.status < 400 && this.status >= 200) {
+                let update = this.response;
+                
+                document.getElementById("rawWeight").value = update.rawWeight;
+                document.getElementById("calibratedWeight").value = update.temperature;
+            }
+            else {
+                console.log("error: " + this.status + " " + this.statusText);
+            }
+        }
+    };
+    xmlhttp.overrideMimeType("application/json");
+    xmlhttp.responseType = "json";
+    xmlhttp.open("GET", url, true);
+    xmlhttp.send();
+}
+
+function scaleRepeat() {
+    updateScale();
+    setTimeout(scaleRepeat, 10000);
 }

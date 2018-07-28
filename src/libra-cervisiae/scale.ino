@@ -21,9 +21,14 @@ long tareLength = 0;
 
 int tareSteps = 0;
 
+void initScale() {
+  scale.begin(HX711_DATA_PIN, HX711_CLOCK_PIN);   
+  scale.set_offset(tareOffset);
+  scale.set_scale(scaleFactor);
+}
+
 void scaleSetup() {
   //HX711
-  scale.begin(HX711_DATA_PIN, HX711_CLOCK_PIN);   
   scale.power_up();
 
   // time to stabilize
@@ -32,6 +37,24 @@ void scaleSetup() {
 
 void scaleShutdown() {
   scale.power_down();
+}
+
+void averageRawReading(int* total, int count) {
+  int t = 0;
+  for(int i = 0; i < count; i++) {
+    readRaw(total);
+    t += *total;
+
+    // 10Hz
+    delay(100);
+  }
+
+  *total = (t / count);
+}
+
+// returns uncalibrated value
+void readRaw(int* weight) {
+  *weight = scale.read();
 }
 
 
@@ -86,7 +109,7 @@ void tareScale(int tareMillis) {
 
 void tareLoop() {
   int weight = 0;
-  readWeight(&weight);
+  readRaw(&weight);
 
   double runningTotal = tareOffset * tareSteps;
   runningTotal += weight;

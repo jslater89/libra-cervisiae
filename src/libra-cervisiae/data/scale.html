@@ -65,23 +65,23 @@
                     Current Tare
                 </div>
                 <div class="w3-col m4 w3-margin-bottom">
-                    Current Scale
+                    Current Scale Factor
                 </div>
             </div>
             <div class="w3-row-padding w3-grayscale">
                 <div class="w3-col m4 w3-margin-bottom">
                     <div class="w3-section">
-                        <input id="gravityA" class="w3-input w3-border" disabled>
+                        <input id="rawWeight" class="w3-input w3-border" disabled>
                     </div>
                 </div>
                 <div class="w3-col m4 w3-margin-bottom">
                     <div class="w3-section">
-                        <input id="gravityB" class="w3-input w3-border" disabled>
+                        <input id="tareOffset" class="w3-input w3-border" disabled>
                     </div>
                 </div>
                 <div class="w3-col m4 w3-margin-bottom">
                     <div class="w3-section">
-                        <input id="gravityC" class="w3-input w3-border" disabled>
+                        <input id="scaleFactor" class="w3-input w3-border" disabled>
                     </div>
                 </div>
             </div>
@@ -96,12 +96,12 @@
             <div class="w3-row-padding w3-grayscale">
                 <div class="w3-col m4 w3-margin-bottom">
                     <div class="w3-section">
-                        <input id="gravityC" class="w3-input w3-border" disabled>
+                        <input id="calibratedWeight" class="w3-input w3-border" disabled>
                     </div>
                 </div>
                 <div class="w3-col m4 w3-margin-bottom">
                     <div class="w3-section">
-                        <input id="gravityC" class="w3-input w3-border" disabled>
+                        <input id="equipmentWeight" class="w3-input w3-border" disabled>
                     </div>
                 </div>
             </div>
@@ -154,6 +154,7 @@
     <script>
         window.onload = function() {
             updateConfigScale();
+            scaleRepeat();
         }
     </script>
 </body>

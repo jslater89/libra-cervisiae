@@ -49,6 +49,7 @@ void hotspotSetup() {
   server.on("/live", HTTP_GET, handleLiveUpdate);
   server.on("/calibrate", HTTP_POST, updateCalibration);
   server.on("/tare", HTTP_POST, updateTare);
+  server.on("/equipmentweight", HTTP_POST, updateEquipmentWeight);
   server.on("/config", HTTP_GET, getConfig);
   server.on("/config", HTTP_POST, updateConfig);
 
@@ -87,8 +88,8 @@ void hotspotLoop() {
     
     readWortTemp(&hotspotWortTemp);
     readBoardTemp(&hotspotBoardTemp);
-    averageWeight(&hotspotRawWeight, 10);
-    averageCalibratedWeight(&hotspotCalibratedWeight, 10);
+    averageWeight(&hotspotRawWeight, 5);
+    averageCalibratedWeight(&hotspotCalibratedWeight, 15);
   
     scaleShutdown();
     tempShutdown();
