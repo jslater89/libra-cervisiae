@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Pendulum</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+        body,h1,h2,h3,h4,h5 {font-family: "Tahoma", sans-serif}
+        body {font-size:16px;}
+        .w3-half img{margin-bottom:-6px;margin-top:16px;opacity:0.8;cursor:pointer}
+        .w3-half img:hover{opacity:1}
+    </style>
+    <script type="text/javascript" src="app.js"></script>
+    <link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body>
+    <!-- Sidebar/menu -->
+    <nav class="w3-sidebar vuejs-blue w3-collapse w3-top w3-large w3-padding" style="z-index:3;width:300px;font-weight:bold;" id="mySidebar"><br>
+        <a href="javascript:void(0)" onclick="w3_close()" class="w3-button w3-hide-large w3-display-topleft" style="width:100%;font-size:22px">Close Menu</a>
+        <div class="w3-container">
+            <h3 class="w3-padding-64"><b id="hydrometerNameHeading">Pendulum</b></h3>
+        </div>
+        <div class="w3-bar-block">
+            <a href="main.html" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">Live Data</a> 
+            <a href="config.html" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">Configuration</a> 
+            <a href="scale.html" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">Scale Calibration</a>
+            <a href="temps.html" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">Temperature Settings</a>
+        </div>
+    </nav>
+    
+    <!-- Top menu on small screens -->
+    <header class="w3-container w3-top w3-hide-large vuejs-blue w3-xlarge w3-padding">
+        <a href="javascript:void(0)" class="w3-button vuejs-blue w3-margin-right" onclick="w3_open()">☰</a>
+        <span>Pendulum Hotspot</span>
+    </header>
+    
+    <!-- Overlay effect when opening sidebar on small screens -->
+    <div class="w3-overlay w3-hide-large" onclick="w3_close()" style="cursor:pointer" title="close side menu" id="myOverlay"></div>
+
+    <!-- !PAGE CONTENT! -->
+    <div class="w3-main" style="margin-left:340px;margin-right:40px">
+        <!-- Config -->
+        <div class="w3-container" id="configuration" style="margin-top:75px">
+            <h1 class="w3-xxxlarge vuejs-text-blue"><b>Configuration</b></h1>
+            <hr style="width:50px;border:5px solid #35495e" class="w3-round">
+            <p>
+                Edit the fields below and press the Set Configuration button to update this Pendulum's configuration.
+                The current configuration is displayed below.
+            </p>
+            <form action="#configuration" onsubmit="submitConfiguration(this); return false;">
+                <div class="w3-section">
+                    <label>Hydrometer Name</label>
+                    <input id="hydrometerName" class="w3-input w3-border" type="text" maxlength="50" name="hydrometerName" required>
+                </div>
+                <div class="w3-section">
+                    <label>Wifi SSID</label>
+                    <input id="wifiNetwork" class="w3-input w3-border" type="text" maxlength="50" name="wifiNetwork" required>
+                </div>
+                <div class="w3-section">
+                    <label>Wifi Password</label>
+                    <input id="wifiPassword" class="w3-input w3-border" type="text" maxlength="50" name="wifiPassword" required>
+                </div>
+                <div class="w3-section">
+                    <label>API Root</label>
+                    <input id="apiRoot" class="w3-input w3-border" type="text" maxlength="150" name="apiRoot" required>
+                </div>
+                <div class="w3-section">
+                    <label>API Path</label>
+                    <input id="apiPath" class="w3-input w3-border" type="text" maxlength="150" name="apiPath">
+                </div>
+                <div class="w3-section">
+                    <label>API Port</label>
+                    <input id="apiPort" class="w3-input w3-border" type="number" min="0" max="65535" name="apiPort" required>
+                </div>
+                <div class="w3-section">
+                    <label>API Key</label>
+                    <input id="apiKey" class="w3-input w3-border" type="text" maxlength="50" name="apiKey" required>
+                </div>
+                <div class="w3-section">
+                    <label>Hydrometer Sleep Interval</label>
+                    <input id="delaySeconds" class="w3-input w3-border" type="number" name="delaySeconds" min="0" max="4200" required>
+                </div>
+                <div class="w3-section">
+                    <label>Temperature Compensation Base</label>
+                    <input id="tempCompensationBase" class="w3-input w3-border" type="number" step="0.01" min="32" max="100" name="tempCompensationBase" required>
+                </div>
+                <div class="w3-section">
+                    <label>Temperature Compensation Factor</label>
+                    <input id="tempCompensationFactor" class="w3-input w3-border" type="number" step="0.000001" min="-2" max="2" name="tempCompensationFactor" required>
+                </div>
+                <div class="w3-section">
+                    <label>Output Mode</label>
+                    <input id="outputMode" class="w3-input w3-border" type="number" step="1" min="0" max="1" name="outputMode" required>
+                </div>
+                <div class="w3-section">
+                    <label>Boot to Hotspot Mode</label>
+                    <input id="bootToHotspot" class="w3-check w3-border" type="checkbox" name="bootToHotspot">
+                </div>
+                <button type="submit" class="w3-button w3-block w3-padding-large vuejs-blue w3-margin-bottom">Set Configuration</button>
+            </form>  
+        </div>
+    </div>
+
+    <script>
+        window.onload = function() {
+            updateConfigMain();
+        }
+    </script>
+
+</body>

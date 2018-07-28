@@ -34,6 +34,7 @@ void printConfig() {
   Serial.print("Output mode: "); Serial.println(outputMode);
   Serial.print("Temp compensation base: "); Serial.println(tempCompensationBase);
   Serial.print("Temp compensation factor: "); Serial.println(tempCompensationFactor, 6);
+  Serial.print("Tare offset: "); Serial.println(tareOffset, 2);
   Serial.print("Scale factor: "); Serial.println(scaleFactor, 4);
   Serial.print("a: "); Serial.println(gravityCoefficients[0], 10);
   Serial.print("b: "); Serial.println(gravityCoefficients[1], 10);
@@ -61,6 +62,7 @@ void getConfigJSON(char* buf, int lim) {
 
   root["tempCompensationBase"] = tempCompensationBase;
   root["tempCompensationFactor"] = tempCompensationFactor;
+  root["tareOffset"] = tareOffset;
   root["scaleFactor"] = scaleFactor;
 
   root["apiPath"] = apiPath;
@@ -86,7 +88,7 @@ boolean saveConfig() {
   return true;
 }
 
-// loads config fromconfig.json in FS
+// loads config from config.json in FS
 boolean loadConfig() {
   // ensure null-termination; the 51st element is always 0 in arrays where only
   // 50 elements are copied.
@@ -140,6 +142,7 @@ boolean decodeJSON(String json, boolean decodeCoefficients) {
   fullVoltage = root["fullVoltage"];
   tempCompensationBase = root["tempCompensationBase"];
   tempCompensationFactor = root["tempCompensationFactor"];
+  tareOffset = root["tareOffset"];
   scaleFactor = root["scaleFactor"];
 
   if(decodeCoefficients) {

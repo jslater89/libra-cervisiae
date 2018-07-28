@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Pendulum</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+        body,h1,h2,h3,h4,h5 {font-family: "Tahoma", sans-serif}
+        body {font-size:16px;}
+        .w3-half img{margin-bottom:-6px;margin-top:16px;opacity:0.8;cursor:pointer}
+        .w3-half img:hover{opacity:1}
+    </style>
+    <script type="text/javascript" src="app.js"></script>
+    <link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body>
+    <!-- Sidebar/menu -->
+    <nav class="w3-sidebar vuejs-blue w3-collapse w3-top w3-large w3-padding" style="z-index:3;width:300px;font-weight:bold;" id="mySidebar"><br>
+        <a href="javascript:void(0)" onclick="w3_close()" class="w3-button w3-hide-large w3-display-topleft" style="width:100%;font-size:22px">Close Menu</a>
+        <div class="w3-container">
+            <h3 class="w3-padding-64"><b id="hydrometerNameHeading">Pendulum</b></h3>
+        </div>
+        <div class="w3-bar-block">
+            <a href="main.html" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">Live Data</a> 
+            <a href="config.html" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">Configuration</a> 
+            <a href="scale.html" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">Scale Calibration</a>
+            <a href="temps.html" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">Temperature Settings</a>
+        </div>
+    </nav>
+    
+    <!-- Top menu on small screens -->
+    <header class="w3-container w3-top w3-hide-large vuejs-blue w3-xlarge w3-padding">
+        <a href="javascript:void(0)" class="w3-button vuejs-blue w3-margin-right" onclick="w3_open()">☰</a>
+        <span>Pendulum Hotspot</span>
+    </header>
+    
+    <!-- Overlay effect when opening sidebar on small screens -->
+    <div class="w3-overlay w3-hide-large" onclick="w3_close()" style="cursor:pointer" title="close side menu" id="myOverlay"></div>
+
+    <!-- !PAGE CONTENT! -->
+    <div class="w3-main" style="margin-left:340px;margin-right:40px">
+        <!-- Calibration -->
+        <div class="w3-container" id="calibration" style="margin-top:75px">
+            <h1 class="w3-xxxlarge vuejs-text-blue"><b>Calibration</b></h1>
+            <hr style="width:50px;border:5px solid #35495e" class="w3-round">
+            <p>
+                Enter a time in seconds next to the Tare button to set a length of time
+                over which to tare the scale.
+            </p>
+            <p>
+                Place a known mass on the scale, and enter its weight in grams next to the
+                Calibrate button to calibrate the scale.
+            </p>
+            <p>
+                Place your empty fermentation chamber and airlock onto the scale and press
+                the Equipment Tare button to calibrate your equipment weight. (If you enter
+                a non-zero value next to the Equipment Tare button, that value will be used
+                in place of the weight on the scale.)
+            </p>
+            <div class="w3-row-padding w3-grayscale">
+                <div class="w3-col m4 w3-margin-bottom">
+                    Current Raw Reading
+                </div>
+                <div class="w3-col m4 w3-margin-bottom">
+                    Current Tare
+                </div>
+                <div class="w3-col m4 w3-margin-bottom">
+                    Current Scale
+                </div>
+            </div>
+            <div class="w3-row-padding w3-grayscale">
+                <div class="w3-col m4 w3-margin-bottom">
+                    <div class="w3-section">
+                        <input id="gravityA" class="w3-input w3-border" disabled>
+                    </div>
+                </div>
+                <div class="w3-col m4 w3-margin-bottom">
+                    <div class="w3-section">
+                        <input id="gravityB" class="w3-input w3-border" disabled>
+                    </div>
+                </div>
+                <div class="w3-col m4 w3-margin-bottom">
+                    <div class="w3-section">
+                        <input id="gravityC" class="w3-input w3-border" disabled>
+                    </div>
+                </div>
+            </div>
+            <div class="w3-row-padding w3-grayscale">
+                <div class="w3-col m4 w3-margin-bottom">
+                    Current Output
+                </div>
+                <div class="w3-col m4 w3-margin-bottom">
+                    Equipment Weight
+                </div>
+            </div>
+            <div class="w3-row-padding w3-grayscale">
+                <div class="w3-col m4 w3-margin-bottom">
+                    <div class="w3-section">
+                        <input id="gravityC" class="w3-input w3-border" disabled>
+                    </div>
+                </div>
+                <div class="w3-col m4 w3-margin-bottom">
+                    <div class="w3-section">
+                        <input id="gravityC" class="w3-input w3-border" disabled>
+                    </div>
+                </div>
+            </div>
+            <div class="w3-row-padding">
+                <form onsubmit="submitTare(); return false">
+                    <div class="w3-col w3-section m4 w3-margin-bottom">
+                        <button class="w3-button w3-block w3-padding-medium vuejs-blue w3-margin-bottom">Tare</button>
+                    </div>
+                    <div class="w3-col w3-section m4 w3-margin-bottom">
+                        <input class="w3-input w3-border" type="number" step="1" min="1" max="30" name="tareTime" value="10" required>
+                    </div>
+                    <div class="w3-col w3-section m4 w3-margin-bottom">
+                        <p>seconds</p>
+                    </div>
+                </form>
+            </div>
+            <div class="w3-row-padding">
+                <form onsubmit="submitCalibration(); return false">
+                    <div class="w3-col w3-section m4 w3-margin-bottom">
+                        <button class="w3-button w3-block w3-padding-medium vuejs-blue w3-margin-bottom">Calibrate</button>
+                    </div>
+                    <div class="w3-col w3-section m4 w3-margin-bottom">
+                        <input class="w3-input w3-border" type="number" step="0.1" min="1" name="calibrationWeight" value="5000" required>
+                    </div>
+                    <div class="w3-col w3-section m4 w3-margin-bottom">
+                        <p>grams</p>
+                    </div>
+                </form>
+            </div>
+            <div class="w3-row-padding">
+                <form onsubmit="submitEquipmentWeight(); return false">
+                    <div class="w3-col w3-section m4 w3-margin-bottom">
+                        <button class="w3-button w3-block w3-padding-medium vuejs-blue w3-margin-bottom">Equip. Tare</button>
+                    </div>
+                    <div class="w3-col w3-section m4 w3-margin-bottom">
+                        <input class="w3-input w3-border" type="number" step="0.1" min="0" name="calibrationWeight" value="5000" required>
+                    </div>
+                    <div class="w3-col w3-section m4 w3-margin-bottom">
+                        <p>grams</p>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        window.onload = function() {
+            updateConfigScale();
+        }
+    </script>
+</body>

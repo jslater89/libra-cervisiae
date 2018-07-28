@@ -36,64 +36,15 @@
     
     <!-- Overlay effect when opening sidebar on small screens -->
     <div class="w3-overlay w3-hide-large" onclick="w3_close()" style="cursor:pointer" title="close side menu" id="myOverlay"></div>
-    
+
     <!-- !PAGE CONTENT! -->
     <div class="w3-main" style="margin-left:340px;margin-right:40px">
-        
-        <!-- Live Data -->
-        <div class="w3-container" style="margin-top:80px" id="showcase">
-            <h1 class="w3-xxxlarge vuejs-text-blue"><b>Live Data</b></h1>
-            <hr style="width:50px;border:5px solid #35495e" class="w3-round">
-            <p>
-                Live data refreshes every 10 seconds.
-            </p>
-            <div class="w3-row-padding w3-grayscale">
-                <div class="w3-col m4 w3-margin-bottom">
-                    <div class="w3-section">
-                        <label>Weight (no unit)</label>
-                    </div>
-                </div>
-                <div class="w3-col m4 w3-margin-bottom">
-                    <div class="w3-section">
-                        <input class="w3-input w3-border" id="measuredWeight" type="text" disabled/>
-                    </div>
-                </div>
-            </div>
-            <div class="w3-row-padding w3-grayscale">
-                <div class="w3-col m4 w3-margin-bottom">
-                    <div class="w3-section">
-                        <label>Gravity (SG@68F)</label>
-                    </div>
-                </div>
-                <div class="w3-col m4 w3-margin-bottom">
-                    <div class="w3-section">
-                        <input class="w3-input w3-border" id="measuredGravity" type="text" disabled/>
-                    </div>
-                </div>
-            </div>
-            <div class="w3-row-padding w3-grayscale">
-                <div class="w3-col m4 w3-margin-bottom">
-                    <div class="w3-section">
-                        <label>Temperature (F)</label>
-                    </div>
-                </div>
-                <div class="w3-col m4 w3-margin-bottom">
-                    <div class="w3-section">
-                        <input class="w3-input w3-border" id="measuredTemperature" type="text" disabled/>
-                    </div>
-                </div>
-            </div>
-        </div>        
-        
-        <!-- End page content -->
+      
     </div>
-    
+
     <script>
         window.onload = function() {
-            liveRepeat();
-            updateConfigLive();
+            updateConfigTemps();
         }
     </script>
-    
 </body>
-</html>
