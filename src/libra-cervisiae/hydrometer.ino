@@ -30,14 +30,14 @@ void hydrometerSetup() {
 
   yield();
   
-  int weight;
-  averageWeight(&weight, 25);
+  double weight;
+  averageCalibratedWeight(&weight, 25);
 
   if(DEBUG_TIMINGS) Serial.print("Weight read: "); Serial.println(millis() - bootMillis);
 
   yield();
 
-  double gravity = calculateGravity(weight / 1000.0);
+  double gravity = calculateGravity(weight);
   double compensatedGravity = compensateTemperature(gravity, boardTemp);
 
   if(DEBUG_TIMINGS) Serial.print("Calculations finished: "); Serial.println(millis() - bootMillis);
@@ -50,7 +50,7 @@ void hydrometerSetup() {
 
   yield();
 
-  handleOutput(compensatedGravity, wortTemp, 0);
+  handleOutput(compensatedGravity, wortTemp, weight);
 
   if(DEBUG_TIMINGS) Serial.print("Output finished: "); Serial.println(millis() - bootMillis);
 

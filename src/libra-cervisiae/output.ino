@@ -1,10 +1,10 @@
 
-void handleOutput(double gravity, double temperature, double voltage) {
+void handleOutput(double gravity, double temperature, double weight) {
   if(outputMode == 0) {
     return;
   }
   else if(outputMode == 1) {
-    sendToGraviton(gravity, temperature, voltage);
+    sendToGraviton(gravity, temperature, weight);
   }
 }
 
@@ -12,9 +12,9 @@ void handleOutput(double gravity, double temperature, double voltage) {
  *  Outputs
  */
 
-void sendToGraviton(double gravity, double temperature, double voltage) {
+void sendToGraviton(double gravity, double temperature, double weight) {
   char gravitonJSON[250];
-  int contentLength = getGravitonJSON(gravitonJSON, 250, gravity, temperature, voltage);
+  int contentLength = getGravitonJSON(gravitonJSON, 250, gravity, temperature, weight);
 
   WiFiClient client;
   Serial.print("API root: "); Serial.println(apiRoot);
@@ -64,14 +64,14 @@ void sendToGraviton(double gravity, double temperature, double voltage) {
 }
 
 // returns content length
-int getGravitonJSON(char* dest, int n, double g, double t, double v) {
+int getGravitonJSON(char* dest, int n, double g, double t, double w) {
   const size_t bufferSize = JSON_OBJECT_SIZE(4);
   DynamicJsonBuffer jsonBuffer(bufferSize);
   
   JsonObject& root = jsonBuffer.createObject();
   root["name"] = hydrometerName;
   root["gravity"] = g;
-  root["battery"] = v;
+  root["weight"] = w;
   root["temperature"] = t;
   
   int written = root.printTo(dest, n);

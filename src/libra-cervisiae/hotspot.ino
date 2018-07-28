@@ -14,8 +14,8 @@ long lastSensorReading = 0;
 double hotspotBoardTemp;
 double hotspotWortTemp;
 double hotspotGravity;
-double hotspotWeight;
-double hotspotVoltage;
+int hotspotRawWeight;
+double hotspotCalibratedWeight;
 
 bool connectedToWifi;
 long lastSensorUpload = 0;
@@ -87,19 +87,20 @@ void hotspotLoop() {
     
     readWortTemp(&hotspotWortTemp);
     readBoardTemp(&hotspotBoardTemp);
-    averageCalibratedWeight(&hotspotWeight, 10);
+    averageWeight(&hotspotRawWeight, 10);
+    averageCalibratedWeight(&hotspotCalibratedWeight, 10);
   
     scaleShutdown();
     tempShutdown();
   
-    double gravity = calculateGravity(hotspotWeight / 1000.0);
+    double gravity = calculateGravity(hotspotCalibratedWeight);
     hotspotGravity = compensateTemperature(gravity, hotspotBoardTemp);
   
     lastSensorReading = millis();
   }
 
   if(connectedToWifi && millis() - lastSensorUpload > delaySeconds * 1000) {
-    handleOutput(hotspotGravity, hotspotWortTemp, hotspotVoltage);
+    handleOutput(hotspotGravity, hotspotWortTemp, hotspotCalibratedWeight);
     lastSensorUpload = millis();
   }
 }
@@ -113,10 +114,11 @@ void handleLiveUpdate() {
   DynamicJsonBuffer jsonBuffer(bufferSize);
   
   JsonObject& root = jsonBuffer.createObject();
-  root["temperature"] = hotspotWortTemp;
-  root["weight"] = hotspotWeight;
+  root["wortTemperature"] = hotspotWortTemp;
+  root["boardTemperature"] = hotspotBoardTemp;
+  root["rawWeight"] = hotspotRawWeight;
   root["gravity"] = hotspotGravity;
-  root["battery"] = hotspotVoltage;
+  root["calibratedWeight"] = hotspotCalibratedWeight;
   
   char prettyJSON[root.measurePrettyLength() + 2];
   root.prettyPrintTo((char*) prettyJSON, root.measurePrettyLength() + 1);
