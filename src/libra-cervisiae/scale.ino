@@ -50,7 +50,7 @@ void averageWeight(int* total, int count) {
 
 // returns uncalibrated value
 void readWeight(int* weight) {
-  *weight = scale.read();
+  *weight = scale.get_value();
 }
 
 void averageCalibratedWeight(double* total, int count) {
@@ -72,8 +72,6 @@ void readCalibratedWeight(double* weight) {
 
 void tareScale(int tareMillis) {
   Serial.println("Starting tare");
-  scaleSetup();
-  tempSetup();
   tareStart = millis();
   tareLength = tareMillis;
 
@@ -96,10 +94,13 @@ void tareLoop() {
   tareOffset = runningTotal / tareSteps;
 
   if(millis() > (tareStart + tareLength)) {
-    Serial.print("Calculated tare value: "); Serial.println(tareValue);
+    Serial.print("Calculated tare value: "); Serial.println(tareOffset);
     
     scale.set_offset((long) tareOffset);
     tareInProgress = false;
+
+    tempShutdown();
+    scaleShutdown();
 
     // TODO
     // saveConfig();
@@ -114,7 +115,7 @@ void tareLoop() {
 
 void calibrateScale(double knownGrams) {
   int weight;
-  averageWeight(weight, 10);
+  averageWeight(&weight, 10);
 
   double dWeight = weight;
   scaleFactor = dWeight / knownGrams;

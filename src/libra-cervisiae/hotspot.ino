@@ -47,7 +47,7 @@ void hotspotSetup() {
   server.serveStatic("/style.css", SPIFFS, "/style.css");
   
   server.on("/live", HTTP_GET, handleLiveUpdate);
-  server.on("/calibration", HTTP_POST, updateCalibration);
+  server.on("/calibrate", HTTP_POST, updateCalibration);
   server.on("/tare", HTTP_POST, updateTare);
   server.on("/config", HTTP_GET, getConfig);
   server.on("/config", HTTP_POST, updateConfig);
@@ -61,9 +61,6 @@ void hotspotSetup() {
 
   server.begin();
   Serial.println("Started hotspot mode");
-
-  // TODO: remove,debugging
-  tare(10000);
 }
 
 // Hotspot loop
@@ -135,12 +132,19 @@ void updateTare() {
     return;
   }
 
+  if(tareInProgress) {
+    server.send(400, "text/plain", "tare in progress");
+  }
+
   const size_t bufferSize = JSON_OBJECT_SIZE(2) + 120;
   DynamicJsonBuffer jsonBuffer(bufferSize);
 
   JsonObject& root = jsonBuffer.parseObject(server.arg("plain"));
   double time = root["time"];
 
+  tempSetup();
+  scaleSetup();
+  
   tareScale(time * 1000);
 
   server.send(200, "text/plain", "tare in progress");
@@ -160,7 +164,13 @@ void updateCalibration() {
   JsonObject& root = jsonBuffer.parseObject(server.arg("plain"));
   double weight = root["weight"];
 
+  tempSetup();
+  scaleSetup();
+  
   calibrateScale(weight);
+
+  tempShutdown();
+  scaleShutdown();
 
   server.send(200, "text/plain", "calibration updated");
 }
