@@ -10,7 +10,6 @@
   "tempCompensationFactor": 0.000935,
   "wifiNetwork": "01234567890123456789012345678901234567890123456789",
   "wifiPassword": "01234567890123456789012345678901234567890123456789",
-  "gravityCoefficients": [1.000000000001, 1.000000000001, 1.000000000001],
   "apiKey": "01234567890123456789012345678901234567890123456789",
   "apiRoot": "012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789",
   "apiPath": "012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789",
@@ -36,9 +35,9 @@ void printConfig() {
   Serial.print("Temp compensation factor: "); Serial.println(tempCompensationFactor, 6);
   Serial.print("Tare offset: "); Serial.println(tareOffset, 2);
   Serial.print("Scale factor: "); Serial.println(scaleFactor, 4);
-  Serial.print("a: "); Serial.println(gravityCoefficients[0], 10);
-  Serial.print("b: "); Serial.println(gravityCoefficients[1], 10);
-  Serial.print("c: "); Serial.println(gravityCoefficients[2], 10);
+  Serial.print("Equipment weight: "); Serial.println(equipmentWeight, 1);
+  Serial.print("Starting mass: "); Serial.println(startingWortMass, 1);
+  Serial.print("Starting SG: "); Serial.println(startingWortGravity, 3);
 }
 
 void getConfigJSON(char* buf, int lim) {
@@ -54,16 +53,16 @@ void getConfigJSON(char* buf, int lim) {
 
   root["bootToHotspot"] = bootToHotspot;
   root["outputMode"] = outputMode;
-  
-  JsonArray& c = root.createNestedArray("gravityCoefficients");
-  c.add(gravityCoefficients[0]);
-  c.add(gravityCoefficients[1]);
-  c.add(gravityCoefficients[2]);
 
   root["tempCompensationBase"] = tempCompensationBase;
   root["tempCompensationFactor"] = tempCompensationFactor;
   root["tareOffset"] = tareOffset;
   root["scaleFactor"] = scaleFactor;
+  root["equipmentWeight"] = equipmentWeight;
+  root["startingWortMass"] = startingWortMass;
+  root["startingWortGravity"] = startingWortGravity;
+  root["boardTempAddr"] = boardTempAddr;
+  root["wortTempAddr"] = wortTempAddr;
 
   root["apiPath"] = apiPath;
   root["apiRoot"] = apiRoot;
@@ -144,13 +143,11 @@ boolean decodeJSON(String json, boolean decodeCoefficients) {
   tempCompensationFactor = root["tempCompensationFactor"];
   tareOffset = root["tareOffset"];
   scaleFactor = root["scaleFactor"];
-
-  if(decodeCoefficients) {
-    JsonArray& loadedCoefficients = root["gravityCoefficients"];
-    gravityCoefficients[0] = loadedCoefficients[0];
-    gravityCoefficients[1] = loadedCoefficients[1];
-    gravityCoefficients[2] = loadedCoefficients[2];
-  }
+  equipmentWeight = root["equipmentWeight"];
+  startingWortMass = root["startingWortMass"];
+  startingWortGravity = root["startingWortGravity"];
+  boardTempAddr = root["boardTempAddr"];
+  wortTempAddr = root["wortTempAddr"];
 
   return true;
 }

@@ -76,18 +76,10 @@ double getGravity(double weight, double temp) {
   return compensateTemperature(calculateGravity(weight), temp);
 }
 
-// Calculate gravity from weight, using the calibrated polynomial.
+// Calculate gravity from weight, using the stored starting mass
+// and Ballings' numbers
 double calculateGravity(double weight) {
-  double c1, c2, c3;
-  c1 = gravityCoefficients[0];
-  c2 = gravityCoefficients[1];
-  c3 = gravityCoefficients[2];
-  double intermediateGravity = c1 * weight * weight + c2 * weight + c3;
-
-  // After getting the gravity uncorrected for sensor tilt, correct
-  // for tilt to get a gravity reading in terms of the standard
-  // sensor tilt.
-  return intermediateGravity * scaleFactor;
+  return 0;
 }
 
 // Compensate for temperature, using the calibrated polynomial.

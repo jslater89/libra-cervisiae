@@ -57,10 +57,6 @@ int apiPort = 80;
 // API key for Graviton
 char apiKey[51] = "";
 
-// What are the coefficients for the weight->gravity
-// polynomial?
-double gravityCoefficients[3] = {0, 0, 0};
-
 // Should this hydrometer boot into hotspot mode?
 boolean bootToHotspot = false;
 
@@ -95,7 +91,7 @@ double startingWortMass = 20000;
 // The starting gravity of the batch, in SG@68F.
 double startingWortGravity = 1.060;
 
-// The list of DS18B20s connected.
+// The list of DS18B20s connected; filled in at boot
 uint8_t tempSensors[2];
 
 // The DS18B20 address to use for load cell
