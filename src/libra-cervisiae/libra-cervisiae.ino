@@ -15,11 +15,11 @@
 #include <ESP8266mDNS.h>
 #include <FS.h>
 #include <DoubleMatrixMath.h>
-#include <ArduinoJson.h>
 #include <DoubleResetDetector.h>
 #include <HX711.h>
 #include <DallasTemperature.h>
 #include <OneWire.h>
+#include "ArduinoJson/ArduinoJson.h"
 
 /**
  * PENDULUM is a hydrometer for homebrewing use.
