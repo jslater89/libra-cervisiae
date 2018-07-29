@@ -45,11 +45,15 @@
             <hr style="width:50px;border:5px solid #35495e" class="w3-round">
             <p>
                 Enter a time in seconds next to the Tare button to set a length of time
-                over which to tare the scale.
+                over which to tare the scale. Pressing the Tare button begins the tare
+                process. The displayed value will update when the tare is complete.
             </p>
             <p>
                 Place a known mass on the scale, and enter its weight in grams next to the
-                Calibrate button to calibrate the scale.
+                Calibrate button. Enter a time in seconds beneath the calibration mass to
+                set how long the calibration process will average. Pressing the Calibrate
+                button begins the calibration process. The displayed value will update
+                when the calibration is complete.
             </p>
             <p>
                 Place your empty fermentation chamber and airlock onto the scale and press
@@ -130,6 +134,15 @@
                     </div>
                     <div class="w3-col w3-section m4 w3-margin-bottom">
                         <p>grams</p>
+                    </div>
+                </div>
+                <div class="w3-row-padding">
+                    <div class="w3-col w3-section m4 w3-margin-bottom"></div>
+                    <div class="w3-col w3-section m4 w3-margin-bottom">
+                        <input class="w3-input w3-border" type="number" step="1" min="1" max="30" name="calibrationTime" value="10" required>
+                    </div>
+                    <div class="w3-col w3-section m4 w3-margin-bottom">
+                        <p>seconds</p>
                     </div>
                 </div>
             </form>
