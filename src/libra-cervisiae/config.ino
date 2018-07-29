@@ -61,8 +61,12 @@ void getConfigJSON(char* buf, int lim) {
   root["equipmentWeight"] = equipmentWeight;
   root["startingWortMass"] = startingWortMass;
   root["startingWortGravity"] = startingWortGravity;
-  root["boardTempAddr"] = boardTempAddr;
-  root["wortTempAddr"] = wortTempAddr;
+
+  long boardAddrLong, wortAddrLong;
+  convertUnsignedCharToLong(boardTempAddr, &boardAddrLong);
+  convertUnsignedCharToLong(wortTempAddr, &wortAddrLong);
+  root["boardTempAddr"] = boardAddrLong;
+  root["wortTempAddr"] = wortAddrLong;
 
   root["apiPath"] = apiPath;
   root["apiRoot"] = apiRoot;
@@ -151,8 +155,11 @@ boolean decodeJSON(String json, boolean decodeCoefficients) {
   equipmentWeight = root["equipmentWeight"];
   startingWortMass = root["startingWortMass"];
   startingWortGravity = root["startingWortGravity"];
-  //boardTempAddr = root["boardTempAddr"];
-  //wortTempAddr = root["wortTempAddr"];
+  long boardAddrLong = root["boardTempAddr"];
+  long wortAddrLong = root["wortTempAddr"];
+
+  convertLongToUnsignedChar(&boardAddrLong, boardTempAddr);
+  convertLongToUnsignedChar(&wortAddrLong, wortTempAddr);
 
   return true;
 }
