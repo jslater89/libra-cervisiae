@@ -96,15 +96,15 @@ double startingWortMass = 20000;
 double startingWortGravity = 1.060;
 
 // The list of DS18B20s connected; filled in at boot
-unsigned char tempSensors[2][8];
+uint8_t tempSensors[2][8];
 
 // The DS18B20 address to use for load cell
 // temperature compensation.
-unsigned char boardTempAddr[8] = {0,0,0,0,0,0,0,0};
+uint8_t boardTempAddr[8] = {0,0,0,0,0,0,0,0};
 
 // The DS18B20 address to use for wort temperature
 // reporting.
-unsigned char wortTempAddr[8] = {0,0,0,0,0,0,0,0};
+uint8_t wortTempAddr[8] = {0,0,0,0,0,0,0,0};
 /****** End configuration *******/
 
 // Tare in progress

@@ -63,8 +63,8 @@ void getConfigJSON(char* buf, int lim) {
   root["startingWortGravity"] = startingWortGravity;
 
   long boardAddrLong, wortAddrLong;
-  convertUnsignedCharToLong(boardTempAddr, &boardAddrLong);
-  convertUnsignedCharToLong(wortTempAddr, &wortAddrLong);
+  convertUint8ArrayToLong(boardTempAddr, &boardAddrLong);
+  convertUint8ArrayToLong(wortTempAddr, &wortAddrLong);
   root["boardTempAddr"] = boardAddrLong;
   root["wortTempAddr"] = wortAddrLong;
 
@@ -158,8 +158,8 @@ boolean decodeJSON(String json, boolean decodeCoefficients) {
   long boardAddrLong = root["boardTempAddr"];
   long wortAddrLong = root["wortTempAddr"];
 
-  convertLongToUnsignedChar(&boardAddrLong, boardTempAddr);
-  convertLongToUnsignedChar(&wortAddrLong, wortTempAddr);
+  convertLongToUint8Array(&boardAddrLong, boardTempAddr);
+  convertLongToUint8Array(&wortAddrLong, wortTempAddr);
 
   return true;
 }

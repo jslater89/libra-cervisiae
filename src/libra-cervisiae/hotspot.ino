@@ -255,6 +255,26 @@ void updateConfig() {
 }
 
 void getTempSensors() {
-  server.send(500, "text/plain", "not yet implemented");
+  const size_t bufferSize = JSON_ARRAY_SIZE(2) + JSON_OBJECT_SIZE(1) + 2*JSON_OBJECT_SIZE(2);
+  DynamicJsonBuffer jsonBuffer(bufferSize);
+  JsonObject& root = jsonBuffer.createObject();
+
+  uint8_t* d0 = tempSensors[0];
+  uint8_t* d1 = tempSensors[1];
+  
+  JsonArray& sensors = root.createNestedArray("sensors");
+  JsonObject& sensors0 = sensors.createNestedObject();
+  sensors0["id"] = 123456780235432510;
+  sensors0["temp"] = 212.12345;
+  
+  JsonObject& sensors1 = sensors.createNestedObject();
+  sensors1["id"] = 123456780235432510;
+  sensors1["temp"] = 212.12345;
+
+  char prettyJSON[root.measurePrettyLength() + 2];
+  root.prettyPrintTo((char*) prettyJSON, root.measurePrettyLength() + 1);
+  prettyJSON[root.measurePrettyLength() + 1] = 0;
+
+  server.send(200, "application/json", prettyJSON);
 }
 
