@@ -106,6 +106,9 @@ uint8_t wortTempAddr = -1;
 // Tare in progress
 boolean tareInProgress = false;
 
+// Calibration in progress
+boolean calibrationInProgress = false;
+
 DoubleResetDetector drd(5 /* timeout */, 10 /* address */);
 boolean hotspotMode;
 #define DEBUG_TIMINGS true
@@ -152,8 +155,6 @@ void setup() {
 }
 
 void loop() {
-  // put your main code here, to run repeatedly:
-
   if(hotspotMode) {
     hotspotLoop();
   }

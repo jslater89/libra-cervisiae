@@ -16,10 +16,12 @@
 #endif
 
 HX711 scale;
-long tareStart = 0;
-long tareLength = 0;
+long averageStart = 0;
+long averageLength = 0;
+int averageSteps = 0;
 
-int tareSteps = 0;
+double calibrationMass = 1;
+double calibrationReading = 0;
 
 void initScale() {
   scale.begin(HX711_DATA_PIN, HX711_CLOCK_PIN);   
@@ -95,13 +97,13 @@ void readCalibratedWeight(double* weight) {
 
 void tareScale(int tareMillis) {
   Serial.println("Starting tare");
-  tareStart = millis();
-  tareLength = tareMillis;
+  averageStart = millis();
+  averageLength = tareMillis;
 
   if(DEBUG_TIMINGS) Serial.print("Tare start: "); Serial.println(tareStart);
   if(DEBUG_TIMINGS) Serial.print("Tare length: "); Serial.println(tareLength);
 
-  tareSteps = 0;
+  averageStart = 0;
   tareOffset = 0;
   
   tareInProgress = true;
@@ -111,12 +113,12 @@ void tareLoop() {
   int weight = 0;
   readRaw(&weight);
 
-  double runningTotal = tareOffset * tareSteps;
+  double runningTotal = tareOffset * averageSteps;
   runningTotal += weight;
-  tareSteps++;
-  tareOffset = runningTotal / tareSteps;
+  averageSteps++;
+  tareOffset = runningTotal / averageSteps;
 
-  if(millis() > (tareStart + tareLength)) {
+  if(millis() > (averageStart + averageLength)) {
     Serial.print("Calculated tare value: "); Serial.println(tareOffset);
     
     scale.set_offset((long) tareOffset);
@@ -135,13 +137,44 @@ void tareLoop() {
   delay(100);
 }
 
-void calibrateScale(double knownGrams) {
-  int weight;
-  averageWeight(&weight, 10);
+void calibrateScale(double knownGrams, int calibrateMillis) {
+  Serial.println("Starting calibration");
+  averageStart = millis();
+  averageLength = calibrateMillis;
+  
+  calibrationMass = knownGrams;
 
-  double dWeight = weight;
-  scaleFactor = dWeight / knownGrams;
+  if(DEBUG_TIMINGS) Serial.print("Tare start: "); Serial.println(tareStart);
+  if(DEBUG_TIMINGS) Serial.print("Tare length: "); Serial.println(tareLength);
+}
 
-  scale.set_scale(scaleFactor);
+
+void calibrateLoop() {
+  int weight = 0;
+  read(&weight);
+
+  double runningTotal = calibrationReading * averageSteps;
+  runningTotal += weight;
+  averageSteps++;
+  calibrationReading = runningTotal / averageSteps;
+
+  if(millis() > (averageStart + averageLength)) {
+    scaleFactor = calibrationReading / calibrationMass;
+    Serial.print("Calculated calibration value: "); Serial.println(scaleFactor);
+    
+    scale.set_scale(scaleFactor);
+    calibrationInProgress = false;
+
+    tempShutdown();
+    scaleShutdown();
+
+    saveConfig();
+    return;
+  }
+  else {
+    //Serial.print("Tare step "); Serial.println(tareSteps);
+  }
+
+  delay(100);
 }
 

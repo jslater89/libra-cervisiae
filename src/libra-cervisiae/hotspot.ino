@@ -52,6 +52,7 @@ void hotspotSetup() {
   server.on("/equipmentweight", HTTP_POST, updateEquipmentWeight);
   server.on("/config", HTTP_GET, getConfig);
   server.on("/config", HTTP_POST, updateConfig);
+  server.on("/tempsensors", HTTP_GET, getTempSensors);
 
   Serial.print("Starting mDNS at "); Serial.print(hydrometerName); Serial.println(".local");
   boolean result = MDNS.begin(hydrometerName);
@@ -135,8 +136,8 @@ void updateTare() {
     return;
   }
 
-  if(tareInProgress) {
-    server.send(400, "text/plain", "tare in progress");
+  if(tareInProgress || calibrationInProgress) {
+    server.send(400, "text/plain", "tare or calibration in progress");
   }
 
   const size_t bufferSize = JSON_OBJECT_SIZE(2) + 120;
@@ -159,8 +160,8 @@ void updateEquipmentWeight() {
     return;
   }
 
-  if(tareInProgress) {
-    server.send(400, "text/plain", "tare in progress");
+  if(tareInProgress || calibrationInProgress) {
+    server.send(400, "text/plain", "tare or calibration in progress");
   }
 
   const size_t bufferSize = JSON_OBJECT_SIZE(2) + 120;
@@ -191,8 +192,8 @@ void updateCalibration() {
     return;
   }
 
-  if(tareInProgress) {
-    server.send(400, "text/plain", "calibration updated");
+  if(tareInProgress || calibrationInProgress) {
+    server.send(400, "text/plain", "tare or calibration in progress");
   }
 
   const size_t bufferSize = JSON_OBJECT_SIZE(2) + 120;
@@ -200,16 +201,12 @@ void updateCalibration() {
 
   JsonObject& root = jsonBuffer.parseObject(server.arg("plain"));
   double weight = root["weight"];
+  int time = root["time"] * 1000;
 
   tempSetup();
   scaleSetup();
   
-  calibrateScale(weight);
-
-  tempShutdown();
-  scaleShutdown();
-
-  saveConfig();
+  calibrateScale(weight, time);
 
   server.send(200, "text/plain", "calibration updated");
 }
@@ -249,5 +246,9 @@ void updateConfig() {
   }
   
   server.send(200, "text/plain", "ok");
+}
+
+void getTempSensors() {
+  server.send(500, "text/plain", "not yet implemented");
 }
 

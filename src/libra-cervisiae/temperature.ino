@@ -30,6 +30,9 @@ void tempSetup() {
     Serial.println("Warning: more than 2 DS18xxx sensors connected");
     sensorCount = 2;
   }
+  else {
+    Serial.print("Located "); Serial.print(sensorCount); Serial.println(" DS18xxx sensors");
+  }
 
   for(int i = 0; i < sensorCount; i++) {
     uint8_t address = 0;

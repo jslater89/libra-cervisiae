@@ -2,6 +2,8 @@ const API_ROOT = "http://jarvis.local"
 
 let currentConfig = {}
 
+function noOp() {}
+
 // Script to open and close sidebar
 function w3_open() {
     document.getElementById("mySidebar").style.display = "block";
@@ -35,15 +37,20 @@ function submitTare(f) {
     const tareRequest = {
         time: f.tareTime.value,
     }
-    sendPOST("/tare", tareRequest, updateConfigScale);
+    sendPOST("/tare", tareRequest, noOp);
+
+    window.setTimeout(updateConfigScale, f.tareTime.value * 1000);
 }
 
 // validate and submit calibration
 function submitCalibration(f) {     
     const calibrateRequest = {
         weight: f.calibrationWeight.value,
+        time: f.calibrationTime.value,
     }
-    sendPOST("/calibrate", calibrateRequest, updateConfigScale);
+    sendPOST("/calibrate", calibrateRequest, noOp);
+
+    window.setTimeout(updateConfigScale, f.calibrationTime.value * 1000);
 }
 
 function submitEquipmentWeight(f) {
