@@ -77,7 +77,7 @@ void readWeight(int* weight) {
 }
 
 void averageCalibratedWeight(double* total, int count) {
-  int t = 0;
+  double t = 0;
   for(int i = 0; i < count; i++) {
     readCalibratedWeight(total);
     t += *total;
@@ -125,8 +125,7 @@ void tareLoop() {
     tempShutdown();
     scaleShutdown();
 
-    // TODO
-    // saveConfig();
+    saveConfig();
     return;
   }
   else {

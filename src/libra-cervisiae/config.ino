@@ -73,6 +73,11 @@ void getConfigJSON(char* buf, int lim) {
 
 // saves config to config.json in FS
 boolean saveConfig() {
+  // ArduinoJSON will happily set number values to
+  // Infinity or probably NaN, sans quotes; those
+  // values aren't valid JSON.
+  if(isinf(scaleFactor)) scaleFactor = 0;
+  
   File f = SPIFFS.open("/config.json", "w");
   if(!f) {
     Serial.println("Unable to open config file");

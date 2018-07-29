@@ -28,32 +28,41 @@ function submitConfiguration(f) {
     currentConfig.bootToHotspot = f.bootToHotspot.checked;
     currentConfig.outputMode = f.outputMode.value;
 
-    sendConfigRequest(currentConfig);    
+    sendPOST("/config", currentConfig, updateConfigMain);    
 }
 
 function submitTare(f) {
-    // TODO
+    const tareRequest = {
+        time: f.tareTime.value,
+    }
+    sendPOST("/tare", tareRequest, updateConfigScale);
 }
 
 // validate and submit calibration
 function submitCalibration(f) {     
-    // TODO
+    const calibrateRequest = {
+        weight: f.calibrationWeight.value,
+    }
+    sendPOST("/calibrate", calibrateRequest, updateConfigScale);
 }
 
 function submitEquipmentWeight(f) {
-    // TODO
+    const equipTareRequest = {
+        weight: f.equipmentWeight.value,
+    }
+    sendPOST("/equipmentweight", equipTareRequest, updateConfigScale);
 }
 
-function sendConfigRequest(configObject) {
-    console.log(configObject);
+function sendPOST(path, object, onFinishedFunction) {
+    console.log(object);
 
     let xmlhttp = new XMLHttpRequest();
-    let url = API_ROOT + "/config";
+    let url = API_ROOT + path;
     
     xmlhttp.onreadystatechange = function() {
         if (this.readyState == 4) {
             if(this.status < 400 && this.status >= 200) {
-                updateConfigMain();
+                onFinishedFunction();
             }
             else {
                 console.log("error: " + this.status + " " + this.statusText);
@@ -61,12 +70,12 @@ function sendConfigRequest(configObject) {
         }
     };
     xmlhttp.open("POST", url, true);
-    xmlhttp.send(JSON.stringify(configObject));
+    xmlhttp.send(JSON.stringify(object));
 }
 
 function sendCalibrationRequest(calibrationObject) {
     let xmlhttp = new XMLHttpRequest();
-    let url = API_ROOT + "/calibration";
+    let url = API_ROOT + "/calibrate";
     
     xmlhttp.onreadystatechange = function() {
         if (this.readyState == 4) {
@@ -82,12 +91,16 @@ function sendCalibrationRequest(calibrationObject) {
     xmlhttp.send(JSON.stringify(calibrationObject));
 }
 
-function getCalibrationRequest(callback) {
+function getConfigRequest(callback) {
     let xmlhttp = new XMLHttpRequest();
     let url = API_ROOT + "/config";
     xmlhttp.onreadystatechange = function() {
-        currentConfig = this.response;
-        callback(this);
+        if(this.readyState == 4) {
+            if(this.status == 200) {
+                currentConfig = this.response;
+            }
+            callback(this);
+        }
     }
     xmlhttp.overrideMimeType("application/json");
     xmlhttp.responseType = "json";
@@ -96,74 +109,63 @@ function getCalibrationRequest(callback) {
 }
 
 function updateConfigLive() {
-    getCalibrationRequest(function(xmlhttp) {
-        if (xmlhttp.readyState == 4) {
-            if(xmlhttp.status < 400 && xmlhttp.status >= 200) {
-                let config = xmlhttp.response;
-                document.getElementById("hydrometerNameHeading").innerText = config.hydrometerName;
-            }
-            else {
-                console.log("error: " + this.status + " " + this.statusText);
-            }
+    getConfigRequest(function(xmlhttp) {
+        if(xmlhttp.status == 200) {
+            document.getElementById("hydrometerNameHeading").innerText = currentConfig.hydrometerName;
         }
+        else {
+            console.log("error: " + this.status + " " + this.statusText);
+        }
+    
     });
 }
 
 function updateConfigMain() {
-    getCalibrationRequest(function(xmlhttp) {
-        if (xmlhttp.readyState == 4) {
-            if(xmlhttp.status < 400 && xmlhttp.status >= 200) {
-                let config = xmlhttp.response;
-                
-                document.getElementById("hydrometerNameHeading").innerText = config.hydrometerName;
-                document.getElementById("hydrometerName").value = config.hydrometerName;
-                document.getElementById("wifiNetwork").value = config.wifiNetwork;
-                document.getElementById("wifiPassword").value = config.wifiPassword;
-                document.getElementById("apiRoot").value = config.apiRoot;
-                document.getElementById("apiPath").value = config.apiPath;
-                document.getElementById("apiPort").value = config.apiPort;
-                document.getElementById("apiKey").value = config.apiKey;
-                document.getElementById("delaySeconds").value = config.delaySeconds;
-                document.getElementById("tempCompensationBase").value = config.tempCompensationBase;
-                document.getElementById("tempCompensationFactor").value = config.tempCompensationFactor;
-                document.getElementById("bootToHotspot").checked = config.bootToHotspot;
-                document.getElementById("outputMode").value = config.outputMode;
-            }
-            else {
-                console.log("error: " + this.status + " " + this.statusText);
-            }
+    getConfigRequest(function(xmlhttp) {
+        if(xmlhttp.status < 400 && xmlhttp.status >= 200) {                
+            document.getElementById("hydrometerNameHeading").innerText = currentConfig.hydrometerName;
+            document.getElementById("hydrometerName").value = currentConfig.hydrometerName;
+            document.getElementById("wifiNetwork").value = currentConfig.wifiNetwork;
+            document.getElementById("wifiPassword").value = currentConfig.wifiPassword;
+            document.getElementById("apiRoot").value = currentConfig.apiRoot;
+            document.getElementById("apiPath").value = currentConfig.apiPath;
+            document.getElementById("apiPort").value = currentConfig.apiPort;
+            document.getElementById("apiKey").value = currentConfig.apiKey;
+            document.getElementById("delaySeconds").value = currentConfig.delaySeconds;
+            document.getElementById("tempCompensationBase").value = currentConfig.tempCompensationBase;
+            document.getElementById("tempCompensationFactor").value = currentConfig.tempCompensationFactor;
+            document.getElementById("bootToHotspot").checked = currentConfig.bootToHotspot;
+            document.getElementById("outputMode").value = currentConfig.outputMode;
+        }
+        else {
+            console.log("error: " + this.status + " " + this.statusText);
         }
     });
 }
 
 function updateConfigScale() {
-    getCalibrationRequest(function(xmlhttp) {
-        if (xmlhttp.readyState == 4) {
-            if(xmlhttp.status < 400 && xmlhttp.status >= 200) {
-                let config = xmlhttp.response;
-                document.getElementById("hydrometerNameHeading").innerText = config.hydrometerName;
-                document.getElementById("tareOffset").value = config.tareOffset;
-                document.getElementById("scaleFactor").value = config.scaleFactor;
-                document.getElementById("equipmentWeight").value = config.equipmentWeight;
-            }
-            else {
-                console.log("error: " + this.status + " " + this.statusText);
-            }
+    getConfigRequest(function(xmlhttp) {
+        if(xmlhttp.status < 400 && xmlhttp.status >= 200) {
+            document.getElementById("hydrometerNameHeading").innerText = currentConfig.hydrometerName;
+            document.getElementById("tareOffset").value = currentConfig.tareOffset;
+            document.getElementById("scaleFactor").value = currentConfig.scaleFactor;
+            document.getElementById("equipmentWeight").value = currentConfig.equipmentWeight + "g";
+        }
+        else {
+            console.log("error: " + this.status + " " + this.statusText);
         }
     });
 }
 
 function updateConfigTemps() {
-    getCalibrationRequest(function(xmlhttp) {
-        if (xmlhttp.readyState == 4) {
-            if(xmlhttp.status < 400 && xmlhttp.status >= 200) {
-                let config = xmlhttp.response;
-                document.getElementById("hydrometerNameHeading").innerText = config.hydrometerName;
-            }
-            else {
-                console.log("error: " + this.status + " " + this.statusText);
-            }
+    getConfigRequest(function(xmlhttp) {
+        if(xmlhttp.status < 400 && xmlhttp.status >= 200) {
+            document.getElementById("hydrometerNameHeading").innerText = currentConfig.hydrometerName;
         }
+        else {
+            console.log("error: " + this.status + " " + this.statusText);
+        }
+    
     });
 }
 
@@ -176,9 +178,9 @@ function updateLive() {
             if(this.status < 400 && this.status >= 200) {
                 let update = this.response;
                 
-                document.getElementById("measuredWeight").value = update.weight;
+                document.getElementById("measuredWeight").value = update.calibratedWeight + "g";
                 document.getElementById("measuredGravity").value = update.gravity;
-                document.getElementById("measuredTemperature").value = update.temperature;
+                document.getElementById("measuredTemperature").value = update.wortTemperature;
             }
             else {
                 console.log("error: " + this.status + " " + this.statusText);
@@ -196,7 +198,7 @@ function liveRepeat() {
     setTimeout(liveRepeat, 10000);
 }
 
-function updateLive() {
+function updateScale() {
     let xmlhttp = new XMLHttpRequest();
     let url = API_ROOT + "/live";
     
@@ -206,7 +208,7 @@ function updateLive() {
                 let update = this.response;
                 
                 document.getElementById("rawWeight").value = update.rawWeight;
-                document.getElementById("calibratedWeight").value = update.temperature;
+                document.getElementById("calibratedWeight").value = update.calibratedWeight + "g";
             }
             else {
                 console.log("error: " + this.status + " " + this.statusText);

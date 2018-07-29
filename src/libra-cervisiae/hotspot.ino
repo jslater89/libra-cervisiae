@@ -153,12 +153,46 @@ void updateTare() {
   server.send(200, "text/plain", "tare in progress");
 }
 
+void updateEquipmentWeight() {
+  if(!server.hasArg("plain")) {
+    server.send(400, "text/plain", "no body");
+    return;
+  }
+
+  if(tareInProgress) {
+    server.send(400, "text/plain", "tare in progress");
+  }
+
+  const size_t bufferSize = JSON_OBJECT_SIZE(2) + 120;
+  DynamicJsonBuffer jsonBuffer(bufferSize);
+
+  JsonObject& root = jsonBuffer.parseObject(server.arg("plain"));
+
+  double w = root["weight"];
+  
+  if(w == 0) {
+    tempSetup();
+    scaleSetup();
+
+    averageCalibratedWeight(&w, 10);
+  }
+  
+  equipmentWeight = w;
+  saveConfig();
+
+  server.send(200, "text/plain", "equipment weight set");
+}
+
 // The calibrate endpoint accepts a known weight in grams, and calibrates
 // the scale to read that value.
 void updateCalibration() {
   if(!server.hasArg("plain")) {
     server.send(400, "text/plain", "no body");
     return;
+  }
+
+  if(tareInProgress) {
+    server.send(400, "text/plain", "calibration updated");
   }
 
   const size_t bufferSize = JSON_OBJECT_SIZE(2) + 120;
@@ -174,6 +208,8 @@ void updateCalibration() {
 
   tempShutdown();
   scaleShutdown();
+
+  saveConfig();
 
   server.send(200, "text/plain", "calibration updated");
 }

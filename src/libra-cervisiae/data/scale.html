@@ -101,15 +101,15 @@
                 </div>
                 <div class="w3-col m4 w3-margin-bottom">
                     <div class="w3-section">
-                        <input id="equipmentWeight" class="w3-input w3-border" disabled>
+                        <input id="equipmentWeight" class="w3-input w3-border" step="0.1" disabled>
                     </div>
                 </div>
             </div>
 
-            <form onsubmit="submitTare(); return false">
+            <form onsubmit="submitTare(this); return false">
                 <div class="w3-row-padding">
                     <div class="w3-col w3-section m4 w3-margin-bottom">
-                        <button class="w3-button w3-block w3-padding-medium vuejs-blue w3-margin-bottom">Tare</button>
+                        <button type="submit" class="w3-button w3-block w3-padding-medium vuejs-blue w3-margin-bottom">Tare</button>
                     </div>
                     <div class="w3-col w3-section m4 w3-margin-bottom">
                         <input class="w3-input w3-border" type="number" step="1" min="1" max="30" name="tareTime" value="10" required>
@@ -120,10 +120,10 @@
                 </div>
             </form>
 
-            <form onsubmit="submitCalibration(); return false">
+            <form onsubmit="submitCalibration(this); return false">
                 <div class="w3-row-padding">
                     <div class="w3-col w3-section m4 w3-margin-bottom">
-                        <button class="w3-button w3-block w3-padding-medium vuejs-blue w3-margin-bottom">Calibrate</button>
+                        <button type="submit" class="w3-button w3-block w3-padding-medium vuejs-blue w3-margin-bottom">Calibrate</button>
                     </div>
                     <div class="w3-col w3-section m4 w3-margin-bottom">
                         <input class="w3-input w3-border" type="number" step="0.1" min="1" name="calibrationWeight" value="5000" required>
@@ -134,13 +134,13 @@
                 </div>
             </form>
 
-            <form onsubmit="submitEquipmentWeight(); return false">
+            <form onsubmit="submitEquipmentWeight(this); return false">
                 <div class="w3-row-padding">
                     <div class="w3-col w3-section m4 w3-margin-bottom">
-                        <button class="w3-button w3-block w3-padding-medium vuejs-blue w3-margin-bottom">Equip. Tare</button>
+                        <button type="submit" class="w3-button w3-block w3-padding-medium vuejs-blue w3-margin-bottom">Equip. Tare</button>
                     </div>
                     <div class="w3-col w3-section m4 w3-margin-bottom">
-                        <input class="w3-input w3-border" type="number" step="0.1" min="0" name="calibrationWeight" value="0" required>
+                        <input class="w3-input w3-border" type="number" step="0.1" min="0" name="equipmentWeight" value="0" required>
                     </div>
                     <div class="w3-col w3-section m4 w3-margin-bottom">
                         <p>grams</p>
