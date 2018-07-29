@@ -22,9 +22,13 @@
 #include "ArduinoJson/ArduinoJson.h"
 
 /**
- * PENDULUM is a hydrometer for homebrewing use.
+ * LIBRA CERVISIAE is a scale controller for homebrewing use.
  * 
  */
+
+// Debug options
+#define DEBUG_TIMINGS false
+#define DEBUG_DS18XXX true
 
 // Build types
 #define WEMOS
@@ -92,15 +96,15 @@ double startingWortMass = 20000;
 double startingWortGravity = 1.060;
 
 // The list of DS18B20s connected; filled in at boot
-uint8_t tempSensors[2];
+unsigned char tempSensors[2][8];
 
 // The DS18B20 address to use for load cell
 // temperature compensation.
-uint8_t boardTempAddr = -1;
+unsigned char boardTempAddr[8] = {0,0,0,0,0,0,0,0};
 
 // The DS18B20 address to use for wort temperature
 // reporting.
-uint8_t wortTempAddr = -1;
+unsigned char wortTempAddr[8] = {0,0,0,0,0,0,0,0};
 /****** End configuration *******/
 
 // Tare in progress
@@ -111,7 +115,6 @@ boolean calibrationInProgress = false;
 
 DoubleResetDetector drd(5 /* timeout */, 10 /* address */);
 boolean hotspotMode;
-#define DEBUG_TIMINGS true
 long bootMillis;
 
 void setup() {
@@ -139,7 +142,9 @@ void setup() {
 
   hotspotMode = bootToHotspot || drd.detectDoubleReset();
 
-  if(DEBUG_TIMINGS) Serial.print("Startup finished: "); Serial.println(millis() - bootMillis);
+  if(DEBUG_TIMINGS) {
+    Serial.print("Startup finished: "); Serial.println(millis() - bootMillis);
+  }
 
   initScale();
 

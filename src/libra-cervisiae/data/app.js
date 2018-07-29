@@ -39,7 +39,7 @@ function submitTare(f) {
     }
     sendPOST("/tare", tareRequest, noOp);
 
-    window.setTimeout(updateConfigScale, f.tareTime.value * 1000);
+    window.setTimeout(updateConfigScale, f.tareTime.value * 1000 + 5000);
 }
 
 // validate and submit calibration
@@ -50,7 +50,7 @@ function submitCalibration(f) {
     }
     sendPOST("/calibrate", calibrateRequest, noOp);
 
-    window.setTimeout(updateConfigScale, f.calibrationTime.value * 1000);
+    window.setTimeout(updateConfigScale, f.calibrationTime.value * 1000 + 5000);
 }
 
 function submitEquipmentWeight(f) {

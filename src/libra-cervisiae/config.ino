@@ -151,8 +151,8 @@ boolean decodeJSON(String json, boolean decodeCoefficients) {
   equipmentWeight = root["equipmentWeight"];
   startingWortMass = root["startingWortMass"];
   startingWortGravity = root["startingWortGravity"];
-  boardTempAddr = root["boardTempAddr"];
-  wortTempAddr = root["wortTempAddr"];
+  //boardTempAddr = root["boardTempAddr"];
+  //wortTempAddr = root["wortTempAddr"];
 
   return true;
 }

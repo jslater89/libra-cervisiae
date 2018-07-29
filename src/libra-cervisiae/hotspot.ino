@@ -17,7 +17,7 @@ double hotspotGravity;
 int hotspotRawWeight;
 double hotspotCalibratedWeight;
 
-bool connectedToWifi;
+boolean connectedToWifi;
 long lastSensorUpload = 0;
 
 void hotspotSetup() {  
@@ -72,6 +72,11 @@ void hotspotLoop() {
 
   if(tareInProgress) {
     tareLoop();
+    return;
+  }
+
+  if(calibrationInProgress) {
+    calibrateLoop();
     return;
   }
 
@@ -201,7 +206,8 @@ void updateCalibration() {
 
   JsonObject& root = jsonBuffer.parseObject(server.arg("plain"));
   double weight = root["weight"];
-  int time = root["time"] * 1000;
+  int time = root["time"];
+  time = time * 1000;
 
   tempSetup();
   scaleSetup();

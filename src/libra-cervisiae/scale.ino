@@ -100,8 +100,8 @@ void tareScale(int tareMillis) {
   averageStart = millis();
   averageLength = tareMillis;
 
-  if(DEBUG_TIMINGS) Serial.print("Tare start: "); Serial.println(tareStart);
-  if(DEBUG_TIMINGS) Serial.print("Tare length: "); Serial.println(tareLength);
+  if(DEBUG_TIMINGS) Serial.print("Tare start: "); Serial.println(averageStart);
+  if(DEBUG_TIMINGS) Serial.print("Tare length: "); Serial.println(averageLength);
 
   averageStart = 0;
   tareOffset = 0;
@@ -144,14 +144,16 @@ void calibrateScale(double knownGrams, int calibrateMillis) {
   
   calibrationMass = knownGrams;
 
-  if(DEBUG_TIMINGS) Serial.print("Tare start: "); Serial.println(tareStart);
-  if(DEBUG_TIMINGS) Serial.print("Tare length: "); Serial.println(tareLength);
+  if(DEBUG_TIMINGS) Serial.print("Calibration start: "); Serial.println(averageStart);
+  if(DEBUG_TIMINGS) Serial.print("Calibration length: "); Serial.println(averageLength);
+
+  calibrationInProgress = true;
 }
 
 
 void calibrateLoop() {
   int weight = 0;
-  read(&weight);
+  readWeight(&weight);
 
   double runningTotal = calibrationReading * averageSteps;
   runningTotal += weight;
@@ -161,6 +163,12 @@ void calibrateLoop() {
   if(millis() > (averageStart + averageLength)) {
     scaleFactor = calibrationReading / calibrationMass;
     Serial.print("Calculated calibration value: "); Serial.println(scaleFactor);
+
+    double temperature = 0;
+    readBoardTemp(&temperature);
+    if(temperature != DEVICE_DISCONNECTED_F) {
+      tempCompensationBase = temperature;
+    }
     
     scale.set_scale(scaleFactor);
     calibrationInProgress = false;

@@ -4,7 +4,7 @@
  */
 
 void hydrometerSetup() {
-  bool result = tryConnect();
+  boolean result = tryConnect();
 
   if(!result) {
     Serial.println("Going back to sleep");
