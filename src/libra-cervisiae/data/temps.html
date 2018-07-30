@@ -39,12 +39,101 @@
 
     <!-- !PAGE CONTENT! -->
     <div class="w3-main" style="margin-left:340px;margin-right:40px">
-      
+        <div class="w3-container" id="temps" style="margin-top:75px">
+        <h1 class="w3-xxxlarge vuejs-text-blue"><b>Temperature Sensors</b></h1>
+        <hr style="width:50px;border:5px solid #35495e" class="w3-round">
+        <p>
+            Output from all detected temperature sensors is displayed below.
+            Hold the wort probe in your hand to warm it up. One sensor will
+            display a change in temperature. Select that sensor's ID in the
+            wort temperature dropdown. Select the other sensor in the board
+            temperature dropdown.
+        </p>
+        <div class="w3-row-padding">
+            <div class="w3-col m4 w3-margin-bottom">
+            </div>
+            <div class="w3-col m4 w3-margin-bottom">
+                Sensor #1
+            </div>
+            <div class="w3-col m4 w3-margin-bottom">
+                Sensor #2
+            </div>
+        </div>
+        <div class="w3-row-padding">
+            <div class="w3-col m4 w3-margin-bottom">
+                <div class="w3-section">
+                    ID
+                </div>
+            </div>
+            <div class="w3-col m4 w3-margin-bottom">
+                <div class="w3-section">
+                    <input id="tempID0" class="w3-input w3-border" disabled>
+                </div>
+            </div>
+            <div class="w3-col m4 w3-margin-bottom">
+                <div class="w3-section">
+                    <input id="tempID1" class="w3-input w3-border" disabled>
+                </div>
+            </div>
+        </div>
+        <div class="w3-row-padding">
+            <div class="w3-col m4 w3-margin-bottom">
+                <div class="w3-section">
+                    Temp (F)
+                </div>
+            </div>
+            <div class="w3-col m4 w3-margin-bottom">
+                <div class="w3-section">
+                    <input id="tempOutput0" class="w3-input w3-border" disabled>
+                </div>
+            </div>
+            <div class="w3-col m4 w3-margin-bottom">
+                <div class="w3-section">
+                    <input id="tempOutput1" class="w3-input w3-border" disabled>
+                </div>
+            </div>
+        </div>
+        <hr style="width:50px;border:5px solid #35495e" class="w3-round">
+        <div class="w3-row-padding">
+            <div class="w3-col m4 w3-margin-bottom">
+                Wort Sensor
+            </div>
+            <div class="w3-col m4 w3-margin-bottom">
+                Board Sensor
+            </div>
+            <div class="w3-col m4 w3-margin-bottom">
+            </div>
+        </div>
+        <form onsubmit="submitTempSensors(this); return false">
+            <div class="w3-row-padding">
+                <div class="w3-col m4 w3-margin-bottom">
+                    <div class="w3-section">
+                        <select class="w3-select" id="wortSensor" name="wortSensor">
+                            <option value="0">None</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="w3-col m4 w3-margin-bottom">
+                    <div class="w3-section">
+                        <select class="w3-select" id="boardSensor" name="boardSensor">
+                            <option value="0">None</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="w3-col m4 w3-margin-bottom">
+                    <div class="w3-section">
+                        <button type="submit" class="w3-button w3-block w3-padding-medium vuejs-blue w3-margin-bottom">Set Sensors</button>
+                    </div>
+                </div>
+            </div>
+        </form>
+
     </div>
 
     <script>
         window.onload = function() {
             updateConfigTemps();
+            tempRepeat();
         }
     </script>
 </body>

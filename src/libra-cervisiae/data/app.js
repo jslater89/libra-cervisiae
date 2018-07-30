@@ -33,6 +33,18 @@ function submitConfiguration(f) {
     sendPOST("/config", currentConfig, updateConfigMain);    
 }
 
+function submitTempSensors(f) {
+    if(!currentConfig.hasOwnProperty("hydrometerName")) {
+        return;
+    }
+
+    currentConfig.wortTempAddr = f.wortSensor.value;
+    currentConfig.boardTempAddr = f.boardSensor.value;
+
+    sendPOST("/config", currentConfig, updateConfigTemps);    
+
+}
+
 function submitTare(f) {
     const tareRequest = {
         time: f.tareTime.value,
@@ -172,7 +184,6 @@ function updateConfigTemps() {
         else {
             console.log("error: " + this.status + " " + this.statusText);
         }
-    
     });
 }
 
@@ -231,4 +242,66 @@ function updateScale() {
 function scaleRepeat() {
     updateScale();
     setTimeout(scaleRepeat, 10000);
+}
+
+function updateTemps() {
+    let xmlhttp = new XMLHttpRequest();
+    let url = API_ROOT + "/tempsensors";
+    
+    xmlhttp.onreadystatechange = function() {
+        if (this.readyState == 4) {
+            if(this.status < 400 && this.status >= 200) {
+                let update = this.response;
+
+                trySetupTempSelects(update.sensors);
+                update.sensors.forEach(function(sensor, index){
+                    document.getElementById("tempID" + index).value = sensor.id;
+                    document.getElementById("tempOutput" + index).value = sensor.temp;
+                });
+            }
+            else {
+                console.log("error: " + this.status + " " + this.statusText);
+            }
+        }
+    };
+    xmlhttp.overrideMimeType("application/json");
+    xmlhttp.responseType = "json";
+    xmlhttp.open("GET", url, true);
+    xmlhttp.send();
+}
+
+function trySetupTempSelects(sensors) {
+    const wortSelect = document.getElementById("wortSensor");
+    const boardSelect = document.getElementById("boardSensor");
+
+    if(wortSelect.length == 1 && sensors.length > 0) {
+        for(let i = 0; i < sensors.length; i++) {
+            let option = document.createElement("option");
+            option.text = sensors[i].id;
+            option.value = option.text;
+            wortSelect.add(option);
+        }
+
+        if(currentConfig.wortTempAddr > 0) {
+            wortSelect.value = currentConfig.wortTempAddr;
+        }
+    }
+
+    if(boardSelect.length == 1 && sensors.length > 0) {
+        for(let i = 0; i < sensors.length; i++) {
+            let option = document.createElement("option");
+            option.text = sensors[i].id;
+            option.value = option.text;
+            boardSelect.add(option);
+        }
+
+        if(currentConfig.boardTempAddr > 0) {
+            boardSelect.value = currentConfig.boardTempAddr;
+        }
+    }
+}
+
+function tempRepeat() {
+    updateTemps();
+    setTimeout(tempRepeat, 10000);
 }
