@@ -260,8 +260,8 @@ void getTempSensors() {
   uint8_t* d1 = tempSensors[1];
 
   unsigned long a0, a1;
-  convertUint8ArrayToLong(d0, &a0);
-  convertUint8ArrayToLong(d1, &a1);
+  convertUint8ArrayToLong(d0, &a0, 8);
+  convertUint8ArrayToLong(d1, &a1, 8);
 
   startSensors();
 
