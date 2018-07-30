@@ -259,7 +259,7 @@ void getTempSensors() {
   uint8_t* d0 = tempSensors[0];
   uint8_t* d1 = tempSensors[1];
 
-  long a0, a1;
+  unsigned long a0, a1;
   convertUint8ArrayToLong(d0, &a0);
   convertUint8ArrayToLong(d1, &a1);
 
