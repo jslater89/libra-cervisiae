@@ -35,6 +35,20 @@
 //#define PCB
 //#define NODEMCU
 
+#ifdef WEMOS
+#define DS18B20_POWER_PIN 12
+#define DS18B20_DATA_PIN 13
+
+#elif defined PCB
+#define DS18B20_POWER_PIN 12
+#define DS18B20_DATA_PIN 13
+
+#elif defined NODEMCU
+#define DS18B20_POWER_PIN 12
+#define DS18B20_DATA_PIN 13
+
+#endif
+
 /****** Configuration options *******/
 // How long between readings in hydrometer mode?
 int delaySeconds = 1800; // half an hour
@@ -117,6 +131,10 @@ DoubleResetDetector drd(5 /* timeout */, 10 /* address */);
 boolean hotspotMode;
 long bootMillis;
 
+HX711 scale;
+OneWire oneWire(DS18B20_DATA_PIN);
+DallasTemperature sensors(&oneWire);
+
 void setup() {
   bootMillis = millis();
   Serial.begin(115200);
@@ -140,13 +158,13 @@ void setup() {
   }
   printConfig();
 
+  initSensors();
+
   hotspotMode = bootToHotspot || drd.detectDoubleReset();
 
   if(DEBUG_TIMINGS) {
     Serial.print("Startup finished: "); Serial.println(millis() - bootMillis);
   }
-
-  initScale();
 
   // enter hotspot mode if there's no network configured
   if(hotspotMode || strcmp(wifiNetwork, "your_ssid") == 0) {

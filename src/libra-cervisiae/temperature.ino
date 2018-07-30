@@ -1,20 +1,4 @@
 
-#ifdef WEMOS
-#define DS18B20_POWER_PIN 12
-#define DS18B20_DATA_PIN 13
-
-#elif defined PCB
-#define DS18B20_POWER_PIN 12
-#define DS18B20_DATA_PIN 13
-
-#elif defined NODEMCU
-#define DS18B20_POWER_PIN 12
-#define DS18B20_DATA_PIN 13
-
-#endif
-
-OneWire oneWire(DS18B20_DATA_PIN);
-DallasTemperature sensors(&oneWire);
 
 void printAddress(DeviceAddress deviceAddress) {
   for (uint8_t i = 0; i < 8; i++)
@@ -25,14 +9,12 @@ void printAddress(DeviceAddress deviceAddress) {
   }
 }
 
-void tempSetup() {
-  //DS18B20
+void initTemp() {
   pinMode(DS18B20_POWER_PIN, OUTPUT);
   digitalWrite(DS18B20_POWER_PIN, HIGH);
+}
 
-  // Give the sensors a bit of time to wake up
-  delay(500);
-
+void tempStart() {
   sensors.begin();
   sensors.setResolution(12);
 
@@ -74,11 +56,6 @@ void tempSetup() {
   if(DEBUG_DS18XXX && !foundBoardSensor) Serial.println("Warning: could not find board sensor");
 }
 
-void tempShutdown() {
-  //standby current is <3uA
-  //digitalWrite(DS18B20_POWER_PIN, LOW);
-}
-
 // Get temperature from wort sensor
 // returns Fahrenheit temperature
 void readWortTemp(double* t) {
@@ -99,5 +76,12 @@ void readBoardTemp(double* t) {
   // while we wait.
   delay(750);
   *t = sensors.getTempF(boardTempAddr);
+}
+
+void readTempByAddress(DeviceAddress a, double* t) {
+  sensors.requestTemperaturesByAddress(a);
+
+  delay(750);
+  *t = sensors.getTempF(a);
 }
 

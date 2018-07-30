@@ -89,16 +89,14 @@ void hotspotLoop() {
 
   if(millis() - lastSensorReading > READ_INTERVAL) {
      // Start up and shut down the sensors for each read
-    tempSetup();
-    scaleSetup();
+    startSensors();
     
     readWortTemp(&hotspotWortTemp);
     readBoardTemp(&hotspotBoardTemp);
     averageWeight(&hotspotRawWeight, 5);
     averageCalibratedWeight(&hotspotCalibratedWeight, 15);
   
-    scaleShutdown();
-    tempShutdown();
+    stopSensors();
   
     double gravity = calculateGravity(hotspotCalibratedWeight);
     hotspotGravity = compensateTemperature(gravity, hotspotBoardTemp);
@@ -151,8 +149,7 @@ void updateTare() {
   JsonObject& root = jsonBuffer.parseObject(server.arg("plain"));
   double time = root["time"];
 
-  tempSetup();
-  scaleSetup();
+  startSensors();
   
   tareScale(time * 1000);
 
@@ -177,10 +174,11 @@ void updateEquipmentWeight() {
   double w = root["weight"];
   
   if(w == 0) {
-    tempSetup();
-    scaleSetup();
+    startSensors();
 
     averageCalibratedWeight(&w, 10);
+
+    stopSensors();
   }
   
   equipmentWeight = w;
@@ -209,8 +207,7 @@ void updateCalibration() {
   int time = root["time"];
   time = time * 1000;
 
-  tempSetup();
-  scaleSetup();
+  startSensors();
   
   calibrateScale(weight, time);
 
@@ -261,15 +258,27 @@ void getTempSensors() {
 
   uint8_t* d0 = tempSensors[0];
   uint8_t* d1 = tempSensors[1];
+
+  long a0, a1;
+  convertUint8ArrayToLong(d0, &a0);
+  convertUint8ArrayToLong(d1, &a1);
+
+  startSensors();
+
+  double t0, t1;
+  readTempByAddress(d0, &t0);
+  readTempByAddress(d1, &t1);
+
+  stopSensors();
   
   JsonArray& sensors = root.createNestedArray("sensors");
   JsonObject& sensors0 = sensors.createNestedObject();
-  sensors0["id"] = 123456780235432510;
-  sensors0["temp"] = 212.12345;
+  sensors0["id"] = d0;
+  sensors0["temp"] = t0;
   
   JsonObject& sensors1 = sensors.createNestedObject();
-  sensors1["id"] = 123456780235432510;
-  sensors1["temp"] = 212.12345;
+  sensors1["id"] = d1;
+  sensors1["temp"] = t1;
 
   char prettyJSON[root.measurePrettyLength() + 2];
   root.prettyPrintTo((char*) prettyJSON, root.measurePrettyLength() + 1);

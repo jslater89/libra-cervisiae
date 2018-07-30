@@ -14,8 +14,7 @@ void hydrometerSetup() {
   
   if(DEBUG_TIMINGS) Serial.print("Wifi finished: "); Serial.println(millis() - bootMillis);
 
-  tempSetup();
-  scaleSetup();
+  startSensors();
 
   if(DEBUG_TIMINGS) Serial.print("Sensors finished: "); Serial.println(millis() - bootMillis);
 
@@ -60,8 +59,7 @@ void hydrometerSetup() {
 
 void sleep() {
   drd.stop();
-  scaleShutdown();
-  tempShutdown();
+  stopSensors();
   Serial.print("Going to sleep for "); Serial.print(delaySeconds); Serial.println(" seconds");
   ESP.deepSleep(delaySeconds * 1000 * 1000);
 }

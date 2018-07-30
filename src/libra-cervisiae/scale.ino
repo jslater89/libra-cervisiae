@@ -15,7 +15,6 @@
 
 #endif
 
-HX711 scale;
 long averageStart = 0;
 long averageLength = 0;
 int averageSteps = 0;
@@ -29,15 +28,12 @@ void initScale() {
   scale.set_scale(scaleFactor);
 }
 
-void scaleSetup() {
+void scaleStart() {
   //HX711
   scale.power_up();
-
-  // time to stabilize
-  delay(500);
 }
 
-void scaleShutdown() {
+void scaleStop() {
   scale.power_down();
 }
 
@@ -124,9 +120,8 @@ void tareLoop() {
     scale.set_offset((long) tareOffset);
     tareInProgress = false;
 
-    tempShutdown();
-    scaleShutdown();
-
+    stopSensors();
+    
     saveConfig();
     return;
   }
@@ -173,8 +168,7 @@ void calibrateLoop() {
     scale.set_scale(scaleFactor);
     calibrationInProgress = false;
 
-    tempShutdown();
-    scaleShutdown();
+    stopSensors();
 
     saveConfig();
     return;
