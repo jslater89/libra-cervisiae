@@ -273,11 +273,11 @@ void getTempSensors() {
   
   JsonArray& sensors = root.createNestedArray("sensors");
   JsonObject& sensors0 = sensors.createNestedObject();
-  sensors0["id"] = d0;
+  sensors0["id"] = a0;
   sensors0["temp"] = t0;
   
   JsonObject& sensors1 = sensors.createNestedObject();
-  sensors1["id"] = d1;
+  sensors1["id"] = a1;
   sensors1["temp"] = t1;
 
   char prettyJSON[root.measurePrettyLength() + 2];
