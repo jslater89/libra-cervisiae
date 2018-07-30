@@ -47,6 +47,16 @@ void tempStart() {
     if(tempSensors[i] == wortTempAddr) foundWortSensor = true;
     if(tempSensors[i] == boardTempAddr) foundBoardSensor = true;
 
+    uint64_t convertedAddress;
+    uint8_t test[8];
+
+    convertUint8ArrayToLong(tempSensors[i], &convertedAddress);
+    convertLongToUint8Array(&convertedAddress, test);
+
+    printAddress(tempSensors[i]);
+    Serial.println();
+    printAddress(test);
+
     if(DEBUG_DS18XXX) {  
       Serial.print("Found wort/board "); Serial.print(foundWortSensor); Serial.print("/"); Serial.println(foundBoardSensor);
     }
