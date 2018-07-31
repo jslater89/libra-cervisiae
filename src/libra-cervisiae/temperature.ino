@@ -38,22 +38,6 @@ void tempStart() {
       }
     }
   }
-
-  boolean foundWortSensor = false;
-  boolean foundBoardSensor = false;
-  for(int i = 0; i < 2; i++) {
-    if(tempSensors[i] == 0) continue;
-    
-    if(tempSensors[i] == wortTempAddr) foundWortSensor = true;
-    if(tempSensors[i] == boardTempAddr) foundBoardSensor = true;
-
-    if(DEBUG_DS18XXX) {  
-      Serial.print("Found wort/board "); Serial.print(foundWortSensor); Serial.print("/"); Serial.println(foundBoardSensor);
-    }
-  }
-
-  if(DEBUG_DS18XXX && !foundWortSensor) Serial.println("Warning: could not find wort sensor");
-  if(DEBUG_DS18XXX && !foundBoardSensor) Serial.println("Warning: could not find board sensor");
 }
 
 // Get temperature from wort sensor

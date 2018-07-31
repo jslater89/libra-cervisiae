@@ -19,6 +19,11 @@
 }
  */
 
+#define LONG_STRING_SIZE 65
+
+char wortAddrStr[65];
+char boardAddrStr[65];
+
 void printConfig() {
   Serial.print("Hydrometer name: "); Serial.println(hydrometerName);
   Serial.print("Delay seconds: "); Serial.println(delaySeconds);
@@ -38,6 +43,9 @@ void printConfig() {
   Serial.print("Equipment weight: "); Serial.println(equipmentWeight, 1);
   Serial.print("Starting mass: "); Serial.println(startingWortMass, 1);
   Serial.print("Starting SG: "); Serial.println(startingWortGravity, 3);
+  Serial.print("Wort address: "); printAddress(wortTempAddr); Serial.println();
+  Serial.print("Board address: "); printAddress(boardTempAddr); Serial.println();
+  
 }
 
 void getConfigJSON(char* buf, int lim) {
@@ -62,11 +70,11 @@ void getConfigJSON(char* buf, int lim) {
   root["startingWortMass"] = startingWortMass;
   root["startingWortGravity"] = startingWortGravity;
 
-  unsigned long boardAddrLong, wortAddrLong;
-  convertUint8ArrayToLong(boardTempAddr, &boardAddrLong, 8);
-  convertUint8ArrayToLong(wortTempAddr, &wortAddrLong, 8);
-  root["boardTempAddr"] = boardAddrLong;
-  root["wortTempAddr"] = wortAddrLong;
+  convertUint8ToChar(boardTempAddr, boardAddrStr, 8);
+  convertUint8ToChar(wortTempAddr, wortAddrStr, 8);
+  
+  root["boardTempAddr"] = boardAddrStr;
+  root["wortTempAddr"] = wortAddrStr;
 
   root["apiPath"] = apiPath;
   root["apiRoot"] = apiRoot;
@@ -155,11 +163,12 @@ boolean decodeJSON(String json, boolean decodeCoefficients) {
   equipmentWeight = root["equipmentWeight"];
   startingWortMass = root["startingWortMass"];
   startingWortGravity = root["startingWortGravity"];
-  unsigned long boardAddrLong = root["boardTempAddr"];
-  unsigned long wortAddrLong = root["wortTempAddr"];
 
-  convertLongToUint8Array(&boardAddrLong, boardTempAddr, 8);
-  convertLongToUint8Array(&wortAddrLong, wortTempAddr, 8);
+  strncpy(wortAddrStr, root["wortTempAddr"], 65);
+  strncpy(boardAddrStr, root["boardTempAddr"], 65);
+  
+  convertCharToUint8(boardAddrStr, boardTempAddr, 8);
+  convertCharToUint8(wortAddrStr, wortTempAddr, 8);
 
   return true;
 }

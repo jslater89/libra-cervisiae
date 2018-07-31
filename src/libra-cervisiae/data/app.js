@@ -198,7 +198,8 @@ function updateLive() {
                 
                 document.getElementById("measuredWeight").value = update.calibratedWeight + "g";
                 document.getElementById("measuredGravity").value = update.gravity;
-                document.getElementById("measuredTemperature").value = update.wortTemperature;
+                document.getElementById("measuredWortTemperature").value = update.wortTemperature;
+                document.getElementById("measuredBoardTemperature").value = update.boardTemperature;
             }
             else {
                 console.log("error: " + this.status + " " + this.statusText);

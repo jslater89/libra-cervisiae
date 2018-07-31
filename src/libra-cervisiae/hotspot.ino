@@ -259,9 +259,9 @@ void getTempSensors() {
   uint8_t* d0 = tempSensors[0];
   uint8_t* d1 = tempSensors[1];
 
-  unsigned long a0, a1;
-  convertUint8ArrayToLong(d0, &a0, 8);
-  convertUint8ArrayToLong(d1, &a1, 8);
+  char aStr0[65], aStr1[65];
+  convertUint8ToChar(d0, aStr0, 8);
+  convertUint8ToChar(d1, aStr1, 8);
 
   startSensors();
 
@@ -273,11 +273,11 @@ void getTempSensors() {
   
   JsonArray& sensors = root.createNestedArray("sensors");
   JsonObject& sensors0 = sensors.createNestedObject();
-  sensors0["id"] = a0;
+  sensors0["id"] = aStr0;
   sensors0["temp"] = t0;
   
   JsonObject& sensors1 = sensors.createNestedObject();
-  sensors1["id"] = a1;
+  sensors1["id"] = aStr1;
   sensors1["temp"] = t1;
 
   char prettyJSON[root.measurePrettyLength() + 2];
