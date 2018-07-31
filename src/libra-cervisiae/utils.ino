@@ -12,13 +12,13 @@ void convertUint8ToChar(uint8_t* src, char* dst, int len) {
 }
 
 void convertCharToUint8(char* src, uint8_t* dst, int len) {
+  memset(dst, 0, len);
+
   if(src == NULL) {
-    memset(dst, 0, len);
     return;
   }
 
   if((len % 2) != 0) {
-    memset(dst, 0, len);
     return;
   }
 
