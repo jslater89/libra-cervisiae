@@ -100,7 +100,8 @@ double getABW(double alcoholMass, double beerMass) {
 
 double calculateABV(double abw) {
   // Per OmniCalc
-  return abw / (0.789 + 0.211 * abw);
+  abw = abw / 100; // pct to decimal
+  return (abw / (0.789 + 0.211 * abw)) * 100;
 }
 
 double calculateGravity(double originalGravity, double abv) {

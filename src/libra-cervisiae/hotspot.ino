@@ -14,6 +14,8 @@ long lastSensorReading = 0;
 double hotspotBoardTemp;
 double hotspotWortTemp;
 double hotspotGravity;
+double hotspotABW;
+double hotspotABV;
 int hotspotRawWeight;
 double hotspotCalibratedWeight;
 
@@ -98,9 +100,9 @@ void hotspotLoop() {
   
     stopSensors();
   
-    double abw = getBatchABW(hotspotCalibratedWeight);
-    double abv = calculateABV(abw);
-    double gravity = calculateGravity(startingWortGravity, abv);
+    hotspotABW = getBatchABW(hotspotCalibratedWeight);
+    hotspotABV = calculateABV(hotspotABW);
+    double gravity = calculateGravity(startingWortGravity, hotspotABV);
     hotspotGravity = gravity;
   
     lastSensorReading = millis();
@@ -124,6 +126,8 @@ void handleLiveUpdate() {
   root["wortTemperature"] = hotspotWortTemp;
   root["boardTemperature"] = hotspotBoardTemp;
   root["rawWeight"] = hotspotRawWeight;
+  root["abw"] = hotspotABW;
+  root["abv"] = hotspotABV;
   root["gravity"] = hotspotGravity;
   root["calibratedWeight"] = hotspotCalibratedWeight;
   
