@@ -98,8 +98,10 @@ void hotspotLoop() {
   
     stopSensors();
   
-    double gravity = calculateGravity(hotspotCalibratedWeight);
-    hotspotGravity = compensateTemperature(gravity, hotspotBoardTemp);
+    double abw = getBatchABW(hotspotCalibratedWeight);
+    double abv = calculateABV(abw);
+    double gravity = calculateGravity(startingWortGravity, abv);
+    hotspotGravity = gravity;
   
     lastSensorReading = millis();
   }

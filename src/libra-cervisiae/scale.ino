@@ -91,6 +91,16 @@ void readCalibratedWeight(double* weight) {
   *weight = scale.get_units();
 }
 
+// Compensate for temperature, using the calibrated polynomial.
+int compensateTemperature(int rawWeight, double temp) {
+  //adjust for zero shift
+
+  //adjust for output shift
+
+  return rawWeight;
+}
+
+
 void tareScale(int tareMillis) {
   Serial.println("Starting tare");
   averageStart = millis();
