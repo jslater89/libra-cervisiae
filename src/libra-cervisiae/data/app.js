@@ -283,7 +283,7 @@ function trySetupTempSelects(sensors) {
             wortSelect.add(option);
         }
 
-        if(currentConfig.wortTempAddr > 0) {
+        if(currentConfig.wortTempAddr !== "") {
             wortSelect.value = currentConfig.wortTempAddr;
         }
     }
@@ -296,7 +296,7 @@ function trySetupTempSelects(sensors) {
             boardSelect.add(option);
         }
 
-        if(currentConfig.boardTempAddr > 0) {
+        if(currentConfig.boardTempAddr !== "") {
             boardSelect.value = currentConfig.boardTempAddr;
         }
     }
