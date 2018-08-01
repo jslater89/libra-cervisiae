@@ -40,8 +40,8 @@
 #define DS18B20_DATA_PIN 13
 
 #elif defined PCB
-#define DS18B20_POWER_PIN 12
-#define DS18B20_DATA_PIN 13
+#define DS18B20_POWER_PIN 14
+#define DS18B20_DATA_PIN 12
 
 #elif defined NODEMCU
 #define DS18B20_POWER_PIN 12
