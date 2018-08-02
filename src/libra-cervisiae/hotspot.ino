@@ -1,6 +1,6 @@
 
 /**
- * Hotspot mode is for configuring and calibrating the Pendulum.
+ * Hotspot mode is for configuring and calibrating the Libra Cervisiae.
  * 
  * The functions in this file load web page files from the file
  * system and serve them to clients, or send JSON responses in
@@ -39,8 +39,8 @@ void hotspotSetup() {
   }
 
   if(!connectedToWifi) {
-    Serial.print("Starting hotspot with name "); Serial.print(hydrometerName); Serial.println(" and password pendulum");
-    WiFi.softAP(hydrometerName, "pendulum");
+    Serial.print("Starting hotspot with name "); Serial.print(hydrometerName); Serial.println(" and password libra-cervisiae");
+    WiFi.softAP(hydrometerName, "libra-cervisiae");
   }
 
   // main.html has scripts/styles embedded.

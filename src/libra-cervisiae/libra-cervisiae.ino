@@ -55,7 +55,7 @@ int delaySeconds = 1800; // half an hour
 
 // What is the name of this hydrometer? Also used
 // as the SSID for hotspot mode.
-char hydrometerName[51] = "pendulum";
+char hydrometerName[51] = "libra-cervisiae";
 
 // What is fully-charged battery voltage for this hydrometer?
 float fullVoltage = 4.2;
@@ -142,7 +142,7 @@ void setup() {
   Serial.begin(115200);
 
   Serial.println();
-  Serial.println("Pendulum powered on");
+  Serial.println("Libra Cervisiae powered on");
 
   WiFi.disconnect(); // disconnect to avoid stomping on other operations
   WiFi.persistent(false); // don't write to flash
