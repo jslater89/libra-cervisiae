@@ -90,7 +90,7 @@ function copyStartingWeight() {
     const weightInput = document.getElementById("startingWortMass");
     const weightMinusGear = currentUpdate.calibratedWeight - currentConfig.equipmentWeight;
 
-    weightInput.value = weightMinusGear;
+    weightInput.value = +weightMinusGear.toFixed(1);
 }
 
 function sendPOST(path, object, onFinishedFunction) {

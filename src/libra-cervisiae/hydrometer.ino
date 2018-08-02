@@ -41,7 +41,8 @@ void hydrometerSetup() {
 
   yield();
 
-  double abw = getBatchABW(weight);
+  double wortWeight = weight - equipmentWeight;
+  double abw = getBatchABW(wortWeight);
   double abv = calculateABV(abw);
   double gravity = calculateGravity(startingWortGravity, abv);
 
@@ -74,10 +75,10 @@ void hydrometerLoop() {
   // no-op
 }
 
-double getBatchABW(double currentMass) {
-  double weightDelta = startingWortMass - currentMass;
+double getBatchABW(double currentWortMass) {
+  double weightDelta = startingWortMass - currentWortMass;
   double alcoholMass = getAlcoholMass(weightDelta);
-  return getABW(alcoholMass, currentMass);
+  return getABW(alcoholMass, currentWortMass);
 }
 
 double getAlcoholMass(double weightDelta) {
