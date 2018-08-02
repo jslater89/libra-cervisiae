@@ -97,6 +97,7 @@ void hotspotLoop() {
     readBoardTemp(&hotspotBoardTemp);
     averageWeight(&hotspotRawWeight, 5);
     averageCalibratedWeight(&hotspotCalibratedWeight, 15);
+    temperatureCorrectCalibrated(hotspotBoardTemp, &hotspotCalibratedWeight);
   
     stopSensors();
   

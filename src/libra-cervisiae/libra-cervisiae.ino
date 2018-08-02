@@ -84,11 +84,10 @@ boolean bootToHotspot = false;
 int outputMode = 0;
 
 // How should we adjust for the load cell's temperature response?
-// gravity += (base - observedTemp) * factor
-// These default values are acceptable for a 500g cell.
-// Note base temperature is calibration temperature.
+// rawOutput += (observed - base) * factor
+// calibratedOutput += (observed - base) * factor / scaleFactor
 double tempCompensationBase = 68; // F
-double tempCompensationFactor = 0.000935;
+double tempCompensationFactor = -50;
 
 // The tare offset is the difference between the HX711 ADC
 // output and 0.
@@ -104,10 +103,10 @@ double equipmentWeight = 5000;
 
 // The starting mass for the batch, not including equipment weight,
 // in grams.
-double startingWortMass = 20000;
+double startingWortMass = 0;
 
 // The starting gravity of the batch, in SG@68F.
-double startingWortGravity = 1.060;
+double startingWortGravity = 0;
 
 // The list of DS18B20s connected; filled in at boot
 uint8_t tempSensors[2][8];

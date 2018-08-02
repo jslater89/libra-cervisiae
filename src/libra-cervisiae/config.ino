@@ -161,8 +161,8 @@ boolean decodeJSON(String json, boolean decodeCoefficients) {
   tareOffset = root["tareOffset"];
   scaleFactor = root["scaleFactor"];
   equipmentWeight = root["equipmentWeight"];
-  startingWortMass = 2900; //temp, replace with --> root["startingWortMass"];
-  startingWortGravity = 1.06; //temp, replace with --> root["startingWortGravity"];
+  startingWortMass = root["startingWortMass"];
+  startingWortGravity = root["startingWortGravity"];
 
   strncpy(wortAddrStr, root["wortTempAddr"], 65);
   strncpy(boardAddrStr, root["boardTempAddr"], 65);

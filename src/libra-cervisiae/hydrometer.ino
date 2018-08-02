@@ -35,6 +35,7 @@ void hydrometerSetup() {
   
   double weight;
   averageCalibratedWeight(&weight, 25);
+  temperatureCorrectCalibrated(boardTemp, &weight);
 
   if(DEBUG_TIMINGS) Serial.print("Weight read: "); Serial.println(millis() - bootMillis);
 

@@ -50,12 +50,17 @@
             <div class="w3-row-padding w3-grayscale">
                 <div class="w3-col m4 w3-margin-bottom">
                     <div class="w3-section">
-                        <label>Weight</label>
+                        <label>Total Weight/Wort Weight</label>
                     </div>
                 </div>
                 <div class="w3-col m4 w3-margin-bottom">
                     <div class="w3-section">
                         <input class="w3-input w3-border" id="measuredWeight" type="text" disabled/>
+                    </div>
+                </div>
+                <div class="w3-col m4 w3-margin-bottom">
+                    <div class="w3-section">
+                        <input class="w3-input w3-border" id="measuredWortWeight" type="text" disabled/>
                     </div>
                 </div>
             </div>
@@ -119,7 +124,46 @@
                     </div>
                 </div>
             </div>
-        </div>        
+            <hr style="width:50px;border:5px solid #35495e" class="w3-round">
+            <form onsubmit="submitBatchStart(this); return false">
+                <div class="w3-row-padding w3-grayscale">
+                    <div class="w3-col m4 w3-margin-bottom">
+                        <div class="w3-section">
+                            <label>Starting Gravity (SG)</label>
+                        </div>
+                    </div>
+                    <div class="w3-col m4 w3-margin-bottom">
+                        <div class="w3-section">
+                            <input class="w3-input w3-border" name="startingWortGravity" id="startingWortGravity" type="number" min="1.000" max="1.200" step="0.001" />
+                        </div>
+                    </div>
+                </div>
+                <div class="w3-row-padding w3-grayscale">
+                    <div class="w3-col m4 w3-margin-bottom">
+                        <div class="w3-section">
+                            <label>Starting Weight (g)</label>
+                        </div>
+                    </div>
+                    <div class="w3-col m4 w3-margin-bottom">
+                        <div class="w3-section">
+                            <input class="w3-input w3-border" name="startingWortMass" id="startingWortMass" type="number" min="0" step="0.1" />
+                        </div>
+                    </div>
+                </div>
+                <div class="w3-row-padding">
+                    <div class="w3-col m4 w3-margin-bottom">
+                        <div class="w3-section">
+                            <button type="button" onclick="copyStartingWeight()" class="w3-button w3-block w3-padding-medium vuejs-blue w3-margin-bottom">Copy Weight</button>
+                        </div>
+                    </div>
+                    <div class="w3-col m4 w3-margin-bottom">
+                        <div class="w3-section">
+                            <button type="submit" class="w3-button w3-block w3-padding-medium vuejs-blue w3-margin-bottom">Start Batch</button>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
         
         <!-- End page content -->
     </div>

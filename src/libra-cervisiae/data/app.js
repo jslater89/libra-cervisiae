@@ -1,6 +1,7 @@
 const API_ROOT = "http://jarvis.local"
 
 let currentConfig = {}
+let currentUpdate = {}
 
 function noOp() {}
 
@@ -72,6 +73,26 @@ function submitEquipmentWeight(f) {
     sendPOST("/equipmentweight", equipTareRequest, updateConfigScale);
 }
 
+function submitBatchStart(f) {
+    if(!currentConfig.hasOwnProperty("hydrometerName")) {
+        return;
+    }
+    currentConfig.startingWortMass = f.startingWortMass.value;
+    currentConfig.startingWortGravity = f.startingWortGravity.value;
+
+    sendPOST("/config", currentConfig, updateConfigLive);
+}
+
+function copyStartingWeight() {
+    if(!currentUpdate.hasOwnProperty("calibratedWeight") || !currentConfig.hasOwnProperty("hydrometerName")) {
+        return;
+    }
+    const weightInput = document.getElementById("startingWortMass");
+    const weightMinusGear = currentUpdate.calibratedWeight - currentConfig.equipmentWeight;
+
+    weightInput.value = weightMinusGear;
+}
+
 function sendPOST(path, object, onFinishedFunction) {
     console.log(object);
 
@@ -131,6 +152,13 @@ function updateConfigLive() {
     getConfigRequest(function(xmlhttp) {
         if(xmlhttp.status == 200) {
             document.getElementById("hydrometerNameHeading").innerText = currentConfig.hydrometerName;
+            document.getElementById("startingWortMass").value = currentConfig.startingWortMass;
+            document.getElementById("startingWortGravity").value = currentConfig.startingWortGravity;
+
+            const wortWeightOutput = document.getElementById("measuredWortWeight");
+            if(wortWeightOutput.value === "") {
+                wortWeightOutput.value = currentUpdate.calibratedWeight - currentConfig.equipmentWeight + "g";
+            }
         }
         else {
             console.log("error: " + this.status + " " + this.statusText);
@@ -195,6 +223,11 @@ function updateLive() {
         if (this.readyState == 4) {
             if(this.status < 400 && this.status >= 200) {
                 let update = this.response;
+                currentUpdate = update;
+
+                if(currentConfig.hasOwnProperty("hydrometerName")) {
+                    document.getElementById("measuredWortWeight").value = (update.calibratedWeight - currentConfig.equipmentWeight) + "g";
+                }
                 
                 document.getElementById("measuredWeight").value = update.calibratedWeight + "g";
                 document.getElementById("measuredGravity").value = update.gravity;
@@ -227,6 +260,7 @@ function updateScale() {
         if (this.readyState == 4) {
             if(this.status < 400 && this.status >= 200) {
                 let update = this.response;
+                currentUpdate = update;
                 
                 document.getElementById("rawWeight").value = update.rawWeight;
                 document.getElementById("calibratedWeight").value = update.calibratedWeight + "g";
@@ -255,6 +289,7 @@ function updateTemps() {
         if (this.readyState == 4) {
             if(this.status < 400 && this.status >= 200) {
                 let update = this.response;
+                currentUpdate = update;
 
                 trySetupTempSelects(update.sensors);
                 update.sensors.forEach(function(sensor, index){
