@@ -1,6 +1,6 @@
 {
 	"delaySeconds": 1800,
-	"hydrometerName": "pendulum",
+	"hydrometerName": "libra-cervisiae",
 	"fullVoltage": 4.2,
 	"wifiNetwork": "your_ssid",
 	"wifiPassword": "your_password",
