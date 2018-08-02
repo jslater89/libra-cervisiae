@@ -86,6 +86,9 @@ int outputMode = 0;
 // How should we adjust for the load cell's temperature response?
 // rawOutput += (observed - base) * factor
 // calibratedOutput += (observed - base) * factor / scaleFactor
+// A negative compensation factor means that the scale reads higher
+// at lower temperatures. A positive compensation factor means that
+// the scale reads higher at higher temperatures.
 double tempCompensationBase = 68; // F
 double tempCompensationFactor = -50;
 
