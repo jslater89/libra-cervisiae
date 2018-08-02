@@ -91,8 +91,11 @@ void readCalibratedWeight(double* weight) {
   *weight = scale.get_units();
 }
 
+// Correct load cells for temperature effects.
+// Note that the correction is the inverse of the temperature difference,
+// because I always forget and flip a term around.
 void temperatureCorrectCalibrated(double temperature, double *weight) {
-  double correction = (temperature - tempCompensationBase) * tempCompensationFactor / scaleFactor;
+  double correction = (tempCompensationBase - temperature) * tempCompensationFactor / scaleFactor;
   *weight += correction;
 }
 
