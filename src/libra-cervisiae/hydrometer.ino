@@ -75,10 +75,11 @@ void hydrometerLoop() {
   // no-op
 }
 
-double getBatchABW(double currentWortMass) {
+double getBatchABW(double currentNoEquipmentMass) {
   double weightDelta = startingWortMass - currentWortMass;
   double alcoholMass = getAlcoholMass(weightDelta);
-  return getABW(alcoholMass, currentWortMass);
+  double yeastMass = getYeastMass(weightDelta);
+  return getABW(alcoholMass, currentNoEquipmentMass - yeastMass);
 }
 
 double getAlcoholMass(double weightDelta) {
@@ -94,8 +95,8 @@ double getCO2Mass(double weightDelta) {
 }
 
 double getABW(double alcoholMass, double beerMass) {
-  // alcohol mass is calculated, beer mass is the total
-  // mass on the scale, so it's pretty simple
+  // alcohol mass is calculated. Beer mass is the mass of the
+  // beer minus equipment mass and yeast biomass.
 
   return alcoholMass / beerMass * 100;
 }
