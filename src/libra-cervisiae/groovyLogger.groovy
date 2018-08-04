@@ -1,4 +1,4 @@
-println "sequence#,date,boardTemp,rawWeight,calibratedWeight"
+println "sequence#,date,boardTemp,rawWeight,calibratedWeight,wortTemp,abw,abv,gravity"
 
 int seq = 0;
 
@@ -8,7 +8,7 @@ while(true) {
     def text = connection.inputStream.text;
     def json = new groovy.json.JsonSlurper().parseText(text);
 
-    println "${seq++},${new Date().format("MM/dd/yyyy HH:mm:ss")},$json.boardTemperature,$json.rawWeight,$json.calibratedWeight"
+    println "${seq++},${new Date().format("MM/dd/yyyy HH:mm:ss")},$json.boardTemperature,$json.rawWeight,$json.calibratedWeight,$json.wortTemperature,$json.abw,$json.abv,$json.gravity"
 
     sleep(1000 * 60 * 10);
 }

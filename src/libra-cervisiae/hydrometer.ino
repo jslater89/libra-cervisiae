@@ -76,7 +76,7 @@ void hydrometerLoop() {
 }
 
 double getBatchABW(double currentNoEquipmentMass) {
-  double weightDelta = startingWortMass - currentWortMass;
+  double weightDelta = startingWortMass - currentNoEquipmentMass;
   double alcoholMass = getAlcoholMass(weightDelta);
   double yeastMass = getYeastMass(weightDelta);
   return getABW(alcoholMass, currentNoEquipmentMass - yeastMass);
