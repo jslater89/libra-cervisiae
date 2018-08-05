@@ -5,7 +5,7 @@
     (drawings 17)
     (tracks 336)
     (zones 0)
-    (modules 161)
+    (modules 159)
     (nets 19)
   )
 
@@ -141,6 +141,54 @@
     (add_net "Net-(R4-Pad1)")
     (add_net "Net-(R5-Pad2)")
     (add_net "Net-(R6-Pad2)")
+  )
+
+  (module Extra_Pads:Stitching_Via_0.6mm (layer F.Cu) (tedit 5B36229F) (tstamp 5B66612C)
+    (at 119 86)
+    (fp_text reference REF** (at 0 0.1) (layer F.SilkS) hide
+      (effects (font (size 0.25 0.25) (thickness 0.025)))
+    )
+    (fp_text value Stitch (at 0 -0.1) (layer F.Fab) hide
+      (effects (font (size 0.25 0.25) (thickness 0.025)))
+    )
+    (pad 1 thru_hole circle (at 0 0) (size 0.6 0.6) (drill 0.4) (layers *.Cu)
+      (net 6 /GND) (zone_connect 2))
+  )
+
+  (module Extra_Pads:Stitching_Via_0.6mm (layer F.Cu) (tedit 5B36229F) (tstamp 5B666124)
+    (at 117 85.5)
+    (fp_text reference REF** (at 0 0.1) (layer F.SilkS) hide
+      (effects (font (size 0.25 0.25) (thickness 0.025)))
+    )
+    (fp_text value Stitch (at 0 -0.1) (layer F.Fab) hide
+      (effects (font (size 0.25 0.25) (thickness 0.025)))
+    )
+    (pad 1 thru_hole circle (at 0 0) (size 0.6 0.6) (drill 0.4) (layers *.Cu)
+      (net 6 /GND) (zone_connect 2))
+  )
+
+  (module Extra_Pads:Stitching_Via_0.6mm (layer F.Cu) (tedit 5B36229F) (tstamp 5B66611C)
+    (at 115 86.5)
+    (fp_text reference REF** (at 0 0.1) (layer F.SilkS) hide
+      (effects (font (size 0.25 0.25) (thickness 0.025)))
+    )
+    (fp_text value Stitch (at 0 -0.1) (layer F.Fab) hide
+      (effects (font (size 0.25 0.25) (thickness 0.025)))
+    )
+    (pad 1 thru_hole circle (at 0 0) (size 0.6 0.6) (drill 0.4) (layers *.Cu)
+      (net 6 /GND) (zone_connect 2))
+  )
+
+  (module Extra_Pads:Stitching_Via_0.6mm (layer F.Cu) (tedit 5B36229F) (tstamp 5B66610F)
+    (at 135.938 99)
+    (fp_text reference REF** (at 0 0.1) (layer F.SilkS) hide
+      (effects (font (size 0.25 0.25) (thickness 0.025)))
+    )
+    (fp_text value Stitch (at 0 -0.1) (layer F.Fab) hide
+      (effects (font (size 0.25 0.25) (thickness 0.025)))
+    )
+    (pad 1 thru_hole circle (at 0 0) (size 0.6 0.6) (drill 0.4) (layers *.Cu)
+      (net 6 /GND) (zone_connect 2))
   )
 
   (module CP2102-BRK:CP2102-BREAKOUT (layer F.Cu) (tedit 5B64CCCE) (tstamp 5B64EFD2)
@@ -968,18 +1016,6 @@
       (net 6 /GND) (zone_connect 2))
   )
 
-  (module Extra_Pads:Stitching_Via_0.6mm (layer F.Cu) (tedit 5B36229F) (tstamp 5B5E1945)
-    (at 118.938 84.938)
-    (fp_text reference REF** (at 0 0.1) (layer F.SilkS) hide
-      (effects (font (size 0.25 0.25) (thickness 0.025)))
-    )
-    (fp_text value Stitch (at 0 -0.1) (layer F.Fab) hide
-      (effects (font (size 0.25 0.25) (thickness 0.025)))
-    )
-    (pad 1 thru_hole circle (at 0 0) (size 0.6 0.6) (drill 0.4) (layers *.Cu)
-      (net 6 /GND) (zone_connect 2))
-  )
-
   (module Extra_Pads:Stitching_Via_0.6mm (layer F.Cu) (tedit 5B36229F) (tstamp 5B51C0D1)
     (at 110.938 68.938)
     (fp_text reference REF** (at 0 0.1) (layer F.SilkS) hide
@@ -1653,7 +1689,7 @@
   )
 
   (module Extra_Pads:Stitching_Via_0.6mm (layer F.Cu) (tedit 5B36229F) (tstamp 5B3632C6)
-    (at 135.938 95.938)
+    (at 135.938 94.938)
     (fp_text reference REF** (at 0 0.1) (layer F.SilkS) hide
       (effects (font (size 0.25 0.25) (thickness 0.025)))
     )
@@ -1665,7 +1701,7 @@
   )
 
   (module Extra_Pads:Stitching_Via_0.6mm (layer F.Cu) (tedit 5B36229F) (tstamp 5B3632B0)
-    (at 135.938 91.938)
+    (at 135.938 90.938)
     (fp_text reference REF** (at 0 0.1) (layer F.SilkS) hide
       (effects (font (size 0.25 0.25) (thickness 0.025)))
     )
@@ -1726,54 +1762,6 @@
 
   (module Extra_Pads:Stitching_Via_0.6mm (layer F.Cu) (tedit 5B36229F) (tstamp 5B362506)
     (at 116.938 98.938)
-    (fp_text reference REF** (at 0 0.1) (layer F.SilkS) hide
-      (effects (font (size 0.25 0.25) (thickness 0.025)))
-    )
-    (fp_text value Stitch (at 0 -0.1) (layer F.Fab) hide
-      (effects (font (size 0.25 0.25) (thickness 0.025)))
-    )
-    (pad 1 thru_hole circle (at 0 0) (size 0.6 0.6) (drill 0.4) (layers *.Cu)
-      (net 6 /GND) (zone_connect 2))
-  )
-
-  (module Extra_Pads:Stitching_Via_0.6mm (layer F.Cu) (tedit 5B36229F) (tstamp 5B362512)
-    (at 114.938 98.938)
-    (fp_text reference REF** (at 0 0.1) (layer F.SilkS) hide
-      (effects (font (size 0.25 0.25) (thickness 0.025)))
-    )
-    (fp_text value Stitch (at 0 -0.1) (layer F.Fab) hide
-      (effects (font (size 0.25 0.25) (thickness 0.025)))
-    )
-    (pad 1 thru_hole circle (at 0 0) (size 0.6 0.6) (drill 0.4) (layers *.Cu)
-      (net 6 /GND) (zone_connect 2))
-  )
-
-  (module Extra_Pads:Stitching_Via_0.6mm (layer F.Cu) (tedit 5B36229F) (tstamp 5B362526)
-    (at 114.938 100.938)
-    (fp_text reference REF** (at 0 0.1) (layer F.SilkS) hide
-      (effects (font (size 0.25 0.25) (thickness 0.025)))
-    )
-    (fp_text value Stitch (at 0 -0.1) (layer F.Fab) hide
-      (effects (font (size 0.25 0.25) (thickness 0.025)))
-    )
-    (pad 1 thru_hole circle (at 0 0) (size 0.6 0.6) (drill 0.4) (layers *.Cu)
-      (net 6 /GND) (zone_connect 2))
-  )
-
-  (module Extra_Pads:Stitching_Via_0.6mm (layer F.Cu) (tedit 5B36229F) (tstamp 5B36251C)
-    (at 114.938 96.938)
-    (fp_text reference REF** (at 0 0.1) (layer F.SilkS) hide
-      (effects (font (size 0.25 0.25) (thickness 0.025)))
-    )
-    (fp_text value Stitch (at 0 -0.1) (layer F.Fab) hide
-      (effects (font (size 0.25 0.25) (thickness 0.025)))
-    )
-    (pad 1 thru_hole circle (at 0 0) (size 0.6 0.6) (drill 0.4) (layers *.Cu)
-      (net 6 /GND) (zone_connect 2))
-  )
-
-  (module Extra_Pads:Stitching_Via_0.6mm (layer F.Cu) (tedit 5B36229F) (tstamp 5B362521)
-    (at 114.938 94.938)
     (fp_text reference REF** (at 0 0.1) (layer F.SilkS) hide
       (effects (font (size 0.25 0.25) (thickness 0.025)))
     )
@@ -2096,18 +2084,6 @@
 
   (module Extra_Pads:Stitching_Via_0.6mm (layer F.Cu) (tedit 5B36229F) (tstamp 5B3626AB)
     (at 131.938 102.938)
-    (fp_text reference REF** (at 0 0.1) (layer F.SilkS) hide
-      (effects (font (size 0.25 0.25) (thickness 0.025)))
-    )
-    (fp_text value Stitch (at 0 -0.1) (layer F.Fab) hide
-      (effects (font (size 0.25 0.25) (thickness 0.025)))
-    )
-    (pad 1 thru_hole circle (at 0 0) (size 0.6 0.6) (drill 0.4) (layers *.Cu)
-      (net 6 /GND) (zone_connect 2))
-  )
-
-  (module Extra_Pads:Stitching_Via_0.6mm (layer F.Cu) (tedit 5B36229F) (tstamp 5B3626A0)
-    (at 124.938 94.938)
     (fp_text reference REF** (at 0 0.1) (layer F.SilkS) hide
       (effects (font (size 0.25 0.25) (thickness 0.025)))
     )
