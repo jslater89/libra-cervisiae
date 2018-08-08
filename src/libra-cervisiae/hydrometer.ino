@@ -3,6 +3,7 @@
  * Hydrometer mode
  */
 
+// gram of sugar lost
 const double alcoholPerGramLost = 0.48391;
 const double co2PerGramLost = 0.46286;
 const double yeastPerGramLost = 0.05323;
@@ -82,16 +83,18 @@ double getBatchABW(double currentNoEquipmentMass) {
   return getABW(alcoholMass, currentNoEquipmentMass - yeastMass);
 }
 
+// CO2 is what's actually leaving the fermentation vessel. When (co2PerGramLost) grams
+// weight delta shows up, that means we've fermented one gram of sugar.
 double getAlcoholMass(double weightDelta) {
-  return weightDelta * alcoholPerGramLost;
+  return weightDelta * (alcoholPerGramLost / co2PerGramLost);
 }
 
 double getYeastMass(double weightDelta) {
-  return weightDelta * yeastPerGramLost;
+  return weightDelta * (yeastPerGramLost / co2PerGramLost);
 }
 
 double getCO2Mass(double weightDelta) {
-  return weightDelta * co2PerGramLost;
+  return weightDelta;
 }
 
 double getABW(double alcoholMass, double beerMass) {
