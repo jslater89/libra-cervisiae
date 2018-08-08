@@ -200,6 +200,7 @@
 
   (module Extra_Pads:Stitching_Via_0.6mm (layer F.Cu) (tedit 5B36229F) (tstamp 5B66612C)
     (at 119 86)
+    (attr virtual)
     (fp_text reference REF** (at 0 0.1) (layer F.SilkS) hide
       (effects (font (size 0.25 0.25) (thickness 0.025)))
     )
@@ -212,6 +213,7 @@
 
   (module Extra_Pads:Stitching_Via_0.6mm (layer F.Cu) (tedit 5B36229F) (tstamp 5B666124)
     (at 117 85.5)
+    (attr virtual)
     (fp_text reference REF** (at 0 0.1) (layer F.SilkS) hide
       (effects (font (size 0.25 0.25) (thickness 0.025)))
     )
@@ -224,6 +226,7 @@
 
   (module Extra_Pads:Stitching_Via_0.6mm (layer F.Cu) (tedit 5B36229F) (tstamp 5B66611C)
     (at 115 86.5)
+    (attr virtual)
     (fp_text reference REF** (at 0 0.1) (layer F.SilkS) hide
       (effects (font (size 0.25 0.25) (thickness 0.025)))
     )
@@ -236,6 +239,7 @@
 
   (module Extra_Pads:Stitching_Via_0.6mm (layer F.Cu) (tedit 5B36229F) (tstamp 5B66610F)
     (at 135.938 99)
+    (attr virtual)
     (fp_text reference REF** (at 0 0.1) (layer F.SilkS) hide
       (effects (font (size 0.25 0.25) (thickness 0.025)))
     )
@@ -370,6 +374,7 @@
 
   (module Extra_Pads:Stitching_Via_0.6mm (layer F.Cu) (tedit 5B36229F) (tstamp 5B540617)
     (at 142.938 107.938)
+    (attr virtual)
     (fp_text reference REF** (at 0 0.1) (layer F.SilkS) hide
       (effects (font (size 0.25 0.25) (thickness 0.025)))
     )
@@ -382,6 +387,7 @@
 
   (module Extra_Pads:Stitching_Via_0.6mm (layer F.Cu) (tedit 5B36229F) (tstamp 5B540414)
     (at 139.938 107.938)
+    (attr virtual)
     (fp_text reference REF** (at 0 0.1) (layer F.SilkS) hide
       (effects (font (size 0.25 0.25) (thickness 0.025)))
     )
@@ -394,6 +400,7 @@
 
   (module Extra_Pads:Stitching_Via_0.6mm (layer F.Cu) (tedit 5B36229F) (tstamp 5B540213)
     (at 139.938 103.938)
+    (attr virtual)
     (fp_text reference REF** (at 0 0.1) (layer F.SilkS) hide
       (effects (font (size 0.25 0.25) (thickness 0.025)))
     )
@@ -406,6 +413,7 @@
 
   (module Extra_Pads:Stitching_Via_0.6mm (layer F.Cu) (tedit 5B36229F) (tstamp 5B540014)
     (at 139.938 99.938)
+    (attr virtual)
     (fp_text reference REF** (at 0 0.1) (layer F.SilkS) hide
       (effects (font (size 0.25 0.25) (thickness 0.025)))
     )
@@ -418,6 +426,7 @@
 
   (module Extra_Pads:Stitching_Via_0.6mm (layer F.Cu) (tedit 5B36229F) (tstamp 5B53FE17)
     (at 139.938 95.938)
+    (attr virtual)
     (fp_text reference REF** (at 0 0.1) (layer F.SilkS) hide
       (effects (font (size 0.25 0.25) (thickness 0.025)))
     )
@@ -430,6 +439,7 @@
 
   (module Extra_Pads:Stitching_Via_0.6mm (layer F.Cu) (tedit 5B36229F) (tstamp 5B53FA20)
     (at 164.938 107.938)
+    (attr virtual)
     (fp_text reference REF** (at 0 0.1) (layer F.SilkS) hide
       (effects (font (size 0.25 0.25) (thickness 0.025)))
     )
@@ -442,6 +452,7 @@
 
   (module Extra_Pads:Stitching_Via_0.6mm (layer F.Cu) (tedit 5B36229F) (tstamp 5B53F827)
     (at 161.938 107.938)
+    (attr virtual)
     (fp_text reference REF** (at 0 0.1) (layer F.SilkS) hide
       (effects (font (size 0.25 0.25) (thickness 0.025)))
     )
@@ -454,6 +465,7 @@
 
   (module Extra_Pads:Stitching_Via_0.6mm (layer F.Cu) (tedit 5B36229F) (tstamp 5B53F630)
     (at 161.938 104.938)
+    (attr virtual)
     (fp_text reference REF** (at 0 0.1) (layer F.SilkS) hide
       (effects (font (size 0.25 0.25) (thickness 0.025)))
     )
@@ -466,6 +478,7 @@
 
   (module Extra_Pads:Stitching_Via_0.6mm (layer F.Cu) (tedit 5B36229F) (tstamp 5B53F43B)
     (at 164.938 104.938)
+    (attr virtual)
     (fp_text reference REF** (at 0 0.1) (layer F.SilkS) hide
       (effects (font (size 0.25 0.25) (thickness 0.025)))
     )
@@ -478,6 +491,7 @@
 
   (module Extra_Pads:Stitching_Via_0.6mm (layer F.Cu) (tedit 5B36229F) (tstamp 5B53F248)
     (at 164.938 100.938)
+    (attr virtual)
     (fp_text reference REF** (at 0 0.1) (layer F.SilkS) hide
       (effects (font (size 0.25 0.25) (thickness 0.025)))
     )
@@ -490,6 +504,7 @@
 
   (module Extra_Pads:Stitching_Via_0.6mm (layer F.Cu) (tedit 5B36229F) (tstamp 5B53F057)
     (at 161.938 100.938)
+    (attr virtual)
     (fp_text reference REF** (at 0 0.1) (layer F.SilkS) hide
       (effects (font (size 0.25 0.25) (thickness 0.025)))
     )
@@ -502,6 +517,7 @@
 
   (module Extra_Pads:Stitching_Via_0.6mm (layer F.Cu) (tedit 5B36229F) (tstamp 5B53EE68)
     (at 161.938 96.938)
+    (attr virtual)
     (fp_text reference REF** (at 0 0.1) (layer F.SilkS) hide
       (effects (font (size 0.25 0.25) (thickness 0.025)))
     )
@@ -514,6 +530,7 @@
 
   (module Extra_Pads:Stitching_Via_0.6mm (layer F.Cu) (tedit 5B36229F) (tstamp 5B53EC7B)
     (at 164.938 96.938)
+    (attr virtual)
     (fp_text reference REF** (at 0 0.1) (layer F.SilkS) hide
       (effects (font (size 0.25 0.25) (thickness 0.025)))
     )
@@ -526,6 +543,7 @@
 
   (module Extra_Pads:Stitching_Via_0.6mm (layer F.Cu) (tedit 5B36229F) (tstamp 5B53EA90)
     (at 164.938 92.938)
+    (attr virtual)
     (fp_text reference REF** (at 0 0.1) (layer F.SilkS) hide
       (effects (font (size 0.25 0.25) (thickness 0.025)))
     )
@@ -538,6 +556,7 @@
 
   (module Extra_Pads:Stitching_Via_0.6mm (layer F.Cu) (tedit 5B36229F) (tstamp 5B53BE1C)
     (at 158.938 88.938)
+    (attr virtual)
     (fp_text reference REF** (at 0 0.1) (layer F.SilkS) hide
       (effects (font (size 0.25 0.25) (thickness 0.025)))
     )
@@ -550,6 +569,7 @@
 
   (module Extra_Pads:Stitching_Via_0.6mm (layer F.Cu) (tedit 5B36229F) (tstamp 5B53BA16)
     (at 138.938 73.938)
+    (attr virtual)
     (fp_text reference REF** (at 0 0.1) (layer F.SilkS) hide
       (effects (font (size 0.25 0.25) (thickness 0.025)))
     )
@@ -562,6 +582,7 @@
 
   (module Extra_Pads:Stitching_Via_0.6mm (layer F.Cu) (tedit 5B36229F) (tstamp 5B53B642)
     (at 142.938 73.938)
+    (attr virtual)
     (fp_text reference REF** (at 0 0.1) (layer F.SilkS) hide
       (effects (font (size 0.25 0.25) (thickness 0.025)))
     )
@@ -574,6 +595,7 @@
 
   (module Extra_Pads:Stitching_Via_0.6mm (layer F.Cu) (tedit 5B36229F) (tstamp 5B53C203)
     (at 164.938 88.938)
+    (attr virtual)
     (fp_text reference REF** (at 0 0.1) (layer F.SilkS) hide
       (effects (font (size 0.25 0.25) (thickness 0.025)))
     )
@@ -586,6 +608,7 @@
 
   (module Extra_Pads:Stitching_Via_0.6mm (layer F.Cu) (tedit 5B36229F) (tstamp 5B53AE88)
     (at 164.938 84.938)
+    (attr virtual)
     (fp_text reference REF** (at 0 0.1) (layer F.SilkS) hide
       (effects (font (size 0.25 0.25) (thickness 0.025)))
     )
@@ -598,6 +621,7 @@
 
   (module Extra_Pads:Stitching_Via_0.6mm (layer F.Cu) (tedit 5B36229F) (tstamp 5B53ACA9)
     (at 164.938 80.938)
+    (attr virtual)
     (fp_text reference REF** (at 0 0.1) (layer F.SilkS) hide
       (effects (font (size 0.25 0.25) (thickness 0.025)))
     )
@@ -610,6 +634,7 @@
 
   (module Extra_Pads:Stitching_Via_0.6mm (layer F.Cu) (tedit 5B36229F) (tstamp 5B53AACC)
     (at 164.938 73.938)
+    (attr virtual)
     (fp_text reference REF** (at 0 0.1) (layer F.SilkS) hide
       (effects (font (size 0.25 0.25) (thickness 0.025)))
     )
@@ -622,6 +647,7 @@
 
   (module Extra_Pads:Stitching_Via_0.6mm (layer F.Cu) (tedit 5B36229F) (tstamp 5B53A8F1)
     (at 164.938 76.938)
+    (attr virtual)
     (fp_text reference REF** (at 0 0.1) (layer F.SilkS) hide
       (effects (font (size 0.25 0.25) (thickness 0.025)))
     )
@@ -634,6 +660,7 @@
 
   (module Extra_Pads:Stitching_Via_0.6mm (layer F.Cu) (tedit 5B36229F) (tstamp 5B53A718)
     (at 158.938 76.938)
+    (attr virtual)
     (fp_text reference REF** (at 0 0.1) (layer F.SilkS) hide
       (effects (font (size 0.25 0.25) (thickness 0.025)))
     )
@@ -646,6 +673,7 @@
 
   (module Extra_Pads:Stitching_Via_0.6mm (layer F.Cu) (tedit 5B36229F) (tstamp 5B53A541)
     (at 158.938 80.938)
+    (attr virtual)
     (fp_text reference REF** (at 0 0.1) (layer F.SilkS) hide
       (effects (font (size 0.25 0.25) (thickness 0.025)))
     )
@@ -658,6 +686,7 @@
 
   (module Extra_Pads:Stitching_Via_0.6mm (layer F.Cu) (tedit 5B36229F) (tstamp 5B53A36C)
     (at 158.938 84.938)
+    (attr virtual)
     (fp_text reference REF** (at 0 0.1) (layer F.SilkS) hide
       (effects (font (size 0.25 0.25) (thickness 0.025)))
     )
@@ -670,6 +699,7 @@
 
   (module Extra_Pads:Stitching_Via_0.6mm (layer F.Cu) (tedit 5B36229F) (tstamp 5B53A199)
     (at 154.938 84.938)
+    (attr virtual)
     (fp_text reference REF** (at 0 0.1) (layer F.SilkS) hide
       (effects (font (size 0.25 0.25) (thickness 0.025)))
     )
@@ -682,6 +712,7 @@
 
   (module Extra_Pads:Stitching_Via_0.6mm (layer F.Cu) (tedit 5B36229F) (tstamp 5B539FC8)
     (at 154.938 80.938)
+    (attr virtual)
     (fp_text reference REF** (at 0 0.1) (layer F.SilkS) hide
       (effects (font (size 0.25 0.25) (thickness 0.025)))
     )
@@ -694,6 +725,7 @@
 
   (module Extra_Pads:Stitching_Via_0.6mm (layer F.Cu) (tedit 5B36229F) (tstamp 5B539DF9)
     (at 154.938 76.938)
+    (attr virtual)
     (fp_text reference REF** (at 0 0.1) (layer F.SilkS) hide
       (effects (font (size 0.25 0.25) (thickness 0.025)))
     )
@@ -706,6 +738,7 @@
 
   (module Extra_Pads:Stitching_Via_0.6mm (layer F.Cu) (tedit 5B36229F) (tstamp 5B539C2C)
     (at 150.938 84.938)
+    (attr virtual)
     (fp_text reference REF** (at 0 0.1) (layer F.SilkS) hide
       (effects (font (size 0.25 0.25) (thickness 0.025)))
     )
@@ -718,6 +751,7 @@
 
   (module Extra_Pads:Stitching_Via_0.6mm (layer F.Cu) (tedit 5B36229F) (tstamp 5B539A61)
     (at 150.938 80.938)
+    (attr virtual)
     (fp_text reference REF** (at 0 0.1) (layer F.SilkS) hide
       (effects (font (size 0.25 0.25) (thickness 0.025)))
     )
@@ -730,6 +764,7 @@
 
   (module Extra_Pads:Stitching_Via_0.6mm (layer F.Cu) (tedit 5B36229F) (tstamp 5B539898)
     (at 150.938 76.938)
+    (attr virtual)
     (fp_text reference REF** (at 0 0.1) (layer F.SilkS) hide
       (effects (font (size 0.25 0.25) (thickness 0.025)))
     )
@@ -742,6 +777,7 @@
 
   (module Extra_Pads:Stitching_Via_0.6mm (layer F.Cu) (tedit 5B36229F) (tstamp 5B538735)
     (at 158.938 73.938)
+    (attr virtual)
     (fp_text reference REF** (at 0 0.1) (layer F.SilkS) hide
       (effects (font (size 0.25 0.25) (thickness 0.025)))
     )
@@ -754,6 +790,7 @@
 
   (module Extra_Pads:Stitching_Via_0.6mm (layer F.Cu) (tedit 5B36229F) (tstamp 5B538560)
     (at 154.938 73.938)
+    (attr virtual)
     (fp_text reference REF** (at 0 0.1) (layer F.SilkS) hide
       (effects (font (size 0.25 0.25) (thickness 0.025)))
     )
@@ -766,6 +803,7 @@
 
   (module Extra_Pads:Stitching_Via_0.6mm (layer F.Cu) (tedit 5B36229F) (tstamp 5B53838D)
     (at 150.938 73.938)
+    (attr virtual)
     (fp_text reference REF** (at 0 0.1) (layer F.SilkS) hide
       (effects (font (size 0.25 0.25) (thickness 0.025)))
     )
@@ -778,6 +816,7 @@
 
   (module Extra_Pads:Stitching_Via_0.6mm (layer F.Cu) (tedit 5B36229F) (tstamp 5B537DEC)
     (at 146.938 73.938)
+    (attr virtual)
     (fp_text reference REF** (at 0 0.1) (layer F.SilkS) hide
       (effects (font (size 0.25 0.25) (thickness 0.025)))
     )
@@ -790,6 +829,7 @@
 
   (module Extra_Pads:Stitching_Via_0.6mm (layer F.Cu) (tedit 5B36229F) (tstamp 5B536FF7)
     (at 146.938 88.938)
+    (attr virtual)
     (fp_text reference REF** (at 0 0.1) (layer F.SilkS) hide
       (effects (font (size 0.25 0.25) (thickness 0.025)))
     )
@@ -802,6 +842,7 @@
 
   (module Extra_Pads:Stitching_Via_0.6mm (layer F.Cu) (tedit 5B36229F) (tstamp 5B536E20)
     (at 146.938 84.938)
+    (attr virtual)
     (fp_text reference REF** (at 0 0.1) (layer F.SilkS) hide
       (effects (font (size 0.25 0.25) (thickness 0.025)))
     )
@@ -814,6 +855,7 @@
 
   (module Extra_Pads:Stitching_Via_0.6mm (layer F.Cu) (tedit 5B36229F) (tstamp 5B536C4B)
     (at 146.938 80.938)
+    (attr virtual)
     (fp_text reference REF** (at 0 0.1) (layer F.SilkS) hide
       (effects (font (size 0.25 0.25) (thickness 0.025)))
     )
@@ -826,6 +868,7 @@
 
   (module Extra_Pads:Stitching_Via_0.6mm (layer F.Cu) (tedit 5B36229F) (tstamp 5B536A78)
     (at 146.938 76.938)
+    (attr virtual)
     (fp_text reference REF** (at 0 0.1) (layer F.SilkS) hide
       (effects (font (size 0.25 0.25) (thickness 0.025)))
     )
@@ -838,6 +881,7 @@
 
   (module Extra_Pads:Stitching_Via_0.6mm (layer F.Cu) (tedit 5B36229F) (tstamp 5B5366D2)
     (at 138.938 76.938)
+    (attr virtual)
     (fp_text reference REF** (at 0 0.1) (layer F.SilkS) hide
       (effects (font (size 0.25 0.25) (thickness 0.025)))
     )
@@ -850,6 +894,7 @@
 
   (module Extra_Pads:Stitching_Via_0.6mm (layer F.Cu) (tedit 5B36229F) (tstamp 5B536501)
     (at 134.938 76.938)
+    (attr virtual)
     (fp_text reference REF** (at 0 0.1) (layer F.SilkS) hide
       (effects (font (size 0.25 0.25) (thickness 0.025)))
     )
@@ -862,6 +907,7 @@
 
   (module Extra_Pads:Stitching_Via_0.6mm (layer F.Cu) (tedit 5B36229F) (tstamp 5B536332)
     (at 134.938 72.938)
+    (attr virtual)
     (fp_text reference REF** (at 0 0.1) (layer F.SilkS) hide
       (effects (font (size 0.25 0.25) (thickness 0.025)))
     )
@@ -874,6 +920,7 @@
 
   (module Extra_Pads:Stitching_Via_0.6mm (layer F.Cu) (tedit 5B36229F) (tstamp 5B536165)
     (at 114.938 80.938)
+    (attr virtual)
     (fp_text reference REF** (at 0 0.1) (layer F.SilkS) hide
       (effects (font (size 0.25 0.25) (thickness 0.025)))
     )
@@ -886,6 +933,7 @@
 
   (module Extra_Pads:Stitching_Via_0.6mm (layer F.Cu) (tedit 5B36229F) (tstamp 5B535F95)
     (at 106.938 84.938)
+    (attr virtual)
     (fp_text reference REF** (at 0 0.1) (layer F.SilkS) hide
       (effects (font (size 0.25 0.25) (thickness 0.025)))
     )
@@ -898,6 +946,7 @@
 
   (module Extra_Pads:Stitching_Via_0.6mm (layer F.Cu) (tedit 5B36229F) (tstamp 5B535DCC)
     (at 106.938 80.938)
+    (attr virtual)
     (fp_text reference REF** (at 0 0.1) (layer F.SilkS) hide
       (effects (font (size 0.25 0.25) (thickness 0.025)))
     )
@@ -910,6 +959,7 @@
 
   (module Extra_Pads:Stitching_Via_0.6mm (layer F.Cu) (tedit 5B36229F) (tstamp 5B535A3A)
     (at 106.938 76.938)
+    (attr virtual)
     (fp_text reference REF** (at 0 0.1) (layer F.SilkS) hide
       (effects (font (size 0.25 0.25) (thickness 0.025)))
     )
@@ -922,6 +972,7 @@
 
   (module Extra_Pads:Stitching_Via_0.6mm (layer F.Cu) (tedit 5B36229F) (tstamp 5B535873)
     (at 106.938 72.938)
+    (attr virtual)
     (fp_text reference REF** (at 0 0.1) (layer F.SilkS) hide
       (effects (font (size 0.25 0.25) (thickness 0.025)))
     )
@@ -934,6 +985,7 @@
 
   (module Extra_Pads:Stitching_Via_0.6mm (layer F.Cu) (tedit 5B36229F) (tstamp 5B5356AE)
     (at 110.938 72.938)
+    (attr virtual)
     (fp_text reference REF** (at 0 0.1) (layer F.SilkS) hide
       (effects (font (size 0.25 0.25) (thickness 0.025)))
     )
@@ -982,6 +1034,7 @@
 
   (module Extra_Pads:Stitching_Via_0.6mm (layer F.Cu) (tedit 5B36229F) (tstamp 5B5E1F84)
     (at 118.938 72.938)
+    (attr virtual)
     (fp_text reference REF** (at 0 0.1) (layer F.SilkS) hide
       (effects (font (size 0.25 0.25) (thickness 0.025)))
     )
@@ -994,6 +1047,7 @@
 
   (module Extra_Pads:Stitching_Via_0.6mm (layer F.Cu) (tedit 5B36229F) (tstamp 5B5E1D6D)
     (at 118.938 76.938)
+    (attr virtual)
     (fp_text reference REF** (at 0 0.1) (layer F.SilkS) hide
       (effects (font (size 0.25 0.25) (thickness 0.025)))
     )
@@ -1006,6 +1060,7 @@
 
   (module Extra_Pads:Stitching_Via_0.6mm (layer F.Cu) (tedit 5B36229F) (tstamp 5B5E1B58)
     (at 118.938 80.938)
+    (attr virtual)
     (fp_text reference REF** (at 0 0.1) (layer F.SilkS) hide
       (effects (font (size 0.25 0.25) (thickness 0.025)))
     )
@@ -1018,6 +1073,7 @@
 
   (module Extra_Pads:Stitching_Via_0.6mm (layer F.Cu) (tedit 5B36229F) (tstamp 5B51C0D1)
     (at 110.938 68.938)
+    (attr virtual)
     (fp_text reference REF** (at 0 0.1) (layer F.SilkS) hide
       (effects (font (size 0.25 0.25) (thickness 0.025)))
     )
@@ -1030,6 +1086,7 @@
 
   (module Extra_Pads:Stitching_Via_0.6mm (layer F.Cu) (tedit 5B36229F) (tstamp 5B51C0C9)
     (at 114.938 68.938)
+    (attr virtual)
     (fp_text reference REF** (at 0 0.1) (layer F.SilkS) hide
       (effects (font (size 0.25 0.25) (thickness 0.025)))
     )
@@ -1042,6 +1099,7 @@
 
   (module Extra_Pads:Stitching_Via_0.6mm (layer F.Cu) (tedit 5B36229F) (tstamp 5B51AC4E)
     (at 137.938 80.938)
+    (attr virtual)
     (fp_text reference REF** (at 0 0.1) (layer F.SilkS) hide
       (effects (font (size 0.25 0.25) (thickness 0.025)))
     )
@@ -1054,6 +1112,7 @@
 
   (module Extra_Pads:Stitching_Via_0.6mm (layer F.Cu) (tedit 5B36229F) (tstamp 5B51AA47)
     (at 137.938 84.938)
+    (attr virtual)
     (fp_text reference REF** (at 0 0.1) (layer F.SilkS) hide
       (effects (font (size 0.25 0.25) (thickness 0.025)))
     )
@@ -1066,6 +1125,7 @@
 
   (module Extra_Pads:Stitching_Via_0.6mm (layer F.Cu) (tedit 5B36229F) (tstamp 5B51A840)
     (at 138.938 66.938)
+    (attr virtual)
     (fp_text reference REF** (at 0 0.1) (layer F.SilkS) hide
       (effects (font (size 0.25 0.25) (thickness 0.025)))
     )
@@ -1078,6 +1138,7 @@
 
   (module Extra_Pads:Stitching_Via_0.6mm (layer F.Cu) (tedit 5B36229F) (tstamp 5B51A63C)
     (at 134.938 68.938)
+    (attr virtual)
     (fp_text reference REF** (at 0 0.1) (layer F.SilkS) hide
       (effects (font (size 0.25 0.25) (thickness 0.025)))
     )
@@ -1090,6 +1151,7 @@
 
   (module Extra_Pads:Stitching_Via_0.6mm (layer F.Cu) (tedit 5B36229F) (tstamp 5B51A43B)
     (at 134.938 84.938)
+    (attr virtual)
     (fp_text reference REF** (at 0 0.1) (layer F.SilkS) hide
       (effects (font (size 0.25 0.25) (thickness 0.025)))
     )
@@ -1102,6 +1164,7 @@
 
   (module Extra_Pads:Stitching_Via_0.6mm (layer F.Cu) (tedit 5B36229F) (tstamp 5B51A23C)
     (at 130.938 84.938)
+    (attr virtual)
     (fp_text reference REF** (at 0 0.1) (layer F.SilkS) hide
       (effects (font (size 0.25 0.25) (thickness 0.025)))
     )
@@ -1182,6 +1245,7 @@
 
   (module LOGOS:libra_cervisiae_logo_10mm (layer F.Cu) (tedit 0) (tstamp 5B3631E2)
     (at 126.873 71.247)
+    (attr virtual)
     (fp_text reference G*** (at 0 0) (layer F.SilkS) hide
       (effects (font (size 1.524 1.524) (thickness 0.3)))
     )
@@ -1444,6 +1508,7 @@
 
   (module Extra_Pads:Stitching_Via_0.6mm (layer F.Cu) (tedit 5B36229F) (tstamp 5B53E865)
     (at 161.938 92.938)
+    (attr virtual)
     (fp_text reference REF** (at 0 0.1) (layer F.SilkS) hide
       (effects (font (size 0.25 0.25) (thickness 0.025)))
     )
@@ -1456,6 +1521,7 @@
 
   (module Extra_Pads:Stitching_Via_0.6mm (layer F.Cu) (tedit 5B36229F) (tstamp 5B50FF0F)
     (at 167.938 96.938)
+    (attr virtual)
     (fp_text reference REF** (at 0 0.1) (layer F.SilkS) hide
       (effects (font (size 0.25 0.25) (thickness 0.025)))
     )
@@ -1534,6 +1600,7 @@
 
   (module Extra_Pads:Stitching_Via_0.6mm (layer F.Cu) (tedit 5B36229F) (tstamp 5B5015E3)
     (at 167.938 88.938)
+    (attr virtual)
     (fp_text reference REF** (at 0 0.1) (layer F.SilkS) hide
       (effects (font (size 0.25 0.25) (thickness 0.025)))
     )
@@ -1546,6 +1613,7 @@
 
   (module Extra_Pads:Stitching_Via_0.6mm (layer F.Cu) (tedit 5B36229F) (tstamp 5B5013C9)
     (at 167.938 84.938)
+    (attr virtual)
     (fp_text reference REF** (at 0 0.1) (layer F.SilkS) hide
       (effects (font (size 0.25 0.25) (thickness 0.025)))
     )
@@ -1558,6 +1626,7 @@
 
   (module Extra_Pads:Stitching_Via_0.6mm (layer F.Cu) (tedit 5B36229F) (tstamp 5B500D96)
     (at 167.938 80.938)
+    (attr virtual)
     (fp_text reference REF** (at 0 0.1) (layer F.SilkS) hide
       (effects (font (size 0.25 0.25) (thickness 0.025)))
     )
@@ -1570,6 +1639,7 @@
 
   (module Extra_Pads:Stitching_Via_0.6mm (layer F.Cu) (tedit 5B36229F) (tstamp 5B58C4D7)
     (at 167.938 73.938)
+    (attr virtual)
     (fp_text reference REF** (at 0 0.1) (layer F.SilkS) hide
       (effects (font (size 0.25 0.25) (thickness 0.025)))
     )
@@ -1582,6 +1652,7 @@
 
   (module Extra_Pads:Stitching_Via_0.6mm (layer F.Cu) (tedit 5B36229F) (tstamp 5B58C2B4)
     (at 162.938 66.938)
+    (attr virtual)
     (fp_text reference REF** (at 0 0.1) (layer F.SilkS) hide
       (effects (font (size 0.25 0.25) (thickness 0.025)))
     )
@@ -1594,6 +1665,7 @@
 
   (module Extra_Pads:Stitching_Via_0.6mm (layer F.Cu) (tedit 5B36229F) (tstamp 5B58C2AC)
     (at 158.938 66.938)
+    (attr virtual)
     (fp_text reference REF** (at 0 0.1) (layer F.SilkS) hide
       (effects (font (size 0.25 0.25) (thickness 0.025)))
     )
@@ -1606,6 +1678,7 @@
 
   (module Extra_Pads:Stitching_Via_0.6mm (layer F.Cu) (tedit 5B36229F) (tstamp 5B58C2A4)
     (at 154.938 66.938)
+    (attr virtual)
     (fp_text reference REF** (at 0 0.1) (layer F.SilkS) hide
       (effects (font (size 0.25 0.25) (thickness 0.025)))
     )
@@ -1618,6 +1691,7 @@
 
   (module Extra_Pads:Stitching_Via_0.6mm (layer F.Cu) (tedit 5B36229F) (tstamp 5B58C29C)
     (at 150.938 66.938)
+    (attr virtual)
     (fp_text reference REF** (at 0 0.1) (layer F.SilkS) hide
       (effects (font (size 0.25 0.25) (thickness 0.025)))
     )
@@ -1630,6 +1704,7 @@
 
   (module Extra_Pads:Stitching_Via_0.6mm (layer F.Cu) (tedit 5B36229F) (tstamp 5B58C294)
     (at 146.938 66.938)
+    (attr virtual)
     (fp_text reference REF** (at 0 0.1) (layer F.SilkS) hide
       (effects (font (size 0.25 0.25) (thickness 0.025)))
     )
@@ -1642,6 +1717,7 @@
 
   (module Extra_Pads:Stitching_Via_0.6mm (layer F.Cu) (tedit 5B36229F) (tstamp 5B58C28C)
     (at 142.938 66.938)
+    (attr virtual)
     (fp_text reference REF** (at 0 0.1) (layer F.SilkS) hide
       (effects (font (size 0.25 0.25) (thickness 0.025)))
     )
@@ -1654,6 +1730,7 @@
 
   (module Extra_Pads:Stitching_Via_0.6mm (layer F.Cu) (tedit 5B36229F) (tstamp 5B4C8EA2)
     (at 131.938 94.938)
+    (attr virtual)
     (fp_text reference REF** (at 0 0.1) (layer F.SilkS) hide
       (effects (font (size 0.25 0.25) (thickness 0.025)))
     )
@@ -1666,6 +1743,7 @@
 
   (module Extra_Pads:Stitching_Via_0.6mm (layer F.Cu) (tedit 5B36229F) (tstamp 5B480F83)
     (at 128.938 102.938)
+    (attr virtual)
     (fp_text reference REF** (at 0 0.1) (layer F.SilkS) hide
       (effects (font (size 0.25 0.25) (thickness 0.025)))
     )
@@ -1678,6 +1756,7 @@
 
   (module Extra_Pads:Stitching_Via_0.6mm (layer F.Cu) (tedit 5B36229F) (tstamp 5B480B85)
     (at 124.238 102.938)
+    (attr virtual)
     (fp_text reference REF** (at 0 0.1) (layer F.SilkS) hide
       (effects (font (size 0.25 0.25) (thickness 0.025)))
     )
@@ -1690,6 +1769,7 @@
 
   (module Extra_Pads:Stitching_Via_0.6mm (layer F.Cu) (tedit 5B36229F) (tstamp 5B3632C6)
     (at 135.938 94.938)
+    (attr virtual)
     (fp_text reference REF** (at 0 0.1) (layer F.SilkS) hide
       (effects (font (size 0.25 0.25) (thickness 0.025)))
     )
@@ -1702,6 +1782,7 @@
 
   (module Extra_Pads:Stitching_Via_0.6mm (layer F.Cu) (tedit 5B36229F) (tstamp 5B3632B0)
     (at 135.938 90.938)
+    (attr virtual)
     (fp_text reference REF** (at 0 0.1) (layer F.SilkS) hide
       (effects (font (size 0.25 0.25) (thickness 0.025)))
     )
@@ -1714,6 +1795,7 @@
 
   (module Extra_Pads:Stitching_Via_0.6mm (layer F.Cu) (tedit 5B36229F) (tstamp 5B36266F)
     (at 120.938 102.938)
+    (attr virtual)
     (fp_text reference REF** (at 0 0.1) (layer F.SilkS) hide
       (effects (font (size 0.25 0.25) (thickness 0.025)))
     )
@@ -1726,6 +1808,7 @@
 
   (module Extra_Pads:Stitching_Via_0.6mm (layer F.Cu) (tedit 5B36229F) (tstamp 5B36266B)
     (at 120.938 98.938)
+    (attr virtual)
     (fp_text reference REF** (at 0 0.1) (layer F.SilkS) hide
       (effects (font (size 0.25 0.25) (thickness 0.025)))
     )
@@ -1738,6 +1821,7 @@
 
   (module Extra_Pads:Stitching_Via_0.6mm (layer F.Cu) (tedit 5B36229F) (tstamp 5B362667)
     (at 120.938 94.938)
+    (attr virtual)
     (fp_text reference REF** (at 0 0.1) (layer F.SilkS) hide
       (effects (font (size 0.25 0.25) (thickness 0.025)))
     )
@@ -1750,6 +1834,7 @@
 
   (module Extra_Pads:Stitching_Via_0.6mm (layer F.Cu) (tedit 5B36229F) (tstamp 5B362663)
     (at 116.938 94.938)
+    (attr virtual)
     (fp_text reference REF** (at 0 0.1) (layer F.SilkS) hide
       (effects (font (size 0.25 0.25) (thickness 0.025)))
     )
@@ -1762,6 +1847,7 @@
 
   (module Extra_Pads:Stitching_Via_0.6mm (layer F.Cu) (tedit 5B36229F) (tstamp 5B362506)
     (at 116.938 98.938)
+    (attr virtual)
     (fp_text reference REF** (at 0 0.1) (layer F.SilkS) hide
       (effects (font (size 0.25 0.25) (thickness 0.025)))
     )
@@ -1844,6 +1930,7 @@
 
   (module Extra_Pads:Stitching_Via_0.6mm (layer F.Cu) (tedit 5B36229F) (tstamp 5B362750)
     (at 107.438 107.438)
+    (attr virtual)
     (fp_text reference REF** (at 0 0.1) (layer F.SilkS) hide
       (effects (font (size 0.25 0.25) (thickness 0.025)))
     )
@@ -1856,6 +1943,7 @@
 
   (module Extra_Pads:Stitching_Via_0.6mm (layer F.Cu) (tedit 5B36229F) (tstamp 5B36272E)
     (at 115.938 91.938)
+    (attr virtual)
     (fp_text reference REF** (at 0 0.1) (layer F.SilkS) hide
       (effects (font (size 0.25 0.25) (thickness 0.025)))
     )
@@ -1868,6 +1956,7 @@
 
   (module Extra_Pads:Stitching_Via_0.6mm (layer F.Cu) (tedit 5B36229F) (tstamp 5B36272A)
     (at 113.938 91.938)
+    (attr virtual)
     (fp_text reference REF** (at 0 0.1) (layer F.SilkS) hide
       (effects (font (size 0.25 0.25) (thickness 0.025)))
     )
@@ -1880,6 +1969,7 @@
 
   (module Extra_Pads:Stitching_Via_0.6mm (layer F.Cu) (tedit 5B36229F) (tstamp 5B362712)
     (at 130.938 80.938)
+    (attr virtual)
     (fp_text reference REF** (at 0 0.1) (layer F.SilkS) hide
       (effects (font (size 0.25 0.25) (thickness 0.025)))
     )
@@ -1892,6 +1982,7 @@
 
   (module Extra_Pads:Stitching_Via_0.6mm (layer F.Cu) (tedit 5B36229F) (tstamp 5B36270E)
     (at 130.938 76.938)
+    (attr virtual)
     (fp_text reference REF** (at 0 0.1) (layer F.SilkS) hide
       (effects (font (size 0.25 0.25) (thickness 0.025)))
     )
@@ -1904,6 +1995,7 @@
 
   (module Extra_Pads:Stitching_Via_0.6mm (layer F.Cu) (tedit 5B36229F) (tstamp 5B36270A)
     (at 130.938 72.938)
+    (attr virtual)
     (fp_text reference REF** (at 0 0.1) (layer F.SilkS) hide
       (effects (font (size 0.25 0.25) (thickness 0.025)))
     )
@@ -1916,6 +2008,7 @@
 
   (module Extra_Pads:Stitching_Via_0.6mm (layer F.Cu) (tedit 5B36229F) (tstamp 5B362706)
     (at 130.938 68.938)
+    (attr virtual)
     (fp_text reference REF** (at 0 0.1) (layer F.SilkS) hide
       (effects (font (size 0.25 0.25) (thickness 0.025)))
     )
@@ -1928,6 +2021,7 @@
 
   (module Extra_Pads:Stitching_Via_0.6mm (layer F.Cu) (tedit 5B36229F) (tstamp 5B3626E6)
     (at 118.938 68.938)
+    (attr virtual)
     (fp_text reference REF** (at 0 0.1) (layer F.SilkS) hide
       (effects (font (size 0.25 0.25) (thickness 0.025)))
     )
@@ -1940,6 +2034,7 @@
 
   (module Extra_Pads:Stitching_Via_0.6mm (layer F.Cu) (tedit 5B36229F) (tstamp 5B3626E2)
     (at 126.938 68.938)
+    (attr virtual)
     (fp_text reference REF** (at 0 0.1) (layer F.SilkS) hide
       (effects (font (size 0.25 0.25) (thickness 0.025)))
     )
@@ -1952,6 +2047,7 @@
 
   (module Extra_Pads:Stitching_Via_0.6mm (layer F.Cu) (tedit 5B36229F) (tstamp 5B3626DE)
     (at 122.938 68.938)
+    (attr virtual)
     (fp_text reference REF** (at 0 0.1) (layer F.SilkS) hide
       (effects (font (size 0.25 0.25) (thickness 0.025)))
     )
@@ -1964,6 +2060,7 @@
 
   (module Extra_Pads:Stitching_Via_0.6mm (layer F.Cu) (tedit 5B36229F) (tstamp 5B3626DA)
     (at 122.938 72.938)
+    (attr virtual)
     (fp_text reference REF** (at 0 0.1) (layer F.SilkS) hide
       (effects (font (size 0.25 0.25) (thickness 0.025)))
     )
@@ -1976,6 +2073,7 @@
 
   (module Extra_Pads:Stitching_Via_0.6mm (layer F.Cu) (tedit 5B36229F) (tstamp 5B3626D6)
     (at 126.938 72.938)
+    (attr virtual)
     (fp_text reference REF** (at 0 0.1) (layer F.SilkS) hide
       (effects (font (size 0.25 0.25) (thickness 0.025)))
     )
@@ -1988,6 +2086,7 @@
 
   (module Extra_Pads:Stitching_Via_0.6mm (layer F.Cu) (tedit 5B36229F) (tstamp 5B3626D2)
     (at 126.938 76.938)
+    (attr virtual)
     (fp_text reference REF** (at 0 0.1) (layer F.SilkS) hide
       (effects (font (size 0.25 0.25) (thickness 0.025)))
     )
@@ -2000,6 +2099,7 @@
 
   (module Extra_Pads:Stitching_Via_0.6mm (layer F.Cu) (tedit 5B36229F) (tstamp 5B3626CE)
     (at 122.938 76.938)
+    (attr virtual)
     (fp_text reference REF** (at 0 0.1) (layer F.SilkS) hide
       (effects (font (size 0.25 0.25) (thickness 0.025)))
     )
@@ -2012,6 +2112,7 @@
 
   (module Extra_Pads:Stitching_Via_0.6mm (layer F.Cu) (tedit 5B36229F) (tstamp 5B3626CA)
     (at 122.938 80.938)
+    (attr virtual)
     (fp_text reference REF** (at 0 0.1) (layer F.SilkS) hide
       (effects (font (size 0.25 0.25) (thickness 0.025)))
     )
@@ -2024,6 +2125,7 @@
 
   (module Extra_Pads:Stitching_Via_0.6mm (layer F.Cu) (tedit 5B36229F) (tstamp 5B3626C6)
     (at 126.938 80.938)
+    (attr virtual)
     (fp_text reference REF** (at 0 0.1) (layer F.SilkS) hide
       (effects (font (size 0.25 0.25) (thickness 0.025)))
     )
@@ -2036,6 +2138,7 @@
 
   (module Extra_Pads:Stitching_Via_0.6mm (layer F.Cu) (tedit 5B36229F) (tstamp 5B3626C2)
     (at 126.938 84.938)
+    (attr virtual)
     (fp_text reference REF** (at 0 0.1) (layer F.SilkS) hide
       (effects (font (size 0.25 0.25) (thickness 0.025)))
     )
@@ -2048,6 +2151,7 @@
 
   (module Extra_Pads:Stitching_Via_0.6mm (layer F.Cu) (tedit 5B36229F) (tstamp 5B3626BE)
     (at 122.938 84.938)
+    (attr virtual)
     (fp_text reference REF** (at 0 0.1) (layer F.SilkS) hide
       (effects (font (size 0.25 0.25) (thickness 0.025)))
     )
@@ -2060,6 +2164,7 @@
 
   (module Extra_Pads:Stitching_Via_0.6mm (layer F.Cu) (tedit 5B36229F) (tstamp 5B3626B3)
     (at 131.938 98.938)
+    (attr virtual)
     (fp_text reference REF** (at 0 0.1) (layer F.SilkS) hide
       (effects (font (size 0.25 0.25) (thickness 0.025)))
     )
@@ -2072,6 +2177,7 @@
 
   (module Extra_Pads:Stitching_Via_0.6mm (layer F.Cu) (tedit 5B36229F) (tstamp 5B3626AF)
     (at 127.938 106.938)
+    (attr virtual)
     (fp_text reference REF** (at 0 0.1) (layer F.SilkS) hide
       (effects (font (size 0.25 0.25) (thickness 0.025)))
     )
@@ -2084,6 +2190,7 @@
 
   (module Extra_Pads:Stitching_Via_0.6mm (layer F.Cu) (tedit 5B36229F) (tstamp 5B3626AB)
     (at 131.938 102.938)
+    (attr virtual)
     (fp_text reference REF** (at 0 0.1) (layer F.SilkS) hide
       (effects (font (size 0.25 0.25) (thickness 0.025)))
     )
@@ -2096,6 +2203,7 @@
 
   (module Extra_Pads:Stitching_Via_0.6mm (layer F.Cu) (tedit 5B36229F) (tstamp 5B36265D)
     (at 167.938 76.938)
+    (attr virtual)
     (fp_text reference REF** (at 0 0.1) (layer F.SilkS) hide
       (effects (font (size 0.25 0.25) (thickness 0.025)))
     )
@@ -2108,6 +2216,7 @@
 
   (module Extra_Pads:Stitching_Via_0.6mm (layer F.Cu) (tedit 5B36229F) (tstamp 5B3625F9)
     (at 150.938 88.938)
+    (attr virtual)
     (fp_text reference REF** (at 0 0.1) (layer F.SilkS) hide
       (effects (font (size 0.25 0.25) (thickness 0.025)))
     )
@@ -2120,6 +2229,7 @@
 
   (module Extra_Pads:Stitching_Via_0.6mm (layer F.Cu) (tedit 5B36229F) (tstamp 5B3625F5)
     (at 154.938 88.938)
+    (attr virtual)
     (fp_text reference REF** (at 0 0.1) (layer F.SilkS) hide
       (effects (font (size 0.25 0.25) (thickness 0.025)))
     )
@@ -2132,6 +2242,7 @@
 
   (module Extra_Pads:Stitching_Via_0.6mm (layer F.Cu) (tedit 5B36229F) (tstamp 5B3625E9)
     (at 167.938 92.938)
+    (attr virtual)
     (fp_text reference REF** (at 0 0.1) (layer F.SilkS) hide
       (effects (font (size 0.25 0.25) (thickness 0.025)))
     )
@@ -2144,6 +2255,7 @@
 
   (module Extra_Pads:Stitching_Via_0.6mm (layer F.Cu) (tedit 5B36229F) (tstamp 5B53CBA7)
     (at 167.938 100.938)
+    (attr virtual)
     (fp_text reference REF** (at 0 0.1) (layer F.SilkS) hide
       (effects (font (size 0.25 0.25) (thickness 0.025)))
     )
@@ -2156,6 +2268,7 @@
 
   (module Extra_Pads:Stitching_Via_0.6mm (layer F.Cu) (tedit 5B36229F) (tstamp 5B3625DD)
     (at 158.938 107.938)
+    (attr virtual)
     (fp_text reference REF** (at 0 0.1) (layer F.SilkS) hide
       (effects (font (size 0.25 0.25) (thickness 0.025)))
     )
@@ -2168,6 +2281,7 @@
 
   (module Extra_Pads:Stitching_Via_0.6mm (layer F.Cu) (tedit 5B36229F) (tstamp 5B3625D9)
     (at 154.938 107.938)
+    (attr virtual)
     (fp_text reference REF** (at 0 0.1) (layer F.SilkS) hide
       (effects (font (size 0.25 0.25) (thickness 0.025)))
     )
@@ -2180,6 +2294,7 @@
 
   (module Extra_Pads:Stitching_Via_0.6mm (layer F.Cu) (tedit 5B36229F) (tstamp 5B3625D5)
     (at 150.938 107.938)
+    (attr virtual)
     (fp_text reference REF** (at 0 0.1) (layer F.SilkS) hide
       (effects (font (size 0.25 0.25) (thickness 0.025)))
     )
@@ -2192,6 +2307,7 @@
 
   (module Extra_Pads:Stitching_Via_0.6mm (layer F.Cu) (tedit 5B36229F) (tstamp 5B3625D1)
     (at 146.938 107.938)
+    (attr virtual)
     (fp_text reference REF** (at 0 0.1) (layer F.SilkS) hide
       (effects (font (size 0.25 0.25) (thickness 0.025)))
     )
@@ -2204,6 +2320,7 @@
 
   (module Extra_Pads:Stitching_Via_0.6mm (layer F.Cu) (tedit 5B36229F) (tstamp 5B3625B7)
     (at 146.938 104.938)
+    (attr virtual)
     (fp_text reference REF** (at 0 0.1) (layer F.SilkS) hide
       (effects (font (size 0.25 0.25) (thickness 0.025)))
     )
@@ -2216,6 +2333,7 @@
 
   (module Extra_Pads:Stitching_Via_0.6mm (layer F.Cu) (tedit 5B36229F) (tstamp 5B3625B2)
     (at 146.938 100.938)
+    (attr virtual)
     (fp_text reference REF** (at 0 0.1) (layer F.SilkS) hide
       (effects (font (size 0.25 0.25) (thickness 0.025)))
     )
@@ -2228,6 +2346,7 @@
 
   (module Extra_Pads:Stitching_Via_0.6mm (layer F.Cu) (tedit 5B36229F) (tstamp 5B3625AC)
     (at 150.938 100.938)
+    (attr virtual)
     (fp_text reference REF** (at 0 0.1) (layer F.SilkS) hide
       (effects (font (size 0.25 0.25) (thickness 0.025)))
     )
@@ -2240,6 +2359,7 @@
 
   (module Extra_Pads:Stitching_Via_0.6mm (layer F.Cu) (tedit 5B36229F) (tstamp 5B3625A7)
     (at 154.938 100.938)
+    (attr virtual)
     (fp_text reference REF** (at 0 0.1) (layer F.SilkS) hide
       (effects (font (size 0.25 0.25) (thickness 0.025)))
     )
@@ -2252,6 +2372,7 @@
 
   (module Extra_Pads:Stitching_Via_0.6mm (layer F.Cu) (tedit 5B36229F) (tstamp 5B3625A2)
     (at 150.938 104.938)
+    (attr virtual)
     (fp_text reference REF** (at 0 0.1) (layer F.SilkS) hide
       (effects (font (size 0.25 0.25) (thickness 0.025)))
     )
@@ -2264,6 +2385,7 @@
 
   (module Extra_Pads:Stitching_Via_0.6mm (layer F.Cu) (tedit 5B36229F) (tstamp 5B36259D)
     (at 154.938 104.938)
+    (attr virtual)
     (fp_text reference REF** (at 0 0.1) (layer F.SilkS) hide
       (effects (font (size 0.25 0.25) (thickness 0.025)))
     )
@@ -2276,6 +2398,7 @@
 
   (module Extra_Pads:Stitching_Via_0.6mm (layer F.Cu) (tedit 5B36229F) (tstamp 5B362598)
     (at 158.938 104.938)
+    (attr virtual)
     (fp_text reference REF** (at 0 0.1) (layer F.SilkS) hide
       (effects (font (size 0.25 0.25) (thickness 0.025)))
     )
@@ -2288,6 +2411,7 @@
 
   (module Extra_Pads:Stitching_Via_0.6mm (layer F.Cu) (tedit 5B36229F) (tstamp 5B362593)
     (at 158.938 100.938)
+    (attr virtual)
     (fp_text reference REF** (at 0 0.1) (layer F.SilkS) hide
       (effects (font (size 0.25 0.25) (thickness 0.025)))
     )
@@ -2300,6 +2424,7 @@
 
   (module Extra_Pads:Stitching_Via_0.6mm (layer F.Cu) (tedit 5B36229F) (tstamp 5B36258E)
     (at 158.938 92.938)
+    (attr virtual)
     (fp_text reference REF** (at 0 0.1) (layer F.SilkS) hide
       (effects (font (size 0.25 0.25) (thickness 0.025)))
     )
@@ -2312,6 +2437,7 @@
 
   (module Extra_Pads:Stitching_Via_0.6mm (layer F.Cu) (tedit 5B36229F) (tstamp 5B362589)
     (at 154.938 92.938)
+    (attr virtual)
     (fp_text reference REF** (at 0 0.1) (layer F.SilkS) hide
       (effects (font (size 0.25 0.25) (thickness 0.025)))
     )
@@ -2324,6 +2450,7 @@
 
   (module Extra_Pads:Stitching_Via_0.6mm (layer F.Cu) (tedit 5B36229F) (tstamp 5B362584)
     (at 150.938 92.938)
+    (attr virtual)
     (fp_text reference REF** (at 0 0.1) (layer F.SilkS) hide
       (effects (font (size 0.25 0.25) (thickness 0.025)))
     )
@@ -2336,6 +2463,7 @@
 
   (module Extra_Pads:Stitching_Via_0.6mm (layer F.Cu) (tedit 5B36229F) (tstamp 5B36257F)
     (at 146.938 92.938)
+    (attr virtual)
     (fp_text reference REF** (at 0 0.1) (layer F.SilkS) hide
       (effects (font (size 0.25 0.25) (thickness 0.025)))
     )
@@ -2348,6 +2476,7 @@
 
   (module Extra_Pads:Stitching_Via_0.6mm (layer F.Cu) (tedit 5B36229F) (tstamp 5B362577)
     (at 146.938 96.938)
+    (attr virtual)
     (fp_text reference REF** (at 0 0.1) (layer F.SilkS) hide
       (effects (font (size 0.25 0.25) (thickness 0.025)))
     )
@@ -2360,6 +2489,7 @@
 
   (module Extra_Pads:Stitching_Via_0.6mm (layer F.Cu) (tedit 5B36229F) (tstamp 5B362572)
     (at 150.938 96.938)
+    (attr virtual)
     (fp_text reference REF** (at 0 0.1) (layer F.SilkS) hide
       (effects (font (size 0.25 0.25) (thickness 0.025)))
     )
@@ -2372,6 +2502,7 @@
 
   (module Extra_Pads:Stitching_Via_0.6mm (layer F.Cu) (tedit 5B36229F) (tstamp 5B36256D)
     (at 154.938 96.938)
+    (attr virtual)
     (fp_text reference REF** (at 0 0.1) (layer F.SilkS) hide
       (effects (font (size 0.25 0.25) (thickness 0.025)))
     )
@@ -2384,6 +2515,7 @@
 
   (module Extra_Pads:Stitching_Via_0.6mm (layer F.Cu) (tedit 5B36229F) (tstamp 5B362568)
     (at 158.938 96.938)
+    (attr virtual)
     (fp_text reference REF** (at 0 0.1) (layer F.SilkS) hide
       (effects (font (size 0.25 0.25) (thickness 0.025)))
     )
@@ -2398,6 +2530,7 @@
     (at 167.64 106.299)
     (descr "Mounting Hole 2.2mm, no annular, M2")
     (tags "mounting hole 2.2mm no annular m2")
+    (attr virtual)
     (fp_text reference H2 (at 0 -2.159) (layer F.SilkS)
       (effects (font (size 1 1) (thickness 0.15)))
     )
@@ -2778,6 +2911,7 @@
     (at 108.585 67.945)
     (descr "Mounting Hole 2.2mm, no annular, M2")
     (tags "mounting hole 2.2mm no annular m2")
+    (attr virtual)
     (fp_text reference H1 (at 3.302 -1.524 180) (layer F.SilkS)
       (effects (font (size 1 1) (thickness 0.15)))
     )
