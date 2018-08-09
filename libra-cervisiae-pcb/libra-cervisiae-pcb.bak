@@ -6,8 +6,8 @@ $Descr A 11000 8500
 encoding utf-8
 Sheet 1 1
 Title "Libra Cervisiae PCB"
-Date "2018-07-19"
-Rev "1.0.0-rc.1"
+Date "2018-07-23"
+Rev "0.1.0"
 Comp ""
 Comment1 ""
 Comment2 ""
