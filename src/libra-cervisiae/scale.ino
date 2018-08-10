@@ -107,7 +107,6 @@ void tareScale(int tareMillis) {
   if(DEBUG_TIMINGS) Serial.print("Tare start: "); Serial.println(averageStart);
   if(DEBUG_TIMINGS) Serial.print("Tare length: "); Serial.println(averageLength);
 
-  averageStart = 0;
   tareOffset = 0;
   
   tareInProgress = true;
@@ -133,8 +132,10 @@ void tareLoop() {
     saveConfig();
     return;
   }
-  else {
-    //Serial.print("Tare step "); Serial.println(tareSteps);
+  else if(DEBUG_HX711) {
+    Serial.print("Tare step "); Serial.println(averageSteps);
+    Serial.print("Current tare "); Serial.println(tareOffset);
+    Serial.println();
   }
 
   delay(100);
@@ -181,8 +182,8 @@ void calibrateLoop() {
     saveConfig();
     return;
   }
-  else {
-    //Serial.print("Tare step "); Serial.println(tareSteps);
+  else if(DEBUG_HX711) {
+    Serial.print("Calibrate step "); Serial.println(averageSteps);
   }
 
   delay(100);

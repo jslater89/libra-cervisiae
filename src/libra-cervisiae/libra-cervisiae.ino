@@ -29,6 +29,7 @@
 // Debug options
 #define DEBUG_TIMINGS false
 #define DEBUG_DS18XXX false
+#define DEBUG_HX711 false
 
 // Build types
 #define WEMOS
