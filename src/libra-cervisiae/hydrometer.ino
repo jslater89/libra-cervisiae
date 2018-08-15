@@ -56,7 +56,7 @@ void hydrometerSetup() {
 
   yield();
 
-  handleOutput(gravity, wortTemp, weight);
+  handleOutput(gravity, abw, abv, wortTemp, weight, startingWortMass - wortWeight);
 
   if(DEBUG_TIMINGS) Serial.print("Output finished: "); Serial.println(millis() - bootMillis);
 

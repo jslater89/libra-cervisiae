@@ -111,7 +111,7 @@ void hotspotLoop() {
   }
 
   if(connectedToWifi && millis() - lastSensorUpload > delaySeconds * 1000) {
-    handleOutput(hotspotGravity, hotspotWortTemp, hotspotCalibratedWeight);
+    handleOutput(hotspotGravity, hotspotABW, hotspotABV, hotspotWortTemp, hotspotCalibratedWeight, startingWortMass - hotspotCalibratedWeight - equipmentWeight);
     lastSensorUpload = millis();
   }
 }

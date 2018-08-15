@@ -1,10 +1,13 @@
 
-void handleOutput(double gravity, double temperature, double weight) {
+void handleOutput(double gravity, double abw, double abv, double temperature, double weight, double weightDelta) {
   if(outputMode == 0) {
     return;
   }
   else if(outputMode == 1) {
-    sendToGraviton(gravity, temperature, weight);
+    sendToGraviton(gravity, abw, abv, temperature, weight, weightDelta);
+  }
+  else if(outputMode == 2) {
+    sendToGoogleDrive(gravity, abw, abv, temperature, weight, weightDelta);
   }
 }
 
@@ -12,7 +15,7 @@ void handleOutput(double gravity, double temperature, double weight) {
  *  Outputs
  */
 
-void sendToGraviton(double gravity, double temperature, double weight) {
+void sendToGraviton(double gravity, double abw, double abv, double temperature, double weight, double weightDelta) {
   char gravitonJSON[250];
   int contentLength = getGravitonJSON(gravitonJSON, 250, gravity, temperature, weight);
 
@@ -78,4 +81,75 @@ int getGravitonJSON(char* dest, int n, double g, double t, double w) {
   return root.measureLength();
 }
 
+void sendToGoogleDrive(double gravity, double abw, double abv, double temperature, double weight, double weightDelta) {
+  WiFiClientSecure client;
+  Serial.print("API root: "); Serial.println(apiRoot);
+  Serial.print("API port: "); Serial.println(apiPort);
+  boolean result = client.connect("script.google.com", 443);
+
+  if(result) {
+    const int pathLength = 500;
+    char path[pathLength];
+    strcpy(path, "GET ");
+    strncpy(path + strlen(path), apiPath, pathLength - strlen(path));
+  
+    const char* gravityParam = "?gravity=";
+    const char* abwParam = "&abw=";
+    const char* abvParam = "&abv=";
+    const char* tempParam = "&wortTemp=";
+    const char* weightParam = "&weight=";
+    const char* weightDeltaParam = "&weightDelta=";
+  
+    strncpy(path + strlen(path), gravityParam, pathLength - strlen(path));
+    snprintf(path + strlen(path), gravity, "%f", pathLength - strlen(path));
+  
+    strncpy(path + strlen(path), abwParam, pathLength - strlen(path));
+    snprintf(path + strlen(path), abw, "%f", pathLength - strlen(path));
+  
+    strncpy(path + strlen(path), abvParam, pathLength - strlen(path));
+    snprintf(path + strlen(path), abv, "%f", pathLength - strlen(path));
+  
+    strncpy(path + strlen(path), tempParam, pathLength - strlen(path));
+    snprintf(path + strlen(path), temperature, "%f", pathLength - strlen(path));
+  
+    strncpy(path + strlen(path), weightParam, pathLength - strlen(path));
+    snprintf(path + strlen(path), weight, "%f", pathLength - strlen(path));
+  
+    strncpy(path + strlen(path), weightDeltaParam, pathLength - strlen(path));
+    snprintf(path + strlen(path), weightDelta, "%f", pathLength - strlen(path));
+
+    strncpy(path + strlen(path), " HTTP/1.1", pathLength - strlen(path));
+    
+    client.println("GET /api/v1/reading HTTP/1.1");
+    client.print("Host: "); client.println("script.google.com");
+    client.println("Cache-Control: no-cache");
+
+    long timeout = 10000;
+    unsigned long currentMillis = millis(), previousMillis = millis();
+
+    while(!client.available()){
+    
+      if((currentMillis - previousMillis) > timeout){
+        Serial.println("Timeout sending request");
+        break;
+      }
+      delay(50);
+      currentMillis = millis();
+    }
+
+    while(client.available()) {
+      client.setTimeout(1000);
+      String line = client.readStringUntil('\n');
+      Serial.println(line);
+
+      yield();
+    }
+  }
+  else {
+    Serial.println("Failed to connect");
+  }
+
+  Serial.println("Finished upload");
+  client.stop();
+}
 
