@@ -14,7 +14,6 @@
 #include <ESP8266WebServer.h>
 #include <ESP8266mDNS.h>
 #include <FS.h>
-#include <DoubleMatrixMath.h>
 #include <DoubleResetDetector.h>
 #include <HX711.h>
 #include <DallasTemperature.h>
@@ -53,37 +52,38 @@
 
 /****** Configuration options *******/
 // How long between readings in hydrometer mode?
-int delaySeconds = 1800; // half an hour
+int delaySeconds; // half an hour
 
 // What is the name of this hydrometer? Also used
 // as the SSID for hotspot mode.
-char hydrometerName[51] = "libra-cervisiae";
+char hydrometerName[51];
 
 // What is fully-charged battery voltage for this hydrometer?
-float fullVoltage = 4.2;
+float fullVoltage;
 
 // What wifi network should this hydrometer connect
 // to in hydrometer mode?
-char wifiNetwork[51] = "";
+char wifiNetwork[41];
 
 // What password should it use?
-char wifiPassword[51] = "";
+char wifiPassword[41];
 
 // API root, path, port
-char apiRoot[151] = "";
-char apiPath[151] = "";
-int apiPort = 80;
+char apiRoot[101];
+char apiPath[101];
+int apiPort;
 
 // API key for Graviton
-char apiKey[51] = "";
+char apiKey[51];
 
 // Should this hydrometer boot into hotspot mode?
-boolean bootToHotspot = false;
+boolean bootToHotspot;
 
 // How should this hydrometer do output?
 // 0: no output
 // 1: Graviton output
-int outputMode = 0;
+// 2: Google Drive output
+int outputMode;
 
 // How should we adjust for the load cell's temperature response?
 // rawOutput += (observed - base) * factor
@@ -91,38 +91,38 @@ int outputMode = 0;
 // A negative compensation factor means that the scale reads higher
 // at lower temperatures. A positive compensation factor means that
 // the scale reads higher at higher temperatures.
-double tempCompensationBase = 68; // F
-double tempCompensationFactor = -50;
+double tempCompensationBase; // F
+double tempCompensationFactor;
 
 // The tare offset is the difference between the HX711 ADC
 // output and 0.
-double tareOffset = 6000;
+double tareOffset;
 
 // The scale factor is the divisor to apply to the HX711 ADC
 // output to get the weight in grams.
-double scaleFactor = 215.23;
+double scaleFactor;
 
 // The weight of the non-wort equipment going on the scale,
 // in grams.
-double equipmentWeight = 5000;
+double equipmentWeight;
 
 // The starting mass for the batch, not including equipment weight,
 // in grams.
-double startingWortMass = 0;
+double startingWortMass;
 
 // The starting gravity of the batch, in SG@68F.
-double startingWortGravity = 0;
+double startingWortGravity;
 
 // The list of DS18B20s connected; filled in at boot
 uint8_t tempSensors[2][8];
 
 // The DS18B20 address to use for load cell
 // temperature compensation.
-uint8_t boardTempAddr[8] = {0,0,0,0,0,0,0,0};
+uint8_t boardTempAddr[8];
 
 // The DS18B20 address to use for wort temperature
 // reporting.
-uint8_t wortTempAddr[8] = {0,0,0,0,0,0,0,0};
+uint8_t wortTempAddr[8];
 /****** End configuration *******/
 
 // Tare in progress

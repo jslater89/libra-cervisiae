@@ -86,7 +86,7 @@ void sendToGoogleDrive(double gravity, double abw, double abv, double temperatur
   boolean result = client.connect("script.google.com", 443);
 
   if(result) {
-    const int pathLength = 500;
+    const int pathLength = 300;
     char path[pathLength];
     strcpy(path, "GET ");
     strncpy(path + strlen(path), apiPath, pathLength - strlen(path));

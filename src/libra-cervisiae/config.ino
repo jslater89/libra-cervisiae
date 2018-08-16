@@ -19,10 +19,8 @@
 }
  */
 
-#define LONG_STRING_SIZE 65
-
-char wortAddrStr[65];
-char boardAddrStr[65];
+char wortAddrStr[17];
+char boardAddrStr[17];
 
 void printConfig() {
   Serial.print(F("Hydrometer name: ")); Serial.println(hydrometerName);
