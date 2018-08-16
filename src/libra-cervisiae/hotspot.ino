@@ -43,6 +43,13 @@ void hotspotSetup() {
     WiFi.softAP(hydrometerName, "libra-cervisiae");
   }
 
+  Serial.print(F("Starting mDNS at ")); Serial.print(hydrometerName); Serial.println(F(".local"));
+  boolean result = MDNS.begin(hydrometerName);
+
+  if(!result) {
+    Serial.println(F("Failed to start mDNS responder"));
+  }
+
   startServer();
   Serial.println(F("Started hotspot mode"));
 }
@@ -62,20 +69,13 @@ void startServer() {
   server->on("/config", HTTP_POST, updateConfig);
   server->on("/tempsensors", HTTP_GET, getTempSensors);
 
-  Serial.print(F("Starting mDNS at ")); Serial.print(hydrometerName); Serial.println(F(".local"));
-  boolean result = MDNS.begin(hydrometerName);
-
-  if(!result) {
-    Serial.println(F("Failed to start mDNS responder"));
-  }
-
   Serial.println(F("Web server started"));
   server->begin();
 }
 
 void stopServer() {
-  server = NULL;
   delete server;
+  server = NULL;
 }
 
 // Hotspot loop
