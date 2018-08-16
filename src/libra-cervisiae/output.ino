@@ -81,63 +81,6 @@ int getGravitonJSON(char* dest, int n, double g, double t, double w) {
 }
 
 void sendToGoogleDrive(double gravity, double abw, double abv, double temperature, double weight, double weightDelta) {
-  stopServer();
-  
-  HTTPSRedirect* client;
-  client = new HTTPSRedirect(443);
-  client->setPrintResponseBody(true);
-  client->setTimeout(5000);
-  Serial.println(F("Secure connection starting"));
-  Serial.print(F("Heap space: ")); Serial.println(ESP.getFreeHeap());
-  ESP.wdtDisable();
-  boolean result = client->connect("manywords.press", 443);
-  ESP.wdtEnable(1000);
-  
-  if(result) {
-    const int pathLength = 300;
-    char path[pathLength];
-    //strcpy(path, "GET ");
-    strncpy(path + strlen(path), apiPath, pathLength - strlen(path));
-  
-    const char* gravityParam = "?gravity=";
-    const char* abwParam = "&abw=";
-    const char* abvParam = "&abv=";
-    const char* tempParam = "&wortTemp=";
-    const char* weightParam = "&weight=";
-    const char* weightDeltaParam = "&weightDelta=";
-  
-    strncpy(path + strlen(path), gravityParam, pathLength - strlen(path));
-    snprintf(path + strlen(path), gravity, "%f", pathLength - strlen(path));
-  
-    strncpy(path + strlen(path), abwParam, pathLength - strlen(path));
-    snprintf(path + strlen(path), abw, "%f", pathLength - strlen(path));
-  
-    strncpy(path + strlen(path), abvParam, pathLength - strlen(path));
-    snprintf(path + strlen(path), abv, "%f", pathLength - strlen(path));
-
-    yield();
-  
-    strncpy(path + strlen(path), tempParam, pathLength - strlen(path));
-    snprintf(path + strlen(path), temperature, "%f", pathLength - strlen(path));
-  
-    strncpy(path + strlen(path), weightParam, pathLength - strlen(path));
-    snprintf(path + strlen(path), weight, "%f", pathLength - strlen(path));
-  
-    strncpy(path + strlen(path), weightDeltaParam, pathLength - strlen(path));
-    snprintf(path + strlen(path), weightDelta, "%f", pathLength - strlen(path));
-
-    //strncpy(path + strlen(path), " HTTP/1.1", pathLength - strlen(path));
-
-    Serial.print(F("Request path: ")); Serial.println(path);
-    client->GET(path, "github.com");
-  }
-  else {
-    Serial.println(F("Failed to connect"));
-  }
-
-  Serial.println(F("Finished upload"));
-  delete client;
-
-  startServer();
+  Serial.println(F("Google Drive output is not yet implemented"));
 }
 
