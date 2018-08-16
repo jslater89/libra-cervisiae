@@ -19,6 +19,7 @@
 #include <HX711.h>
 #include <DallasTemperature.h>
 #include <OneWire.h>
+#include <pgmspace.h>
 #include "ArduinoJson/ArduinoJson.h"
 
 /**
@@ -143,7 +144,7 @@ void setup() {
   Serial.begin(115200);
 
   Serial.println();
-  Serial.println("Libra Cervisiae powered on");
+  Serial.println(F("Libra Cervisiae powered on"));
 
   WiFi.disconnect(); // disconnect to avoid stomping on other operations
   WiFi.persistent(false); // don't write to flash
@@ -151,13 +152,13 @@ void setup() {
   // start filesystem
   boolean result = SPIFFS.begin();
   if(!result) {
-    Serial.println("Unable to start SPIFFS");
+    Serial.println(F("Unable to start SPIFFS"));
   }
 
   // read in config
   result = loadConfig();
   if(!result) {
-    Serial.println("Unable to load configuration");
+    Serial.println(F("Unable to load configuration"));
   }
   printConfig();
 
@@ -166,16 +167,16 @@ void setup() {
   hotspotMode = bootToHotspot || drd.detectDoubleReset();
 
   if(DEBUG_TIMINGS) {
-    Serial.print("Startup finished: "); Serial.println(millis() - bootMillis);
+    Serial.print(F("Startup finished: ")); Serial.println(millis() - bootMillis);
   }
 
   // enter hotspot mode if there's no network configured
   if(hotspotMode || strcmp(wifiNetwork, "your_ssid") == 0) {
-    Serial.println("Hotspot mode selected");
+    Serial.println(F("Hotspot mode selected"));
     hotspotSetup();
   }
   else {
-    Serial.println("Hydrometer mode selected");
+    Serial.println(F("Hydrometer mode selected"));
     hydrometerSetup();
   }
 }
@@ -192,23 +193,23 @@ void loop() {
 boolean tryConnect() {
   WiFi.begin(wifiNetwork, wifiPassword);
 
-  Serial.print("Connecting to ");
-  Serial.print(wifiNetwork); Serial.print(" ");
+  Serial.print(F("Connecting to "));
+  Serial.print(wifiNetwork); Serial.print(F(" "));
 
   int i = 0;
   while (WiFi.status() != WL_CONNECTED) { // Wait for the Wi-Fi to connect
     delay(500);
-    Serial.print(".");
+    Serial.print(F("."));
 
     if(i++ > 20) {
       Serial.println();
-      Serial.println("Connection timed out");
+      Serial.println(F("Connection timed out"));
       return false;
     }
   }
 
   Serial.println();
-  Serial.println("Connected!");
+  Serial.println(F("Connected!"));
   return true;
 }
 

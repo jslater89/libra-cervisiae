@@ -25,26 +25,26 @@ char wortAddrStr[65];
 char boardAddrStr[65];
 
 void printConfig() {
-  Serial.print("Hydrometer name: "); Serial.println(hydrometerName);
-  Serial.print("Delay seconds: "); Serial.println(delaySeconds);
-  Serial.print("Full voltage: "); Serial.println(fullVoltage);
-  Serial.print("Wifi network: "); Serial.println(wifiNetwork);
-  Serial.print("Wifi password: "); Serial.println(wifiPassword);
-  Serial.print("API root: "); Serial.println(apiRoot);
-  Serial.print("API path: "); Serial.println(apiPath);
-  Serial.print("API port: "); Serial.println(apiPort);
-  Serial.print("API key: "); Serial.println(apiKey);
-  Serial.print("Hotspot boot: "); Serial.println(bootToHotspot);
-  Serial.print("Output mode: "); Serial.println(outputMode);
-  Serial.print("Temp compensation base: "); Serial.println(tempCompensationBase);
-  Serial.print("Temp compensation factor: "); Serial.println(tempCompensationFactor, 6);
-  Serial.print("Tare offset: "); Serial.println(tareOffset, 2);
-  Serial.print("Scale factor: "); Serial.println(scaleFactor, 4);
-  Serial.print("Equipment weight: "); Serial.println(equipmentWeight, 1);
-  Serial.print("Starting mass: "); Serial.println(startingWortMass, 1);
-  Serial.print("Starting SG: "); Serial.println(startingWortGravity, 3);
-  Serial.print("Wort address: "); printAddress(wortTempAddr); Serial.println();
-  Serial.print("Board address: "); printAddress(boardTempAddr); Serial.println();
+  Serial.print(F("Hydrometer name: ")); Serial.println(hydrometerName);
+  Serial.print(F("Delay seconds: ")); Serial.println(delaySeconds);
+  Serial.print(F("Full voltage: ")); Serial.println(fullVoltage);
+  Serial.print(F("Wifi network: ")); Serial.println(wifiNetwork);
+  Serial.print(F("Wifi password: ")); Serial.println(wifiPassword);
+  Serial.print(F("API root: ")); Serial.println(apiRoot);
+  Serial.print(F("API path: ")); Serial.println(apiPath);
+  Serial.print(F("API port: ")); Serial.println(apiPort);
+  Serial.print(F("API key: ")); Serial.println(apiKey);
+  Serial.print(F("Hotspot boot: ")); Serial.println(bootToHotspot);
+  Serial.print(F("Output mode: ")); Serial.println(outputMode);
+  Serial.print(F("Temp compensation base: ")); Serial.println(tempCompensationBase);
+  Serial.print(F("Temp compensation factor: ")); Serial.println(tempCompensationFactor, 6);
+  Serial.print(F("Tare offset: ")); Serial.println(tareOffset, 2);
+  Serial.print(F("Scale factor: ")); Serial.println(scaleFactor, 4);
+  Serial.print(F("Equipment weight: ")); Serial.println(equipmentWeight, 1);
+  Serial.print(F("Starting mass: ")); Serial.println(startingWortMass, 1);
+  Serial.print(F("Starting SG: ")); Serial.println(startingWortGravity, 3);
+  Serial.print(F("Wort address: ")); printAddress(wortTempAddr); Serial.println();
+  Serial.print(F("Board address: ")); printAddress(boardTempAddr); Serial.println();
   
 }
 
@@ -53,33 +53,33 @@ void getConfigJSON(char* buf, int lim) {
   DynamicJsonBuffer jsonBuffer(bufferSize);
   
   JsonObject& root = jsonBuffer.createObject();
-  root["delaySeconds"] = delaySeconds;
-  root["hydrometerName"] = hydrometerName;
-  root["fullVoltage"] = fullVoltage;
-  root["wifiNetwork"] = wifiNetwork;
-  root["wifiPassword"] = wifiPassword;
+  root[F("delaySeconds")] = delaySeconds;
+  root[F("hydrometerName")] = hydrometerName;
+  root[F("fullVoltage")] = fullVoltage;
+  root[F("wifiNetwork")] = wifiNetwork;
+  root[F("wifiPassword")] = wifiPassword;
 
-  root["bootToHotspot"] = bootToHotspot;
-  root["outputMode"] = outputMode;
+  root[F("bootToHotspot")] = bootToHotspot;
+  root[F("outputMode")] = outputMode;
 
-  root["tempCompensationBase"] = tempCompensationBase;
-  root["tempCompensationFactor"] = tempCompensationFactor;
-  root["tareOffset"] = tareOffset;
-  root["scaleFactor"] = scaleFactor;
-  root["equipmentWeight"] = equipmentWeight;
-  root["startingWortMass"] = startingWortMass;
-  root["startingWortGravity"] = startingWortGravity;
+  root[F("tempCompensationBase")] = tempCompensationBase;
+  root[F("tempCompensationFactor")] = tempCompensationFactor;
+  root[F("tareOffset")] = tareOffset;
+  root[F("scaleFactor")] = scaleFactor;
+  root[F("equipmentWeight")] = equipmentWeight;
+  root[F("startingWortMass")] = startingWortMass;
+  root[F("startingWortGravity")] = startingWortGravity;
 
   convertUint8ToChar(boardTempAddr, boardAddrStr, 8);
   convertUint8ToChar(wortTempAddr, wortAddrStr, 8);
   
-  root["boardTempAddr"] = boardAddrStr;
-  root["wortTempAddr"] = wortAddrStr;
+  root[F("boardTempAddr")] = boardAddrStr;
+  root[F("wortTempAddr")] = wortAddrStr;
 
-  root["apiPath"] = apiPath;
-  root["apiRoot"] = apiRoot;
-  root["apiKey"] = apiKey;
-  root["apiPort"] = apiPort;
+  root[F("apiPath")] = apiPath;
+  root[F("apiRoot")] = apiRoot;
+  root[F("apiKey")] = apiKey;
+  root[F("apiPort")] = apiPort;
   root.prettyPrintTo(buf, lim);
 }
 
@@ -90,9 +90,9 @@ boolean saveConfig() {
   // values aren't valid JSON.
   if(isinf(scaleFactor)) scaleFactor = 0;
   
-  File f = SPIFFS.open("/config.json", "w");
+  File f = SPIFFS.open(F("/config.json"), "w");
   if(!f) {
-    Serial.println("Unable to open config file");
+    Serial.println(F("Unable to open config file"));
     return false;
   }
 
@@ -110,9 +110,9 @@ boolean loadConfig() {
   // 50 elements are copied.
   hydrometerName[50] = wifiNetwork[50] = wifiPassword[50] = apiKey[50] = apiRoot[150] = apiPath[150] = 0;
   
-  File f = SPIFFS.open("/config.json", "r");
+  File f = SPIFFS.open(F("/config.json"), "r");
   if(!f) {
-    Serial.println("Unable to load config file");
+    Serial.println(F("Unable to load config file"));
     return false;
   }
 
@@ -121,7 +121,7 @@ boolean loadConfig() {
   boolean result = decodeJSON(contents, true);
 
   if(!result) {
-    Serial.println("Unable to decode JSON");
+    Serial.println(F("Unable to decode JSON"));
     return false;
   }
   else {
@@ -134,38 +134,38 @@ boolean decodeJSON(String json, boolean decodeCoefficients) {
   DynamicJsonBuffer jsonBuffer(bufferSize);  
   JsonObject& root = jsonBuffer.parseObject(json);
 
-  if(strlen(root["hydrometerName"]) > 50 || strlen(root["hydrometerName"]) == 0) return false;
-  if(strlen(root["wifiNetwork"]) > 50) return false;
-  if(strlen(root["wifiPassword"]) > 50) return false;
-  if(strlen(root["apiKey"]) > 50) return false;
-  if(strlen(root["apiRoot"]) > 150) return false;
-  if(strlen(root["apiPath"]) > 150) return false;
+  if(strlen(root[F("hydrometerName")]) > 50 || strlen(root[F("hydrometerName")]) == 0) return false;
+  if(strlen(root[F("wifiNetwork")]) > 50) return false;
+  if(strlen(root[F("wifiPassword")]) > 50) return false;
+  if(strlen(root[F("apiKey")]) > 50) return false;
+  if(strlen(root[F("apiRoot")]) > 150) return false;
+  if(strlen(root[F("apiPath")]) > 150) return false;
 
-  if(root["delaySeconds"] > 4200 || root["delaySeconds"] < 0) return false;
-  if(root["fullVoltage"] < 3.2) return false;
+  if(root[F("delaySeconds")] > 4200 || root[F("delaySeconds")] < 0) return false;
+  if(root[F("fullVoltage")] < 3.2) return false;
   
-  delaySeconds = root["delaySeconds"];
-  strncpy(hydrometerName, root["hydrometerName"], 50);
-  strncpy(wifiNetwork, root["wifiNetwork"], 50);
-  strncpy(wifiPassword, root["wifiPassword"], 50);
-  strncpy(apiKey, root["apiKey"], 50);
-  strncpy(apiRoot, root["apiRoot"], 150);
-  strncpy(apiPath, root["apiPath"], 150);
-  apiPort = root["apiPort"];
+  delaySeconds = root[F("delaySeconds")];
+  strncpy(hydrometerName, root[F("hydrometerName")], 50);
+  strncpy(wifiNetwork, root[F("wifiNetwork")], 50);
+  strncpy(wifiPassword, root[F("wifiPassword")], 50);
+  strncpy(apiKey, root[F("apiKey")], 50);
+  strncpy(apiRoot, root[F("apiRoot")], 150);
+  strncpy(apiPath, root[F("apiPath")], 150);
+  apiPort = root[F("apiPort")];
 
-  bootToHotspot = root["bootToHotspot"];
-  outputMode = root["outputMode"];
-  fullVoltage = root["fullVoltage"];
-  tempCompensationBase = root["tempCompensationBase"];
-  tempCompensationFactor = root["tempCompensationFactor"];
-  tareOffset = root["tareOffset"];
-  scaleFactor = root["scaleFactor"];
-  equipmentWeight = root["equipmentWeight"];
-  startingWortMass = root["startingWortMass"];
-  startingWortGravity = root["startingWortGravity"];
+  bootToHotspot = root[F("bootToHotspot")];
+  outputMode = root[F("outputMode")];
+  fullVoltage = root[F("fullVoltage")];
+  tempCompensationBase = root[F("tempCompensationBase")];
+  tempCompensationFactor = root[F("tempCompensationFactor")];
+  tareOffset = root[F("tareOffset")];
+  scaleFactor = root[F("scaleFactor")];
+  equipmentWeight = root[F("equipmentWeight")];
+  startingWortMass = root[F("startingWortMass")];
+  startingWortGravity = root[F("startingWortGravity")];
 
-  strncpy(wortAddrStr, root["wortTempAddr"], 65);
-  strncpy(boardAddrStr, root["boardTempAddr"], 65);
+  strncpy(wortAddrStr, root[F("wortTempAddr")], 65);
+  strncpy(boardAddrStr, root[F("boardTempAddr")], 65);
   
   convertCharToUint8(boardAddrStr, boardTempAddr, 8);
   convertCharToUint8(wortAddrStr, wortTempAddr, 8);

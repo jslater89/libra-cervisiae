@@ -25,21 +25,21 @@ long lastSensorUpload = 0;
 void hotspotSetup() {  
   connectedToWifi = false;
   if(strcmp(wifiNetwork, "your_ssid") != 0 || strlen(wifiNetwork) == 0) {
-    Serial.print("Wifi network settings found; trying to connect to network "); Serial.println(wifiNetwork);
+    Serial.print(F("Wifi network settings found; trying to connect to network ")); Serial.println(wifiNetwork);
 
     boolean connectionResult = tryConnect();
     if(!connectionResult) {
-      Serial.println("Unable to connect to existing wifi network");
+      Serial.println(F("Unable to connect to existing wifi network"));
     }
     else {
-      Serial.println("Connected to existing network.");
+      Serial.println(F("Connected to existing network."));
       connectedToWifi = true;
       lastSensorUpload = millis();
     }
   }
 
   if(!connectedToWifi) {
-    Serial.print("Starting hotspot with name "); Serial.print(hydrometerName); Serial.println(" and password libra-cervisiae");
+    Serial.print(F("Starting hotspot with name ")); Serial.print(hydrometerName); Serial.println(F(" and password libra-cervisiae"));
     WiFi.softAP(hydrometerName, "libra-cervisiae");
   }
 
@@ -56,15 +56,15 @@ void hotspotSetup() {
   server.on("/config", HTTP_POST, updateConfig);
   server.on("/tempsensors", HTTP_GET, getTempSensors);
 
-  Serial.print("Starting mDNS at "); Serial.print(hydrometerName); Serial.println(".local");
+  Serial.print(F("Starting mDNS at ")); Serial.print(hydrometerName); Serial.println(F(".local"));
   boolean result = MDNS.begin(hydrometerName);
 
   if(!result) {
-    Serial.println("Failed to start mDNS responder");
+    Serial.println(F("Failed to start mDNS responder"));
   }
 
   server.begin();
-  Serial.println("Started hotspot mode");
+  Serial.println(F("Started hotspot mode"));
 }
 
 // Hotspot loop
@@ -125,13 +125,13 @@ void handleLiveUpdate() {
   DynamicJsonBuffer jsonBuffer(bufferSize);
   
   JsonObject& root = jsonBuffer.createObject();
-  root["wortTemperature"] = hotspotWortTemp;
-  root["boardTemperature"] = hotspotBoardTemp;
-  root["rawWeight"] = hotspotRawWeight;
-  root["abw"] = hotspotABW;
-  root["abv"] = hotspotABV;
-  root["gravity"] = hotspotGravity;
-  root["calibratedWeight"] = hotspotCalibratedWeight;
+  root[F("wortTemperature")] = hotspotWortTemp;
+  root[F("boardTemperature")] = hotspotBoardTemp;
+  root[F("rawWeight")] = hotspotRawWeight;
+  root[F("abw")] = hotspotABW;
+  root[F("abv")] = hotspotABV;
+  root[F("gravity")] = hotspotGravity;
+  root[F("calibratedWeight")] = hotspotCalibratedWeight;
   
   char prettyJSON[root.measurePrettyLength() + 2];
   root.prettyPrintTo((char*) prettyJSON, root.measurePrettyLength() + 1);
@@ -155,7 +155,7 @@ void updateTare() {
   DynamicJsonBuffer jsonBuffer(bufferSize);
 
   JsonObject& root = jsonBuffer.parseObject(server.arg("plain"));
-  double time = root["time"];
+  double time = root[F("time")];
 
   startSensors();
   
@@ -179,7 +179,7 @@ void updateEquipmentWeight() {
 
   JsonObject& root = jsonBuffer.parseObject(server.arg("plain"));
 
-  double w = root["weight"];
+  double w = root[F("weight")];
   
   if(w == 0) {
     startSensors();

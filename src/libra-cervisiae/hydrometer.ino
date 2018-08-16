@@ -12,16 +12,16 @@ void hydrometerSetup() {
   boolean result = tryConnect();
 
   if(!result) {
-    Serial.println("Going back to sleep");
+    Serial.println(F("Going back to sleep"));
     sleep();
     return;
   }
   
-  if(DEBUG_TIMINGS) Serial.print("Wifi finished: "); Serial.println(millis() - bootMillis);
+  if(DEBUG_TIMINGS) Serial.print(F("Wifi finished: ")); Serial.println(millis() - bootMillis);
 
   startSensors();
 
-  if(DEBUG_TIMINGS) Serial.print("Sensors finished: "); Serial.println(millis() - bootMillis);
+  if(DEBUG_TIMINGS) Serial.print(F("Sensors finished: ")); Serial.println(millis() - bootMillis);
 
   yield();
   drd.stop();
@@ -30,7 +30,7 @@ void hydrometerSetup() {
   readBoardTemp(&boardTemp);
   readWortTemp(&wortTemp);
 
-  if(DEBUG_TIMINGS) Serial.print("Temperature read: "); Serial.println(millis() - bootMillis);
+  if(DEBUG_TIMINGS) Serial.print(F("Temperature read: ")); Serial.println(millis() - bootMillis);
 
   yield();
   
@@ -38,7 +38,7 @@ void hydrometerSetup() {
   averageCalibratedWeight(&weight, 25);
   temperatureCorrectCalibrated(boardTemp, &weight);
 
-  if(DEBUG_TIMINGS) Serial.print("Weight read: "); Serial.println(millis() - bootMillis);
+  if(DEBUG_TIMINGS) Serial.print(F("Weight read: ")); Serial.println(millis() - bootMillis);
 
   yield();
 
@@ -47,27 +47,27 @@ void hydrometerSetup() {
   double abv = calculateABV(abw);
   double gravity = calculateGravity(startingWortGravity, abv);
 
-  if(DEBUG_TIMINGS) Serial.print("Calculations finished: "); Serial.println(millis() - bootMillis);
+  if(DEBUG_TIMINGS) Serial.print(F("Calculations finished: ")); Serial.println(millis() - bootMillis);
 
-  Serial.print("BTmp: "); Serial.println(boardTemp, 2);
-  Serial.print("WTmp: "); Serial.println(wortTemp, 2);
-  Serial.print("Wght: "); Serial.println(weight);
-  Serial.print("CorG: "); Serial.println(gravity, 3);
+  Serial.print(F("BTmp: ")); Serial.println(boardTemp, 2);
+  Serial.print(F("WTmp: ")); Serial.println(wortTemp, 2);
+  Serial.print(F("Wght: ")); Serial.println(weight);
+  Serial.print(F("CorG: ")); Serial.println(gravity, 3);
 
   yield();
 
   handleOutput(gravity, abw, abv, wortTemp, weight, startingWortMass - wortWeight);
 
-  if(DEBUG_TIMINGS) Serial.print("Output finished: "); Serial.println(millis() - bootMillis);
+  if(DEBUG_TIMINGS) Serial.print(F("Output finished: ")); Serial.println(millis() - bootMillis);
 
-  Serial.println("Finished waking");
+  Serial.println(F("Finished waking"));
   sleep();
 }
 
 void sleep() {
   drd.stop();
   stopSensors();
-  Serial.print("Going to sleep for "); Serial.print(delaySeconds); Serial.println(" seconds");
+  Serial.print(F("Going to sleep for ")); Serial.print(delaySeconds); Serial.println(F(" seconds"));
   ESP.deepSleep(delaySeconds * 1000 * 1000);
 }
 

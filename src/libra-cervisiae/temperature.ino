@@ -21,11 +21,11 @@ void tempStart() {
   int sensorCount = sensors.getDS18Count();
 
   if(sensorCount > 2) {
-    Serial.println("Warning: more than 2 DS18xxx sensors connected");
+    Serial.println(F("Warning: more than 2 DS18xxx sensors connected"));
     sensorCount = 2;
   }
   if(DEBUG_DS18XXX) {
-    Serial.print("Located "); Serial.print(sensorCount); Serial.println(" DS18xxx sensors");
+    Serial.print(F("Located ")); Serial.print(sensorCount); Serial.println(F(" DS18xxx sensors"));
   }
   
 
@@ -34,7 +34,7 @@ void tempStart() {
 
     if(result) {
       if(DEBUG_DS18XXX) {
-        Serial.print("Address: ");
+        Serial.print(F("Address: "));
         printAddress(tempSensors[i]);
         Serial.println();
       }

@@ -20,9 +20,9 @@ void sendToGraviton(double gravity, double abw, double abv, double temperature, 
   int contentLength = getGravitonJSON(gravitonJSON, 250, gravity, temperature, weight);
 
   WiFiClient client;
-  Serial.print("API root: "); Serial.println(apiRoot);
-  Serial.print("API port: "); Serial.println(apiPort);
-  Serial.println("Reading: ");
+  Serial.print(F("API root: ")); Serial.println(apiRoot);
+  Serial.print(F("API port: ")); Serial.println(apiPort);
+  Serial.println(F("Reading: "));
   Serial.println(gravitonJSON);
   boolean result = client.connect(apiRoot, apiPort);
 
@@ -43,7 +43,7 @@ void sendToGraviton(double gravity, double abw, double abv, double temperature, 
     while(!client.available()){
     
       if((currentMillis - previousMillis) > timeout){
-        Serial.println("Timeout sending request");
+        Serial.println(F("Timeout sending request"));
         break;
       }
       delay(50);
@@ -59,10 +59,10 @@ void sendToGraviton(double gravity, double abw, double abv, double temperature, 
     }
   }
   else {
-    Serial.println("Failed to connect");
+    Serial.println(F("Failed to connect"));
   }
 
-  Serial.println("Finished upload");
+  Serial.println(F("Finished upload"));
   client.stop();
 }
 
@@ -72,10 +72,10 @@ int getGravitonJSON(char* dest, int n, double g, double t, double w) {
   DynamicJsonBuffer jsonBuffer(bufferSize);
   
   JsonObject& root = jsonBuffer.createObject();
-  root["name"] = hydrometerName;
-  root["gravity"] = g;
-  root["weight"] = w;
-  root["temperature"] = t;
+  root[F("name")] = hydrometerName;
+  root[F("gravity")] = g;
+  root[F("weight")] = w;
+  root[F("temperature")] = t;
   
   int written = root.printTo(dest, n);
   return root.measureLength();
@@ -83,8 +83,6 @@ int getGravitonJSON(char* dest, int n, double g, double t, double w) {
 
 void sendToGoogleDrive(double gravity, double abw, double abv, double temperature, double weight, double weightDelta) {
   WiFiClientSecure client;
-  Serial.print("API root: "); Serial.println(apiRoot);
-  Serial.print("API port: "); Serial.println(apiPort);
   boolean result = client.connect("script.google.com", 443);
 
   if(result) {
@@ -130,7 +128,7 @@ void sendToGoogleDrive(double gravity, double abw, double abv, double temperatur
     while(!client.available()){
     
       if((currentMillis - previousMillis) > timeout){
-        Serial.println("Timeout sending request");
+        Serial.println(F("Timeout sending request"));
         break;
       }
       delay(50);
@@ -146,10 +144,10 @@ void sendToGoogleDrive(double gravity, double abw, double abv, double temperatur
     }
   }
   else {
-    Serial.println("Failed to connect");
+    Serial.println(F("Failed to connect"));
   }
 
-  Serial.println("Finished upload");
+  Serial.println(F("Finished upload"));
   client.stop();
 }
 

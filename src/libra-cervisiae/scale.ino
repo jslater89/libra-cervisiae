@@ -100,13 +100,13 @@ void temperatureCorrectCalibrated(double temperature, double *weight) {
 }
 
 void tareScale(int tareMillis) {
-  Serial.println("Starting tare");
+  Serial.println(F("Starting tare"));
   averageStart = millis();
   averageLength = tareMillis;
   averageSteps = 0;
 
-  if(DEBUG_TIMINGS) Serial.print("Tare start: "); Serial.println(averageStart);
-  if(DEBUG_TIMINGS) Serial.print("Tare length: "); Serial.println(averageLength);
+  if(DEBUG_TIMINGS) Serial.print(F("Tare start: ")); Serial.println(averageStart);
+  if(DEBUG_TIMINGS) Serial.print(F("Tare length: ")); Serial.println(averageLength);
 
   tareOffset = 0;
   
@@ -123,7 +123,7 @@ void tareLoop() {
   tareOffset = runningTotal / averageSteps;
 
   if(millis() > (averageStart + averageLength)) {
-    Serial.print("Calculated tare value: "); Serial.println(tareOffset);
+    Serial.print(F("Calculated tare value: ")); Serial.println(tareOffset);
     
     scale.set_offset((long) tareOffset);
     tareInProgress = false;
@@ -134,9 +134,9 @@ void tareLoop() {
     return;
   }
   else if(DEBUG_HX711) {
-    Serial.print("Tare step "); Serial.println(averageSteps);
-    Serial.print("Current offset "); Serial.println(tareOffset);
-    Serial.print("Current weight "); Serial.println(weight);
+    Serial.print(F("Tare step ")); Serial.println(averageSteps);
+    Serial.print(F("Current offset ")); Serial.println(tareOffset);
+    Serial.print(F("Current weight ")); Serial.println(weight);
     Serial.println();
   }
 
@@ -144,15 +144,15 @@ void tareLoop() {
 }
 
 void calibrateScale(double knownGrams, int calibrateMillis) {
-  Serial.println("Starting calibration");
+  Serial.println(F("Starting calibration"));
   averageStart = millis();
   averageLength = calibrateMillis;
   averageSteps = 0;
   
   calibrationMass = knownGrams;
 
-  if(DEBUG_TIMINGS) Serial.print("Calibration start: "); Serial.println(averageStart);
-  if(DEBUG_TIMINGS) Serial.print("Calibration length: "); Serial.println(averageLength);
+  if(DEBUG_TIMINGS) Serial.print(F("Calibration start: ")); Serial.println(averageStart);
+  if(DEBUG_TIMINGS) Serial.print(F("Calibration length: ")); Serial.println(averageLength);
 
   calibrationInProgress = true;
 }
@@ -169,7 +169,7 @@ void calibrateLoop() {
 
   if(millis() > (averageStart + averageLength)) {
     scaleFactor = calibrationReading / calibrationMass;
-    Serial.print("Calculated calibration value: "); Serial.println(scaleFactor);
+    Serial.print(F("Calculated calibration value: ")); Serial.println(scaleFactor);
 
     double temperature = 0;
     readBoardTemp(&temperature);
@@ -186,7 +186,7 @@ void calibrateLoop() {
     return;
   }
   else if(DEBUG_HX711) {
-    Serial.print("Calibrate step "); Serial.println(averageSteps);
+    Serial.print(F("Calibrate step ")); Serial.println(averageSteps);
   }
 
   delay(100);
