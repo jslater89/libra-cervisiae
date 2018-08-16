@@ -7,7 +7,7 @@
  * response to AJAX requests from the web page files.
  */
 
-ESP8266WebServer server(80);
+ESP8266WebServer* server = NULL;
 #define READ_INTERVAL 10000
 
 long lastSensorReading = 0;
@@ -43,18 +43,24 @@ void hotspotSetup() {
     WiFi.softAP(hydrometerName, "libra-cervisiae");
   }
 
+  startServer();
+  Serial.println(F("Started hotspot mode"));
+}
+
+void startServer() {
+  server = new ESP8266WebServer(80);
   // main.html has scripts/styles embedded.
-  server.serveStatic("/", SPIFFS, "/main.html");
-  server.serveStatic("/app.js", SPIFFS, "/app.js");
-  server.serveStatic("/style.css", SPIFFS, "/style.css");
+  server->serveStatic("/", SPIFFS, "/main.html");
+  server->serveStatic("/app.js", SPIFFS, "/app.js");
+  server->serveStatic("/style.css", SPIFFS, "/style.css");
   
-  server.on("/live", HTTP_GET, handleLiveUpdate);
-  server.on("/calibrate", HTTP_POST, updateCalibration);
-  server.on("/tare", HTTP_POST, updateTare);
-  server.on("/equipmentweight", HTTP_POST, updateEquipmentWeight);
-  server.on("/config", HTTP_GET, getConfig);
-  server.on("/config", HTTP_POST, updateConfig);
-  server.on("/tempsensors", HTTP_GET, getTempSensors);
+  server->on("/live", HTTP_GET, handleLiveUpdate);
+  server->on("/calibrate", HTTP_POST, updateCalibration);
+  server->on("/tare", HTTP_POST, updateTare);
+  server->on("/equipmentweight", HTTP_POST, updateEquipmentWeight);
+  server->on("/config", HTTP_GET, getConfig);
+  server->on("/config", HTTP_POST, updateConfig);
+  server->on("/tempsensors", HTTP_GET, getTempSensors);
 
   Serial.print(F("Starting mDNS at ")); Serial.print(hydrometerName); Serial.println(F(".local"));
   boolean result = MDNS.begin(hydrometerName);
@@ -63,13 +69,21 @@ void hotspotSetup() {
     Serial.println(F("Failed to start mDNS responder"));
   }
 
-  server.begin();
-  Serial.println(F("Started hotspot mode"));
+  Serial.println(F("Web server started"));
+  server->begin();
+}
+
+void stopServer() {
+  server = NULL;
+  delete server;
 }
 
 // Hotspot loop
 void hotspotLoop() {
-  server.handleClient();
+  if(server) {
+    server->handleClient();
+  }
+  
   drd.loop();
 
   if(tareInProgress) {
@@ -138,24 +152,24 @@ void handleLiveUpdate() {
   prettyJSON[root.measurePrettyLength() + 1] = 0;
 
   if(LOG_REQUESTS) Serial.println("handled live update");
-  server.send(200, "application/json", prettyJSON);
+  server->send(200, "application/json", prettyJSON);
 }
 
 
 void updateTare() {
-  if(!server.hasArg("plain")) {
-    server.send(400, "text/plain", "no body");
+  if(!server->hasArg("plain")) {
+    server->send(400, "text/plain", "no body");
     return;
   }
 
   if(tareInProgress || calibrationInProgress) {
-    server.send(400, "text/plain", "tare or calibration in progress");
+    server->send(400, "text/plain", "tare or calibration in progress");
   }
 
   const size_t bufferSize = JSON_OBJECT_SIZE(2) + 120;
   DynamicJsonBuffer jsonBuffer(bufferSize);
 
-  JsonObject& root = jsonBuffer.parseObject(server.arg("plain"));
+  JsonObject& root = jsonBuffer.parseObject(server->arg("plain"));
   double time = root[F("time")];
 
   startSensors();
@@ -163,23 +177,23 @@ void updateTare() {
   tareScale(time * 1000);
 
   if(LOG_REQUESTS) Serial.println("handled tare");
-  server.send(200, "text/plain", "tare in progress");
+  server->send(200, "text/plain", "tare in progress");
 }
 
 void updateEquipmentWeight() {
-  if(!server.hasArg("plain")) {
-    server.send(400, "text/plain", "no body");
+  if(!server->hasArg("plain")) {
+    server->send(400, "text/plain", "no body");
     return;
   }
 
   if(tareInProgress || calibrationInProgress) {
-    server.send(400, "text/plain", "tare or calibration in progress");
+    server->send(400, "text/plain", "tare or calibration in progress");
   }
 
   const size_t bufferSize = JSON_OBJECT_SIZE(2) + 120;
   DynamicJsonBuffer jsonBuffer(bufferSize);
 
-  JsonObject& root = jsonBuffer.parseObject(server.arg("plain"));
+  JsonObject& root = jsonBuffer.parseObject(server->arg("plain"));
 
   double w = root[F("weight")];
   
@@ -195,25 +209,25 @@ void updateEquipmentWeight() {
   saveConfig();
 
   if(LOG_REQUESTS) Serial.println("handled equipment update");
-  server.send(200, "text/plain", "equipment weight set");
+  server->send(200, "text/plain", "equipment weight set");
 }
 
 // The calibrate endpoint accepts a known weight in grams, and calibrates
 // the scale to read that value.
 void updateCalibration() {
-  if(!server.hasArg("plain")) {
-    server.send(400, "text/plain", "no body");
+  if(!server->hasArg("plain")) {
+    server->send(400, "text/plain", "no body");
     return;
   }
 
   if(tareInProgress || calibrationInProgress) {
-    server.send(400, "text/plain", "tare or calibration in progress");
+    server->send(400, "text/plain", "tare or calibration in progress");
   }
 
   const size_t bufferSize = JSON_OBJECT_SIZE(2) + 120;
   DynamicJsonBuffer jsonBuffer(bufferSize);
 
-  JsonObject& root = jsonBuffer.parseObject(server.arg("plain"));
+  JsonObject& root = jsonBuffer.parseObject(server->arg("plain"));
   double weight = root["weight"];
   int time = root["time"];
   time = time * 1000;
@@ -223,7 +237,7 @@ void updateCalibration() {
   calibrateScale(weight, time);
 
   if(LOG_REQUESTS) Serial.println("handled calibration");
-  server.send(200, "text/plain", "calibration updated");
+  server->send(200, "text/plain", "calibration updated");
 }
 
 
@@ -234,22 +248,22 @@ void getConfig() {
   getConfigJSON(configJSON, 1024);
 
   if(LOG_REQUESTS) Serial.println("handled config get");
-  server.send(200, "application/json", configJSON);
+  server->send(200, "application/json", configJSON);
 }
 
 // The update config endpoint accepts a JSON object containing
 // a configuration, and sets the internal configuration to those
 // values.
 void updateConfig() {
-  if(!server.hasArg("plain")) {
-    server.send(400, "text/plain", "no body");
+  if(!server->hasArg("plain")) {
+    server->send(400, "text/plain", "no body");
     return;
   }
 
-  boolean result = decodeJSON(server.arg("plain"), false);
+  boolean result = decodeJSON(server->arg("plain"), false);
 
   if(!result) {
-    server.send(400, "text/plain", "JSON parse error");
+    server->send(400, "text/plain", "JSON parse error");
     return;
   }
 
@@ -258,12 +272,12 @@ void updateConfig() {
   result = saveConfig();
 
   if(!result) {
-    server.send(500, "text/plain", "error saving config");
+    server->send(500, "text/plain", "error saving config");
     return;
   }
 
   if(LOG_REQUESTS) Serial.println("handled config post");
-  server.send(200, "text/plain", "ok");
+  server->send(200, "text/plain", "ok");
 }
 
 void getTempSensors() {
@@ -300,6 +314,6 @@ void getTempSensors() {
   prettyJSON[root.measurePrettyLength() + 1] = 0;
 
   if(LOG_REQUESTS) Serial.println("handled temp sensors get");
-  server.send(200, "application/json", prettyJSON);
+  server->send(200, "application/json", prettyJSON);
 }
 

@@ -81,6 +81,8 @@ int getGravitonJSON(char* dest, int n, double g, double t, double w) {
 }
 
 void sendToGoogleDrive(double gravity, double abw, double abv, double temperature, double weight, double weightDelta) {
+  stopServer();
+  
   HTTPSRedirect* client;
   client = new HTTPSRedirect(443);
   client->setPrintResponseBody(true);
@@ -135,5 +137,7 @@ void sendToGoogleDrive(double gravity, double abw, double abv, double temperatur
 
   Serial.println(F("Finished upload"));
   delete client;
+
+  startServer();
 }
 
