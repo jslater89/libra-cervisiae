@@ -20,7 +20,6 @@
 #include <OneWire.h>
 #include <pgmspace.h>
 #include "src/ArduinoJson/ArduinoJson.h"
-#include "src/HTTPSRedirect/HTTPSRedirect.h"
 
 /**
  * LIBRA CERVISIAE is a scale controller for homebrewing use.
