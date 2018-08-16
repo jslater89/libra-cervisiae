@@ -1,6 +1,6 @@
 #include <WiFiServer.h>
-#include <ESP8266WiFiType.h>
 #include <WiFiServerSecure.h>
+#include <ESP8266WiFiType.h>
 #include <ESP8266WiFiAP.h>
 #include <ESP8266WiFi.h>
 #include <WiFiClient.h>
@@ -19,7 +19,8 @@
 #include <DallasTemperature.h>
 #include <OneWire.h>
 #include <pgmspace.h>
-#include "ArduinoJson/ArduinoJson.h"
+#include "src/ArduinoJson/ArduinoJson.h"
+#include "src/HTTPSRedirect/HTTPSRedirect.h"
 
 /**
  * LIBRA CERVISIAE is a scale controller for homebrewing use.
@@ -30,6 +31,7 @@
 #define DEBUG_TIMINGS false
 #define DEBUG_DS18XXX false
 #define DEBUG_HX711 false
+#define LOG_REQUESTS true
 
 // Build types
 #define WEMOS

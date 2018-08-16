@@ -106,7 +106,7 @@ boolean saveConfig() {
 boolean loadConfig() {
   // ensure null-termination; the 51st element is always 0 in arrays where only
   // 50 elements are copied.
-  hydrometerName[50] = wifiNetwork[50] = wifiPassword[50] = apiKey[50] = apiRoot[150] = apiPath[150] = 0;
+  hydrometerName[40] = wifiNetwork[40] = wifiPassword[40] = apiKey[40] = apiRoot[100] = apiPath[100] = 0;
   
   File f = SPIFFS.open(F("/config.json"), "r");
   if(!f) {
@@ -132,23 +132,23 @@ boolean decodeJSON(String json, boolean decodeCoefficients) {
   DynamicJsonBuffer jsonBuffer(bufferSize);  
   JsonObject& root = jsonBuffer.parseObject(json);
 
-  if(strlen(root[F("hydrometerName")]) > 50 || strlen(root[F("hydrometerName")]) == 0) return false;
-  if(strlen(root[F("wifiNetwork")]) > 50) return false;
-  if(strlen(root[F("wifiPassword")]) > 50) return false;
+  if(strlen(root[F("hydrometerName")]) > 40 || strlen(root[F("hydrometerName")]) == 0) return false;
+  if(strlen(root[F("wifiNetwork")]) > 40) return false;
+  if(strlen(root[F("wifiPassword")]) > 40) return false;
   if(strlen(root[F("apiKey")]) > 50) return false;
-  if(strlen(root[F("apiRoot")]) > 150) return false;
-  if(strlen(root[F("apiPath")]) > 150) return false;
+  if(strlen(root[F("apiRoot")]) > 100) return false;
+  if(strlen(root[F("apiPath")]) > 100) return false;
 
   if(root[F("delaySeconds")] > 4200 || root[F("delaySeconds")] < 0) return false;
   if(root[F("fullVoltage")] < 3.2) return false;
   
   delaySeconds = root[F("delaySeconds")];
-  strncpy(hydrometerName, root[F("hydrometerName")], 50);
-  strncpy(wifiNetwork, root[F("wifiNetwork")], 50);
-  strncpy(wifiPassword, root[F("wifiPassword")], 50);
+  strncpy(hydrometerName, root[F("hydrometerName")], 40);
+  strncpy(wifiNetwork, root[F("wifiNetwork")], 40);
+  strncpy(wifiPassword, root[F("wifiPassword")], 40);
   strncpy(apiKey, root[F("apiKey")], 50);
-  strncpy(apiRoot, root[F("apiRoot")], 150);
-  strncpy(apiPath, root[F("apiPath")], 150);
+  strncpy(apiRoot, root[F("apiRoot")], 100);
+  strncpy(apiPath, root[F("apiPath")], 100);
   apiPort = root[F("apiPort")];
 
   bootToHotspot = root[F("bootToHotspot")];
@@ -162,8 +162,8 @@ boolean decodeJSON(String json, boolean decodeCoefficients) {
   startingWortMass = root[F("startingWortMass")];
   startingWortGravity = root[F("startingWortGravity")];
 
-  strncpy(wortAddrStr, root[F("wortTempAddr")], 65);
-  strncpy(boardAddrStr, root[F("boardTempAddr")], 65);
+  strncpy(wortAddrStr, root[F("wortTempAddr")], 17);
+  strncpy(boardAddrStr, root[F("boardTempAddr")], 17);
   
   convertCharToUint8(boardAddrStr, boardTempAddr, 8);
   convertCharToUint8(wortAddrStr, wortTempAddr, 8);

@@ -137,6 +137,7 @@ void handleLiveUpdate() {
   root.prettyPrintTo((char*) prettyJSON, root.measurePrettyLength() + 1);
   prettyJSON[root.measurePrettyLength() + 1] = 0;
 
+  if(LOG_REQUESTS) Serial.println("handled live update");
   server.send(200, "application/json", prettyJSON);
 }
 
@@ -161,6 +162,7 @@ void updateTare() {
   
   tareScale(time * 1000);
 
+  if(LOG_REQUESTS) Serial.println("handled tare");
   server.send(200, "text/plain", "tare in progress");
 }
 
@@ -192,6 +194,7 @@ void updateEquipmentWeight() {
   equipmentWeight = w;
   saveConfig();
 
+  if(LOG_REQUESTS) Serial.println("handled equipment update");
   server.send(200, "text/plain", "equipment weight set");
 }
 
@@ -219,6 +222,7 @@ void updateCalibration() {
   
   calibrateScale(weight, time);
 
+  if(LOG_REQUESTS) Serial.println("handled calibration");
   server.send(200, "text/plain", "calibration updated");
 }
 
@@ -228,6 +232,8 @@ void updateCalibration() {
 void getConfig() {
   char configJSON[1024];
   getConfigJSON(configJSON, 1024);
+
+  if(LOG_REQUESTS) Serial.println("handled config get");
   server.send(200, "application/json", configJSON);
 }
 
@@ -255,7 +261,8 @@ void updateConfig() {
     server.send(500, "text/plain", "error saving config");
     return;
   }
-  
+
+  if(LOG_REQUESTS) Serial.println("handled config post");
   server.send(200, "text/plain", "ok");
 }
 
@@ -292,6 +299,7 @@ void getTempSensors() {
   root.prettyPrintTo((char*) prettyJSON, root.measurePrettyLength() + 1);
   prettyJSON[root.measurePrettyLength() + 1] = 0;
 
+  if(LOG_REQUESTS) Serial.println("handled temp sensors get");
   server.send(200, "application/json", prettyJSON);
 }
 
