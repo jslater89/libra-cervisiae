@@ -153,23 +153,23 @@ void hotspotLoop() {
 
   if(millis() - lastSensorReading > READ_INTERVAL) {
      // Start up and shut down the sensors for each read
-//    startSensors();
-//    
-//    readWortTemp(&hotspotWortTemp);
-//    readBoardTemp(&hotspotBoardTemp);
-//    averageWeight(&hotspotRawWeight, 5);
-//    averageCalibratedWeight(&hotspotCalibratedWeight, 15);
-//    temperatureCorrectCalibrated(hotspotBoardTemp, &hotspotCalibratedWeight);
-//  
-//    stopSensors();
-//
-//    double wortWeight = hotspotCalibratedWeight - equipmentWeight;
-//    hotspotABW = getBatchABW(wortWeight);
-//    hotspotABV = calculateABV(hotspotABW);
-//    double gravity = calculateGravity(startingWortGravity, hotspotABV);
-//    hotspotGravity = gravity;
-//  
-//    lastSensorReading = millis();
+    startSensors();
+    
+    readWortTemp(&hotspotWortTemp);
+    readBoardTemp(&hotspotBoardTemp);
+    averageWeight(&hotspotRawWeight, 5);
+    averageCalibratedWeight(&hotspotCalibratedWeight, 15);
+    temperatureCorrectCalibrated(hotspotBoardTemp, &hotspotCalibratedWeight);
+  
+    stopSensors();
+
+    double wortWeight = hotspotCalibratedWeight - equipmentWeight;
+    hotspotABW = getBatchABW(wortWeight);
+    hotspotABV = calculateABV(hotspotABW);
+    double gravity = calculateGravity(startingWortGravity, hotspotABV);
+    hotspotGravity = gravity;
+  
+    lastSensorReading = millis();
   }
 
   if(connectedToWifi && millis() - lastSensorUpload > delaySeconds * 1000) {

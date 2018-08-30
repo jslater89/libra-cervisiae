@@ -7,7 +7,7 @@
 
 // one-time sensor init
 void initSensors() {
-  //initScale();
+  initScale();
 
   if(DEBUG_TIMINGS) {
     Serial.print(F("Scale init done: ")); Serial.println(millis() - bootMillis);

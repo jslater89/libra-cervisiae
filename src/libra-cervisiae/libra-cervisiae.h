@@ -3,7 +3,7 @@
 
 // Debug options
 #define DEBUG_TIMINGS true
-#define DEBUG_DS18XXX false
+#define DEBUG_DS18XXX true
 #define DEBUG_HX711 false
 #define LOG_REQUESTS true
 
@@ -21,8 +21,8 @@
 #elif PCB
 #define DS18B20_POWER_PIN 14
 #define DS18B20_DATA_PIN 12
-#define HX711_DATA_PIN 5
-#define HX711_CLOCK_PIN 4
+#define HX711_DATA_PIN 4
+#define HX711_CLOCK_PIN 5
 
 #elif NODEMCU
 #define DS18B20_POWER_PIN 12
