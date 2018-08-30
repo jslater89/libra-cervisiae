@@ -1,4 +1,5 @@
-const API_ROOT = "http://jarvis.local"
+//const API_ROOT = "http://jarvis.local"
+const API_ROOT = ""
 
 let currentConfig = {}
 let currentUpdate = {}
