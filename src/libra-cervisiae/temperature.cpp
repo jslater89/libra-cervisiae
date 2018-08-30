@@ -1,4 +1,10 @@
 
+#include "libra-cervisiae.h"
+#include "config.h"
+#include "temperature.h"
+
+OneWire oneWire(DS18B20_DATA_PIN);
+DallasTemperature sensors(&oneWire);
 
 void printAddress(DeviceAddress deviceAddress) {
   for (uint8_t i = 0; i < 8; i++)
@@ -70,4 +76,3 @@ void readTempByAddress(DeviceAddress a, double* t) {
   delay(750);
   *t = sensors.getTempF(a);
 }
-

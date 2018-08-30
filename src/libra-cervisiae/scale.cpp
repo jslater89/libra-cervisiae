@@ -1,19 +1,15 @@
-#ifdef WEMOS
-#define HX711_POWER_PIN 14
-#define HX711_DATA_PIN 5
-#define HX711_CLOCK_PIN 4
 
-#elif defined PCB
-#define HX711_POWER_PIN 14
-#define HX711_DATA_PIN 5
-#define HX711_CLOCK_PIN 4
+#include <Arduino.h>
+#include <HX711.h>
+#include <pgmspace.h>
+#include <DallasTemperature.h>
+#include "libra-cervisiae.h"
+#include "sensors.h"
+#include "temperature.h"
+#include "config.h"
+#include "scale.h"
 
-#elif defined NODEMCU
-#define HX711_POWER_PIN 14
-#define HX711_DATA_PIN 5
-#define HX711_CLOCK_PIN 4
-
-#endif
+HX711 scale;
 
 long averageStart = 0;
 long averageLength = 0;
@@ -23,8 +19,20 @@ double calibrationMass = 1;
 double calibrationReading = 0;
 
 void initScale() {
-  scale.begin(HX711_DATA_PIN, HX711_CLOCK_PIN);   
+  if(DEBUG_HX711) {
+    Serial.println("Scale init starting");
+  }
+  
+  scale.begin(HX711_DATA_PIN, HX711_CLOCK_PIN);
+
+  if(DEBUG_HX711) {
+    Serial.println("Scale begun");
+  }
+  
   scale.set_offset(tareOffset);
+
+  if(scaleFactor == 0) scaleFactor = 1;
+  
   scale.set_scale(scaleFactor);
 }
 
@@ -35,6 +43,12 @@ void scaleStart() {
 
 void scaleStop() {
   scale.power_down();
+}
+
+
+// returns entirely uncalibrated value
+void readRaw(int* weight) {
+  *weight = scale.read();
 }
 
 void averageRawReading(int* total, int count) {
@@ -50,11 +64,10 @@ void averageRawReading(int* total, int count) {
   *total = (t / count);
 }
 
-// returns uncalibrated value
-void readRaw(int* weight) {
-  *weight = scale.read();
+// returns tared but uncalibrated value
+void readWeight(int* weight) {
+  *weight = scale.get_value();
 }
-
 
 void averageWeight(int* total, int count) {
   int t = 0;
@@ -69,9 +82,8 @@ void averageWeight(int* total, int count) {
   *total = (t / count);
 }
 
-// returns uncalibrated value
-void readWeight(int* weight) {
-  *weight = scale.get_value();
+void readCalibratedWeight(double* weight) {
+  *weight = scale.get_units();
 }
 
 void averageCalibratedWeight(double* total, int count) {
@@ -85,10 +97,6 @@ void averageCalibratedWeight(double* total, int count) {
   }
 
   *total = (t / count);
-}
-
-void readCalibratedWeight(double* weight) {
-  *weight = scale.get_units();
 }
 
 // Correct load cells for temperature effects.
@@ -191,4 +199,3 @@ void calibrateLoop() {
 
   delay(100);
 }
-

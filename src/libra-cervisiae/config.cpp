@@ -2,22 +2,38 @@
  * Config holds functions related to configuration JSON, saving to SPIFFS, and
  * reading from SPIFFS.
  * 
-{
-  "delaySeconds": 3600,
-  "hydrometerName": "01234567890123456789012345678901234567890123456789",
-  "fullVoltage": 4.20000000000001,
-  "tempCompensationBase": 68.5,
-  "tempCompensationFactor": 0.000935,
-  "wifiNetwork": "01234567890123456789012345678901234567890123456789",
-  "wifiPassword": "01234567890123456789012345678901234567890123456789",
-  "apiKey": "01234567890123456789012345678901234567890123456789",
-  "apiRoot": "012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789",
-  "apiPath": "012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789",
+*/
 
-  "bootToHotspot": false,
-  "outputMode" 1,
-}
- */
+#include <FS.h>
+#include <stdint.h>
+#include "src/ArduinoJson/ArduinoJson.h"
+#include "temperature.h"
+#include "utils.h"
+#include "config.h"
+
+/****** Definitions for extern declarations in config.h *******/
+int delaySeconds; // half an hour
+char hydrometerName[51];
+float fullVoltage;
+char wifiNetwork[41];
+char wifiPassword[41];
+char apiRoot[101];
+char apiPath[101];
+int apiPort;
+char apiKey[51];
+bool bootToHotspot;
+int outputMode;
+double tempCompensationBase;
+double tempCompensationFactor;
+double tareOffset;
+double scaleFactor;
+double equipmentWeight;
+double startingWortMass;
+double startingWortGravity;
+uint8_t tempSensors[2][8];
+uint8_t boardTempAddr[8];
+uint8_t wortTempAddr[8];
+/****** End configuration *******/
 
 char wortAddrStr[17];
 char boardAddrStr[17];
@@ -82,7 +98,7 @@ void getConfigJSON(char* buf, int lim) {
 }
 
 // saves config to config.json in FS
-boolean saveConfig() {
+bool saveConfig() {
   // ArduinoJSON will happily set number values to
   // Infinity or probably NaN, sans quotes; those
   // values aren't valid JSON.
@@ -103,7 +119,7 @@ boolean saveConfig() {
 }
 
 // loads config from config.json in FS
-boolean loadConfig() {
+bool loadConfig() {
   // ensure null-termination; the 51st element is always 0 in arrays where only
   // 50 elements are copied.
   hydrometerName[40] = wifiNetwork[40] = wifiPassword[40] = apiKey[40] = apiRoot[100] = apiPath[100] = 0;
@@ -127,7 +143,7 @@ boolean loadConfig() {
   }
 }
 
-boolean decodeJSON(String json, boolean decodeCoefficients) {
+bool decodeJSON(String json, bool decodeCoefficients) {
   const size_t bufferSize = JSON_ARRAY_SIZE(3) + JSON_OBJECT_SIZE(11) + 800;
   DynamicJsonBuffer jsonBuffer(bufferSize);  
   JsonObject& root = jsonBuffer.parseObject(json);

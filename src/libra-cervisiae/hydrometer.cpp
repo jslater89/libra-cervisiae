@@ -3,13 +3,24 @@
  * Hydrometer mode
  */
 
+#include <Arduino.h>
+#include <pgmspace.h>
+#include "libra-cervisiae.h"
+#include "config.h"
+#include "hotspot.h"
+#include "hydrometer.h"
+#include "sensors.h"
+#include "temperature.h"
+#include "scale.h"
+#include "output.h"
+
 // gram of sugar lost
 const double alcoholPerGramLost = 0.48391;
 const double co2PerGramLost = 0.46286;
 const double yeastPerGramLost = 0.05323;
 
 void hydrometerSetup() {
-  boolean result = tryConnect();
+  bool result = tryConnect();
 
   if(!result) {
     Serial.println(F("Going back to sleep"));

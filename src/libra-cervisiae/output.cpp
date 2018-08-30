@@ -1,4 +1,10 @@
 
+#include <Arduino.h>
+#include <WiFiClient.h>
+#include "src/ArduinoJson/ArduinoJson.h"
+#include "config.h"
+#include "output.h"
+
 void handleOutput(double gravity, double abw, double abv, double temperature, double weight, double weightDelta) {
   if(outputMode == 0) {
     return;
@@ -9,6 +15,21 @@ void handleOutput(double gravity, double abw, double abv, double temperature, do
   else if(outputMode == 2) {
     sendToGoogleDrive(gravity, abw, abv, temperature, weight, weightDelta);
   }
+}
+
+// returns content length
+int getGravitonJSON(char* dest, int n, double g, double t, double w) {
+  const size_t bufferSize = JSON_OBJECT_SIZE(4);
+  DynamicJsonBuffer jsonBuffer(bufferSize);
+  
+  JsonObject& root = jsonBuffer.createObject();
+  root[F("name")] = hydrometerName;
+  root[F("gravity")] = g;
+  root[F("weight")] = w;
+  root[F("temperature")] = t;
+  
+  int written = root.printTo(dest, n);
+  return root.measureLength();
 }
 
 /** 
@@ -24,7 +45,7 @@ void sendToGraviton(double gravity, double abw, double abv, double temperature, 
   Serial.print(F("API port: ")); Serial.println(apiPort);
   Serial.println(F("Reading: "));
   Serial.println(gravitonJSON);
-  boolean result = client.connect(apiRoot, apiPort);
+  bool result = client.connect(apiRoot, apiPort);
 
   if(result) {
     client.println("POST /api/v1/reading HTTP/1.1");
@@ -65,22 +86,6 @@ void sendToGraviton(double gravity, double abw, double abv, double temperature, 
   client.stop();
 }
 
-// returns content length
-int getGravitonJSON(char* dest, int n, double g, double t, double w) {
-  const size_t bufferSize = JSON_OBJECT_SIZE(4);
-  DynamicJsonBuffer jsonBuffer(bufferSize);
-  
-  JsonObject& root = jsonBuffer.createObject();
-  root[F("name")] = hydrometerName;
-  root[F("gravity")] = g;
-  root[F("weight")] = w;
-  root[F("temperature")] = t;
-  
-  int written = root.printTo(dest, n);
-  return root.measureLength();
-}
-
 void sendToGoogleDrive(double gravity, double abw, double abv, double temperature, double weight, double weightDelta) {
   Serial.println(F("Google Drive output is not yet implemented"));
 }
-

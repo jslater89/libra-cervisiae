@@ -1,3 +1,9 @@
+
+#include <stddef.h>
+#include <stdio.h>
+#include <string.h>
+#include "utils.h"
+
 void convertUint8ToChar(uint8_t* src, char* dst, int len) {
   uint8_t* pin = src;
   const char* hex = "0123456789ABCDEF";
@@ -45,4 +51,3 @@ void convertCharToUint8(char* src, uint8_t* dst, int len) {
       index++;
   }
 }
-
