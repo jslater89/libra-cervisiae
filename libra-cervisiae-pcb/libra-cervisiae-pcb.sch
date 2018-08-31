@@ -15,7 +15,7 @@ Comment3 ""
 Comment4 ""
 $EndDescr
 $Comp
-L regul:MCP1700-3302E_SOT23 U2
+L Regulator_Linear:MCP1700-3302E_SOT23 U2
 U 1 1 5B217881
 P 9050 2400
 F 0 "U2" H 8900 2525 50  0000 C CNN
@@ -26,7 +26,7 @@ F 3 "" H 9050 2400 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L switches:SW_Push SW2
+L Switch:SW_Push SW2
 U 1 1 5B21A301
 P 6600 1650
 F 0 "SW2" H 6650 1750 50  0000 L CNN
@@ -37,7 +37,7 @@ F 3 "" H 6600 1850 50  0001 C CNN
 	0    -1   -1   0   
 $EndComp
 $Comp
-L switches:SW_Push SW1
+L Switch:SW_Push SW1
 U 1 1 5B21A409
 P 4100 1700
 F 0 "SW1" H 4150 1800 50  0000 L CNN
@@ -48,7 +48,7 @@ F 3 "" H 4100 1900 50  0001 C CNN
 	0    -1   -1   0   
 $EndComp
 $Comp
-L device:R R1
+L Device:R R1
 U 1 1 5B21A586
 P 3600 2050
 F 0 "R1" V 3680 2050 50  0000 C CNN
@@ -59,7 +59,7 @@ F 3 "" H 3600 2050 50  0001 C CNN
 	0    -1   -1   0   
 $EndComp
 $Comp
-L device:R R4
+L Device:R R4
 U 1 1 5B21A80E
 P 6100 2750
 F 0 "R4" V 6180 2750 50  0000 C CNN
@@ -70,7 +70,7 @@ F 3 "" H 6100 2750 50  0001 C CNN
 	0    1    1    0   
 $EndComp
 $Comp
-L device:R R3
+L Device:R R3
 U 1 1 5B21AA4B
 P 4000 2450
 F 0 "R3" V 4080 2450 50  0000 C CNN
@@ -81,7 +81,7 @@ F 3 "" H 4000 2450 50  0001 C CNN
 	0    1    1    0   
 $EndComp
 $Comp
-L device:R R6
+L Device:R R6
 U 1 1 5B21AAD4
 P 6900 2650
 F 0 "R6" V 6980 2650 50  0000 C CNN
@@ -126,7 +126,7 @@ Text Label 2850 2050 0    60   ~ 0
 Text Label 5350 1100 3    60   ~ 0
 GND
 $Comp
-L device:R R5
+L Device:R R5
 U 1 1 5B228DC8
 P 6350 2850
 F 0 "R5" V 6430 2850 50  0000 C CNN
@@ -137,7 +137,7 @@ F 3 "" H 6350 2850 50  0001 C CNN
 	0    1    1    0   
 $EndComp
 $Comp
-L device:C C8
+L Device:C C8
 U 1 1 5B2296F3
 P 9750 2550
 F 0 "C8" H 9775 2650 50  0000 L CNN
@@ -163,7 +163,7 @@ NoConn ~ 1600 1950
 Text Notes 8850 2150 0    60   ~ 0
 MCP1700
 $Comp
-L device:C C7
+L Device:C C7
 U 1 1 5B241212
 P 8500 2550
 F 0 "C7" H 8525 2650 50  0000 L CNN
@@ -174,7 +174,7 @@ F 3 "" H 8500 2550 50  0001 C CNN
 	-1   0    0    1   
 $EndComp
 $Comp
-L device:C C3
+L Device:C C3
 U 1 1 5B2439F8
 P 5050 3750
 F 0 "C3" H 5075 3850 50  0000 L CNN
@@ -227,12 +227,12 @@ F 3 "" H 3400 2650 50  0001 C CNN
 	0    -1   -1   0   
 $EndComp
 $Comp
-L conn:Conn_01x03 J1
+L Connector_Generic:Conn_01x03 J1
 U 1 1 5B29B426
 P 2950 4900
 F 0 "J1" H 2950 5100 50  0000 C CNN
 F 1 "Wort Temp" H 2950 4700 50  0000 C CNN
-F 2 "Connector_Molex:Molex_PicoBlade_53048-0610_1x03_P1.25mm_Horizontal" H 2950 4900 50  0001 C CNN
+F 2 "Connector_PinHeader_2.54mm:PinHeader_1x03_P2.54mm_Vertical" H 2950 4900 50  0001 C CNN
 F 3 "" H 2950 4900 50  0001 C CNN
 	1    2950 4900
 	-1   0    0    1   
@@ -346,18 +346,7 @@ Wire Wire Line
 	4150 2650 3400 2650
 NoConn ~ 7550 4900
 $Comp
-L conn:Conn_01x04 J5
-U 1 1 5B2A5EFA
-P 8900 5200
-F 0 "J5" H 8900 5400 50  0000 C CNN
-F 1 "Load Cell" H 8900 4900 50  0000 C CNN
-F 2 "Connector_Molex:Molex_PicoBlade_53048-0810_1x04_P1.25mm_Horizontal" H 8900 5200 50  0001 C CNN
-F 3 "" H 8900 5200 50  0001 C CNN
-	1    8900 5200
-	1    0    0    1   
-$EndComp
-$Comp
-L device:C C2
+L Device:C C2
 U 1 1 5B2A9325
 P 3350 5350
 F 0 "C2" V 3400 5200 50  0000 L CNN
@@ -378,7 +367,7 @@ Wire Wire Line
 Text Label 8150 2400 0    60   ~ 0
 USB+
 $Comp
-L device:C C1
+L Device:C C1
 U 1 1 5B319707
 P 1700 2450
 F 0 "C1" H 1725 2550 50  0000 L CNN
@@ -433,7 +422,7 @@ Wire Wire Line
 Wire Wire Line
 	1700 2250 2050 2250
 $Comp
-L device:R R2
+L Device:R R2
 U 1 1 5B4177F1
 P 3750 5350
 F 0 "R2" V 3830 5350 50  0000 C CNN
@@ -444,7 +433,7 @@ F 3 "" H 3750 5350 50  0001 C CNN
 	0    1    1    0   
 $EndComp
 $Comp
-L device:C C6
+L Device:C C6
 U 1 1 5B44D323
 P 6050 5050
 F 0 "C6" H 6050 4950 50  0000 L CNN
@@ -462,54 +451,21 @@ Wire Wire Line
 Connection ~ 6050 5250
 Wire Wire Line
 	6050 5250 6450 5250
-$Comp
-L conn:Conn_01x04 J6
-U 1 1 5B504290
-P 8900 5800
-F 0 "J6" H 8900 6000 50  0000 C CNN
-F 1 "Load Cell" H 8900 5500 50  0000 C CNN
-F 2 "Connector_Molex:Molex_PicoBlade_53048-0810_1x04_P1.25mm_Horizontal" H 8900 5800 50  0001 C CNN
-F 3 "" H 8900 5800 50  0001 C CNN
-	1    8900 5800
-	1    0    0    1   
-$EndComp
-$Comp
-L conn:Conn_01x04 J4
-U 1 1 5B5043D4
-P 8300 5800
-F 0 "J4" H 8300 6000 50  0000 C CNN
-F 1 "Load Cell" H 8300 5500 50  0000 C CNN
-F 2 "Connector_Molex:Molex_PicoBlade_53048-0810_1x04_P1.25mm_Horizontal" H 8300 5800 50  0001 C CNN
-F 3 "" H 8300 5800 50  0001 C CNN
-	1    8300 5800
-	1    0    0    1   
-$EndComp
-$Comp
-L conn:Conn_01x04 J3
-U 1 1 5B504507
-P 8300 5200
-F 0 "J3" H 8300 5400 50  0000 C CNN
-F 1 "Load Cell" H 8300 4900 50  0000 C CNN
-F 2 "Connector_Molex:Molex_PicoBlade_53048-0810_1x04_P1.25mm_Horizontal" H 8300 5200 50  0001 C CNN
-F 3 "" H 8300 5200 50  0001 C CNN
-	1    8300 5200
-	1    0    0    1   
-$EndComp
 Wire Wire Line
-	8700 5000 8550 5000
+	8400 5550 8550 5550
 Wire Wire Line
-	8700 5100 8550 5100
+	8400 5450 8550 5450
 Wire Wire Line
-	8700 5200 8550 5200
+	8400 5350 8550 5350
 Wire Wire Line
-	8700 5300 8550 5300
-Text Label 8550 5000 0    60   ~ 0
+	8400 5250 8550 5250
+Text Label 8550 5550 2    60   ~ 0
 S+
-Text Label 8550 5100 0    60   ~ 0
+Text Label 8550 5450 2    60   ~ 0
 S-
-Text Label 8550 5200 0    60   ~ 0
+Text Label 8550 5350 2    60   ~ 0
 E-
-Text Label 8550 5300 0    60   ~ 0
+Text Label 8550 5250 2    60   ~ 0
 E+
 Wire Wire Line
 	7550 5000 7750 5000
@@ -520,52 +476,48 @@ Wire Wire Line
 Wire Wire Line
 	7550 5300 7750 5300
 Wire Wire Line
-	8100 5000 7950 5000
+	9050 5550 9200 5550
 Wire Wire Line
-	8100 5100 7950 5100
+	9050 5450 9200 5450
 Wire Wire Line
-	8100 5200 7950 5200
+	9050 5350 9200 5350
 Wire Wire Line
-	8100 5300 7950 5300
+	9050 5250 9200 5250
 Wire Wire Line
-	8100 5600 7950 5600
+	9050 5150 9200 5150
 Wire Wire Line
-	8100 5700 7950 5700
+	9050 5050 9200 5050
 Wire Wire Line
-	8100 5800 7950 5800
+	9050 4950 9200 4950
 Wire Wire Line
-	8100 5900 7950 5900
+	8400 5150 8550 5150
 Wire Wire Line
-	8700 5600 8550 5600
+	8400 5050 8550 5050
 Wire Wire Line
-	8700 5700 8550 5700
-Wire Wire Line
-	8700 5800 8550 5800
-Wire Wire Line
-	8700 5900 8550 5900
-Text Label 8550 5600 0    60   ~ 0
+	8400 4850 8550 4850
+Text Label 8550 5150 2    60   ~ 0
 S+
-Text Label 7950 5000 0    60   ~ 0
+Text Label 9200 5550 2    60   ~ 0
 S+
-Text Label 7950 5600 0    60   ~ 0
+Text Label 9200 5150 2    60   ~ 0
 S+
-Text Label 7950 5100 0    60   ~ 0
+Text Label 9200 5450 2    60   ~ 0
 S-
-Text Label 7950 5700 0    60   ~ 0
+Text Label 9200 5050 2    60   ~ 0
 S-
-Text Label 8550 5700 0    60   ~ 0
+Text Label 8550 5050 2    60   ~ 0
 S-
-Text Label 7950 5200 0    60   ~ 0
+Text Label 9200 5350 2    60   ~ 0
 E-
-Text Label 7950 5800 0    60   ~ 0
+Text Label 9200 4950 2    60   ~ 0
 E-
-Text Label 8550 5800 0    60   ~ 0
+Text Label 8550 4950 2    60   ~ 0
 E-
-Text Label 7950 5300 0    60   ~ 0
+Text Label 9200 5250 2    60   ~ 0
 E+
-Text Label 7950 5900 0    60   ~ 0
+Text Label 9200 4850 2    60   ~ 0
 E+
-Text Label 8550 5900 0    60   ~ 0
+Text Label 8550 4850 2    60   ~ 0
 E+
 Wire Wire Line
 	3150 4900 3900 4900
@@ -586,7 +538,7 @@ Connection ~ 3900 4900
 Wire Wire Line
 	3900 4900 4100 4900
 $Comp
-L conn:Conn_01x03 J2
+L Connector_Generic:Conn_01x03 J2
 U 1 1 5B523E0B
 P 2950 5850
 F 0 "J2" H 2950 6050 50  0000 C CNN
@@ -649,7 +601,7 @@ RST
 Text Label 6100 2650 0    60   ~ 0
 FLASH
 $Comp
-L device:C C4
+L Device:C C4
 U 1 1 5B88593E
 P 5050 4050
 F 0 "C4" H 5075 4150 50  0000 L CNN
@@ -686,7 +638,7 @@ Wire Wire Line
 	5300 4050 5300 3900
 Connection ~ 5300 3900
 $Comp
-L device:C C5
+L Device:C C5
 U 1 1 5B8B1FD8
 P 5650 5050
 F 0 "C5" H 5700 4950 50  0000 L CNN
@@ -702,4 +654,19 @@ Wire Wire Line
 	5650 5250 5650 5200
 Wire Wire Line
 	5650 5250 6050 5250
+$Comp
+L Connector_Generic:Conn_02x08_Top_Bottom J3
+U 1 1 5B8A5278
+P 8750 5150
+F 0 "J3" H 8800 5667 50  0000 C CNN
+F 1 "Conn_02x08_Top_Bottom" H 8800 5576 50  0000 C CNN
+F 2 "Connector_PinHeader_2.54mm:PinHeader_2x08_P2.54mm_Vertical" H 8750 5150 50  0001 C CNN
+F 3 "~" H 8750 5150 50  0001 C CNN
+	1    8750 5150
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	9050 4850 9200 4850
+Wire Wire Line
+	8400 4950 8550 4950
 $EndSCHEMATC
