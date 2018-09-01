@@ -6,8 +6,8 @@ $Descr A 11000 8500
 encoding utf-8
 Sheet 1 1
 Title "Libra Cervisiae PCB"
-Date "2018-08-09"
-Rev "0.1.2"
+Date "2018-08-31"
+Rev "0.2.0"
 Comp ""
 Comment1 ""
 Comment2 ""
@@ -426,7 +426,7 @@ L Device:R R2
 U 1 1 5B4177F1
 P 3750 5350
 F 0 "R2" V 3830 5350 50  0000 C CNN
-F 1 "10k" V 3750 5350 50  0000 C CNN
+F 1 "2.2k" V 3750 5350 50  0000 C CNN
 F 2 "Resistor_SMD:R_0805_2012Metric" V 3680 5350 50  0001 C CNN
 F 3 "" H 3750 5350 50  0001 C CNN
 	1    3750 5350
@@ -542,8 +542,8 @@ L Connector_Generic:Conn_01x03 J2
 U 1 1 5B523E0B
 P 2950 5850
 F 0 "J2" H 2950 6050 50  0000 C CNN
-F 1 "Board Temp" H 2950 5650 50  0000 C CNN
-F 2 "Package_TO_SOT_THT:TO-92" H 2950 5850 50  0001 C CNN
+F 1 "Ambient Temp" H 2950 5650 50  0000 C CNN
+F 2 "Connector_PinHeader_2.54mm:PinHeader_1x03_P2.54mm_Vertical" H 2950 5850 50  0001 C CNN
 F 3 "" H 2950 5850 50  0001 C CNN
 	1    2950 5850
 	-1   0    0    1   
@@ -659,7 +659,7 @@ L Connector_Generic:Conn_02x08_Top_Bottom J3
 U 1 1 5B8A5278
 P 8750 5150
 F 0 "J3" H 8800 5667 50  0000 C CNN
-F 1 "Conn_02x08_Top_Bottom" H 8800 5576 50  0000 C CNN
+F 1 "Load Cells" H 8800 5576 50  0000 C CNN
 F 2 "Connector_PinHeader_2.54mm:PinHeader_2x08_P2.54mm_Vertical" H 8750 5150 50  0001 C CNN
 F 3 "~" H 8750 5150 50  0001 C CNN
 	1    8750 5150
@@ -669,4 +669,12 @@ Wire Wire Line
 	9050 4850 9200 4850
 Wire Wire Line
 	8400 4950 8550 4950
+Text Notes 8350 5000 2    60   ~ 0
+1
+Text Notes 8350 5400 2    60   ~ 0
+2
+Text Notes 9300 5000 2    60   ~ 0
+3
+Text Notes 9300 5400 2    60   ~ 0
+4
 $EndSCHEMATC
