@@ -15,6 +15,8 @@ long averageStart = 0;
 long averageLength = 0;
 int averageSteps = 0;
 
+long tempTare = 0;
+
 double calibrationMass = 1;
 double calibrationReading = 0;
 
@@ -47,11 +49,11 @@ void scaleStop() {
 
 
 // returns entirely uncalibrated value
-void readRaw(int* weight) {
+void readRaw(long* weight) {
   *weight = scale.read();
 }
 
-void averageRawReading(int* total, int count) {
+void averageRawReading(long* total, int count) {
   int t = 0;
   for(int i = 0; i < count; i++) {
     readRaw(total);
@@ -65,11 +67,11 @@ void averageRawReading(int* total, int count) {
 }
 
 // returns tared but uncalibrated value
-void readWeight(int* weight) {
+void readWeight(long* weight) {
   *weight = scale.get_value();
 }
 
-void averageWeight(int* total, int count) {
+void averageWeight(long* total, int count) {
   int t = 0;
   for(int i = 0; i < count; i++) {
     readWeight(total);
@@ -116,22 +118,24 @@ void tareScale(int tareMillis) {
   if(DEBUG_TIMINGS) Serial.print(F("Tare start: ")); Serial.println(averageStart);
   if(DEBUG_TIMINGS) Serial.print(F("Tare length: ")); Serial.println(averageLength);
 
-  tareOffset = 0;
+  tempTare = 0;
   
   tareInProgress = true;
 }
 
 void tareLoop() {
-  int weight = 0;
+  long weight = 0;
   readRaw(&weight);
 
-  double runningTotal = tareOffset * averageSteps;
+  double runningTotal = tempTare * averageSteps;
   runningTotal += weight;
   averageSteps++;
-  tareOffset = runningTotal / averageSteps;
+  tempTare = runningTotal / averageSteps;
 
   if(millis() > (averageStart + averageLength)) {
-    Serial.print(F("Calculated tare value: ")); Serial.println(tareOffset);
+    Serial.print(F("Calculated tare value: ")); Serial.println(tempTare);
+
+    tareOffset = tempTare;
     
     scale.set_offset((long) tareOffset);
     tareInProgress = false;
@@ -143,7 +147,7 @@ void tareLoop() {
   }
   else if(DEBUG_HX711) {
     Serial.print(F("Tare step ")); Serial.println(averageSteps);
-    Serial.print(F("Current offset ")); Serial.println(tareOffset);
+    Serial.print(F("Current offset ")); Serial.println(tempTare);
     Serial.print(F("Current weight ")); Serial.println(weight);
     Serial.println();
   }
@@ -167,7 +171,7 @@ void calibrateScale(double knownGrams, int calibrateMillis) {
 
 
 void calibrateLoop() {
-  int weight = 0;
+  long weight = 0;
   readWeight(&weight);
 
   double runningTotal = calibrationReading * averageSteps;

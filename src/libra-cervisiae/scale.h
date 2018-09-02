@@ -4,9 +4,9 @@
 void initScale();
 void scaleStart();
 void scaleStop();
-void averageRawReading(int* total, int count);
-void averageWeight(int* total, int count);
-void readWeight(int* weight);
+void averageRawReading(long* total, int count);
+void averageWeight(long* total, int count);
+void readWeight(long* weight);
 void averageCalibratedWeight(double* total, int count);
 void readCalibratedWeight(double* weight);
 void tareScale(int tareMillis);

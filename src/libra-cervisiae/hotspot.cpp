@@ -44,7 +44,7 @@ double hotspotWortTemp;
 double hotspotGravity;
 double hotspotABW;
 double hotspotABV;
-int hotspotRawWeight;
+long hotspotRawWeight;
 double hotspotCalibratedWeight;
 
 boolean connectedToWifi;
