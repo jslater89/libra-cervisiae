@@ -2,10 +2,10 @@
 #define LIBRA_CERVISIAE_H
 
 // Debug options
-#define DEBUG_TIMINGS true
-#define DEBUG_DS18XXX true
+#define DEBUG_TIMINGS false
+#define DEBUG_DS18XXX false
 #define DEBUG_HX711 false
-#define LOG_REQUESTS true
+#define LOG_REQUESTS false
 
 // Build types
 #define WEMOS false
