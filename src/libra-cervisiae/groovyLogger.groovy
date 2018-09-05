@@ -13,7 +13,7 @@ while(true) {
     }
     catch(Exception e) {}
 
-    sleep(1000 * 60 * 10);
+    sleep(1000 * 60 * 2);
 }
 
 
