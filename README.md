@@ -1,5 +1,5 @@
 # Libra Cervisiae
-![pcb](https://i.imgur.com/wUKRPYY.jpg)
+![pcb](https://i.imgur.com/oAtZoIj.jpg)
 
 Libra Cervisiae is an ESP8266-powered microcontroller for reading output from a high-precision scale, used to weigh beer to measure the progress of its fermentation.
 
