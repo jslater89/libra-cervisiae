@@ -3,7 +3,7 @@ layout: post
 title: Test results and more
 ---
 
-Test results are in; I'm just going to link to [the reddit post]() to save myself some time.
+Test results are in; I'm just going to link to [the reddit post](https://www.reddit.com/r/Homebrewing/comments/966rbz/libra_cervisiae_diy_iot_fermentation_scale_test/) to save myself some time.
 
 The short version is this: on a fermentation from about 1.042 to 0.996, the scale ended up reading 0.9935, and the difference may well be in my refractometer rather than in actuality. There's much (much) more at the link.
 
