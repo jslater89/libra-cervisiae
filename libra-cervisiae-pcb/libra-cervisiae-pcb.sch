@@ -1,6 +1,6 @@
 EESchema Schematic File Version 4
 LIBS:libra-cervisiae-pcb-cache
-EELAYER 26 0
+EELAYER 30 0
 EELAYER END
 $Descr A 11000 8500
 encoding utf-8
@@ -25,72 +25,6 @@ F 3 "" H 9050 2400 50  0001 C CNN
 	1    9050 2400
 	1    0    0    -1  
 $EndComp
-$Comp
-L Switch:SW_Push SW2
-U 1 1 5B21A301
-P 6600 1650
-F 0 "SW2" H 6650 1750 50  0000 L CNN
-F 1 "Flash" H 6600 1590 50  0000 C CNN
-F 2 "4x3_SWITCH:4x3_Switch" H 6600 1850 50  0001 C CNN
-F 3 "" H 6600 1850 50  0001 C CNN
-	1    6600 1650
-	0    -1   -1   0   
-$EndComp
-$Comp
-L Switch:SW_Push SW1
-U 1 1 5B21A409
-P 4100 1700
-F 0 "SW1" H 4150 1800 50  0000 L CNN
-F 1 "Reset" H 4100 1640 50  0000 C CNN
-F 2 "4x3_SWITCH:4x3_Switch" H 4100 1900 50  0001 C CNN
-F 3 "" H 4100 1900 50  0001 C CNN
-	1    4100 1700
-	0    -1   -1   0   
-$EndComp
-$Comp
-L Device:R R1
-U 1 1 5B21A586
-P 3600 2050
-F 0 "R1" V 3680 2050 50  0000 C CNN
-F 1 "10k" V 3600 2050 50  0000 C CNN
-F 2 "Resistor_SMD:R_0805_2012Metric" V 3530 2050 50  0001 C CNN
-F 3 "" H 3600 2050 50  0001 C CNN
-	1    3600 2050
-	0    -1   -1   0   
-$EndComp
-$Comp
-L Device:R R4
-U 1 1 5B21A80E
-P 6100 2750
-F 0 "R4" V 6180 2750 50  0000 C CNN
-F 1 "10k" V 6100 2750 50  0000 C CNN
-F 2 "Resistor_SMD:R_0805_2012Metric" V 6030 2750 50  0001 C CNN
-F 3 "" H 6100 2750 50  0001 C CNN
-	1    6100 2750
-	0    1    1    0   
-$EndComp
-$Comp
-L Device:R R3
-U 1 1 5B21AA4B
-P 4000 2450
-F 0 "R3" V 4080 2450 50  0000 C CNN
-F 1 "10k" V 4000 2450 50  0000 C CNN
-F 2 "Resistor_SMD:R_0805_2012Metric" V 3930 2450 50  0001 C CNN
-F 3 "" H 4000 2450 50  0001 C CNN
-	1    4000 2450
-	0    1    1    0   
-$EndComp
-$Comp
-L Device:R R6
-U 1 1 5B21AAD4
-P 6900 2650
-F 0 "R6" V 6980 2650 50  0000 C CNN
-F 1 "10k" V 6900 2650 50  0000 C CNN
-F 2 "Resistor_SMD:R_0805_2012Metric" V 6830 2650 50  0001 C CNN
-F 3 "" H 6900 2650 50  0001 C CNN
-	1    6900 2650
-	0    1    1    0   
-$EndComp
 Text Label 1800 2650 0    60   ~ 0
 USB+
 Text Label 1750 2150 0    60   ~ 0
@@ -103,39 +37,6 @@ Text Label 9050 3150 1    60   ~ 0
 GND
 Text Label 1800 2250 0    60   ~ 0
 GND
-Text Label 6200 2450 0    60   ~ 0
-CLK
-Text Label 6200 2550 0    60   ~ 0
-DAT
-Text Label 6850 2950 0    60   ~ 0
-GND
-Text Label 6050 2250 0    60   ~ 0
-HostRX
-Text Label 6050 2350 0    60   ~ 0
-HostTX
-NoConn ~ 4800 3450
-NoConn ~ 4900 3450
-NoConn ~ 5000 3450
-NoConn ~ 5100 3450
-NoConn ~ 5200 3450
-NoConn ~ 5300 3450
-Text Label 7050 2550 1    60   ~ 0
-3.3+
-Text Label 2850 2050 0    60   ~ 0
-3.3+
-Text Label 5350 1100 3    60   ~ 0
-GND
-$Comp
-L Device:R R5
-U 1 1 5B228DC8
-P 6350 2850
-F 0 "R5" V 6430 2850 50  0000 C CNN
-F 1 "10k" V 6350 2850 50  0000 C CNN
-F 2 "Resistor_SMD:R_0805_2012Metric" V 6280 2850 50  0001 C CNN
-F 3 "" H 6350 2850 50  0001 C CNN
-	1    6350 2850
-	0    1    1    0   
-$EndComp
 $Comp
 L Device:C C8
 U 1 1 5B2296F3
@@ -146,17 +47,6 @@ F 2 "Capacitor_SMD:C_0805_2012Metric" H 9788 2400 50  0001 C CNN
 F 3 "" H 9750 2550 50  0001 C CNN
 	1    9750 2550
 	-1   0    0    1   
-$EndComp
-$Comp
-L ESP8266:ESP-12F U1
-U 1 1 5B22CF91
-P 5050 2550
-F 0 "U1" H 5050 2450 50  0000 C CNN
-F 1 "ESP-12F" H 5050 2650 50  0000 C CNN
-F 2 "ESP8266:ESP-12E" H 5050 2550 50  0001 C CNN
-F 3 "" H 5050 2550 50  0001 C CNN
-	1    5050 2550
-	1    0    0    -1  
 $EndComp
 NoConn ~ 1600 1850
 NoConn ~ 1600 1950
@@ -176,13 +66,13 @@ $EndComp
 $Comp
 L Device:C C3
 U 1 1 5B2439F8
-P 5050 3750
-F 0 "C3" H 5075 3850 50  0000 L CNN
-F 1 "47uF" H 5075 3650 50  0000 L CNN
-F 2 "Capacitor_SMD:C_0805_2012Metric" H 5088 3600 50  0001 C CNN
-F 3 "" H 5050 3750 50  0001 C CNN
-	1    5050 3750
-	0    -1   -1   0   
+P 3350 1000
+F 0 "C3" H 3375 1100 50  0000 L CNN
+F 1 "47uF" H 3375 900 50  0000 L CNN
+F 2 "Capacitor_SMD:C_0805_2012Metric" H 3388 850 50  0001 C CNN
+F 3 "" H 3350 1000 50  0001 C CNN
+	1    3350 1000
+	-1   0    0    1   
 $EndComp
 $Comp
 L cp2102-breakout:CP2102-BREAKOUT CN1
@@ -205,27 +95,12 @@ Text Label 6200 4900 0    60   ~ 0
 GND
 Text Notes 8000 4650 2    60   ~ 0
 Load Cells
-Text Label 3800 2750 0    60   ~ 0
-DSD
-Text Label 3800 2650 0    60   ~ 0
-DS+
 Text Label 3950 4900 0    60   ~ 0
 DSD
 Text Label 3950 4800 0    60   ~ 0
 DS+
 Text Label 3950 5000 0    60   ~ 0
 GND
-$Comp
-L power:PWR_FLAG #FLG01
-U 1 1 5B22D046
-P 3400 2650
-F 0 "#FLG01" H 3400 2725 50  0001 C CNN
-F 1 "PWR_FLAG" V 3450 2500 50  0000 C CNN
-F 2 "" H 3400 2650 50  0001 C CNN
-F 3 "" H 3400 2650 50  0001 C CNN
-	1    3400 2650
-	0    -1   -1   0   
-$EndComp
 $Comp
 L Connector_Generic:Conn_01x03 J1
 U 1 1 5B29B426
@@ -255,67 +130,12 @@ Wire Wire Line
 Wire Wire Line
 	9350 2400 9750 2400
 Wire Wire Line
-	5950 2250 6350 2250
-Wire Wire Line
-	5950 2350 6350 2350
-Wire Wire Line
-	5950 2450 6350 2450
-Wire Wire Line
-	5950 2550 6350 2550
-Wire Wire Line
-	3150 2950 4050 2950
-Wire Wire Line
-	5950 2950 6200 2950
-Wire Wire Line
-	7050 2750 6250 2750
-Wire Wire Line
-	4100 1900 4100 2050
-Wire Wire Line
-	3750 2050 4100 2050
-Wire Wire Line
-	2850 2050 3150 2050
-Wire Wire Line
-	4100 1500 4100 1350
-Connection ~ 4100 2050
-Wire Wire Line
-	3150 2450 3850 2450
-Wire Wire Line
-	3150 2050 3150 2450
-Connection ~ 3150 2050
-Wire Wire Line
-	5950 2650 6600 2650
-Wire Wire Line
-	6600 1850 6600 2650
-Connection ~ 6600 2650
-Wire Wire Line
-	6600 1350 6600 1450
-Wire Wire Line
-	4100 1350 5350 1350
-Wire Wire Line
-	5350 1350 5350 1100
-Connection ~ 5350 1350
-Connection ~ 3150 2450
-Wire Wire Line
-	7050 2350 7050 2650
-Connection ~ 7050 2650
-Wire Wire Line
-	5950 2850 6200 2850
-Wire Wire Line
-	6500 2850 6650 2850
-Wire Wire Line
-	3850 2250 4100 2250
-Connection ~ 4050 2950
-Wire Wire Line
 	9750 2850 9750 2700
 Wire Wire Line
 	8500 2850 9050 2850
 Connection ~ 9750 2400
 Wire Wire Line
 	8500 2700 8500 2850
-Connection ~ 6200 2950
-Wire Wire Line
-	6650 2850 6650 2950
-Connection ~ 6650 2950
 Connection ~ 9050 2850
 Wire Wire Line
 	1600 2150 2050 2150
@@ -332,8 +152,6 @@ Wire Wire Line
 Wire Wire Line
 	6450 5300 6550 5300
 Connection ~ 6450 5250
-Wire Wire Line
-	3800 2750 4150 2750
 Text Label 7550 5000 0    60   ~ 0
 S+
 Text Label 7550 5100 0    60   ~ 0
@@ -342,8 +160,6 @@ Text Label 7550 5200 0    60   ~ 0
 E-
 Text Label 7550 5300 0    60   ~ 0
 E+
-Wire Wire Line
-	4150 2650 3400 2650
 NoConn ~ 7550 4900
 $Comp
 L Device:C C2
@@ -356,9 +172,6 @@ F 3 "" H 3350 5350 50  0001 C CNN
 	1    3350 5350
 	0    1    1    0   
 $EndComp
-Wire Wire Line
-	4150 2550 3850 2550
-Connection ~ 4100 2250
 Connection ~ 8500 2400
 Wire Wire Line
 	1600 2250 1700 2250
@@ -388,33 +201,13 @@ Wire Wire Line
 	1700 2300 1700 2250
 Connection ~ 1700 2250
 Wire Wire Line
-	4100 2050 4100 2250
-Wire Wire Line
-	3150 2050 3450 2050
-Wire Wire Line
-	6600 2650 6750 2650
-Wire Wire Line
-	5350 1350 6600 1350
-Wire Wire Line
-	3150 2450 3150 2950
-Wire Wire Line
-	7050 2650 7050 2750
-Wire Wire Line
-	4050 2950 4150 2950
-Wire Wire Line
 	9750 2400 10250 2400
-Wire Wire Line
-	6200 2950 6650 2950
-Wire Wire Line
-	6650 2950 7050 2950
 Wire Wire Line
 	9050 2850 9050 3150
 Wire Wire Line
 	9050 2850 9750 2850
 Wire Wire Line
 	6450 5250 6450 5300
-Wire Wire Line
-	4100 2250 4150 2250
 Wire Wire Line
 	8500 2400 8750 2400
 Wire Wire Line
@@ -592,51 +385,17 @@ Connection ~ 3900 5350
 Connection ~ 3900 5850
 Wire Wire Line
 	3900 5850 4100 5850
-NoConn ~ 4150 2850
-Wire Wire Line
-	3850 2250 3850 2550
-NoConn ~ 4150 2350
-Text Label 3850 2250 0    60   ~ 0
-RST
-Text Label 6100 2650 0    60   ~ 0
-FLASH
 $Comp
 L Device:C C4
 U 1 1 5B88593E
-P 5050 4050
-F 0 "C4" H 5075 4150 50  0000 L CNN
-F 1 "100nF" H 5075 3950 50  0000 L CNN
-F 2 "Capacitor_SMD:C_0805_2012Metric" H 5088 3900 50  0001 C CNN
-F 3 "" H 5050 4050 50  0001 C CNN
-	1    5050 4050
-	0    -1   -1   0   
+P 3650 1000
+F 0 "C4" H 3675 1100 50  0000 L CNN
+F 1 "100nF" H 3675 900 50  0000 L CNN
+F 2 "Capacitor_SMD:C_0805_2012Metric" H 3688 850 50  0001 C CNN
+F 3 "" H 3650 1000 50  0001 C CNN
+	1    3650 1000
+	-1   0    0    1   
 $EndComp
-Wire Wire Line
-	4050 3900 4800 3900
-Wire Wire Line
-	4800 3900 4800 3750
-Wire Wire Line
-	4800 3750 4900 3750
-Wire Wire Line
-	4050 2950 4050 3900
-Wire Wire Line
-	4800 3900 4800 4050
-Wire Wire Line
-	4800 4050 4900 4050
-Connection ~ 4800 3900
-Wire Wire Line
-	5200 3750 5300 3750
-Wire Wire Line
-	5300 3750 5300 3900
-Wire Wire Line
-	5300 3900 6200 3900
-Wire Wire Line
-	6200 2950 6200 3900
-Wire Wire Line
-	5200 4050 5300 4050
-Wire Wire Line
-	5300 4050 5300 3900
-Connection ~ 5300 3900
 $Comp
 L Device:C C5
 U 1 1 5B8B1FD8
@@ -677,4 +436,174 @@ Text Notes 9300 5000 2    60   ~ 0
 3
 Text Notes 9300 5400 2    60   ~ 0
 4
+$Comp
+L RF_Module:ESP32-WROOM-32 U1
+U 1 1 5D3B9C32
+P 5100 2500
+F 0 "U1" H 5000 2850 50  0000 C CNN
+F 1 "ESP32-WROOM-32" H 5000 2750 50  0000 C CNN
+F 2 "RF_Module:ESP32-WROOM-32" H 5100 1000 50  0001 C CNN
+F 3 "https://www.espressif.com/sites/default/files/documentation/esp32-wroom-32_datasheet_en.pdf" H 4800 2550 50  0001 C CNN
+	1    5100 2500
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	5100 1100 5100 650 
+Text Label 4600 650  0    60   ~ 0
+3.3+
+Wire Wire Line
+	5100 3900 5100 4350
+Wire Wire Line
+	5100 4350 4600 4350
+Text Label 4600 4350 0    60   ~ 0
+GND
+Wire Wire Line
+	5700 1400 6500 1400
+Wire Wire Line
+	5700 1600 6500 1600
+Text Label 6200 1400 0    60   ~ 0
+HostRX
+Text Label 6200 1600 0    60   ~ 0
+HostTX
+Text Label 3750 1300 0    60   ~ 0
+GND
+$Comp
+L Device:R R1
+U 1 1 5D4DE447
+P 4450 950
+F 0 "R1" V 4530 950 50  0000 C CNN
+F 1 "10k" V 4450 950 50  0000 C CNN
+F 2 "Resistor_SMD:R_0805_2012Metric" V 4380 950 50  0001 C CNN
+F 3 "" H 4450 950 50  0001 C CNN
+	1    4450 950 
+	-1   0    0    1   
+$EndComp
+Wire Wire Line
+	4450 800  4450 650 
+Connection ~ 4450 650 
+Wire Wire Line
+	4450 650  5100 650 
+Wire Wire Line
+	4450 1100 4450 1300
+Wire Wire Line
+	4450 1300 4500 1300
+$Comp
+L Switch:SW_Push SW1
+U 1 1 5D4FC8D2
+P 4250 1300
+F 0 "SW1" H 4300 1400 50  0000 L CNN
+F 1 "Reset" H 4250 1240 50  0000 C CNN
+F 2 "4x3_SWITCH:4x3_Switch" H 4250 1500 50  0001 C CNN
+F 3 "" H 4250 1500 50  0001 C CNN
+	1    4250 1300
+	-1   0    0    1   
+$EndComp
+Connection ~ 4450 1300
+Connection ~ 5100 650 
+$Comp
+L Device:R R3
+U 1 1 5D5306D3
+P 5700 950
+F 0 "R3" V 5780 950 50  0000 C CNN
+F 1 "10k" V 5700 950 50  0000 C CNN
+F 2 "Resistor_SMD:R_0805_2012Metric" V 5630 950 50  0001 C CNN
+F 3 "" H 5700 950 50  0001 C CNN
+	1    5700 950 
+	-1   0    0    1   
+$EndComp
+Wire Wire Line
+	5100 650  5700 650 
+Wire Wire Line
+	5700 1100 5700 1300
+Wire Wire Line
+	5700 800  5700 650 
+Connection ~ 5700 650 
+Wire Wire Line
+	5700 650  6500 650 
+$Comp
+L Switch:SW_Push SW2
+U 1 1 5D542D6A
+P 5900 1300
+F 0 "SW2" H 5850 1150 50  0000 L CNN
+F 1 "Flash" H 5900 1240 50  0000 C CNN
+F 2 "4x3_SWITCH:4x3_Switch" H 5900 1500 50  0001 C CNN
+F 3 "" H 5900 1500 50  0001 C CNN
+	1    5900 1300
+	-1   0    0    1   
+$EndComp
+Wire Wire Line
+	6100 1300 6500 1300
+Text Label 6350 1300 0    60   ~ 0
+GND
+Connection ~ 5700 1300
+Wire Wire Line
+	5700 2700 6500 2700
+Wire Wire Line
+	5700 2800 6500 2800
+Text Label 6350 2800 0    60   ~ 0
+CLK
+Text Label 6350 2700 0    60   ~ 0
+DAT
+Wire Wire Line
+	5700 2500 6500 2500
+Wire Wire Line
+	5700 2600 6500 2600
+Text Label 6350 2500 0    60   ~ 0
+DS+
+Text Label 6350 2600 0    60   ~ 0
+DSD
+NoConn ~ 4500 1500
+NoConn ~ 4500 1600
+NoConn ~ 4500 2500
+NoConn ~ 4500 2600
+NoConn ~ 4500 2700
+NoConn ~ 4500 2800
+NoConn ~ 4500 2900
+NoConn ~ 4500 3000
+NoConn ~ 5700 3600
+NoConn ~ 5700 3500
+NoConn ~ 5700 3400
+NoConn ~ 5700 3300
+NoConn ~ 5700 3200
+NoConn ~ 5700 3100
+NoConn ~ 5700 3000
+NoConn ~ 5700 2900
+NoConn ~ 5700 2400
+NoConn ~ 5700 2300
+NoConn ~ 5700 2200
+NoConn ~ 5700 2100
+NoConn ~ 5700 2000
+NoConn ~ 5700 1900
+NoConn ~ 5700 1800
+NoConn ~ 5700 1700
+NoConn ~ 5700 1500
+$Comp
+L power:PWR_FLAG #FLG01
+U 1 1 5D62D329
+P 6500 2500
+F 0 "#FLG01" H 6500 2575 50  0001 C CNN
+F 1 "PWR_FLAG" V 6500 2800 50  0000 C CNN
+F 2 "" H 6500 2500 50  0001 C CNN
+F 3 "" H 6500 2500 50  0001 C CNN
+	1    6500 2500
+	0    1    1    0   
+$EndComp
+Wire Wire Line
+	3350 650  3350 850 
+Wire Wire Line
+	3350 650  3650 650 
+Wire Wire Line
+	3350 1150 3350 1300
+Wire Wire Line
+	3350 1300 3650 1300
+Wire Wire Line
+	3650 650  3650 850 
+Connection ~ 3650 650 
+Wire Wire Line
+	3650 650  4450 650 
+Wire Wire Line
+	3650 1150 3650 1300
+Connection ~ 3650 1300
+Wire Wire Line
+	3650 1300 4050 1300
 $EndSCHEMATC

@@ -1,4 +1,5 @@
 # Bills of Materials
 
 pcb/pcb
+libra-cervisiae-pcb/fp-info-cache
 src/libra-cervisiae/log*.csv
