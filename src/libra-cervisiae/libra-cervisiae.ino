@@ -1,6 +1,6 @@
 
-#include <ESP8266WiFi.h>
-#include <FS.h>
+#include <WiFi.h>
+#include <SPIFFS.h>
 #include <pgmspace.h>
 #include "libra-cervisiae.h"
 #include "config.h"

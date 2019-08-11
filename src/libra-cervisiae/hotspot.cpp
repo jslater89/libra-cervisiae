@@ -7,22 +7,12 @@
  * response to AJAX requests from the web page files.
  */
 
-#include <FS.h>
-#include <WiFiServer.h>
-#include <WiFiServerSecure.h>
-#include <ESP8266WiFiType.h>
-#include <ESP8266WiFiAP.h>
-#include <ESP8266WiFi.h>
+#include <SPIFFS.h>
+#include <WebServer.h>
 #include <WiFiClient.h>
 #include <WiFiClientSecure.h>
 #include <WiFiUdp.h>
-#include <ESP8266WiFiScan.h>
-#include <ESP8266WiFiMulti.h>
-#include <ESP8266WiFiGeneric.h>
-#include <ESP8266WiFiSTA.h>
-#include <ESP8266WebServerSecure.h>
-#include <ESP8266WebServer.h>
-#include <ESP8266mDNS.h>
+#include <ESPmDNS.h>
 
 #include "src/ArduinoJson/ArduinoJson.h"
 #include "libra-cervisiae.h"
@@ -35,7 +25,7 @@
 #include "hydrometer.h"
 #include "hotspot.h"
 
-ESP8266WebServer server(80);
+WebServer server(80);
 #define READ_INTERVAL 10000
 
 long lastSensorReading = 0;

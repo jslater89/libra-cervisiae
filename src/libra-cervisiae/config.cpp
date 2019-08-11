@@ -4,7 +4,7 @@
  * 
 */
 
-#include <FS.h>
+#include <SPIFFS.h>
 #include <stdint.h>
 #include "src/ArduinoJson/ArduinoJson.h"
 #include "temperature.h"
