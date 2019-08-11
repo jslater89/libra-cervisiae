@@ -1,4 +1,4 @@
-## Pendulum
+## Libra Cervisiae
 Source code for ESP8266 modules. Eventually it might support general Arduinos, through clever defines and whatnot. Today is not that day.
 
 ## Required Libraries
@@ -8,3 +8,4 @@ Source code for ESP8266 modules. Eventually it might support general Arduinos, t
 * [HX711](https://github.com/bogde/HX711)
 * [OneWire](https://github.com/PaulStoffregen/OneWire)
 * [DallasTemperature](https://github.com/milesburton/Arduino-Temperature-Control-Library)
+* [DoubleResetDetector](https://github.com/datacute/DoubleResetDetector)
