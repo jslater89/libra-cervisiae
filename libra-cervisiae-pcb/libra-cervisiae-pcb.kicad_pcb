@@ -2,7 +2,7 @@
 
   (general
     (thickness 1.6)
-    (drawings 28)
+    (drawings 27)
     (tracks 428)
     (zones 0)
     (modules 24)
@@ -12,8 +12,8 @@
   (page A)
   (title_block
     (title "Libra Cervisiae PCB")
-    (date 2018-08-30)
-    (rev 0.2.0)
+    (date 2019-08-16)
+    (rev 0.3.0)
   )
 
   (layers
@@ -40,7 +40,7 @@
   )
 
   (setup
-    (last_trace_width 0.4)
+    (last_trace_width 0.25)
     (user_trace_width 0.4)
     (user_trace_width 0.8)
     (trace_clearance 0.2)
@@ -1317,10 +1317,10 @@
     (tags capacitor)
     (path /5B2439F8)
     (attr smd)
-    (fp_text reference C3 (at -6.238 0.006 180) (layer F.SilkS)
+    (fp_text reference C3 (at -6.5405 -0.248 180) (layer F.SilkS)
       (effects (font (size 1 1) (thickness 0.15)))
     )
-    (fp_text value 47uF (at -3.538 0.006 180) (layer F.SilkS)
+    (fp_text value 4.7uF (at -3.7285 -0.248 180) (layer F.SilkS)
       (effects (font (size 1 1) (thickness 0.15)))
     )
     (fp_line (start -1 0.6) (end -1 -0.6) (layer F.Fab) (width 0.1))
@@ -1574,10 +1574,10 @@
     (tags capacitor)
     (path /5B88593E)
     (attr smd)
-    (fp_text reference C4 (at -3.2385 -0.635 180) (layer F.SilkS)
+    (fp_text reference C4 (at 0.127 -3.1115 180) (layer F.SilkS)
       (effects (font (size 1 1) (thickness 0.15)))
     )
-    (fp_text value 100nF (at -3.937 0.8255 180) (layer F.SilkS)
+    (fp_text value 100nF (at 0 -1.7145 180) (layer F.SilkS)
       (effects (font (size 1 1) (thickness 0.15)))
     )
     (fp_line (start -1 0.6) (end -1 -0.6) (layer F.Fab) (width 0.1))
@@ -1723,10 +1723,9 @@
     (arrow2a (pts (xy 100.138 111.738) (xy 101.264504 112.324421)))
     (arrow2b (pts (xy 100.138 111.738) (xy 101.264504 111.151579)))
   )
-  (gr_text 0.2.2 (at 126.873 82.931) (layer F.SilkS) (tstamp 5B54295D)
+  (gr_text 0.3.0 (at 126.873 82.931) (layer F.SilkS) (tstamp 5B54295D)
     (effects (font (size 1 1) (thickness 0.15)))
   )
-  (gr_line (start 138.434 105.821) (end 138.434 106.456) (angle 90) (layer F.SilkS) (width 0.2))
 
   (segment (start 135.321 102.251) (end 135.239 102.251) (width 0.4) (layer F.Cu) (net 1) (status 30))
   (segment (start 135.239 102.251) (end 133.858 103.632) (width 0.4) (layer F.Cu) (net 1) (tstamp 5B2BC028) (status 10))
