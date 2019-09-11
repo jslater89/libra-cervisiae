@@ -535,7 +535,6 @@ Wire Wire Line
 	6100 1300 6500 1300
 Text Label 6350 1300 0    60   ~ 0
 GND
-Connection ~ 5700 1300
 Wire Wire Line
 	5700 2700 6500 2700
 Wire Wire Line
@@ -570,7 +569,6 @@ NoConn ~ 5700 3000
 NoConn ~ 5700 2900
 NoConn ~ 5700 2400
 NoConn ~ 5700 2300
-NoConn ~ 5700 2200
 NoConn ~ 5700 2100
 NoConn ~ 5700 2000
 NoConn ~ 5700 1900
@@ -606,4 +604,44 @@ Wire Wire Line
 Connection ~ 3650 1300
 Wire Wire Line
 	3650 1300 4050 1300
+$Comp
+L Switch:SW_Push SW3
+U 1 1 5D785ABF
+P 6100 2050
+F 0 "SW3" H 6050 1900 50  0000 L CNN
+F 1 "Hotspot" H 6100 1990 50  0000 C CNN
+F 2 "4x3_SWITCH:4x3_Switch" H 6100 2250 50  0001 C CNN
+F 3 "" H 6100 2250 50  0001 C CNN
+	1    6100 2050
+	-1   0    0    1   
+$EndComp
+Connection ~ 5700 1300
+Wire Wire Line
+	5700 2200 5900 2200
+Wire Wire Line
+	5900 2200 5900 2050
+Wire Wire Line
+	6300 2050 6500 2050
+Text Label 6300 2050 0    60   ~ 0
+3.3+
+Wire Wire Line
+	5900 2200 5900 2350
+Connection ~ 5900 2200
+$Comp
+L Device:R R4
+U 1 1 5D79D805
+P 6100 2350
+F 0 "R4" V 6180 2350 50  0000 C CNN
+F 1 "10k" V 6100 2350 50  0000 C CNN
+F 2 "Resistor_SMD:R_0805_2012Metric" V 6030 2350 50  0001 C CNN
+F 3 "" H 6100 2350 50  0001 C CNN
+	1    6100 2350
+	0    1    -1   0   
+$EndComp
+Wire Wire Line
+	5900 2350 5950 2350
+Wire Wire Line
+	6250 2350 6500 2350
+Text Label 6350 2350 0    60   ~ 0
+GND
 $EndSCHEMATC
