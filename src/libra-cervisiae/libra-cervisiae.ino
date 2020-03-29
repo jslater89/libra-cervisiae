@@ -1,4 +1,3 @@
-
 #include <WiFi.h>
 #include <SPIFFS.h>
 #include <pgmspace.h>
@@ -13,7 +12,6 @@
  * 
  */
 
-DoubleResetDetector drd(5 /* timeout */, 0 /* address */);
 long bootMillis;
 boolean tareInProgress = false;
 boolean calibrationInProgress = false;
@@ -49,7 +47,7 @@ void setup() {
 
   initSensors();
 
-  hotspotMode = true; //bootToHotspot || !result | drd.detectDoubleReset();
+  hotspotMode = true;
 
   if(DEBUG_TIMINGS) {
     Serial.print(F("Startup finished: ")); Serial.println(millis() - bootMillis);

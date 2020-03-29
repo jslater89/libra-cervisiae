@@ -122,8 +122,6 @@ void startServer() {
 void hotspotLoop() {
   server.handleClient();
   
-  drd.loop();
-
   if(tareInProgress) {
     tareLoop();
     return;

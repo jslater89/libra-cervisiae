@@ -37,15 +37,12 @@
 #define HX711_CLOCK_PIN 4
 #endif
 
-#include <DoubleResetDetector.h>
-
-extern DoubleResetDetector drd;
 extern long bootMillis;
 
 // Tare in progress
-extern boolean tareInProgress;
+extern bool tareInProgress;
 
 // Calibration in progress
-extern boolean calibrationInProgress;
+extern bool calibrationInProgress;
 
 #endif

@@ -35,7 +35,6 @@ void hydrometerSetup() {
   if(DEBUG_TIMINGS) Serial.print(F("Sensors finished: ")); Serial.println(millis() - bootMillis);
 
   yield();
-  drd.stop();
 
   double boardTemp, wortTemp;
   readBoardTemp(&boardTemp);
@@ -76,7 +75,6 @@ void hydrometerSetup() {
 }
 
 void sleep() {
-  drd.stop();
   stopSensors();
   Serial.print(F("Going to sleep for ")); Serial.print(delaySeconds); Serial.println(F(" seconds"));
   ESP.deepSleep(delaySeconds * 1000 * 1000);
